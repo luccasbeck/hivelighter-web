@@ -1,4 +1,20 @@
 export const themeColors = {
+  hive: {
+    palette: {
+      type: "light",
+      primary: {
+        main: "#ffffff",
+        contrastText: "rgba(0,0,0,.87)"
+      },
+      secondary: {
+        main: "#ff9e43"
+      },
+      background: {
+        paper: "#ffffff",
+        default: "#F7F7F8"
+      }
+    }
+  },
   white: {
     palette: {
       type: "light",

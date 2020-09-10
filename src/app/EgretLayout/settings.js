@@ -16,8 +16,8 @@ function createEgretThemes() {
 const themes = createEgretThemes();
 
 export const EgretLayoutSettings = {
-  activeLayout: "layout1", // layout1, layout2
-  activeTheme: "purple1", // View all valid theme colors inside EgretTheme/themeColors.js
+  activeLayout: "layout2", // layout1, layout2
+  activeTheme: "hive", // View all valid theme colors inside EgretTheme/themeColors.js
   perfectScrollbar: true,
 
   themes: themes,
@@ -25,12 +25,12 @@ export const EgretLayoutSettings = {
   layout2Settings, // open Layout1/Layout2Settings.js
 
   secondarySidebar: {
-    show: true,
+    show: false,
     theme: "slateDark1" // View all valid theme colors inside EgretTheme/themeColors.js
   },
   // Footer options
   footer: {
-    show: true,
+    show: false,
     fixed: false,
     theme: "slateDark1" // View all valid theme colors inside EgretTheme/themeColors.js
   }
