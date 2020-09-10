@@ -1,5 +1,5 @@
 {
-  "name": "egret-react",
+  "name": "Hivelighter",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -58,10 +58,24 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ghp": "react-scripts build && gh-pages -d build"
+    "ghp": "react-scripts build && gh-pages -d build",
+    "lint": "eslint --ext .js,.jsx .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -73,6 +87,23 @@
     "@babel/runtime": "^7.5.5",
     "axios-mock-adapter": "^1.17.0",
     "cross-env": "^5.2.0",
-    "gh-pages": "^2.1.1"
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-flowtype": "4.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "2.x",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.1.1",
+    "husky": "^4.3.0",
+    "import-sort-style-module": "^6.0.0",
+    "lint-staged": "^10.3.0",
+    "prettier": "2.1.1"
   }
 }

@@ -1,0 +1,9 @@
+dist
+node_modules
+docs
+public
+src/app/views/map/PolygonMap.jsx
+src/history.js
+src/index.jsx
+src/serviceWorker.js
+src/utils.js
