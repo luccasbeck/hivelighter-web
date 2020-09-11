@@ -1,43 +1,45 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
-import TodoList from "./TodoList";
-import TodoEditor from "./TodoEditor";
-import { Icon, withStyles } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import TodoList from './TodoList'
+import TodoEditor from './TodoEditor'
+import { Icon, withStyles } from '@material-ui/core'
 
-const styles = theme => ({
+const styles = (theme) => ({
   searchBox: {
     background: theme.palette.background.default,
     color: theme.palette.text.primary,
-  }
+  },
 })
 
 class AppTodo extends Component {
-  search = null;
+  search = null
   state = {
-    query: ""
-  };
+    query: '',
+  }
 
   componentWillMount() {}
 
-  handleQueryChange = event => {
+  handleQueryChange = (event) => {
     this.setState(
       {
-        query: event.target.value
+        query: event.target.value,
       },
       () => {
-        this.search(this.state.query);
-      }
-    );
-  };
+        this.search(this.state.query)
+      },
+    )
+  }
 
   render() {
-    let { query } = this.state;
-    let { classes } = this.props;
+    let { query } = this.state
+    let { classes } = this.props
     return (
       <div className="todo">
         <div className="todo__search-box-holder">
           <div className="flex-column flex-middle flex-center">
-            <div className={`todo__search-box flex flex-middle pl-16 pr-24 ${classes.searchBox}`}>
+            <div
+              className={`todo__search-box flex flex-middle pl-16 pr-24 ${classes.searchBox}`}
+            >
               <Icon className="mr-16">search</Icon>
               <input
                 className={`h-100 flex-grow-1 ${classes.searchBox}`}
@@ -55,20 +57,18 @@ class AppTodo extends Component {
             <Route
               exact
               path="/todo/list"
-              render={props => (
+              render={(props) => (
                 <TodoList
                   {...props}
-                  setSearchFunction={searchFunction =>
-                    (this.search = searchFunction)
-                  }
+                  setSearchFunction={(searchFunction) => (this.search = searchFunction)}
                 />
               )}
             />
           </Switch>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles, {withTheme: true})(AppTodo);
+export default withStyles(styles, { withTheme: true })(AppTodo)

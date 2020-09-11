@@ -1,24 +1,24 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 function SimpleMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
   function handleClick(event) {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget)
   }
 
   function handleClose() {
-    setAnchorEl(null);
+    setAnchorEl(null)
   }
 
   return (
     <div>
       <Button
         variant="outlined"
-        aria-owns={anchorEl ? "simple-menu" : undefined}
+        aria-owns={anchorEl ? 'simple-menu' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
       >
@@ -35,7 +35,7 @@ function SimpleMenu() {
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </div>
-  );
+  )
 }
 
-export default SimpleMenu;
+export default SimpleMenu

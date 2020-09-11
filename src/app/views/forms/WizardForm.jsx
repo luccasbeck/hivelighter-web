@@ -1,7 +1,7 @@
-import React from "react";
-import { SimpleCard } from "egret";
-import HorizontalStepper from "./HorizontalStepper";
-import VerticalStepper from "./VerticalStepper";
+import React from 'react'
+import { SimpleCard } from 'egret'
+import HorizontalStepper from './HorizontalStepper'
+import VerticalStepper from './VerticalStepper'
 
 const WizardForm = () => {
   return (
@@ -14,7 +14,7 @@ const WizardForm = () => {
         <VerticalStepper></VerticalStepper>
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default WizardForm;
+export default WizardForm

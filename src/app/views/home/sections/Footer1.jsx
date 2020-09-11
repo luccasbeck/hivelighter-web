@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Grid, Button, Icon } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Grid, Button, Icon } from '@material-ui/core'
 
 class Footer1 extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <div className="section-footer1 bg-light-dark" id="footer1">
@@ -12,10 +12,10 @@ class Footer1 extends Component {
               <div className="footer1__about">
                 <h4>About Us</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Officiis perferendis rem, aut aliquam neque nam? dolor sit
-                  amet, consectetur adipisicing elit consectetur adipisicing
-                  elit. Officiis perferendis rem, aut aliquam.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+                  perferendis rem, aut aliquam neque nam? dolor sit amet, consectetur
+                  adipisicing elit consectetur adipisicing elit. Officiis perferendis rem,
+                  aut aliquam.
                 </p>
                 <Button variant="contained" color="secondary">
                   Contact Us
@@ -45,8 +45,8 @@ class Footer1 extends Component {
               <div className="footer1__disclaimer">
                 <h4>Disclaimer</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Officiis perferendis rem, aut aliquam neque nam?
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+                  perferendis rem, aut aliquam neque nam?
                 </p>
 
                 <div className="mt-32 footer1__disclaimer__link">
@@ -65,8 +65,8 @@ class Footer1 extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Footer1;
+export default Footer1

@@ -1,26 +1,20 @@
-import React, { Fragment } from "react";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ReactHtmlParser from "react-html-parser";
-import {
-  IconButton,
-  Icon,
-  Checkbox,
-  Avatar,
-  MenuItem
-} from "@material-ui/core";
-import { EgretMenu } from "egret";
-import { format } from "date-fns";
-import { getTimeDifference } from "utils";
+import React, { Fragment } from 'react'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ReactHtmlParser from 'react-html-parser'
+import { IconButton, Icon, Checkbox, Avatar, MenuItem } from '@material-ui/core'
+import { EgretMenu } from 'egret'
+import { format } from 'date-fns'
+import { getTimeDifference } from 'utils'
 
 const InboxMessageList = ({ messageList, handleCheckboxSelection }) => {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(false)
 
-  const toggleExpansionPanel = index => {
-    if (index === expanded) setExpanded(false);
-    else setExpanded(index);
-  };
+  const toggleExpansionPanel = (index) => {
+    if (index === expanded) setExpanded(false)
+    else setExpanded(index)
+  }
 
   return (
     <div className="mx-4 mb-4">
@@ -32,7 +26,7 @@ const InboxMessageList = ({ messageList, handleCheckboxSelection }) => {
                 <Fragment>
                   <Checkbox
                     checked={message.selected}
-                    onChange={event => handleCheckboxSelection(event, index)}
+                    onChange={(event) => handleCheckboxSelection(event, index)}
                     color="secondary"
                   />
                   <IconButton>
@@ -53,10 +47,7 @@ const InboxMessageList = ({ messageList, handleCheckboxSelection }) => {
                         {message.sender.name}
                       </h5>
                       <small className="text-muted">
-                        {format(
-                          new Date(message.date).getTime(),
-                          "MMMM dd, yyyy"
-                        )}
+                        {format(new Date(message.date).getTime(), 'MMMM dd, yyyy')}
                       </small>
                     </div>
                   </div>
@@ -98,7 +89,7 @@ const InboxMessageList = ({ messageList, handleCheckboxSelection }) => {
         </ExpansionPanel>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default InboxMessageList;
+export default InboxMessageList

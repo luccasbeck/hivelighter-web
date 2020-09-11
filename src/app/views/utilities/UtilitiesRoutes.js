@@ -1,35 +1,35 @@
-import {EgretLoadable} from "egret";
+import { EgretLoadable } from 'egret'
 
 const Color = EgretLoadable({
-  loader: () => import("./Color")
-});
+  loader: () => import('./Color'),
+})
 const Spacing = EgretLoadable({
-  loader: () => import("./Spacing")
-});
+  loader: () => import('./Spacing'),
+})
 const Typography = EgretLoadable({
-  loader: () => import("./Typography")
-});
+  loader: () => import('./Typography'),
+})
 const Display = EgretLoadable({
-  loader: () => import("./Display")
-});
+  loader: () => import('./Display'),
+})
 
 const utilitiesRoutes = [
   {
     path: '/utilities/color',
-    component: Color
+    component: Color,
   },
   {
-    path: "/utilities/spacing",
-    component: Spacing
+    path: '/utilities/spacing',
+    component: Spacing,
   },
   {
-    path: "/utilities/typography",
-    component: Typography
+    path: '/utilities/typography',
+    component: Typography,
   },
   {
-    path: "/utilities/display",
-    component: Display
+    path: '/utilities/display',
+    component: Display,
   },
 ]
 
-export default utilitiesRoutes;
+export default utilitiesRoutes

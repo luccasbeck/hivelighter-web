@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
+import React, { Component } from 'react'
+import Card from '@material-ui/core/Card'
 
-import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
-import { Button, Icon } from "@material-ui/core";
+import CardContent from '@material-ui/core/CardContent'
+import Divider from '@material-ui/core/Divider'
+import Grid from '@material-ui/core/Grid'
+import IconButton from '@material-ui/core/IconButton'
+import { Button, Icon } from '@material-ui/core'
 
 class Portfolio1 extends Component {
-  state = {};
+  state = {}
 
   portfoioList = [
     {
-      imageUrl: "./assets/images/sq-12.jpg",
-      name: "Project One",
+      imageUrl: './assets/images/sq-12.jpg',
+      name: 'Project One',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-10.jpg",
-      name: "Project Two",
+      imageUrl: './assets/images/sq-10.jpg',
+      name: 'Project Two',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-9.jpg",
-      name: "Project Three",
+      imageUrl: './assets/images/sq-9.jpg',
+      name: 'Project Three',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
-    }
-  ];
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
+    },
+  ]
   render() {
     return (
       <section className="section section-portfolio1" id="portfolio1">
@@ -37,8 +37,8 @@ class Portfolio1 extends Component {
           <div className="section__header">
             <h2>Works & Case studies</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-              unde inventore molestias ab adipisci eius nisi placeat at.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+              inventore molestias ab adipisci eius nisi placeat at.
             </p>
           </div>
           <Grid container spacing={3}>
@@ -73,8 +73,8 @@ class Portfolio1 extends Component {
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Portfolio1;
+export default Portfolio1

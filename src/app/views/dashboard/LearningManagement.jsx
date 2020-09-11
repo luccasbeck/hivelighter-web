@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Grid,
   Card,
@@ -10,87 +10,82 @@ import {
   TableCell,
   TableBody,
   Button,
-  Tooltip
-} from "@material-ui/core";
-import {
-  Breadcrumb,
-  SimpleCard,
-  EgretProgressBar,
-  EgretListItem1
-} from "egret";
-import EducationChart from "./EducationChart";
+  Tooltip,
+} from '@material-ui/core'
+import { Breadcrumb, SimpleCard, EgretProgressBar, EgretListItem1 } from 'egret'
+import EducationChart from './EducationChart'
 
 class LearningManagement extends Component {
   resultList = [
     {
-      name: "React",
-      date: "20 March",
-      value: 50
+      name: 'React',
+      date: '20 March',
+      value: 50,
     },
     {
-      name: "Angular",
-      date: "10 March",
-      value: 85
+      name: 'Angular',
+      date: '10 March',
+      value: 85,
     },
     {
-      name: "Javascript",
-      date: "20 March",
-      value: 40
+      name: 'Javascript',
+      date: '20 March',
+      value: 40,
     },
     {
-      name: "CSS",
-      date: "30 March",
-      value: 90
+      name: 'CSS',
+      date: '30 March',
+      value: 90,
     },
     {
-      name: "HTML",
-      date: "10 March",
-      value: 90
-    }
-  ];
+      name: 'HTML',
+      date: '10 March',
+      value: 90,
+    },
+  ]
 
   productList = [
     {
-      imgUrl: "/assets/images/logos/angular.png",
-      name: "Angular Beyond the Basics",
+      imgUrl: '/assets/images/logos/angular.png',
+      name: 'Angular Beyond the Basics',
       price: 100,
-      available: 15
+      available: 15,
     },
     {
-      imgUrl: "/assets/images/logos/react.png",
-      name: "React Development Course",
+      imgUrl: '/assets/images/logos/react.png',
+      name: 'React Development Course',
       price: 150,
-      available: 30
+      available: 30,
     },
     {
-      imgUrl: "/assets/images/logos/webpack.png",
-      name: "Webpack for Busy Developer",
+      imgUrl: '/assets/images/logos/webpack.png',
+      name: 'Webpack for Busy Developer',
       price: 190,
-      available: 35
+      available: 35,
     },
     {
-      imgUrl: "/assets/images/logos/sass.png",
-      name: "Complete SASS course",
+      imgUrl: '/assets/images/logos/sass.png',
+      name: 'Complete SASS course',
       price: 100,
-      available: 0
+      available: 0,
     },
     {
-      imgUrl: "/assets/images/logos/bootstrap.png",
-      name: "Bootstrap for Everyone",
+      imgUrl: '/assets/images/logos/bootstrap.png',
+      name: 'Bootstrap for Everyone',
       price: 119,
-      available: 5
-    }
-  ];
+      available: 5,
+    },
+  ]
 
-  state = {};
+  state = {}
   render() {
     return (
       <div className="learning-management m-sm-30">
         <div className="mb-sm-30">
           <Breadcrumb
             routeSegments={[
-              { name: "Dashboard", path: "/dashboard" },
-              { name: "Learning" }
+              { name: 'Dashboard', path: '/dashboard' },
+              { name: 'Learning' },
             ]}
           />
         </div>
@@ -109,18 +104,15 @@ class LearningManagement extends Component {
                   Start a new goal and improve your result
                 </p>
               </div>
-              <img
-                src="/assets/images/illustrations/designer.svg"
-                alt="designer"
-              />
+              <img src="/assets/images/illustrations/designer.svg" alt="designer" />
             </Card>
 
             <div className="mb-12">
               <Grid container spacing={3}>
                 <Grid item md={5} xs={12}>
                   <SimpleCard title="Results">
-                    <div style={{ marginTop: "-8px" }}>
-                      {this.resultList.map(result => (
+                    <div style={{ marginTop: '-8px' }}>
+                      {this.resultList.map((result) => (
                         <div className="py-8" key={result.name}>
                           <Grid
                             key={result.name}
@@ -133,12 +125,12 @@ class LearningManagement extends Component {
                               <Grid item className="flex">
                                 <div
                                   className={`bg-${
-                                    result.value < 51 ? "secondary" : "primary"
+                                    result.value < 51 ? 'secondary' : 'primary'
                                   } border-radius-circle`}
                                   style={{
-                                    height: "10px",
-                                    width: "10px",
-                                    marginTop: "1px"
+                                    height: '10px',
+                                    width: '10px',
+                                    marginTop: '1px',
                                   }}
                                 ></div>
                               </Grid>
@@ -146,9 +138,7 @@ class LearningManagement extends Component {
                                 <h6 className="font-weight-normal m-0 text-body">
                                   {result.name}
                                 </h6>
-                                <small className="text-muted">
-                                  {result.date}
-                                </small>
+                                <small className="text-muted">{result.date}</small>
                               </Grid>
                             </Grid>
                             <span className="mx-auto"></span>
@@ -157,9 +147,7 @@ class LearningManagement extends Component {
                                 value={result.value}
                                 text={`${result.value}%`}
                                 spacing={1}
-                                color={`${
-                                  result.value < 51 ? "secondary" : "primary"
-                                }`}
+                                color={`${result.value < 51 ? 'secondary' : 'primary'}`}
                                 coloredText={true}
                                 className="pr-16"
                               ></EgretProgressBar>
@@ -187,16 +175,14 @@ class LearningManagement extends Component {
                         <h5 className="font-weight-500 text-white m-0">C1</h5>
                       </div>
                       <div className="ml-12">
-                        <small className="text-muted-white">
-                          You watched today
-                        </small>
+                        <small className="text-muted-white">You watched today</small>
                         <h6 className="m-0 mt-4 text-white font-weight-500">
                           Python 101
                         </h6>
                       </div>
                     </div>
                     <IconButton>
-                      <Icon style={{ fontSize: "34px", color: "#fff" }}>
+                      <Icon style={{ fontSize: '34px', color: '#fff' }}>
                         play_circle_outline
                       </Icon>
                     </IconButton>
@@ -209,16 +195,14 @@ class LearningManagement extends Component {
                         <h5 className="font-weight-500 text-white m-0">C2</h5>
                       </div>
                       <div className="ml-12">
-                        <small className="text-muted-white">
-                          You watched today
-                        </small>
+                        <small className="text-muted-white">You watched today</small>
                         <h6 className="m-0 mt-4 text-white font-weight-500">
                           Javascript 101
                         </h6>
                       </div>
                     </div>
                     <IconButton>
-                      <Icon style={{ fontSize: "34px", color: "#fff" }}>
+                      <Icon style={{ fontSize: '34px', color: '#fff' }}>
                         play_circle_outline
                       </Icon>
                     </IconButton>
@@ -250,11 +234,7 @@ class LearningManagement extends Component {
                   <TableBody>
                     {this.productList.map((product, index) => (
                       <TableRow key={index}>
-                        <TableCell
-                          className="px-0 capitalize"
-                          colSpan={4}
-                          align="left"
-                        >
+                        <TableCell className="px-0 capitalize" colSpan={4} align="left">
                           <div className="flex flex-middle">
                             <img
                               className="circular-image-small"
@@ -264,14 +244,10 @@ class LearningManagement extends Component {
                             <p className="m-0 ml-8">{product.name}</p>
                           </div>
                         </TableCell>
-                        <TableCell
-                          className="px-0 capitalize"
-                          align="left"
-                          colSpan={2}
-                        >
+                        <TableCell className="px-0 capitalize" align="left" colSpan={2}>
                           $
                           {product.price > 999
-                            ? (product.price / 1000).toFixed(1) + "k"
+                            ? (product.price / 1000).toFixed(1) + 'k'
                             : product.price}
                         </TableCell>
 
@@ -307,14 +283,8 @@ class LearningManagement extends Component {
 
           <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card elevation={6} className="p-sm-24 h-100">
-              <Card
-                elevation={0}
-                className="upgrade-card bg-light-primary p-sm-24 mb-36"
-              >
-                <img
-                  src="/assets/images/illustrations/upgrade.svg"
-                  alt="upgrade"
-                />
+              <Card elevation={0} className="upgrade-card bg-light-primary p-sm-24 mb-36">
+                <img src="/assets/images/illustrations/upgrade.svg" alt="upgrade" />
                 <p className="text-muted m-0 py-24">
                   Upgrade to <b>PRO</b> for <br /> more resources
                 </p>
@@ -359,9 +329,7 @@ class LearningManagement extends Component {
               </div>
 
               <div className="mb-36">
-                <h5 className="mb-8 font-size-14 font-weight-600 text-hint">
-                  Reminder
-                </h5>
+                <h5 className="mb-8 font-size-14 font-weight-600 text-hint">Reminder</h5>
                 <EgretListItem1
                   title="Data structure test"
                   subtitle="23 December 2019"
@@ -435,8 +403,8 @@ class LearningManagement extends Component {
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default LearningManagement;
+export default LearningManagement

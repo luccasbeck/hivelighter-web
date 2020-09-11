@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Card,
   Checkbox,
@@ -6,47 +6,47 @@ import {
   Grid,
   Button,
   withStyles,
-  CircularProgress
-} from "@material-ui/core";
-import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+  CircularProgress,
+} from '@material-ui/core'
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
-import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
+import { loginWithEmailAndPassword } from '../../redux/actions/LoginActions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
-    position: "relative"
+    position: 'relative',
   },
 
   buttonProgress: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
     marginTop: -12,
-    marginLeft: -12
-  }
-});
+    marginLeft: -12,
+  },
+})
 
 class SignIn extends Component {
   state = {
-    email: "watson@example.com",
-    password: "testpass",
-    agreement: ""
-  };
-  handleChange = event => {
-    event.persist();
+    email: 'watson@example.com',
+    password: 'testpass',
+    agreement: '',
+  }
+  handleChange = (event) => {
+    event.persist()
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-  handleFormSubmit = event => {
-    this.props.loginWithEmailAndPassword({ ...this.state });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
+  handleFormSubmit = (event) => {
+    this.props.loginWithEmailAndPassword({ ...this.state })
+  }
   render() {
-    let { email, password } = this.state;
-    let { classes } = this.props;
+    let { email, password } = this.state
+    let { classes } = this.props
     return (
       <div className="signup flex flex-center w-100 h-100vh">
         <div className="p-8">
@@ -68,11 +68,8 @@ class SignIn extends Component {
                       type="email"
                       name="email"
                       value={email}
-                      validators={["required", "isEmail"]}
-                      errorMessages={[
-                        "this field is required",
-                        "email is not valid"
-                      ]}
+                      validators={['required', 'isEmail']}
+                      errorMessages={['this field is required', 'email is not valid']}
                     />
                     <TextValidator
                       className="mb-16 w-100"
@@ -82,8 +79,8 @@ class SignIn extends Component {
                       name="password"
                       type="password"
                       value={password}
-                      validators={["required"]}
-                      errorMessages={["this field is required"]}
+                      validators={['required']}
+                      errorMessages={['this field is required']}
                     />
                     <FormControlLabel
                       className="mb-8"
@@ -112,18 +109,14 @@ class SignIn extends Component {
                       <span className="ml-16 mr-8">or</span>
                       <Button
                         className="capitalize"
-                        onClick={() =>
-                          this.props.history.push("/session/signup")
-                        }
+                        onClick={() => this.props.history.push('/session/signup')}
                       >
                         Sign up
                       </Button>
                     </div>
                     <Button
                       className="text-primary"
-                      onClick={() =>
-                        this.props.history.push("/session/forgot-password")
-                      }
+                      onClick={() => this.props.history.push('/session/forgot-password')}
                     >
                       Forgot password?
                     </Button>
@@ -134,19 +127,14 @@ class SignIn extends Component {
           </Card>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loginWithEmailAndPassword: PropTypes.func.isRequired,
-  login: state.login
-});
+  login: state.login,
+})
 export default withStyles(styles, { withTheme: true })(
-  withRouter(
-    connect(
-      mapStateToProps,
-      { loginWithEmailAndPassword }
-    )(SignIn)
-  )
-);
+  withRouter(connect(mapStateToProps, { loginWithEmailAndPassword })(SignIn)),
+)

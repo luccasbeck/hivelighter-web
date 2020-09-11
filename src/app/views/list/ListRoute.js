@@ -1,24 +1,24 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const AppList = EgretLoadable({
-  loader: () => import("./AppList")
-});
+  loader: () => import('./AppList'),
+})
 
 const InfiniteList = EgretLoadable({
-  loader: () => import("./InfiniteList")
-});
+  loader: () => import('./InfiniteList'),
+})
 
 const ListRoute = [
   {
-    path: "/egret-list",
+    path: '/egret-list',
     exact: true,
-    component: AppList
+    component: AppList,
   },
   {
-    path: "/infinite-scroll",
+    path: '/infinite-scroll',
     exact: true,
-    component: InfiniteList
-  }
-];
+    component: InfiniteList,
+  },
+]
 
-export default ListRoute;
+export default ListRoute

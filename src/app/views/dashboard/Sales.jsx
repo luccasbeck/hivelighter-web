@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 import {
   Grid,
   IconButton,
@@ -9,91 +9,88 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  TableBody
-} from "@material-ui/core";
-import { Breadcrumb, SimpleCard, CardWidget1 } from "egret";
-import DoughnutChart from "../charts/echarts/Doughnut";
-import ComparisonChart from "../charts/echarts/ComparisonChart";
-import { withStyles } from "@material-ui/styles";
+  TableBody,
+} from '@material-ui/core'
+import { Breadcrumb, SimpleCard, CardWidget1 } from 'egret'
+import DoughnutChart from '../charts/echarts/Doughnut'
+import ComparisonChart from '../charts/echarts/ComparisonChart'
+import { withStyles } from '@material-ui/styles'
 
 class Sales extends Component {
-  state = {};
+  state = {}
   productList = [
     {
-      imgUrl: "/assets/images/products/headphone-2.jpg",
-      name: "earphone",
+      imgUrl: '/assets/images/products/headphone-2.jpg',
+      name: 'earphone',
       price: 100,
-      available: 15
+      available: 15,
     },
     {
-      imgUrl: "/assets/images/products/headphone-3.jpg",
-      name: "earphone",
+      imgUrl: '/assets/images/products/headphone-3.jpg',
+      name: 'earphone',
       price: 1500,
-      available: 30
+      available: 30,
     },
     {
-      imgUrl: "/assets/images/products/sq-11.jpg",
-      name: "bulb",
+      imgUrl: '/assets/images/products/sq-11.jpg',
+      name: 'bulb',
       price: 1900,
-      available: 35
+      available: 35,
     },
     {
-      imgUrl: "/assets/images/products/iphone-1.jpg",
-      name: "pen",
+      imgUrl: '/assets/images/products/iphone-1.jpg',
+      name: 'pen',
       price: 100,
-      available: 0
+      available: 0,
     },
     {
-      imgUrl: "/assets/images/products/headphone-3.jpg",
-      name: "Head phone",
+      imgUrl: '/assets/images/products/headphone-3.jpg',
+      name: 'Head phone',
       price: 1190,
-      available: 5
-    }
-  ];
+      available: 5,
+    },
+  ]
 
   paymentList = [
     {
-      img: "/assets/images/payment-methods/master-card.png",
-      type: "Master Card",
-      product: "Bundled product",
-      amount: 909
+      img: '/assets/images/payment-methods/master-card.png',
+      type: 'Master Card',
+      product: 'Bundled product',
+      amount: 909,
     },
     {
-      img: "/assets/images/payment-methods/paypal.png",
-      type: "Paypal",
-      product: "Bundled product",
-      amount: 303
+      img: '/assets/images/payment-methods/paypal.png',
+      type: 'Paypal',
+      product: 'Bundled product',
+      amount: 303,
     },
     {
-      img: "/assets/images/payment-methods/visa.png",
-      type: "Visa",
-      product: "Bundled product",
-      amount: 330
+      img: '/assets/images/payment-methods/visa.png',
+      type: 'Visa',
+      product: 'Bundled product',
+      amount: 330,
     },
     {
-      img: "/assets/images/payment-methods/maestro.png",
-      type: "Maestro",
-      product: "Bundled product",
-      amount: 909
+      img: '/assets/images/payment-methods/maestro.png',
+      type: 'Maestro',
+      product: 'Bundled product',
+      amount: 909,
     },
     {
-      img: "/assets/images/payment-methods/maestro.png",
-      type: "Master Card",
-      product: "Bundled product",
-      amount: 909
-    }
-  ];
+      img: '/assets/images/payment-methods/maestro.png',
+      type: 'Master Card',
+      product: 'Bundled product',
+      amount: 909,
+    },
+  ]
 
   render() {
-    let { theme } = this.props;
+    let { theme } = this.props
     return (
       <div className="sales m-sm-30">
         <div className="mb-sm-30">
           <Breadcrumb
-            routeSegments={[
-              { name: "Dashboard", path: "/dashboard" },
-              { name: "Sales" }
-            ]}
+            routeSegments={[{ name: 'Dashboard', path: '/dashboard' }, { name: 'Sales' }]}
           />
         </div>
         <Grid container spacing={3}>
@@ -119,14 +116,10 @@ class Sales extends Component {
                       </div>
                       <div className="ml-16">
                         <p className="m-0">{method.type}</p>
-                        <span className="text-small text-muted">
-                          {method.product}
-                        </span>
+                        <span className="text-small text-muted">{method.product}</span>
                       </div>
                     </div>
-                    <span className="m-0 text-muted font-size-18">
-                      ${method.amount}
-                    </span>
+                    <span className="m-0 text-muted font-size-18">${method.amount}</span>
                   </div>
                   {index !== this.paymentList.length - 1 && <Divider />}
                 </Fragment>
@@ -137,10 +130,7 @@ class Sales extends Component {
             <SimpleCard title="website vs app" subtitle="Last 6 months">
               <ComparisonChart
                 height="350px"
-                color={[
-                  theme.palette.primary.main,
-                  theme.palette.primary.light
-                ]}
+                color={[theme.palette.primary.main, theme.palette.primary.light]}
               />
             </SimpleCard>
           </Grid>
@@ -169,11 +159,7 @@ class Sales extends Component {
                   <TableBody>
                     {this.productList.map((product, index) => (
                       <TableRow key={index}>
-                        <TableCell
-                          className="px-0 capitalize"
-                          colSpan={4}
-                          align="left"
-                        >
+                        <TableCell className="px-0 capitalize" colSpan={4} align="left">
                           <div className="flex flex-middle">
                             <img
                               className="circular-image-small"
@@ -183,14 +169,10 @@ class Sales extends Component {
                             <p className="m-0 ml-8">{product.name}</p>
                           </div>
                         </TableCell>
-                        <TableCell
-                          className="px-0 capitalize"
-                          align="left"
-                          colSpan={2}
-                        >
+                        <TableCell className="px-0 capitalize" align="left" colSpan={2}>
                           $
                           {product.price > 999
-                            ? (product.price / 1000).toFixed(1) + "k"
+                            ? (product.price / 1000).toFixed(1) + 'k'
                             : product.price}
                         </TableCell>
 
@@ -231,15 +213,15 @@ class Sales extends Component {
                 color={[
                   theme.palette.primary.dark,
                   theme.palette.primary.main,
-                  theme.palette.primary.light
+                  theme.palette.primary.light,
                 ]}
               />
             </SimpleCard>
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles({}, { withTheme: true })(Sales);
+export default withStyles({}, { withTheme: true })(Sales)

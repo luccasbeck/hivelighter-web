@@ -1,15 +1,15 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const Inbox = EgretLoadable({
-  loader: () => import("./AppInbox")
-});
+  loader: () => import('./AppInbox'),
+})
 
 const inboxRoute = [
   {
-    path: "/inbox",
+    path: '/inbox',
     exact: true,
-    component: Inbox
-  }
-];
+    component: Inbox,
+  },
+]
 
-export default inboxRoute;
+export default inboxRoute

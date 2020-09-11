@@ -1,20 +1,16 @@
-import React, { Component } from "react";
-import Icon from "@material-ui/core/Icon";
-import Fab from "@material-ui/core/Fab";
+import React, { Component } from 'react'
+import Icon from '@material-ui/core/Icon'
+import Fab from '@material-ui/core/Fab'
 
 class CallToAction2 extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <section className="section section-cta2 light-gray" id="cta2">
         <div className="container text-center">
           <h2 className="mb-32">Subscribe & Request a demo</h2>
           <div className="subscribe-input">
-            <input
-              className="email-input"
-              type="text"
-              placeholder="Your email"
-            />
+            <input className="email-input" type="text" placeholder="Your email" />
             <Fab
               variant="extended"
               size="large"
@@ -28,8 +24,8 @@ class CallToAction2 extends Component {
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default CallToAction2;
+export default CallToAction2

@@ -1,53 +1,50 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles, MuiThemeProvider } from "@material-ui/core";
-import { connect } from "react-redux";
-import {
-  setLayoutSettings,
-  setDefaultSettings
-} from "app/redux/actions/LayoutActions";
-import { isMobile } from "utils";
-import { withRouter } from "react-router-dom";
-import Sidenav from "../SharedCompoents/Sidenav";
-import Brand from "../SharedCompoents/Brand";
-import SidenavTheme from "../EgretTheme/SidenavTheme";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { withStyles, MuiThemeProvider } from '@material-ui/core'
+import { connect } from 'react-redux'
+import { setLayoutSettings, setDefaultSettings } from 'app/redux/actions/LayoutActions'
+import { isMobile } from 'utils'
+import { withRouter } from 'react-router-dom'
+import Sidenav from '../SharedCompoents/Sidenav'
+import Brand from '../SharedCompoents/Brand'
+import SidenavTheme from '../EgretTheme/SidenavTheme'
 
 class Layout2Sidenav extends Component {
   state = {
-    sidenavToggleChecked: false
-  };
+    sidenavToggleChecked: false,
+  }
 
   componentWillMount() {
     // CLOSE SIDENAV ON ROUTE CHANGE ON MOBILE
     this.unlistenRouteChange = this.props.history.listen((location, action) => {
       if (isMobile()) {
-        this.updateSidebarMode({ mode: "close" });
+        this.updateSidebarMode({ mode: 'close' })
       }
-    });
+    })
   }
 
   componentWillUnmount() {
-    this.unlistenRouteChange();
+    this.unlistenRouteChange()
   }
 
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
+  updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = this.props
     setLayoutSettings({
       ...settings,
       layout2Settings: {
         ...settings.layout2Settings,
         leftSidebar: {
           ...settings.layout2Settings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
-  };
+          ...sidebarSettings,
+        },
+      },
+    })
+  }
 
   render() {
-    let { theme, settings } = this.props;
+    let { theme, settings } = this.props
     const sidenavTheme =
-      settings.themes[settings.layout2Settings.leftSidebar.theme] || theme;
+      settings.themes[settings.layout2Settings.leftSidebar.theme] || theme
     return (
       <MuiThemeProvider theme={sidenavTheme}>
         <SidenavTheme theme={sidenavTheme} settings={settings} />
@@ -58,30 +55,30 @@ class Layout2Sidenav extends Component {
           </div>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
 Layout2Sidenav.propTypes = {
   setDefaultSettings: PropTypes.func.isRequired,
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   setDefaultSettings: PropTypes.func.isRequired,
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: state.layout.settings
-});
+  settings: state.layout.settings,
+})
 
-export default withStyles({}, { withTheme: true })(
+export default withStyles(
+  {},
+  { withTheme: true },
+)(
   withRouter(
-    connect(
-      mapStateToProps,
-      {
-        setLayoutSettings,
-        setDefaultSettings
-      }
-    )(Layout2Sidenav)
-  )
-);
+    connect(mapStateToProps, {
+      setLayoutSettings,
+      setDefaultSettings,
+    })(Layout2Sidenav),
+  ),
+)

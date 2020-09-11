@@ -1,147 +1,147 @@
-import React, { Component } from "react";
-import { Breadcrumb, SimpleCard, EgretProgressBar } from "egret";
-import { Fab, Icon, Card, Grid, Divider, Button } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Breadcrumb, SimpleCard, EgretProgressBar } from 'egret'
+import { Fab, Icon, Card, Grid, Divider, Button } from '@material-ui/core'
 
 class UploadForm extends Component {
   state = {
-    dragClass: "",
+    dragClass: '',
     files: [],
     statusList: [],
-    queProgress: 0
-  };
+    queProgress: 0,
+  }
 
-  handleFileSelect = event => {
-    let files = event.target.files;
-    let list = [];
-
-    for (const iterator of files) {
-      list.push({
-        file: iterator,
-        uploading: false,
-        error: false,
-        progress: 0
-      });
-    }
-
-    this.setState({
-      files: [...list]
-    });
-  };
-
-  handleDragOver = event => {
-    event.preventDefault();
-    this.setState({ dragClass: "drag-shadow" });
-  };
-
-  handleDrop = event => {
-    event.preventDefault();
-    event.persist();
-
-    let files = event.dataTransfer.files;
-    let list = [];
+  handleFileSelect = (event) => {
+    let files = event.target.files
+    let list = []
 
     for (const iterator of files) {
       list.push({
         file: iterator,
         uploading: false,
         error: false,
-        progress: 0
-      });
+        progress: 0,
+      })
     }
 
     this.setState({
-      dragClass: "",
-      files: [...list]
-    });
+      files: [...list],
+    })
+  }
 
-    return false;
-  };
+  handleDragOver = (event) => {
+    event.preventDefault()
+    this.setState({ dragClass: 'drag-shadow' })
+  }
 
-  handleDragStart = event => {
-    this.setState({ dragClass: "drag-shadow" });
-  };
+  handleDrop = (event) => {
+    event.preventDefault()
+    event.persist()
 
-  handleSingleRemove = index => {
-    let files = [...this.state.files];
-    files.splice(index, 1);
+    let files = event.dataTransfer.files
+    let list = []
+
+    for (const iterator of files) {
+      list.push({
+        file: iterator,
+        uploading: false,
+        error: false,
+        progress: 0,
+      })
+    }
+
     this.setState({
-      files: [...files]
-    });
-  };
+      dragClass: '',
+      files: [...list],
+    })
+
+    return false
+  }
+
+  handleDragStart = (event) => {
+    this.setState({ dragClass: 'drag-shadow' })
+  }
+
+  handleSingleRemove = (index) => {
+    let files = [...this.state.files]
+    files.splice(index, 1)
+    this.setState({
+      files: [...files],
+    })
+  }
 
   handleAllRemove = () => {
-    this.setState({ files: [] });
-  };
+    this.setState({ files: [] })
+  }
 
-  uploadSingleFile = index => {
-    let allFiles = [...this.state.files];
-    let file = this.state.files[index];
+  uploadSingleFile = (index) => {
+    let allFiles = [...this.state.files]
+    let file = this.state.files[index]
 
-    allFiles[index] = { ...file, uploading: true, error: false };
+    allFiles[index] = { ...file, uploading: true, error: false }
 
     this.setState({
-      files: [...allFiles]
-    });
-  };
+      files: [...allFiles],
+    })
+  }
 
   uploadAllFile = () => {
-    let allFiles = [];
+    let allFiles = []
 
-    this.state.files.map(item => {
+    this.state.files.map((item) => {
       allFiles.push({
         ...item,
         uploading: true,
-        error: false
-      });
+        error: false,
+      })
 
-      return item;
-    });
+      return item
+    })
 
     this.setState({
       files: [...allFiles],
-      queProgress: 35
-    });
-  };
+      queProgress: 35,
+    })
+  }
 
-  handleSingleCancel = index => {
-    let allFiles = [...this.state.files];
-    let file = this.state.files[index];
+  handleSingleCancel = (index) => {
+    let allFiles = [...this.state.files]
+    let file = this.state.files[index]
 
-    allFiles[index] = { ...file, uploading: false, error: true };
+    allFiles[index] = { ...file, uploading: false, error: true }
 
     this.setState({
-      files: [...allFiles]
-    });
-  };
+      files: [...allFiles],
+    })
+  }
 
   handleCancelAll = () => {
-    let allFiles = [];
+    let allFiles = []
 
-    this.state.files.map(item => {
+    this.state.files.map((item) => {
       allFiles.push({
         ...item,
         uploading: false,
-        error: true
-      });
+        error: true,
+      })
 
-      return item;
-    });
+      return item
+    })
 
     this.setState({
       files: [...allFiles],
-      queProgress: 0
-    });
-  };
+      queProgress: 0,
+    })
+  }
 
   render() {
-    let { dragClass, files, queProgress } = this.state;
-    let isEmpty = files.length === 0;
+    let { dragClass, files, queProgress } = this.state
+    let isEmpty = files.length === 0
 
     return (
       <div className="upload-form m-sm-30">
         <div className="mb-sm-30">
           <Breadcrumb
-            routeSegments={[{ name: "Others", path: "/" }, { name: "Upload" }]}
+            routeSegments={[{ name: 'Others', path: '/' }, { name: 'Upload' }]}
           />
         </div>
         <SimpleCard title="File Upload">
@@ -198,7 +198,7 @@ class UploadForm extends Component {
               <span>Drop your files here</span>
             ) : (
               <h5 className="m-0">
-                {files.length} file{files.length > 1 ? "s" : ""} selected...
+                {files.length} file{files.length > 1 ? 's' : ''} selected...
               </h5>
             )}
           </div>
@@ -234,7 +234,7 @@ class UploadForm extends Component {
             {isEmpty && <p className="px-16">Que is empty</p>}
 
             {files.map((item, index) => {
-              let { file, uploading, error, progress } = item;
+              let { file, uploading, error, progress } = item
               return (
                 <div className="px-16 py-16" key={file.name}>
                   <Grid
@@ -287,7 +287,7 @@ class UploadForm extends Component {
                     </Grid>
                   </Grid>
                 </div>
-              );
+              )
             })}
           </Card>
 
@@ -327,8 +327,8 @@ class UploadForm extends Component {
           </div>
         </SimpleCard>
       </div>
-    );
+    )
   }
 }
 
-export default UploadForm;
+export default UploadForm

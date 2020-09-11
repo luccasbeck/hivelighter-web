@@ -1,14 +1,14 @@
-import React from "react";
-import ChatAvatar from "./ChatAvatar";
-import Scrollbar from "react-perfect-scrollbar";
-import { Divider } from "@material-ui/core";
-import { format } from "date-fns";
+import React from 'react'
+import ChatAvatar from './ChatAvatar'
+import Scrollbar from 'react-perfect-scrollbar'
+import { Divider } from '@material-ui/core'
+import { format } from 'date-fns'
 
 const ChatSidenav = ({
   currentUser,
   contactList = [],
   recentContactList = [],
-  handleContactClick
+  handleContactClick,
 }) => {
   return (
     <div className="chat-sidenav bg-default">
@@ -29,10 +29,7 @@ const ChatSidenav = ({
             <div className="pl-16">
               <p className="m-0">{contact.name}</p>
               <p className="m-0 text-muted">
-                {format(
-                  new Date(contact.lastChatTime).getTime(),
-                  "MMMM dd, yyyy"
-                )}
+                {format(new Date(contact.lastChatTime).getTime(), 'MMMM dd, yyyy')}
               </p>
             </div>
           </div>
@@ -52,7 +49,7 @@ const ChatSidenav = ({
         ))}
       </Scrollbar>
     </div>
-  );
-};
+  )
+}
 
-export default ChatSidenav;
+export default ChatSidenav

@@ -1,5 +1,5 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const getAllList = () => {
-  return axios.get("/api/list/all");
-};
+  return axios.get('/api/list/all')
+}

@@ -1,18 +1,18 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const InvoiceList = EgretLoadable({
-  loader: () => import("./InvoiceList")
-});
+  loader: () => import('./InvoiceList'),
+})
 
 const InvoiceDetails = EgretLoadable({
-  loader: () => import("./InvoiceDetails")
-});
+  loader: () => import('./InvoiceDetails'),
+})
 
 const invoiceRoutes = [
   {
-    path: "/invoice/list",
+    path: '/invoice/list',
     exact: true,
-    component: InvoiceList
+    component: InvoiceList,
   },
   // {
   //     path: "/invoice/add",
@@ -20,13 +20,13 @@ const invoiceRoutes = [
   //     component: InvoiceDetails
   // },
   {
-    path: "/invoice/:id",
-    component: InvoiceDetails
+    path: '/invoice/:id',
+    component: InvoiceDetails,
   },
   {
-    path: "/invoice/edit/:id",
-    component: InvoiceList
-  }
-];
+    path: '/invoice/edit/:id',
+    component: InvoiceList,
+  },
+]
 
-export default invoiceRoutes;
+export default invoiceRoutes

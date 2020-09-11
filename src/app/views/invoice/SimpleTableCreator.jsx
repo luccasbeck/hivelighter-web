@@ -1,11 +1,5 @@
-import React from "react";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody
-} from "@material-ui/core";
+import React from 'react'
+import { Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core'
 
 const SimpleTableGenerator = ({ column = [], dataField = [], data = [] }) => {
   return (
@@ -17,23 +11,23 @@ const SimpleTableGenerator = ({ column = [], dataField = [], data = [] }) => {
               <TableCell className="px-0">{col}</TableCell>
             ) : (
               <TableCell className="pl-sm-24">{col}</TableCell>
-            )
+            ),
           )}
         </TableRow>
       </TableHead>
       <TableBody>
         {data.map((item, index) => (
           <TableRow key={index}>
-            {dataField.map(field => (
+            {dataField.map((field) => (
               <TableCell className="pl-sm-24 capitalize" align="left">
-                {field === "auto" ? index + 1 : item[field]}
+                {field === 'auto' ? index + 1 : item[field]}
               </TableCell>
             ))}
           </TableRow>
         ))}
       </TableBody>
     </Table>
-  );
-};
+  )
+}
 
-export default SimpleTableGenerator;
+export default SimpleTableGenerator

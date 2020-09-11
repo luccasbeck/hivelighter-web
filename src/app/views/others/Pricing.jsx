@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, Grid, Button } from "@material-ui/core";
+import React from 'react'
+import { Card, Grid, Button } from '@material-ui/core'
 
 const Pricing = () => {
   return (
@@ -8,10 +8,10 @@ const Pricing = () => {
         <h5 className="m-0 mb-8 font-weight-500 text-error">
           You are using the free version of the Application
         </h5>
-        <p className="m-0 text-muted" style={{ maxWidth: "771px" }}>
-          With 10k searchable messages, 10 apps and integrations, 1-to-1 video
-          calls and two factor authentication. The free version gives your team
-          access to Application's basic features
+        <p className="m-0 text-muted" style={{ maxWidth: '771px' }}>
+          With 10k searchable messages, 10 apps and integrations, 1-to-1 video calls and
+          two factor authentication. The free version gives your team access to
+          Application's basic features
         </p>
       </Card>
 
@@ -19,9 +19,7 @@ const Pricing = () => {
         <h3 className="m-0 font-weight-500">
           Choose the plan that's right for your team
         </h3>
-        <p className="m-0 pt-16 text-muted">
-          Pay month or year and cancel at any time
-        </p>
+        <p className="m-0 pt-16 text-muted">Pay month or year and cancel at any time</p>
       </div>
 
       <div>
@@ -101,7 +99,7 @@ const Pricing = () => {
         </Grid>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Pricing;
+export default Pricing

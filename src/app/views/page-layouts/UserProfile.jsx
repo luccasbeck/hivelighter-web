@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 import {
   Card,
   Icon,
@@ -10,86 +10,82 @@ import {
   IconButton,
   Button,
   withStyles,
-  Hidden
-} from "@material-ui/core";
-import {
-  EgretSidenavContainer,
-  EgretSidenav,
-  EgretSidenavContent
-} from "egret";
-import DummyChart from "./DummyChart";
-import ProfileBarChart from "./ProfileBarChart";
+  Hidden,
+} from '@material-ui/core'
+import { EgretSidenavContainer, EgretSidenav, EgretSidenavContent } from 'egret'
+import DummyChart from './DummyChart'
+import ProfileBarChart from './ProfileBarChart'
 
 class UserProfile extends Component {
-  state = { open: true };
+  state = { open: true }
 
   paymentList = [
     {
-      img: "/assets/images/payment-methods/master-card.png",
-      type: "Master Card",
-      product: "Bundled product",
-      amount: 909
+      img: '/assets/images/payment-methods/master-card.png',
+      type: 'Master Card',
+      product: 'Bundled product',
+      amount: 909,
     },
     {
-      img: "/assets/images/payment-methods/paypal.png",
-      type: "Master Card",
-      product: "Bundled product",
-      amount: 303
+      img: '/assets/images/payment-methods/paypal.png',
+      type: 'Master Card',
+      product: 'Bundled product',
+      amount: 303,
     },
     {
-      img: "/assets/images/payment-methods/visa.png",
-      type: "Paypal",
-      product: "Bundled product",
-      amount: 330
+      img: '/assets/images/payment-methods/visa.png',
+      type: 'Paypal',
+      product: 'Bundled product',
+      amount: 330,
     },
     {
-      img: "/assets/images/payment-methods/maestro.png",
-      type: "Paypal",
-      product: "Bundled product",
-      amount: 909
+      img: '/assets/images/payment-methods/maestro.png',
+      type: 'Paypal',
+      product: 'Bundled product',
+      amount: 909,
     },
     {
-      img: "/assets/images/payment-methods/maestro.png",
-      type: "Master Card",
-      product: "Bundled product",
-      amount: 909
-    }
-  ];
+      img: '/assets/images/payment-methods/maestro.png',
+      type: 'Master Card',
+      product: 'Bundled product',
+      amount: 909,
+    },
+  ]
 
-  windowResizeListener;
+  windowResizeListener
 
   toggleSidenav = () => {
     this.setState({
-      open: !this.state.open
-    });
-  };
+      open: !this.state.open,
+    })
+  }
 
   handleWindowResize = () => {
-    return event => {
+    return (event) => {
       if (event.target.innerWidth < 768) {
-        this.setState({ mobile: true });
-      } else this.setState({ mobile: false });
-    };
-  };
+        this.setState({ mobile: true })
+      } else this.setState({ mobile: false })
+    }
+  }
 
   componentDidMount() {
     if (window.innerWidth < 768) {
-      this.setState({ open: false });
+      this.setState({ open: false })
     }
     if (window)
-      this.windowResizeListener = window.addEventListener("resize", event => {
+      this.windowResizeListener = window.addEventListener('resize', (event) => {
         if (event.target.innerWidth < 768) {
-          this.setState({ open: false });
-        } else this.setState({ open: true });
-      });
+          this.setState({ open: false })
+        } else this.setState({ open: true })
+      })
   }
 
   componentWillUnmount() {
-    if (window) window.removeEventListener("resize", this.windowResizeListener);
+    if (window) window.removeEventListener('resize', this.windowResizeListener)
   }
 
   render() {
-    let { theme } = this.props;
+    let { theme } = this.props
 
     return (
       <div className="user-profile">
@@ -107,10 +103,7 @@ class UserProfile extends Component {
               </Hidden>
             </div>
             <div className="user-profile__sidenav flex-column flex-middle">
-              <Avatar
-                className="avatar mb-20"
-                src="/assets/images/face-7.jpg"
-              />
+              <Avatar className="avatar mb-20" src="/assets/images/face-7.jpg" />
               <p className="capitalize text-white">watson joyce</p>
               <div className="py-12" />
               <div className="flex flex-wrap w-100 px-48 mb-44">
@@ -192,9 +185,7 @@ class UserProfile extends Component {
                         <span className="text-light-white uppercase">
                           project created
                         </span>
-                        <h4 className="font-weight-normal text-white m-0 pt-8">
-                          15
-                        </h4>
+                        <h4 className="font-weight-normal text-white m-0 pt-8">15</h4>
                       </div>
                       <div className="content__chart">
                         <DummyChart height="40px" />
@@ -204,12 +195,8 @@ class UserProfile extends Component {
                   <Grid item lg={4} md={4} sm={12} xs={12}>
                     <Card className="content__top-card flex flex-middle flex-space-between p-16">
                       <div>
-                        <span className="text-light-white uppercase">
-                          completed
-                        </span>
-                        <h4 className="font-weight-normal text-white m-0 pt-8">
-                          11
-                        </h4>
+                        <span className="text-light-white uppercase">completed</span>
+                        <h4 className="font-weight-normal text-white m-0 pt-8">11</h4>
                       </div>
                       <div className="content__chart">
                         <DummyChart height="40px" />
@@ -219,12 +206,8 @@ class UserProfile extends Component {
                   <Grid item lg={4} md={4} sm={12} xs={12}>
                     <Card className="content__top-card flex flex-middle flex-space-between p-16">
                       <div>
-                        <span className="text-light-white uppercase">
-                          published
-                        </span>
-                        <h4 className="font-weight-normal text-white m-0 pt-8">
-                          15
-                        </h4>
+                        <span className="text-light-white uppercase">published</span>
+                        <h4 className="font-weight-normal text-white m-0 pt-8">15</h4>
                       </div>
                       <div className="content__chart">
                         <DummyChart height="40px" />
@@ -240,10 +223,7 @@ class UserProfile extends Component {
                     <h4 className="font-weight-500 text-muted p-24 pb-0 mb-0">
                       Data Use
                     </h4>
-                    <ProfileBarChart
-                      height="220px"
-                      color={[theme.palette.warn]}
-                    />
+                    <ProfileBarChart height="220px" color={[theme.palette.warn]} />
                     <div className="pt-16 flex flex-middle flex-space-around">
                       <div>
                         <h1 className="font-weight-normal m-0 mb-4">140</h1>
@@ -275,58 +255,42 @@ class UserProfile extends Component {
                     <div className="flex flex-middle mb-16">
                       <Badge badgeContent="New" color="primary">
                         <Fab className="bg-light-primary box-shadow-none overflow-hidden">
-                          <h4 className="text-primary m-0 font-weight-normal">
-                            MR
-                          </h4>
+                          <h4 className="text-primary m-0 font-weight-normal">MR</h4>
                         </Fab>
                       </Badge>
                       <div className="ml-16">
-                        <h5 className="m-0 mb-4 font-weight-500">
-                          Watson Joyce
-                        </h5>
+                        <h5 className="m-0 mb-4 font-weight-500">Watson Joyce</h5>
                         <p className="m-0 text-muted">London</p>
                       </div>
                     </div>
                     <div className="flex flex-middle mb-16">
                       <Fab className="bg-light-green box-shadow-none overflow-hidden">
-                        <h4 className="text-green m-0 font-weight-normal">
-                          WT
-                        </h4>
+                        <h4 className="text-green m-0 font-weight-normal">WT</h4>
                       </Fab>
                       <div className="ml-16">
-                        <h5 className="m-0 mb-4 font-weight-500">
-                          Watson Joyce
-                        </h5>
+                        <h5 className="m-0 mb-4 font-weight-500">Watson Joyce</h5>
                         <p className="m-0 text-muted">London</p>
                       </div>
                     </div>
                     <div className="flex flex-middle mb-16">
                       <Badge badgeContent="New" color="error">
                         <Fab className="bg-light-error box-shadow-none overflow-hidden">
-                          <h4 className="text-error m-0 font-weight-normal">
-                            RY
-                          </h4>
+                          <h4 className="text-error m-0 font-weight-normal">RY</h4>
                         </Fab>
                       </Badge>
                       <div className="ml-16">
-                        <h5 className="m-0 mb-4 font-weight-500">
-                          Watson Joyce
-                        </h5>
+                        <h5 className="m-0 mb-4 font-weight-500">Watson Joyce</h5>
                         <p className="m-0 text-muted">London</p>
                       </div>
                     </div>
                     <div className="flex flex-middle mb-16">
                       <Badge badgeContent="New" color="primary">
                         <Fab className="bg-light-primary box-shadow-none overflow-hidden">
-                          <h4 className="text-error m-0 font-weight-normal">
-                            MR
-                          </h4>
+                          <h4 className="text-error m-0 font-weight-normal">MR</h4>
                         </Fab>
                       </Badge>
                       <div className="ml-16">
-                        <h5 className="m-0 mb-4 font-weight-500">
-                          Watson Joyce
-                        </h5>
+                        <h5 className="m-0 mb-4 font-weight-500">Watson Joyce</h5>
                         <p className="m-0 text-muted">London</p>
                       </div>
                     </div>
@@ -337,11 +301,7 @@ class UserProfile extends Component {
                   <div className="py-12"></div>
                   <Card className="user-profile__card flex py-16">
                     <div className="card__button-holder text-center">
-                      <Fab
-                        className="card__edge-button"
-                        size="medium"
-                        color="primary"
-                      >
+                      <Fab className="card__edge-button" size="medium" color="primary">
                         <Icon>trending_up</Icon>
                       </Fab>
                       <div className="py-16"></div>
@@ -386,9 +346,9 @@ class UserProfile extends Component {
                       </div>
                       <Divider></Divider>
                       <p className="m-0 pt-12">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text
+                        ever since the 1500s
                       </p>
                     </div>
                   </Card>
@@ -412,9 +372,9 @@ class UserProfile extends Component {
                       </div>
                       <Divider></Divider>
                       <p className="m-0 pt-12">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text
+                        ever since the 1500s
                       </p>
                     </div>
                   </Card>
@@ -430,12 +390,8 @@ class UserProfile extends Component {
                               <img src={method.img} alt="master card" />
                             </div>
                             <div className="ml-16">
-                              <h5 className="mb-4 font-weight-500">
-                                {method.type}
-                              </h5>
-                              <span className="text-muted">
-                                {method.product}
-                              </span>
+                              <h5 className="mb-4 font-weight-500">{method.type}</h5>
+                              <span className="text-muted">{method.product}</span>
                             </div>
                           </div>
                         </div>
@@ -450,8 +406,8 @@ class UserProfile extends Component {
           </EgretSidenavContent>
         </EgretSidenavContainer>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles({}, { withTheme: true })(UserProfile);
+export default withStyles({}, { withTheme: true })(UserProfile)

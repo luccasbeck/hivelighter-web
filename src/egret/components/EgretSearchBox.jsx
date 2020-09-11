@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Icon, IconButton, withStyles } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Icon, IconButton, withStyles } from '@material-ui/core'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText
-  }
-});
+    color: theme.palette.primary.contrastText,
+  },
+})
 
 class EgretSearchBox extends Component {
   state = {
-    open: false
-  };
+    open: false,
+  }
 
   toggle = () => {
-    this.setState({ open: !this.state.open });
-  };
+    this.setState({ open: !this.state.open })
+  }
 
   render() {
-    let { classes } = this.props;
+    let { classes } = this.props
     return (
       <React.Fragment>
         {!this.state.open && (
@@ -28,9 +28,7 @@ class EgretSearchBox extends Component {
         )}
 
         {this.state.open && (
-          <div
-            className={`flex flex-middle h-100 egret-search-box ${classes.root}`}
-          >
+          <div className={`flex flex-middle h-100 egret-search-box ${classes.root}`}>
             <input
               className={`px-16 search-box w-100 ${classes.root}`}
               type="text"
@@ -43,8 +41,8 @@ class EgretSearchBox extends Component {
           </div>
         )}
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default withStyles(styles, { withTheme: true })(EgretSearchBox);
+export default withStyles(styles, { withTheme: true })(EgretSearchBox)

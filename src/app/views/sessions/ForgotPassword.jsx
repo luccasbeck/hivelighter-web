@@ -1,33 +1,28 @@
-import React, { Component } from "react";
-import {
-  Card,
-  Grid,
-  Button,
-  withStyles,
-  CircularProgress
-} from "@material-ui/core";
-import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react'
+// eslint-disable-next-line no-unused-vars
+import { Card, Grid, Button, withStyles, CircularProgress } from '@material-ui/core'
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
-import { resetPassword } from "../../redux/actions/LoginActions";
+import { resetPassword } from '../../redux/actions/LoginActions'
 
 class ForgotPassword extends Component {
   state = {
-    email: "watson@example.com"
-  };
-  handleChange = event => {
-    event.persist();
+    email: 'watson@example.com',
+  }
+  handleChange = (event) => {
+    event.persist()
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
   handleFormSubmit = () => {
-    this.props.resetPassword({ ...this.state });
-  };
+    this.props.resetPassword({ ...this.state })
+  }
   render() {
-    let { email } = this.state;
+    let { email } = this.state
 
     return (
       <div className="signup flex flex-center w-100 h-100vh">
@@ -50,11 +45,8 @@ class ForgotPassword extends Component {
                       type="email"
                       name="email"
                       value={email}
-                      validators={["required", "isEmail"]}
-                      errorMessages={[
-                        "this field is required",
-                        "email is not valid"
-                      ]}
+                      validators={['required', 'isEmail']}
+                      errorMessages={['this field is required', 'email is not valid']}
                     />
                     <div className="flex flex-middle">
                       <Button variant="contained" color="primary" type="submit">
@@ -63,9 +55,7 @@ class ForgotPassword extends Component {
                       <span className="ml-16 mr-8">or</span>
                       <Button
                         className="capitalize"
-                        onClick={() =>
-                          this.props.history.push("/session/signin")
-                        }
+                        onClick={() => this.props.history.push('/session/signin')}
                       >
                         Sign in
                       </Button>
@@ -77,17 +67,12 @@ class ForgotPassword extends Component {
           </Card>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   resetPassword: PropTypes.func.isRequired,
-  login: state.login
-});
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { resetPassword }
-  )(ForgotPassword)
-);
+  login: state.login,
+})
+export default withRouter(connect(mapStateToProps, { resetPassword })(ForgotPassword))

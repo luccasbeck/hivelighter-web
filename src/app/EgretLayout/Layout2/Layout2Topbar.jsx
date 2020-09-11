@@ -1,29 +1,30 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Icon,
   IconButton,
+  // eslint-disable-next-line no-unused-vars
   Badge,
   Hidden,
   withStyles,
   MuiThemeProvider,
-  MenuItem
-} from "@material-ui/core";
-import { EgretMenu, EgretToolbarMenu, EgretSearchBox } from "egret";
-import { setLayoutSettings } from "app/redux/actions/LayoutActions";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
+  MenuItem,
+} from '@material-ui/core'
+import { EgretMenu, EgretToolbarMenu, EgretSearchBox } from 'egret'
+import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import NotificationBar from "../SharedCompoents/NotificationBar";
-import ShoppingCart from "../SharedCompoents/ShoppingCart";
+import NotificationBar from '../SharedCompoents/NotificationBar'
+import ShoppingCart from '../SharedCompoents/ShoppingCart'
 
 class Layout2Topbar extends Component {
-  state = {};
+  state = {}
 
-  handleSignOut = () => {};
+  handleSignOut = () => {}
 
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
+  updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = this.props
 
     setLayoutSettings({
       ...settings,
@@ -31,26 +32,24 @@ class Layout2Topbar extends Component {
         ...settings.layout2Settings,
         leftSidebar: {
           ...settings.layout2Settings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
-  };
+          ...sidebarSettings,
+        },
+      },
+    })
+  }
 
   handleSidebarToggle = () => {
-    let { settings } = this.props;
-    let { layout2Settings } = settings;
+    let { settings } = this.props
+    let { layout2Settings } = settings
 
-    let mode =
-      layout2Settings.leftSidebar.mode === "close" ? "mobile" : "close";
+    let mode = layout2Settings.leftSidebar.mode === 'close' ? 'mobile' : 'close'
 
-    this.updateSidebarMode({ mode });
-  };
+    this.updateSidebarMode({ mode })
+  }
 
   render() {
-    let { theme, settings } = this.props;
-    const topbarTheme =
-      settings.themes[settings.layout2Settings.topbar.theme] || theme;
+    let { theme, settings } = this.props
+    const topbarTheme = settings.themes[settings.layout2Settings.topbar.theme] || theme
     return (
       <MuiThemeProvider theme={topbarTheme}>
         <Helmet>
@@ -79,7 +78,7 @@ class Layout2Topbar extends Component {
 
                 <NotificationBar />
 
-                <ShoppingCart/>
+                <ShoppingCart />
 
                 <EgretMenu
                   menuButton={
@@ -90,24 +89,15 @@ class Layout2Topbar extends Component {
                     />
                   }
                 >
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
+                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
                     <Icon> home </Icon>
                     <span className="pl-16"> Home </span>
                   </MenuItem>
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
+                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
                     <Icon> person </Icon>
                     <span className="pl-16"> Person </span>
                   </MenuItem>
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
+                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
                     <Icon> settings </Icon>
                     <span className="pl-16"> Settings </span>
                   </MenuItem>
@@ -131,23 +121,21 @@ class Layout2Topbar extends Component {
           </div>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
 Layout2Topbar.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: state.layout.settings
-});
+  settings: state.layout.settings,
+})
 
-export default withStyles({}, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings }
-  )(Layout2Topbar)
-);
+export default withStyles(
+  {},
+  { withTheme: true },
+)(connect(mapStateToProps, { setLayoutSettings })(Layout2Topbar))

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import CardEditorDialog from "./CardEditorDialog";
-import Scrollbar from "react-perfect-scrollbar";
-import BoardList from "./BoardList";
+import React, { Component } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import CardEditorDialog from './CardEditorDialog'
+import Scrollbar from 'react-perfect-scrollbar'
+import BoardList from './BoardList'
 import {
   Avatar,
   Card,
@@ -11,16 +11,17 @@ import {
   InputAdornment,
   IconButton,
   Icon,
-  Button
-} from "@material-ui/core";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addNewColumnInBoard } from "./ScrumBoardService";
+  Button,
+} from '@material-ui/core'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+// eslint-disable-next-line no-unused-vars
+import { addNewColumnInBoard } from './ScrumBoardService'
 import {
   reorderCardInList,
   reorderList,
-  moveCardInList
-} from "../../redux/actions/ScrumBoardActions";
+  moveCardInList,
+} from '../../redux/actions/ScrumBoardActions'
 
 class ScrumBoardContainer extends Component {
   state = {
@@ -28,78 +29,69 @@ class ScrumBoardContainer extends Component {
     list: [],
     shouldOpenDialog: false,
     shouldOpenAddList: false,
-    columnTitle: ""
-  };
+    columnTitle: '',
+  }
 
   // convert this into a list instead of hard coded state object
   componentDidMount() {}
 
-  handleCardClick = card => {
-    this.setState({ shouldOpenDialog: true, card: card });
-  };
+  handleCardClick = (card) => {
+    this.setState({ shouldOpenDialog: true, card: card })
+  }
 
   handleDialogClose = () => {
-    this.setState({ shouldOpenDialog: false });
-  };
+    this.setState({ shouldOpenDialog: false })
+  }
 
-  handleAddListToggle = value => {
-    this.setState({ shouldOpenAddList: value });
-  };
+  handleAddListToggle = (value) => {
+    this.setState({ shouldOpenAddList: value })
+  }
 
-  handleChange = event => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      this.props.handleAddList(this.state.columnTitle);
-      this.setState({ columnTitle: "" });
-    } else this.setState({ columnTitle: event.target.value });
-  };
+  handleChange = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      this.props.handleAddList(this.state.columnTitle)
+      this.setState({ columnTitle: '' })
+    } else this.setState({ columnTitle: event.target.value })
+  }
 
-  onDragEnd = result => {
-    const { source, destination } = result;
-    let { board, reorderCardInList, moveCardInList, reorderList } = this.props;
+  onDragEnd = (result) => {
+    const { source, destination } = result
+    let { board, reorderCardInList, moveCardInList, reorderList } = this.props
 
     // if dropped outside of list
     if (!destination) {
-      return;
+      return
     }
 
-    if (source.droppableId === "horizontal-droppable") {
-      reorderList(board.id, source.index, destination.index);
+    if (source.droppableId === 'horizontal-droppable') {
+      reorderList(board.id, source.index, destination.index)
     } else {
       if (source.droppableId === destination.droppableId) {
-        reorderCardInList(
-          board.id,
-          source.droppableId,
-          source.index,
-          destination.index
-        );
+        reorderCardInList(board.id, source.droppableId, source.index, destination.index)
       } else {
         moveCardInList(
           board.id,
           source.droppableId,
           destination.droppableId,
           source,
-          destination
-        );
+          destination,
+        )
       }
     }
-  };
+  }
 
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
-    let { shouldOpenDialog, shouldOpenAddList, columnTitle, card } = this.state;
-    let { list, handleAddList, handleAddNewCard } = this.props;
+    let { shouldOpenDialog, shouldOpenAddList, columnTitle, card } = this.state
+    let { list, handleAddList, handleAddNewCard } = this.props
 
     return (
       <Scrollbar className="position-relative flex pb-16 w-100">
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="horizontal-droppable" direction="horizontal">
-            {provided => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className="flex"
-              >
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps} className="flex">
                 {list.map((column, index) => (
                   <Draggable
                     key={column.id}
@@ -125,11 +117,9 @@ class ScrumBoardContainer extends Component {
 
         <div>
           {shouldOpenAddList ? (
-            <ClickAwayListener
-              onClickAway={() => this.handleAddListToggle(false)}
-            >
+            <ClickAwayListener onClickAway={() => this.handleAddListToggle(false)}>
               <Card
-                style={{ minWidth: "290px" }}
+                style={{ minWidth: '290px' }}
                 className="list-column border-radius-0 cursor-pointer p-16"
                 elevation={3}
               >
@@ -151,19 +141,19 @@ class ScrumBoardContainer extends Component {
                           <Icon fontSize="small">clear</Icon>
                         </IconButton>
                       </InputAdornment>
-                    )
+                    ),
                   }}
                   inputProps={{
                     style: {
-                      padding: "10px"
-                    }
+                      padding: '10px',
+                    },
                   }}
                 />
                 <div className="flex flex-end">
                   <Button
                     onClick={() => {
-                      handleAddList(columnTitle);
-                      this.setState({ columnTitle: "" });
+                      handleAddList(columnTitle)
+                      this.setState({ columnTitle: '' })
                     }}
                     variant="contained"
                     color="primary"
@@ -177,7 +167,7 @@ class ScrumBoardContainer extends Component {
             <Card
               className="list-column cursor-pointer flex flex-middle py-16 px-16 bg-light-gray"
               elevation={3}
-              style={{ minWidth: "290px" }}
+              style={{ minWidth: '290px' }}
               onClick={() => this.handleAddListToggle(true)}
             >
               <Avatar className="size-24 bg-error">+</Avatar>
@@ -194,24 +184,21 @@ class ScrumBoardContainer extends Component {
           ></CardEditorDialog>
         )}
       </Scrollbar>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   reorderCardInList: PropTypes.func.isRequired,
   reorderList: PropTypes.func.isRequired,
   moveCardInList: PropTypes.func.isRequired,
   board: state.scrumboard.board,
   memberList: state.scrumboard.memberList,
-  labelList: state.scrumboard.labelList
-});
+  labelList: state.scrumboard.labelList,
+})
 
-export default connect(
-  mapStateToProps,
-  {
-    reorderCardInList,
-    reorderList,
-    moveCardInList
-  }
-)(ScrumBoardContainer);
+export default connect(mapStateToProps, {
+  reorderCardInList,
+  reorderList,
+  moveCardInList,
+})(ScrumBoardContainer)

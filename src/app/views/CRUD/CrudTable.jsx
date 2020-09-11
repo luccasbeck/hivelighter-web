@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   IconButton,
   Table,
@@ -9,12 +9,12 @@ import {
   Icon,
   TablePagination,
   Button,
-  Card
-} from "@material-ui/core";
-import { getAllUser, deleteUser } from "./TableService";
-import MemberEditorDialog from "./MemberEditorDialog";
-import { Breadcrumb, ConfirmationDialog } from "egret";
-import shortid from "shortid";
+  Card,
+} from '@material-ui/core'
+import { getAllUser, deleteUser } from './TableService'
+import MemberEditorDialog from './MemberEditorDialog'
+import { Breadcrumb, ConfirmationDialog } from 'egret'
+import shortid from 'shortid'
 
 class CrudTable extends Component {
   state = {
@@ -22,49 +22,49 @@ class CrudTable extends Component {
     page: 0,
     userList: [],
     shouldOpenEditorDialog: false,
-    shouldOpenConfirmationDialog: false
-  };
+    shouldOpenConfirmationDialog: false,
+  }
 
-  setPage = page => {
-    this.setState({ page });
-  };
+  setPage = (page) => {
+    this.setState({ page })
+  }
 
-  setRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
+  setRowsPerPage = (event) => {
+    this.setState({ rowsPerPage: event.target.value })
+  }
 
   handleChangePage = (event, newPage) => {
-    this.setPage(newPage);
-  };
+    this.setPage(newPage)
+  }
 
   handleDialogClose = () => {
     this.setState({
       shouldOpenEditorDialog: false,
-      shouldOpenConfirmationDialog: false
-    });
-    this.updatePageData();
-  };
+      shouldOpenConfirmationDialog: false,
+    })
+    this.updatePageData()
+  }
 
-  handleDeleteUser = user => {
+  handleDeleteUser = (user) => {
     this.setState({
       user,
-      shouldOpenConfirmationDialog: true
-    });
-  };
+      shouldOpenConfirmationDialog: true,
+    })
+  }
 
   handleConfirmationResponse = () => {
     deleteUser(this.state.user).then(() => {
-      this.handleDialogClose();
-    });
-  };
+      this.handleDialogClose()
+    })
+  }
 
   componentDidMount() {
-    this.updatePageData();
+    this.updatePageData()
   }
 
   updatePageData = () => {
-    getAllUser().then(({ data }) => this.setState({ userList: [...data] }));
-  };
+    getAllUser().then(({ data }) => this.setState({ userList: [...data] }))
+  }
 
   render() {
     let {
@@ -72,12 +72,12 @@ class CrudTable extends Component {
       page,
       userList,
       shouldOpenConfirmationDialog,
-      shouldOpenEditorDialog
-    } = this.state;
+      shouldOpenEditorDialog,
+    } = this.state
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
-          <Breadcrumb routeSegments={[{ name: "CRUD Table" }]} />
+        <div className="mb-sm-30">
+          <Breadcrumb routeSegments={[{ name: 'CRUD Table' }]} />
         </div>
 
         <Button
@@ -89,7 +89,7 @@ class CrudTable extends Component {
           Add New Member
         </Button>
         <Card className="w-100 overflow-auto" elevation={6}>
-          <Table className="crud-table" style={{ whiteSpace: "pre", minWidth: "750px" }}>
+          <Table className="crud-table" style={{ whiteSpace: 'pre', minWidth: '750px' }}>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -131,7 +131,7 @@ class CrudTable extends Component {
                         onClick={() =>
                           this.setState({
                             uid: user.id,
-                            shouldOpenEditorDialog: true
+                            shouldOpenEditorDialog: true,
                           })
                         }
                       >
@@ -154,10 +154,10 @@ class CrudTable extends Component {
             rowsPerPage={rowsPerPage}
             page={page}
             backIconButtonProps={{
-              "aria-label": "Previous Page"
+              'aria-label': 'Previous Page',
             }}
             nextIconButtonProps={{
-              "aria-label": "Next Page"
+              'aria-label': 'Next Page',
             }}
             onChangePage={this.handleChangePage}
             onChangeRowsPerPage={this.setRowsPerPage}
@@ -180,8 +180,8 @@ class CrudTable extends Component {
           )}
         </Card>
       </div>
-    );
+    )
   }
 }
 
-export default CrudTable;
+export default CrudTable

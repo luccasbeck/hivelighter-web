@@ -1,29 +1,29 @@
-import React from "react";
-import * as _ from "lodash";
+import React from 'react'
+import * as _ from 'lodash'
 import {
   VictoryChart,
   VictoryTheme,
   VictoryStack,
   VictoryArea,
-  VictoryContainer
-} from "victory";
+  VictoryContainer,
+} from 'victory'
 
-import { withStyles } from "@material-ui/styles";
+import { withStyles } from '@material-ui/styles'
 
 class VictoryAreaAnimation extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { data: this.getData() };
+    super(props)
+    this.state = { data: this.getData() }
   }
 
   componentDidMount() {
     this.setStateInterval = window.setInterval(() => {
-      this.setState({ data: this.getData() });
-    }, 4000);
+      this.setState({ data: this.getData() })
+    }, 4000)
   }
 
   componentWillUnmount() {
-    if (this.setStateInterval) clearInterval(this.setStateInterval);
+    if (this.setStateInterval) clearInterval(this.setStateInterval)
   }
 
   getData() {
@@ -33,13 +33,13 @@ class VictoryAreaAnimation extends React.Component {
         { x: 2, y: _.random(1, 10) },
         { x: 3, y: _.random(2, 10) },
         { x: 4, y: _.random(2, 10) },
-        { x: 5, y: _.random(2, 15) }
-      ];
-    });
+        { x: 5, y: _.random(2, 15) },
+      ]
+    })
   }
 
   render() {
-    let { theme } = this.props;
+    let { theme } = this.props
 
     return (
       <div className="h-320">
@@ -49,20 +49,18 @@ class VictoryAreaAnimation extends React.Component {
           theme={VictoryTheme.material}
           animate={{ duration: 1000 }}
           style={{
-            label: { fontSize: 45, fill: theme.palette.text.secondary }
+            label: { fontSize: 45, fill: theme.palette.text.secondary },
           }}
         >
-          <VictoryStack colorScale={"blue"}>
+          <VictoryStack colorScale={'blue'}>
             {this.state.data.map((data, i) => {
-              return (
-                <VictoryArea key={i} data={data} interpolation={"basis"} />
-              );
+              return <VictoryArea key={i} data={data} interpolation={'basis'} />
             })}
           </VictoryStack>
         </VictoryChart>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles({}, { withTheme: true })(VictoryAreaAnimation);
+export default withStyles({}, { withTheme: true })(VictoryAreaAnimation)

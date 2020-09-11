@@ -1,25 +1,25 @@
-import React from "react";
-import { IconButton, Icon, Snackbar } from "@material-ui/core";
+import React from 'react'
+import { IconButton, Icon, Snackbar } from '@material-ui/core'
 
 const EgretSnackbar = ({
   open,
   message,
   duration = 6000,
-  horizontal = "center",
-  vertical = "bottom",
-  handleClose
+  horizontal = 'center',
+  vertical = 'bottom',
+  handleClose,
 }) => {
   return (
     <Snackbar
       anchorOrigin={{
         vertical: { vertical },
-        horizontal: { horizontal }
+        horizontal: { horizontal },
       }}
       open={open}
       autoHideDuration={duration}
       onClose={handleClose}
       ContentProps={{
-        "aria-describedby": "message-id"
+        'aria-describedby': 'message-id',
       }}
       message={<span id="message-id">{message}</span>}
       action={[
@@ -31,10 +31,10 @@ const EgretSnackbar = ({
           onClick={handleClose}
         >
           <Icon>close</Icon>
-        </IconButton>
+        </IconButton>,
       ]}
     />
-  );
-};
+  )
+}
 
-export default EgretSnackbar;
+export default EgretSnackbar

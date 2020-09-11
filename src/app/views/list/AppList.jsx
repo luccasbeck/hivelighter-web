@@ -1,60 +1,59 @@
-import React, { Component } from "react";
-import { isMobile } from "utils";
-import ListTopbar from "./ListTopbar";
-import { getAllList } from "./ListService";
-import ListView from "./ListView";
-import GridView from "./GridView";
-import { Hidden } from "@material-ui/core";
+import React, { Component } from 'react'
+// eslint-disable-next-line no-unused-vars
+import { isMobile } from 'utils'
+import ListTopbar from './ListTopbar'
+import { getAllList } from './ListService'
+import ListView from './ListView'
+import GridView from './GridView'
+import { Hidden } from '@material-ui/core'
 
 class AppList extends Component {
-  originalList = [];
+  originalList = []
   state = {
-    textfieldValue: "",
+    textfieldValue: '',
     sliderValue: 30,
     list: [],
-    viewMode: "grid" // list, grid
-  };
+    viewMode: 'grid', // list, grid
+  }
 
-  handleInputChange = event => {
-    event.persist();
+  handleInputChange = (event) => {
+    event.persist()
     this.setState(
       {
-        textfieldValue: event.target.value
+        textfieldValue: event.target.value,
       },
       () =>
         this.setState({
-          list: this.originalList.filter(item =>
-            item.projectName
-              .toLowerCase()
-              .match(event.target.value.toLowerCase())
-          )
-        })
-    );
-  };
+          list: this.originalList.filter((item) =>
+            item.projectName.toLowerCase().match(event.target.value.toLowerCase()),
+          ),
+        }),
+    )
+  }
 
   handleSldierChange = (event, value) => {
     this.setState({
-      sliderValue: value
-    });
-  };
+      sliderValue: value,
+    })
+  }
 
-  handleViewChange = view => {
+  handleViewChange = (view) => {
     this.setState({
-      viewMode: view
-    });
-  };
+      viewMode: view,
+    })
+  }
 
   componentDidMount() {
-    getAllList().then(response => {
-      this.originalList = [...response.data];
+    getAllList().then((response) => {
+      this.originalList = [...response.data]
       this.setState({
-        list: [...response.data]
-      });
-    });
+        list: [...response.data],
+      })
+    })
   }
 
   render() {
-    let { list, textfieldValue, sliderValue, viewMode } = this.state;
+    let { list, textfieldValue, sliderValue, viewMode } = this.state
     return (
       <div className="list m-sm-30">
         <div className="mb-16">
@@ -68,7 +67,7 @@ class AppList extends Component {
           ></ListTopbar>
         </div>
         <Hidden xsDown>
-          {viewMode === "list" ? (
+          {viewMode === 'list' ? (
             <ListView list={list}></ListView>
           ) : (
             <GridView list={list} sliderValue={sliderValue}></GridView>
@@ -79,8 +78,8 @@ class AppList extends Component {
           <GridView list={list} sliderValue={sliderValue}></GridView>
         </Hidden>
       </div>
-    );
+    )
   }
 }
 
-export default AppList;
+export default AppList

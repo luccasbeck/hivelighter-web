@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import { EgretHorizontalNav } from "egret";
-import { navigations } from "../../navigations";
-import { withStyles, MuiThemeProvider } from "@material-ui/core";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
+import React, { Component } from 'react'
+import { EgretHorizontalNav } from 'egret'
+import { navigations } from '../../navigations'
+import { withStyles, MuiThemeProvider } from '@material-ui/core'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 class Layout2Navbar extends Component {
-  state = {};
+  state = {}
   render() {
-    let { theme, settings } = this.props;
-    const navbarTheme =
-      settings.themes[settings.layout2Settings.navbar.theme] || theme;
+    let { theme, settings } = this.props
+    const navbarTheme = settings.themes[settings.layout2Settings.navbar.theme] || theme
     return (
       <MuiThemeProvider theme={navbarTheme}>
         <Helmet>
@@ -37,21 +36,19 @@ class Layout2Navbar extends Component {
           </div>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
 Layout2Navbar.propTypes = {
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
-  settings: state.layout.settings
-});
+const mapStateToProps = (state) => ({
+  settings: state.layout.settings,
+})
 
-export default withStyles({}, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    {}
-  )(Layout2Navbar)
-);
+export default withStyles(
+  {},
+  { withTheme: true },
+)(connect(mapStateToProps, {})(Layout2Navbar))

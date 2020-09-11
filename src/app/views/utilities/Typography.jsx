@@ -1,15 +1,15 @@
-import React from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import Highlight from "react-highlight";
+import React from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import Highlight from 'react-highlight'
 
 const Typography = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
-            { name: "Utilities", path: "/utilities" },
-            { name: "Typography" }
+            { name: 'Utilities', path: '/utilities' },
+            { name: 'Typography' },
           ]}
         />
       </div>
@@ -55,7 +55,7 @@ const Typography = () => {
         </div>
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default Typography;
+export default Typography

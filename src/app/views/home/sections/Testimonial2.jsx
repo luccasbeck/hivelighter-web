@@ -1,48 +1,48 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import { Card, CardContent, Grid, Button } from "@material-ui/core";
+import { Card, CardContent, Grid, Button } from '@material-ui/core'
 
 class Testimonial2 extends Component {
-  state = {};
+  state = {}
 
   testimonialList = [
     {
-      companyLogoUrl: "./assets/images/mock-logo-1.png",
+      companyLogoUrl: './assets/images/mock-logo-1.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-1.jpg",
-        name: "John Doe",
-        designation: "Product Manager"
-      }
+        imageUrl: './assets/images/face-1.jpg',
+        name: 'John Doe',
+        designation: 'Product Manager',
+      },
     },
     {
-      companyLogoUrl: "./assets/images/mock-logo-2.png",
+      companyLogoUrl: './assets/images/mock-logo-2.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-2.jpg",
-        name: "Adam Smith",
-        designation: "CEO"
-      }
+        imageUrl: './assets/images/face-2.jpg',
+        name: 'Adam Smith',
+        designation: 'CEO',
+      },
     },
     {
-      companyLogoUrl: "./assets/images/mock-logo-3.png",
+      companyLogoUrl: './assets/images/mock-logo-3.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-3.jpg",
-        name: "John White",
-        designation: "Software Engineer"
-      }
-    }
-  ];
+        imageUrl: './assets/images/face-3.jpg',
+        name: 'John White',
+        designation: 'Software Engineer',
+      },
+    },
+  ]
 
   render() {
     return (
@@ -51,8 +51,8 @@ class Testimonial2 extends Component {
           <div className="section__header">
             <h2>What our customers says</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-              unde inventore molestias ab adipisci eius nisi placeat at.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+              inventore molestias ab adipisci eius nisi placeat at.
             </p>
           </div>
 
@@ -96,8 +96,8 @@ class Testimonial2 extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Testimonial2;
+export default Testimonial2

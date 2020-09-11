@@ -1,51 +1,45 @@
-import React from "react";
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis
-} from "recharts";
-import { RechartCreator } from "egret";
+import React from 'react'
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts'
+import { RechartCreator } from 'egret'
 
 const data = [
   {
-    subject: "Math",
+    subject: 'Math',
     A: 120,
     B: 110,
-    fullMark: 150
+    fullMark: 150,
   },
   {
-    subject: "Chinese",
+    subject: 'Chinese',
     A: 98,
     B: 130,
-    fullMark: 150
+    fullMark: 150,
   },
   {
-    subject: "English",
+    subject: 'English',
     A: 86,
     B: 130,
-    fullMark: 150
+    fullMark: 150,
   },
   {
-    subject: "Geography",
+    subject: 'Geography',
     A: 99,
     B: 100,
-    fullMark: 150
+    fullMark: 150,
   },
   {
-    subject: "Physics",
+    subject: 'Physics',
     A: 85,
     B: 90,
-    fullMark: 150
+    fullMark: 150,
   },
   {
-    subject: "History",
+    subject: 'History',
     A: 65,
     B: 85,
-    fullMark: 150
-  }
-];
+    fullMark: 150,
+  },
+]
 
 const SimpleRadarChart = ({ height, width }) => {
   return (
@@ -63,7 +57,7 @@ const SimpleRadarChart = ({ height, width }) => {
         />
       </RadarChart>
     </RechartCreator>
-  );
-};
+  )
+}
 
-export default SimpleRadarChart;
+export default SimpleRadarChart

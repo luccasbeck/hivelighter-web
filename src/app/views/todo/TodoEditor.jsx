@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Card,
   IconButton,
@@ -10,162 +10,159 @@ import {
   Grid,
   MenuItem,
   Tooltip,
-  Hidden
-} from "@material-ui/core";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { Link } from "react-router-dom";
+  Hidden,
+} from '@material-ui/core'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+import 'date-fns'
+import DateFnsUtils from '@date-io/date-fns'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { Link } from 'react-router-dom'
 import {
   getTodoById,
   getAllTodoTag,
   updateTodoById,
   deleteTodo,
-  addTodo
-} from "./TodoService";
-import {EgretMenu} from "egret";
-import TagDialog from "./TagDialog";
+  addTodo,
+} from './TodoService'
+import { EgretMenu } from 'egret'
+import TagDialog from './TagDialog'
 
 class TodoEditor extends Component {
   state = {
     todo: {
-      title: "",
-      note: "",
+      title: '',
+      note: '',
       done: false,
       read: false,
       starred: false,
       important: false,
       startDate: new Date(),
       dueDate: new Date(),
-      tag: []
+      tag: [],
     },
     tagList: [],
-    shouldOpenTagDialog: false
-  };
+    shouldOpenTagDialog: false,
+  }
 
   componentWillMount() {
-    let { id: todoId } = this.props.match.params;
+    let { id: todoId } = this.props.match.params
 
     getAllTodoTag().then(({ data: tagList }) => {
-      if (todoId !== "add") {
+      if (todoId !== 'add') {
         getTodoById(todoId).then(({ data }) => {
           if (!data) {
-            this.props.history.push("/todo/list");
-            return;
+            this.props.history.push('/todo/list')
+            return
           }
           this.setState({
             todo: { ...data },
-            tagList: [...tagList]
-          });
-        });
+            tagList: [...tagList],
+          })
+        })
       } else {
         this.setState({
-          tagList
-        });
+          tagList,
+        })
       }
-    });
+    })
   }
 
   addNewTodo = () => {
-    let id = this.state.tagList.length + 1;
+    let id = this.state.tagList.length + 1
     addTodo({ ...this.state.todo, id }).then(() => {
-      this.props.history.push("/todo/list");
-    });
-  };
+      this.props.history.push('/todo/list')
+    })
+  }
 
-  updateTodo = todo => {
-    updateTodoById(todo);
+  updateTodo = (todo) => {
+    updateTodoById(todo)
     this.setState({
       todo: {
         ...this.state.todo,
-        ...todo
-      }
-    });
-  };
+        ...todo,
+      },
+    })
+  }
 
   reloadTagList = () => {
     getAllTodoTag().then(({ data }) => {
       this.setState({
-        tagList: [...data]
-      });
-    });
-  };
+        tagList: [...data],
+      })
+    })
+  }
 
-  addTagInTodo = id => {
-    let { tag } = this.state.todo;
+  addTagInTodo = (id) => {
+    let { tag } = this.state.todo
     if (!tag.includes(id)) {
-      tag.push(id);
+      tag.push(id)
       this.setState({
         todo: {
           ...this.state.todo,
-          tag
-        }
-      });
+          tag,
+        },
+      })
     }
-  };
+  }
 
-  handleTagDelete = tagId => {
-    let { tag: tagList = [] } = this.state.todo;
-    tagList = tagList.filter(id => id !== tagId);
+  handleTagDelete = (tagId) => {
+    let { tag: tagList = [] } = this.state.todo
+    tagList = tagList.filter((id) => id !== tagId)
     this.setState(
       {
         todo: {
           ...this.state.todo,
-          tag: [...tagList]
-        }
+          tag: [...tagList],
+        },
       },
-      () => updateTodoById({ ...this.state.todo })
-    );
-  };
+      () => updateTodoById({ ...this.state.todo }),
+    )
+  }
 
   handleTodoDelete = () => {
     deleteTodo({ ...this.state.todo }).then(() => {
-      this.props.history.push("/todo/list");
-    });
-  };
+      this.props.history.push('/todo/list')
+    })
+  }
 
-  handleChange = event => {
-    event.persist();
+  handleChange = (event) => {
+    event.persist()
     this.setState({
       todo: {
         ...this.state.todo,
-        [event.target.name]: event.target.value
-      }
-    });
-  };
+        [event.target.name]: event.target.value,
+      },
+    })
+  }
 
   handleDateChange = (filedName, date) => {
     this.setState(
       this.setState({
         todo: {
           ...this.state.todo,
-          [filedName]: date
-        }
-      })
-    );
-  };
+          [filedName]: date,
+        },
+      }),
+    )
+  }
 
-  handleSubmit = event => {
-    let { id: todoId } = this.props.match.params;
+  handleSubmit = (event) => {
+    let { id: todoId } = this.props.match.params
 
-    if (todoId === "add") {
-      this.addNewTodo();
+    if (todoId === 'add') {
+      this.addNewTodo()
     } else {
       updateTodoById({ ...this.state.todo }).then(() => {
-        this.props.history.push("/todo/list");
-      });
+        this.props.history.push('/todo/list')
+      })
     }
-  };
+  }
 
   handleTagDialogToggle = () => {
     this.setState({
-      shouldOpenTagDialog: !this.state.shouldOpenTagDialog
-    });
-  };
+      shouldOpenTagDialog: !this.state.shouldOpenTagDialog,
+    })
+  }
 
   render() {
     let {
@@ -177,9 +174,9 @@ class TodoEditor extends Component {
       important,
       startDate,
       dueDate,
-      tag: tagIdList = []
-    } = this.state.todo;
-    let { tagList } = this.state;
+      tag: tagIdList = [],
+    } = this.state.todo
+    let { tagList } = this.state
 
     return (
       <Card className="todo-editor position-relative m-sm-30">
@@ -195,48 +192,36 @@ class TodoEditor extends Component {
                 className="ml-4"
                 onChange={() => this.updateTodo({ ...this.state, done: !done })}
                 control={<Checkbox checked={done} />}
-                label={`Mark As ${done ? "Und" : "D"}one`}
+                label={`Mark As ${done ? 'Und' : 'D'}one`}
               />
             </Hidden>
           </div>
           <div className="flex flex-wrap">
-            <Tooltip
-              title={`Mark As ${read ? "Unr" : "R"}ead`}
-              fontSize="large"
-            >
-              <IconButton
-                onClick={() => this.updateTodo({ ...this.state, read: !read })}
-              >
-                <Icon>{read ? "drafts" : "markunread"}</Icon>
+            <Tooltip title={`Mark As ${read ? 'Unr' : 'R'}ead`} fontSize="large">
+              <IconButton onClick={() => this.updateTodo({ ...this.state, read: !read })}>
+                <Icon>{read ? 'drafts' : 'markunread'}</Icon>
               </IconButton>
             </Tooltip>
 
             <Tooltip
-              title={`Mark As ${important ? "Uni" : "I"}mportant`}
+              title={`Mark As ${important ? 'Uni' : 'I'}mportant`}
               fontSize="large"
             >
               <IconButton
-                onClick={() =>
-                  this.updateTodo({ ...this.state, important: !important })
-                }
+                onClick={() => this.updateTodo({ ...this.state, important: !important })}
               >
-                <Icon color={important ? "error" : "inherit"}>
-                  {important ? "error" : "error_outline"}
+                <Icon color={important ? 'error' : 'inherit'}>
+                  {important ? 'error' : 'error_outline'}
                 </Icon>
               </IconButton>
             </Tooltip>
 
-            <Tooltip
-              title={`Mark As ${starred ? "Uns" : "S"}tarred`}
-              fontSize="large"
-            >
+            <Tooltip title={`Mark As ${starred ? 'Uns' : 'S'}tarred`} fontSize="large">
               <IconButton
-                onClick={() =>
-                  this.updateTodo({ ...this.state, starred: !starred })
-                }
+                onClick={() => this.updateTodo({ ...this.state, starred: !starred })}
               >
-                <Icon color={starred ? "secondary" : "inherit"}>
-                  {starred ? "star" : "star_outline"}
+                <Icon color={starred ? 'secondary' : 'inherit'}>
+                  {starred ? 'star' : 'star_outline'}
                 </Icon>
               </IconButton>
             </Tooltip>
@@ -258,7 +243,7 @@ class TodoEditor extends Component {
                 </Tooltip>
               }
             >
-              {this.state.tagList.map(tag => (
+              {this.state.tagList.map((tag) => (
                 <MenuItem
                   className="capitalize"
                   key={tag.id}
@@ -279,9 +264,9 @@ class TodoEditor extends Component {
 
         <div className="editor__form p-16">
           <div className="my-16">
-            {tagIdList.map(tagId => {
-              let tagName = (tagList.find(tag => tag.id === tagId) || {}).name;
-              if (!tagName) return null;
+            {tagIdList.map((tagId) => {
+              let tagName = (tagList.find((tag) => tag.id === tagId) || {}).name
+              if (!tagName) return null
               else
                 return (
                   <Chip
@@ -290,14 +275,14 @@ class TodoEditor extends Component {
                     label={tagName}
                     onDelete={() => this.handleTagDelete(tagId)}
                   />
-                );
+                )
             })}
           </div>
 
           <ValidatorForm
             ref="form"
             onSubmit={this.handleSubmit}
-            onError={errors => null}
+            onError={(errors) => null}
           >
             <TextValidator
               className="mb-16 w-100"
@@ -306,8 +291,8 @@ class TodoEditor extends Component {
               type="text"
               name="title"
               value={title}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
             <TextValidator
               className="mb-16 w-100"
@@ -317,8 +302,8 @@ class TodoEditor extends Component {
               name="note"
               multiline={true}
               value={note}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
             <div className="mb-16">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -332,11 +317,9 @@ class TodoEditor extends Component {
                       type="text"
                       autoOk={true}
                       value={new Date(startDate)}
-                      onChange={date =>
-                        this.handleDateChange("startDate", date)
-                      }
+                      onChange={(date) => this.handleDateChange('startDate', date)}
                       KeyboardButtonProps={{
-                        "aria-label": "change date"
+                        'aria-label': 'change date',
                       }}
                       fullWidth
                     />
@@ -350,9 +333,9 @@ class TodoEditor extends Component {
                       type="text"
                       autoOk={true}
                       value={new Date(dueDate)}
-                      onChange={date => this.handleDateChange("dueDate", date)}
+                      onChange={(date) => this.handleDateChange('dueDate', date)}
                       KeyboardButtonProps={{
-                        "aria-label": "change date"
+                        'aria-label': 'change date',
                       }}
                       fullWidth
                     />
@@ -376,8 +359,8 @@ class TodoEditor extends Component {
           handleClose={this.handleTagDialogToggle}
         />
       </Card>
-    );
+    )
   }
 }
 
-export default TodoEditor;
+export default TodoEditor

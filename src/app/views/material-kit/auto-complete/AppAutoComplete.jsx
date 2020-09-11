@@ -1,17 +1,17 @@
-import React from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import IntegrationDownshift from "./Downshift";
-import IntegrationReactSelect from "./ReactSelect";
-import IntegratedAutosuggest from "./AutoSuggest";
+import React from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import IntegrationDownshift from './Downshift'
+import IntegrationReactSelect from './ReactSelect'
+import IntegratedAutosuggest from './AutoSuggest'
 
 const AppAutoComplete = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Autocomplete" }
+            { name: 'Material', path: '/material' },
+            { name: 'Autocomplete' },
           ]}
         />
       </div>
@@ -27,7 +27,7 @@ const AppAutoComplete = () => {
         <IntegratedAutosuggest />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppAutoComplete;
+export default AppAutoComplete

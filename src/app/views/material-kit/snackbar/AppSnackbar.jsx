@@ -1,23 +1,20 @@
-import React from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import SimpleSnackbar from "./SimpleSnackbar";
-import CustomizedSnackbars from "./CustomizedSnackbar";
-import PositionedSnackbar from "./PositionedSnackbar";
-import LongTextSnackbar from "./LongLengthSnackbar";
-import ConsecutiveSnackbar from "./ConsecutiveSnackbar";
-import DirectionSnackbar from "./DirectionSnackbar";
-import IntegrationNotistack from "./StackedSnackbar";
-import TransitionsSnackbar from "./TransitionSnackbar";
+import React from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import SimpleSnackbar from './SimpleSnackbar'
+import CustomizedSnackbars from './CustomizedSnackbar'
+import PositionedSnackbar from './PositionedSnackbar'
+import LongTextSnackbar from './LongLengthSnackbar'
+import ConsecutiveSnackbar from './ConsecutiveSnackbar'
+import DirectionSnackbar from './DirectionSnackbar'
+import IntegrationNotistack from './StackedSnackbar'
+import TransitionsSnackbar from './TransitionSnackbar'
 
 const AppSnackbar = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
-          routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Snackbar" }
-          ]}
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Snackbar' }]}
         />
       </div>
       <SimpleCard title="simple snackbar">
@@ -52,7 +49,7 @@ const AppSnackbar = () => {
         <IntegrationNotistack />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppSnackbar;
+export default AppSnackbar

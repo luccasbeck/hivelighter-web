@@ -1,40 +1,40 @@
-import React, { Component } from "react";
-import { Dialog, Button, IconButton, Icon, Fab } from "@material-ui/core";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { RichTextEditor } from "egret";
+import React, { Component } from 'react'
+import { Dialog, Button, IconButton, Icon, Fab } from '@material-ui/core'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { RichTextEditor } from 'egret'
 
 class InboxComposeDialog extends Component {
   state = {
-    to: "",
-    subject: "",
-    content: "",
-    attachment: null
-  };
+    to: '',
+    subject: '',
+    content: '',
+    attachment: null,
+  }
 
-  handleSubmit = event => {
-    console.log(this.state);
-  };
+  handleSubmit = (event) => {
+    console.log(this.state)
+  }
 
-  handleChange = event => {
-    event.persist();
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  handleChange = (event) => {
+    event.persist()
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
-  handleContentChange = contentHtml => {
+  handleContentChange = (contentHtml) => {
     this.setState({
-      content: contentHtml
-    });
-  };
+      content: contentHtml,
+    })
+  }
 
-  handleAttachmentSelection = event => {
+  handleAttachmentSelection = (event) => {
     this.setState({
-      attachment: event.target.files[0]
-    });
-  };
+      attachment: event.target.files[0],
+    })
+  }
 
   render() {
-    let { to, subject, content, attachment } = this.state;
-    let { open, handleClose } = this.props;
+    let { to, subject, content, attachment } = this.state
+    let { open, handleClose } = this.props
 
     return (
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth={true}>
@@ -43,7 +43,7 @@ class InboxComposeDialog extends Component {
           <ValidatorForm
             ref="form"
             onSubmit={this.handleSubmit}
-            onError={errors => null}
+            onError={(errors) => null}
           >
             <TextValidator
               className="mb-16 w-100"
@@ -52,8 +52,8 @@ class InboxComposeDialog extends Component {
               type="email"
               name="to"
               value={to}
-              validators={["required", "isEmail"]}
-              errorMessages={["this field is required", "email is not valid"]}
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'email is not valid']}
             />
             <TextValidator
               className="mb-16 w-100"
@@ -62,8 +62,8 @@ class InboxComposeDialog extends Component {
               type="text"
               name="subject"
               value={subject}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
             <RichTextEditor
               content={content}
@@ -94,8 +94,8 @@ class InboxComposeDialog extends Component {
           </ValidatorForm>
         </div>
       </Dialog>
-    );
+    )
   }
 }
 
-export default InboxComposeDialog;
+export default InboxComposeDialog

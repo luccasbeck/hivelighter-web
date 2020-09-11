@@ -1,34 +1,34 @@
-import { EgretLoadable } from "egret";
-import { authRoles } from "../../auth/authRoles";
+import { EgretLoadable } from 'egret'
+import { authRoles } from '../../auth/authRoles'
 
 const Shop = EgretLoadable({
-  loader: () => import("./Shop")
-});
+  loader: () => import('./Shop'),
+})
 
 const Cart = EgretLoadable({
-  loader: () => import("./Cart")
-});
+  loader: () => import('./Cart'),
+})
 
 const Checkout = EgretLoadable({
-  loader: () => import("./Checkout")
-});
+  loader: () => import('./Checkout'),
+})
 
 const ecommerceRoutes = [
   {
-    path: "/ecommerce/shop",
+    path: '/ecommerce/shop',
     component: Shop,
-    auth: authRoles.admin
+    auth: authRoles.admin,
   },
   {
-    path: "/ecommerce/cart",
+    path: '/ecommerce/cart',
     component: Cart,
-    auth: authRoles.admin
+    auth: authRoles.admin,
   },
   {
-    path: "/ecommerce/checkout",
+    path: '/ecommerce/checkout',
     component: Checkout,
-    auth: authRoles.admin
+    auth: authRoles.admin,
   },
-];
+]
 
-export default ecommerceRoutes;
+export default ecommerceRoutes

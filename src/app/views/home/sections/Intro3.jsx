@@ -1,19 +1,17 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import Icon from "@material-ui/core/Icon";
-import Fab from "@material-ui/core/Fab";
+import React, { Component } from 'react'
+import Grid from '@material-ui/core/Grid'
+import Icon from '@material-ui/core/Icon'
+import Fab from '@material-ui/core/Fab'
 
 class Intro3 extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <section className="section section-intro1 section-intro3" id="intro3">
         <div className="container">
           <Grid container spacing={3} justify="center">
             <Grid item md={6}>
-              <h1 className="section-intro1__title">
-                Better Management; Less Expense
-              </h1>
+              <h1 className="section-intro1__title">Better Management; Less Expense</h1>
               <div className="section-intro1__subtitle">
                 Not sure about Pro? Try trial first!
               </div>
@@ -31,11 +29,7 @@ class Intro3 extends Component {
               </div>
 
               <div className="subscribe-input">
-                <input
-                  className="email-input"
-                  type="text"
-                  placeholder="Your email"
-                />
+                <input className="email-input" type="text" placeholder="Your email" />
                 <Fab
                   variant="extended"
                   size="large"
@@ -56,8 +50,8 @@ class Intro3 extends Component {
           </Grid>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Intro3;
+export default Intro3

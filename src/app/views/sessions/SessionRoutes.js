@@ -1,51 +1,51 @@
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
-import NotFound from "./NotFound";
-import ForgotPassword from "./ForgotPassword";
+import SignUp from './SignUp'
+import SignIn from './SignIn'
+import NotFound from './NotFound'
+import ForgotPassword from './ForgotPassword'
 
 const settings = {
-  activeLayout: "layout1",
+  activeLayout: 'layout1',
   layout1Settings: {
     topbar: {
-      show: false
+      show: false,
     },
     leftSidebar: {
       show: false,
-      mode: "close"
-    }
+      mode: 'close',
+    },
   },
   layout2Settings: {
-    mode: "full",
+    mode: 'full',
     topbar: {
-      show: false
+      show: false,
     },
-    navbar: { show: false }
+    navbar: { show: false },
   },
   secondarySidebar: { show: false },
-  footer: { show: false }
-};
+  footer: { show: false },
+}
 
 const sessionRoutes = [
   {
-    path: "/session/signup",
+    path: '/session/signup',
     component: SignUp,
-    settings
+    settings,
   },
   {
-    path: "/session/signin",
+    path: '/session/signin',
     component: SignIn,
-    settings
+    settings,
   },
   {
-    path: "/session/forgot-password",
+    path: '/session/forgot-password',
     component: ForgotPassword,
-    settings
+    settings,
   },
   {
-    path: "/session/404",
+    path: '/session/404',
     component: NotFound,
-    settings
-  }
-];
+    settings,
+  },
+]
 
-export default sessionRoutes;
+export default sessionRoutes

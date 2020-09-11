@@ -1,211 +1,206 @@
-import React, { Component } from "react";
-import {
-  EgretSidenavContainer,
-  EgretSidenav,
-  EgretSidenavContent
-} from "egret";
+import React, { Component } from 'react'
+import { EgretSidenavContainer, EgretSidenav, EgretSidenavContent } from 'egret'
 
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
   getProductList,
   getCategoryList,
   getRatingList,
-  getBrandList
-} from "app/redux/actions/EcommerceActions";
+  getBrandList,
+} from 'app/redux/actions/EcommerceActions'
 
-import * as _ from "lodash";
-import ShopSidenav from "./ShopSidenav";
-import ShopContainer from "./ShopContainer";
+// eslint-disable-next-line no-unused-vars
+import * as _ from 'lodash'
+import ShopSidenav from './ShopSidenav'
+import ShopContainer from './ShopContainer'
 
 class Shop extends Component {
-  debounceTimer;
-  categories = [];
-  brands = [];
+  debounceTimer
+  categories = []
+  brands = []
 
   state = {
     open: true,
-    view: "grid",
+    view: 'grid',
     page: 0,
     rowsPerPage: 6,
-    orderBy: "false",
+    orderBy: 'false',
     propsReceived: false,
     sliderRange: [0, 100],
-    query: "",
-    multilevel: "all",
+    query: '',
+    multilevel: 'all',
     shipping: false,
     categories: [],
-    brands: []
-  };
+    brands: [],
+  }
 
   toggleSidenav = () => {
-    this.setState({ open: !this.state.open });
-  };
+    this.setState({ open: !this.state.open })
+  }
 
   handleSliderChange = (event, newValue) => {
-    this.setState({ sliderRange: newValue });
-    this.filterProductOnPriceRange(newValue[0] * 10, newValue[1] * 10);
-  };
+    this.setState({ sliderRange: newValue })
+    this.filterProductOnPriceRange(newValue[0] * 10, newValue[1] * 10)
+  }
 
-  setRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
+  setRowsPerPage = (event) => {
+    this.setState({ rowsPerPage: event.target.value })
+  }
 
   handleChangePage = (event, newPage) => {
-    this.setState({ page: newPage });
-  };
+    this.setState({ page: newPage })
+  }
 
-  toggleView = view => this.setState({ view });
+  toggleView = (view) => this.setState({ view })
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
-  handleSearch = query => {
-    let { productList = [] } = this.props;
+  handleSearch = (query) => {
+    let { productList = [] } = this.props
 
-    this.setState({ query });
+    this.setState({ query })
 
     if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
+      clearTimeout(this.debounceTimer)
     }
 
     this.debounceTimer = setTimeout(() => {
       this.setState({
-        productList: productList.filter(product =>
-          product.title.toLowerCase().match(this.state.query.toLowerCase())
-        )
-      });
-    }, 250);
-  };
+        productList: productList.filter((product) =>
+          product.title.toLowerCase().match(this.state.query.toLowerCase()),
+        ),
+      })
+    }, 250)
+  }
 
-  handleMultilevelChange = event => {
-    let eventValue = event.target.value;
-    let range = event.target.value.split(",");
-    let { productList = [] } = this.props;
+  handleMultilevelChange = (event) => {
+    let eventValue = event.target.value
+    let range = event.target.value.split(',')
+    let { productList = [] } = this.props
 
-    if (eventValue === "all") {
-      this.setState({ multilevel: eventValue, productList });
-      return;
+    if (eventValue === 'all') {
+      this.setState({ multilevel: eventValue, productList })
+      return
     }
 
-    this.setState({ multilevel: eventValue });
+    this.setState({ multilevel: eventValue })
 
-    range = range.map(value => parseInt(value));
+    range = range.map((value) => parseInt(value))
 
     if (range.length === 2) {
-      this.filterProductOnPriceRange(range[0], range[1]);
+      this.filterProductOnPriceRange(range[0], range[1])
     } else {
       this.setState({
-        productList: productList.filter(product => product.price >= range[0])
-      });
+        productList: productList.filter((product) => product.price >= range[0]),
+      })
     }
-  };
+  }
 
-  handleCategoryChange = event => {
-    let target = event.target;
-    let { categories } = this.state;
-    let tempCategories;
+  handleCategoryChange = (event) => {
+    let target = event.target
+    let { categories } = this.state
+    let tempCategories
     if (target.checked) {
-      tempCategories = [...categories, target.name];
+      tempCategories = [...categories, target.name]
       this.setState({
         categories: tempCategories,
-        productList: this.filterProductOnProperty("category", tempCategories)
-      });
+        productList: this.filterProductOnProperty('category', tempCategories),
+      })
     } else {
-      tempCategories = categories.filter(item => item !== target.name);
+      tempCategories = categories.filter((item) => item !== target.name)
       this.setState({
         categories: tempCategories,
-        productList: this.filterProductOnProperty("category", tempCategories)
-      });
+        productList: this.filterProductOnProperty('category', tempCategories),
+      })
     }
-  };
+  }
 
-  handleBrandChange = event => {
-    let target = event.target;
-    let { brands } = this.state;
-    let tempBrands;
+  handleBrandChange = (event) => {
+    let target = event.target
+    let { brands } = this.state
+    let tempBrands
     if (target.checked) {
-      tempBrands = [...brands, target.name];
+      tempBrands = [...brands, target.name]
       this.setState({
         brands: tempBrands,
-        productList: this.filterProductOnProperty("brand", tempBrands)
-      });
+        productList: this.filterProductOnProperty('brand', tempBrands),
+      })
     } else {
-      tempBrands = brands.filter(item => item !== target.name);
+      tempBrands = brands.filter((item) => item !== target.name)
       this.setState({
         brands: tempBrands,
-        productList: this.filterProductOnProperty("brand", tempBrands)
-      });
+        productList: this.filterProductOnProperty('brand', tempBrands),
+      })
     }
-  };
+  }
 
-  handleRatingClick = rate => {
+  handleRatingClick = (rate) => {
     this.setState({
-      productList: this.filterProductOnProperty("rating", [rate])
-    });
-  };
+      productList: this.filterProductOnProperty('rating', [rate]),
+    })
+  }
 
   handleFreeShippingClick = () => {
-    let shippingStatus = !this.state.shipping;
+    let shippingStatus = !this.state.shipping
     this.setState({
       shipping: shippingStatus,
-      productList: this.filterProductOnProperty("freeShipping", [
-        shippingStatus
-      ])
-    });
-  };
+      productList: this.filterProductOnProperty('freeShipping', [shippingStatus]),
+    })
+  }
 
   filterProductOnProperty = (property, value = []) => {
-    let { productList = [] } = this.props;
+    let { productList = [] } = this.props
     if (value.length === 0) {
-      return productList;
+      return productList
     }
-    return productList.filter(product => value.includes(product[property]));
-  };
+    return productList.filter((product) => value.includes(product[property]))
+  }
 
   filterProductOnPriceRange = (lowestPrice, highestPrice) => {
-    let { productList = [] } = this.props;
+    let { productList = [] } = this.props
     this.setState({
       productList: productList.filter(
-        product => product.price >= lowestPrice && product.price <= highestPrice
-      )
-    });
-  };
+        (product) => product.price >= lowestPrice && product.price <= highestPrice,
+      ),
+    })
+  }
 
   handleClearAllFilter = () => {
     this.setState({
       sliderRange: [0, 100],
-      query: "",
-      multilevel: "all",
+      query: '',
+      multilevel: 'all',
       shipping: false,
       categories: [],
       brands: [],
-      productList: this.props.productList
-    });
-  };
+      productList: this.props.productList,
+    })
+  }
 
   componentDidMount() {
-    this.props.getProductList();
-    this.props.getCategoryList();
-    this.props.getRatingList();
-    this.props.getBrandList();
+    this.props.getProductList()
+    this.props.getCategoryList()
+    this.props.getRatingList()
+    this.props.getBrandList()
   }
 
   componentWillUnmount() {
-    clearTimeout(this.debounceTimer);
+    clearTimeout(this.debounceTimer)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let { productList = [] } = nextProps;
+    let { productList = [] } = nextProps
     if (prevState.propsReceived) {
-      return {};
+      return {}
     } else if (!prevState.propsReceived && productList.length > 0)
       return {
         propsReceived: true,
-        productList
-      };
-    else return {};
+        productList,
+      }
+    else return {}
   }
 
   render() {
@@ -220,10 +215,10 @@ class Shop extends Component {
       orderBy,
       query,
       multilevel,
-      shipping
-    } = this.state;
+      shipping,
+    } = this.state
 
-    let { categoryList = [], ratingList = [], brandList = [] } = this.props;
+    let { categoryList = [], ratingList = [], brandList = [] } = this.props
 
     return (
       <div className="shop m-sm-30">
@@ -270,21 +265,23 @@ class Shop extends Component {
           </EgretSidenavContent>
         </EgretSidenavContainer>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   getProductList: PropTypes.func.isRequired,
   getRatingList: PropTypes.func.isRequired,
   getBrandList: PropTypes.func.isRequired,
   productList: state.ecommerce.productList,
   categoryList: state.ecommerce.categoryList,
   ratingList: state.ecommerce.ratingList,
-  brandList: state.ecommerce.brandList
-});
+  brandList: state.ecommerce.brandList,
+})
 
-export default connect(
-  mapStateToProps,
-  { getProductList, getCategoryList, getRatingList, getBrandList }
-)(Shop);
+export default connect(mapStateToProps, {
+  getProductList,
+  getCategoryList,
+  getRatingList,
+  getBrandList,
+})(Shop)

@@ -1,47 +1,40 @@
-import React, { Component } from "react";
-import { isMobile } from "utils";
+import React, { Component } from 'react'
+import { isMobile } from 'utils'
 
 class EgretSidenav extends Component {
-  handleResizeRef;
+  handleResizeRef
 
   state = {
-    mobile: isMobile()
-  };
+    mobile: isMobile(),
+  }
 
   handleWindowResize = () => {
-    return event => {
+    return (event) => {
       if (event.target.innerWidth < 768) {
-        this.setState({ mobile: true });
-      } else this.setState({ mobile: false });
-    };
-  };
+        this.setState({ mobile: true })
+      } else this.setState({ mobile: false })
+    }
+  }
 
   componentDidMount() {
-    this.handleResizeRef = this.handleWindowResize();
-    if (window) window.addEventListener("resize", this.handleResizeRef);
+    this.handleResizeRef = this.handleWindowResize()
+    if (window) window.addEventListener('resize', this.handleResizeRef)
   }
 
   componentWillUnmount() {
-    if (this.handleResizeRef)
-      window.removeEventListener("resize", this.handleResizeRef);
+    if (this.handleResizeRef) window.removeEventListener('resize', this.handleResizeRef)
   }
 
   render() {
-    let {
-      open,
-      children,
-      toggleSidenav,
-      width = "220px",
-      bgClass
-    } = this.props;
+    let { open, children, toggleSidenav, width = '220px', bgClass } = this.props
 
-    let { mobile } = this.state;
+    let { mobile } = this.state
 
     return (
       <div className="flex h-100">
         <div
           className={`egret-sidenav bg-default ${bgClass}`}
-          style={{ width: open || !mobile ? width : "0px" }}
+          style={{ width: open || !mobile ? width : '0px' }}
         >
           {children}
         </div>
@@ -49,8 +42,8 @@ class EgretSidenav extends Component {
           <div onClick={toggleSidenav} className="egret-sidenav-overlay" />
         )}
       </div>
-    );
+    )
   }
 }
 
-export default EgretSidenav;
+export default EgretSidenav

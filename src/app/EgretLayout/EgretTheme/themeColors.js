@@ -1,148 +1,148 @@
 export const themeColors = {
   hive: {
     palette: {
-      type: "light",
+      type: 'light',
       primary: {
-        main: "#ffffff",
-        contrastText: "rgba(0,0,0,.87)"
+        main: '#ffffff',
+        contrastText: 'rgba(0,0,0,.87)',
       },
       secondary: {
-        main: "#ff9e43"
+        main: '#ff9e43',
       },
       background: {
-        paper: "#ffffff",
-        default: "#F7F7F8"
-      }
-    }
+        paper: '#ffffff',
+        default: '#F7F7F8',
+      },
+    },
   },
   white: {
     palette: {
-      type: "light",
+      type: 'light',
       primary: {
-        main: "#ffffff",
-        contrastText: "rgba(0,0,0,.87)"
+        main: '#ffffff',
+        contrastText: 'rgba(0,0,0,.87)',
       },
       secondary: {
-        main: "#ff9e43"
-      }
-    }
+        main: '#ff9e43',
+      },
+    },
   },
   slateDark1: {
     palette: {
-      type: "dark",
+      type: 'dark',
       primary: {
-        main: "#222A45",
-        contrastText: "#ffffff"
+        main: '#222A45',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
+        main: '#ff9e43',
       },
       background: {
-        paper: "#222A45",
-        default: "#1a2038"
-      }
-    }
+        paper: '#222A45',
+        default: '#1a2038',
+      },
+    },
   },
   slateDark2: {
     palette: {
-      type: "dark",
+      type: 'dark',
       primary: {
-        main: "#1a2038",
-        contrastText: "#ffffff"
+        main: '#1a2038',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
+        main: '#ff9e43',
       },
       background: {
-        paper: "#222A45",
-        default: "#1a2038"
-      }
-    }
+        paper: '#222A45',
+        default: '#1a2038',
+      },
+    },
   },
   purple1: {
     palette: {
-      type: "light",
+      type: 'light',
       primary: {
-        main: "#7467ef",
-        contrastText: "#ffffff"
+        main: '#7467ef',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
-      }
-    }
+        main: '#ff9e43',
+      },
+    },
   },
   purple2: {
     palette: {
-      type: "light",
+      type: 'light',
       primary: {
-        main: "#6a75c9",
-        contrastText: "#ffffff"
+        main: '#6a75c9',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
-      }
-    }
+        main: '#ff9e43',
+      },
+    },
   },
   purpleDark1: {
     palette: {
-      type: "dark",
+      type: 'dark',
       primary: {
-        main: "#7467ef",
-        contrastText: "#ffffff"
+        main: '#7467ef',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
+        main: '#ff9e43',
       },
       background: {
-        paper: "#222A45",
-        default: "#1a2038"
-      }
-    }
+        paper: '#222A45',
+        default: '#1a2038',
+      },
+    },
   },
   purpleDark2: {
     palette: {
-      type: "dark",
+      type: 'dark',
       primary: {
-        main: "#6a75c9",
-        contrastText: "#ffffff"
+        main: '#6a75c9',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#ff9e43"
+        main: '#ff9e43',
       },
       background: {
-        paper: "#222A45",
-        default: "#1a2038"
-      }
-    }
+        paper: '#222A45',
+        default: '#1a2038',
+      },
+    },
   },
   blue: {
     palette: {
-      type: "light",
+      type: 'light',
       primary: {
-        main: "#3366FF",
-        contrastText: "#ffffff"
+        main: '#3366FF',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#FFAF38",
-        contrastText: "#ffffff"
-      }
-    }
+        main: '#FFAF38',
+        contrastText: '#ffffff',
+      },
+    },
   },
   blueDark: {
     palette: {
-      type: "dark",
+      type: 'dark',
       primary: {
-        main: "#3366FF",
-        contrastText: "#ffffff"
+        main: '#3366FF',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: "#FF4F30",
-        contrastText: "#ffffff"
+        main: '#FF4F30',
+        contrastText: '#ffffff',
       },
       background: {
-        paper: "#222A45",
-        default: "#1a2038"
-      }
-    }
-  }
-};
+        paper: '#222A45',
+        default: '#1a2038',
+      },
+    },
+  },
+}

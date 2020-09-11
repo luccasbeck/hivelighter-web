@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react'
 
-const ScrumBoardLabelBar = ({ color = "primary" }) => {
+const ScrumBoardLabelBar = ({ color = 'primary' }) => {
   return (
     <div
       className={`bg-${color}`}
       style={{
-        width: "32px",
-        height: "6px",
-        borderRadius: "6px",
-        overflow: "hidden",
-        marginRight: "8px"
+        width: '32px',
+        height: '6px',
+        borderRadius: '6px',
+        overflow: 'hidden',
+        marginRight: '8px',
       }}
     ></div>
-  );
-};
+  )
+}
 
-export default ScrumBoardLabelBar;
+export default ScrumBoardLabelBar

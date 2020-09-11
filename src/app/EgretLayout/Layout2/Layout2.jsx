@@ -1,55 +1,55 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 
-import { Hidden } from "@material-ui/core";
-import AppContext from "app/appContext";
-import Footer from "../SharedCompoents/Footer";
-import Layout2Navbar from "./Layout2Navbar";
-import Layout2Sidenav from "./Layout2Sidenav";
-import Layout2Topbar from "./Layout2Topbar";
-import { PropTypes } from "prop-types";
-import Scrollbar from "react-perfect-scrollbar";
-import SecondarySidebar from "../SharedCompoents/SecondarySidebar";
-import { classList } from "utils";
-import { connect } from "react-redux";
-import { renderRoutes } from "react-router-config";
-import { setLayoutSettings } from "app/redux/actions/LayoutActions";
-import { withStyles } from "@material-ui/styles";
+import { Hidden } from '@material-ui/core'
+import AppContext from 'app/appContext'
+import Footer from '../SharedCompoents/Footer'
+import Layout2Navbar from './Layout2Navbar'
+import Layout2Sidenav from './Layout2Sidenav'
+import Layout2Topbar from './Layout2Topbar'
+import { PropTypes } from 'prop-types'
+import Scrollbar from 'react-perfect-scrollbar'
+import SecondarySidebar from '../SharedCompoents/SecondarySidebar'
+import { classList } from 'utils'
+import { connect } from 'react-redux'
+import { renderRoutes } from 'react-router-config'
+import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
+import { withStyles } from '@material-ui/styles'
 
-const styles = theme => {
+const styles = (theme) => {
   return {
     layout: {
       backgroundColor: theme.palette.background.default,
-      color: theme.palette.text.primary
-    }
-  };
-};
+      color: theme.palette.text.primary,
+    },
+  }
+}
 
 class Layout2 extends Component {
-  state = {};
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
+  state = {}
+  updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = this.props
     setLayoutSettings({
       ...settings,
       layout2Settings: {
         ...settings.layout2Settings,
         leftSidebar: {
           ...settings.layout2Settings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
-  };
+          ...sidebarSettings,
+        },
+      },
+    })
+  }
 
   render() {
-    let { settings, classes, theme } = this.props;
-    let { layout2Settings } = settings;
+    let { settings, classes, theme } = this.props
+    let { layout2Settings } = settings
 
     let layoutClasses = {
       [classes.layout]: true,
       [settings.activeLayout]: true,
       [`sidenav-${layout2Settings.leftSidebar.mode}`]: true,
-      [`layout-${layout2Settings.mode} theme-${theme.palette.type}`]: true
-    };
+      [`layout-${layout2Settings.mode} theme-${theme.palette.type}`]: true,
+    }
 
     return (
       <AppContext.Consumer>
@@ -58,9 +58,7 @@ class Layout2 extends Component {
             <div className={classList(layoutClasses)}>
               {layout2Settings.topbar.show && <Layout2Topbar />}
 
-              <Hidden smDown>
-                {layout2Settings.navbar.show && <Layout2Navbar />}
-              </Hidden>
+              <Hidden smDown>{layout2Settings.navbar.show && <Layout2Navbar />}</Hidden>
 
               <Hidden mdUp>
                 {layout2Settings.leftSidebar.show && <Layout2Sidenav />}
@@ -94,22 +92,19 @@ class Layout2 extends Component {
           </Fragment>
         )}
       </AppContext.Consumer>
-    );
+    )
   }
 }
 
 Layout2.propTypes = {
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: state.layout.settings
-});
+  settings: state.layout.settings,
+})
 
 export default withStyles(styles, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings }
-  )(Layout2)
-);
+  connect(mapStateToProps, { setLayoutSettings })(Layout2),
+)

@@ -1,20 +1,20 @@
-import React, { Component, Fragment } from "react";
-import Scrollbar from "react-perfect-scrollbar";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component, Fragment } from 'react'
+import Scrollbar from 'react-perfect-scrollbar'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { navigations } from "../../navigations";
-import { EgretVerticalNav } from "egret";
-import { setLayoutSettings } from "app/redux/actions/LayoutActions";
+import { navigations } from '../../navigations'
+import { EgretVerticalNav } from 'egret'
+import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
 
 class Sidenav extends Component {
-  state = {};
+  state = {}
 
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
-    let activeLayoutSettingsName = settings.activeLayout+"Settings";
-    let activeLayoutSettings = settings[activeLayoutSettingsName];
+  updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = this.props
+    let activeLayoutSettingsName = settings.activeLayout + 'Settings'
+    let activeLayoutSettings = settings[activeLayoutSettingsName]
 
     setLayoutSettings({
       ...settings,
@@ -22,43 +22,43 @@ class Sidenav extends Component {
         ...activeLayoutSettings,
         leftSidebar: {
           ...activeLayoutSettings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
-  };
+          ...sidebarSettings,
+        },
+      },
+    })
+  }
 
   renderOverlay = () => (
     <div
-      onClick={() => this.updateSidebarMode({ mode: "close" })}
+      onClick={() => this.updateSidebarMode({ mode: 'close' })}
       className="sidenav__overlay"
     />
-  );
+  )
   render() {
     return (
       <Fragment>
-        <Scrollbar option={{suppressScrollX: true}} className="scrollable position-relative">
+        <Scrollbar
+          option={{ suppressScrollX: true }}
+          className="scrollable position-relative"
+        >
           {this.props.children}
           <EgretVerticalNav navigation={navigations} />
         </Scrollbar>
         {this.renderOverlay()}
       </Fragment>
-    );
+    )
   }
 }
 Sidenav.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({
+  settings: PropTypes.object.isRequired,
+}
+const mapStateToProps = (state) => ({
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: state.layout.settings
-});
+  settings: state.layout.settings,
+})
 export default withRouter(
-  connect(
-    mapStateToProps,
-    {
-      setLayoutSettings
-    }
-  )(Sidenav)
-);
+  connect(mapStateToProps, {
+    setLayoutSettings,
+  })(Sidenav),
+)

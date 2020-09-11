@@ -1,19 +1,16 @@
-import React from "react";
-import SimpleMenu from "./SimpleMenu";
-import SelectedMenu from "./SelectedMenu";
-import CustomizedMenu from "./CustomizedMenu";
-import MaxHeightMenu from "./MaxHeightMenu";
-import { Breadcrumb, SimpleCard } from "egret";
+import React from 'react'
+import SimpleMenu from './SimpleMenu'
+import SelectedMenu from './SelectedMenu'
+import CustomizedMenu from './CustomizedMenu'
+import MaxHeightMenu from './MaxHeightMenu'
+import { Breadcrumb, SimpleCard } from 'egret'
 
 const AppMenu = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
-          routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Menu" }
-          ]}
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Menu' }]}
         />
       </div>
       <SimpleCard title="simple menu">
@@ -32,7 +29,7 @@ const AppMenu = () => {
         <MaxHeightMenu />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppMenu;
+export default AppMenu

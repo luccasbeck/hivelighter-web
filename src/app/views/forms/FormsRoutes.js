@@ -1,38 +1,38 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const BasicForm = EgretLoadable({
-  loader: () => import("./BasicForm")
-});
+  loader: () => import('./BasicForm'),
+})
 
 const EditorForm = EgretLoadable({
-  loader: () => import("./EditorForm")
-});
+  loader: () => import('./EditorForm'),
+})
 
 const WizardForm = EgretLoadable({
-  loader: () => import("./WizardForm")
-});
+  loader: () => import('./WizardForm'),
+})
 
 const UploadForm = EgretLoadable({
-  loader: () => import("./UploadForm")
-});
+  loader: () => import('./UploadForm'),
+})
 
 const formsRoutes = [
   {
-    path: "/forms/basic",
-    component: BasicForm
+    path: '/forms/basic',
+    component: BasicForm,
   },
   {
-    path: "/forms/editor",
-    component: EditorForm
+    path: '/forms/editor',
+    component: EditorForm,
   },
   {
-    path: "/forms/upload",
-    component: UploadForm
+    path: '/forms/upload',
+    component: UploadForm,
   },
   {
-    path: "/forms/wizard",
-    component: WizardForm
-  }
-];
+    path: '/forms/wizard',
+    component: WizardForm,
+  },
+]
 
-export default formsRoutes;
+export default formsRoutes

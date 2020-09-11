@@ -1,17 +1,17 @@
-import React from "react";
-import SimpleListDnD from "./SimpleListDnD";
-import { Breadcrumb, SimpleCard } from "egret";
-import SimpleHorizontalList from "./SimpleHorizontalList";
-import TwoListDnD from "./TwoListDnD";
+import React from 'react'
+import SimpleListDnD from './SimpleListDnD'
+import { Breadcrumb, SimpleCard } from 'egret'
+import SimpleHorizontalList from './SimpleHorizontalList'
+import TwoListDnD from './TwoListDnD'
 
 const AppDragAndDrop = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
-            { name: "others", path: "/drag-and-drop" },
-            { name: "Drag and Drop" }
+            { name: 'others', path: '/drag-and-drop' },
+            { name: 'Drag and Drop' },
           ]}
         />
       </div>
@@ -27,7 +27,7 @@ const AppDragAndDrop = () => {
         <TwoListDnD />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppDragAndDrop;
+export default AppDragAndDrop

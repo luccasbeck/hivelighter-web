@@ -1,20 +1,20 @@
-import React from "react";
-import { Card, Icon, Grid, Checkbox, Button } from "@material-ui/core";
+import React from 'react'
+import { Card, Icon, Grid, Checkbox, Button } from '@material-ui/core'
 
-const calculateColumnPerRow = value => {
+const calculateColumnPerRow = (value) => {
   if (value <= 25) {
-    return 2;
+    return 2
   }
   if (value <= 50) {
-    return 3;
+    return 3
   }
   if (value <= 75) {
-    return 4;
+    return 4
   }
   if (value <= 100) {
-    return 6;
+    return 6
   }
-};
+}
 
 const GridView = ({ list = [], sliderValue }) => {
   return (
@@ -29,28 +29,16 @@ const GridView = ({ list = [], sliderValue }) => {
                   <div className="flex flex-middle flex-space-between">
                     <Checkbox className="text-white"></Checkbox>
                     <div className="flex flex-middle">
-                      <Icon
-                        fontSize="small"
-                        className="mr-16 cursor-pointer text-white"
-                      >
+                      <Icon fontSize="small" className="mr-16 cursor-pointer text-white">
                         filter_none
                       </Icon>
-                      <Icon
-                        fontSize="small"
-                        className="mr-16 cursor-pointer text-white"
-                      >
+                      <Icon fontSize="small" className="mr-16 cursor-pointer text-white">
                         share
                       </Icon>
-                      <Icon
-                        fontSize="small"
-                        className="mr-16 cursor-pointer text-white"
-                      >
+                      <Icon fontSize="small" className="mr-16 cursor-pointer text-white">
                         edit
                       </Icon>
-                      <Icon
-                        fontSize="small"
-                        className="mr-16 cursor-pointer text-white"
-                      >
+                      <Icon fontSize="small" className="mr-16 cursor-pointer text-white">
                         delete
                       </Icon>
                     </div>
@@ -59,7 +47,7 @@ const GridView = ({ list = [], sliderValue }) => {
                     <Button
                       variant="outlined"
                       className="text-white"
-                      style={{ borderColor: "white" }}
+                      style={{ borderColor: 'white' }}
                     >
                       View Details
                     </Button>
@@ -76,7 +64,7 @@ const GridView = ({ list = [], sliderValue }) => {
         ))}
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default GridView;
+export default GridView

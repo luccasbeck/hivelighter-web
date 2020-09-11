@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import React, { Component } from 'react'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 import {
   Card,
   Icon,
@@ -8,81 +8,77 @@ import {
   TextField,
   InputAdornment,
   ClickAwayListener,
-  Button
-} from "@material-ui/core";
-import ScrumBoardCard from "./ScrumBoardCard";
-import Scrollbar from "react-perfect-scrollbar";
-import { EgretMenu } from "egret";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
+  Button,
+} from '@material-ui/core'
+import ScrumBoardCard from './ScrumBoardCard'
+import Scrollbar from 'react-perfect-scrollbar'
+import { EgretMenu } from 'egret'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
 import {
   renameListInBoard,
   deleteListFromBoard,
-  addNewCardInList
-} from "../../redux/actions/ScrumBoardActions";
+  addNewCardInList,
+} from '../../redux/actions/ScrumBoardActions'
 
 class BoardList extends Component {
   state = {
     shouldOpenTitleEditor: false,
     shouldOpenAddCard: false,
-    cardTitleText: "",
-    columnTitleText: ""
-  };
+    cardTitleText: '',
+    columnTitleText: '',
+  }
 
-  handleChange = event => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      if (event.target.name === "cardTitleText") {
-        this.handleAddNewCard();
+  handleChange = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      if (event.target.name === 'cardTitleText') {
+        this.handleAddNewCard()
       } else {
-        this.handleRenameList();
+        this.handleRenameList()
       }
-    } else this.setState({ [event.target.name]: event.target.value });
-  };
+    } else this.setState({ [event.target.name]: event.target.value })
+  }
 
   handleRenameList = () => {
     this.props.renameListInBoard({
       boardId: this.props.board.id,
       listId: this.props.data.column.id,
-      listTitle: this.state.columnTitleText
-    });
-    this.openTitleEditor(false);
-  };
+      listTitle: this.state.columnTitleText,
+    })
+    this.openTitleEditor(false)
+  }
 
-  openTitleEditor = value => {
-    this.setState({ shouldOpenTitleEditor: value });
-  };
+  openTitleEditor = (value) => {
+    this.setState({ shouldOpenTitleEditor: value })
+  }
 
-  openAddCard = value => {
-    this.setState({ shouldOpenAddCard: value });
-  };
+  openAddCard = (value) => {
+    this.setState({ shouldOpenAddCard: value })
+  }
 
   handleAddNewCard = () => {
-    let { cardTitleText } = this.state;
-    if (cardTitleText.trim() !== "") {
+    let { cardTitleText } = this.state
+    if (cardTitleText.trim() !== '') {
       this.props.addNewCardInList({
         boardId: this.props.board.id,
         listId: this.props.data.column.id,
-        cardTitle: this.state.cardTitleText
-      });
-      this.setState({ cardTitleText: "" });
+        cardTitle: this.state.cardTitleText,
+      })
+      this.setState({ cardTitleText: '' })
     }
-  };
+  }
 
   handleListDelete = () => {
     this.props.deleteListFromBoard({
       boardId: this.props.board.id,
-      listId: this.props.data.column.id
-    });
-  };
+      listId: this.props.data.column.id,
+    })
+  }
 
   render() {
-    let { provided, snapshot, column } = this.props.data;
-    let {
-      shouldOpenAddCard,
-      shouldOpenTitleEditor,
-      cardTitleText
-    } = this.state;
-    let { handleCardClick } = this.props;
+    let { provided, snapshot, column } = this.props.data
+    let { shouldOpenAddCard, shouldOpenTitleEditor, cardTitleText } = this.state
+    let { handleCardClick } = this.props
 
     return (
       <Card
@@ -92,9 +88,9 @@ class BoardList extends Component {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         style={{
-          minWidth: "290px",
-          maxWidth: "290px",
-          ...provided.draggableProps.style
+          minWidth: '290px',
+          maxWidth: '290px',
+          ...provided.draggableProps.style,
         }}
       >
         <Droppable droppableId={column.id} direction="vertical" type="card">
@@ -102,9 +98,7 @@ class BoardList extends Component {
             <div ref={provided.innerRef} className="position-relative px-16">
               <div className="flex flex-middle flex-space-between py-8">
                 {shouldOpenTitleEditor ? (
-                  <ClickAwayListener
-                    onClickAway={() => this.openTitleEditor(false)}
-                  >
+                  <ClickAwayListener onClickAway={() => this.openTitleEditor(false)}>
                     <TextField
                       variant="outlined"
                       defaultValue={column.title}
@@ -114,19 +108,16 @@ class BoardList extends Component {
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton
-                              size="small"
-                              onClick={this.handleRenameList}
-                            >
+                            <IconButton size="small" onClick={this.handleRenameList}>
                               <Icon fontSize="small">done</Icon>
                             </IconButton>
                           </InputAdornment>
-                        )
+                        ),
                       }}
                       inputProps={{
                         style: {
-                          padding: "10px"
-                        }
+                          padding: '10px',
+                        },
                       }}
                     />
                   </ClickAwayListener>
@@ -146,10 +137,7 @@ class BoardList extends Component {
                     </IconButton>
                   }
                 >
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 150 }}
-                  >
+                  <MenuItem className="flex flex-middle" style={{ minWidth: 150 }}>
                     <Icon> settings </Icon>
                     <span className="pl-16"> Settings </span>
                   </MenuItem>
@@ -164,10 +152,7 @@ class BoardList extends Component {
                 </EgretMenu>
               </div>
 
-              <Scrollbar
-                className="position-relative"
-                style={{ height: "380px" }}
-              >
+              <Scrollbar className="position-relative" style={{ height: '380px' }}>
                 {column.cardList.map((card, index) => (
                   <Draggable
                     key={card.id}
@@ -179,14 +164,12 @@ class BoardList extends Component {
                       <Card
                         className="list-column__card borderborder-radius-4 bg-light-gray"
                         elevation={snapshot.isDragging ? 10 : 3}
-                        onClick={() =>
-                          handleCardClick({ ...card, listId: column.id })
-                        }
+                        onClick={() => handleCardClick({ ...card, listId: column.id })}
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         style={{
-                          ...provided.draggableProps.style
+                          ...provided.draggableProps.style,
                         }}
                       >
                         <ScrumBoardCard card={card}></ScrumBoardCard>
@@ -218,19 +201,16 @@ class BoardList extends Component {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        size="small"
-                        onClick={() => this.openAddCard(false)}
-                      >
+                      <IconButton size="small" onClick={() => this.openAddCard(false)}>
                         <Icon fontSize="small">clear</Icon>
                       </IconButton>
                     </InputAdornment>
-                  )
+                  ),
                 }}
                 inputProps={{
                   style: {
-                    padding: "10px"
-                  }
+                    padding: '10px',
+                  },
                 }}
               />
               <div className="flex flex-end">
@@ -257,18 +237,19 @@ class BoardList extends Component {
           </div>
         )}
       </Card>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   renameListInBoard: PropTypes.func.isRequired,
   deleteListFromBoard: PropTypes.func.isRequired,
   addNewCardInList: PropTypes.func.isRequired,
-  board: state.scrumboard.board
-});
+  board: state.scrumboard.board,
+})
 
-export default connect(
-  mapStateToProps,
-  { renameListInBoard, deleteListFromBoard, addNewCardInList }
-)(BoardList);
+export default connect(mapStateToProps, {
+  renameListInBoard,
+  deleteListFromBoard,
+  addNewCardInList,
+})(BoardList)

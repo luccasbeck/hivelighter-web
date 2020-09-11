@@ -1,26 +1,23 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import Icon from "@material-ui/core/Icon";
-import Fab from "@material-ui/core/Fab";
+import React, { Component } from 'react'
+import Grid from '@material-ui/core/Grid'
+import Icon from '@material-ui/core/Icon'
+import Fab from '@material-ui/core/Fab'
 
 class Intro1 extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <section
         className="section section-intro1"
         id="intro1"
         style={{
-          background:
-            "url(./assets/images/home-bg.jpg) center center/cover no-repeat"
+          background: 'url(./assets/images/home-bg.jpg) center center/cover no-repeat',
         }}
       >
         <div className="container">
           <Grid container spacing={3} justify="center">
             <Grid item md={6}>
-              <h1 className="section-intro1__title">
-                Better Management; Less Expense
-              </h1>
+              <h1 className="section-intro1__title">Better Management; Less Expense</h1>
               <div className="section-intro1__subtitle">
                 Not sure about Pro? Try trial first!
               </div>
@@ -71,17 +68,14 @@ class Intro1 extends Component {
                   <div className="price">$16</div>
                   <span className="price__text">Buy On ThemeForest</span>
                 </a>
-                <img
-                  src="./assets/images/screenshots/landing-intro.png"
-                  alt=""
-                />
+                <img src="./assets/images/screenshots/landing-intro.png" alt="" />
               </div>
             </Grid>
           </Grid>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Intro1;
+export default Intro1

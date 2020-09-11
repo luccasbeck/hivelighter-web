@@ -1,50 +1,47 @@
-import React from "react";
-import ReactEcharts from "echarts-for-react";
-import { merge } from "lodash";
+import React from 'react'
+import ReactEcharts from 'echarts-for-react'
+import { merge } from 'lodash'
 
 const defaultOption = {
   grid: {
     top: 16,
     left: 24,
     right: 0,
-    bottom: 24
+    bottom: 24,
   },
   legend: {},
   tooltip: {},
   xAxis: {
     show: false,
-    type: "category",
+    type: 'category',
     showGrid: false,
-    boundaryGap: false
+    boundaryGap: false,
   },
   yAxis: {
-    type: "value",
+    type: 'value',
     min: 10,
     max: 60,
     splitLine: {
-      show: false
+      show: false,
     },
     axisLine: {
-      show: false
+      show: false,
     },
     axisTick: {
-      show: false
+      show: false,
     },
     axisLabel: {
-      color: "rgba(0,0,0,0.54)",
+      color: 'rgba(0,0,0,0.54)',
       fontSize: 13,
-      fontFamily: "roboto",
-    }
-  }
-};
+      fontFamily: 'roboto',
+    },
+  },
+}
 
 const ModifiedAreaChart = ({ height, option }) => {
   return (
-    <ReactEcharts
-      style={{ height: height }}
-      option={merge({}, defaultOption, option)}
-    />
-  );
-};
+    <ReactEcharts style={{ height: height }} option={merge({}, defaultOption, option)} />
+  )
+}
 
-export default ModifiedAreaChart;
+export default ModifiedAreaChart

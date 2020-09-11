@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   TextField,
   Typography,
@@ -8,57 +8,57 @@ import {
   StepLabel,
   Step,
   Stepper,
-  makeStyles
-} from "@material-ui/core";
+  makeStyles,
+} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: "90%"
+    width: '90%',
   },
   button: {
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   actionsContainer: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   resetContainer: {
-    padding: theme.spacing(3)
-  }
-}));
+    padding: theme.spacing(3),
+  },
+}))
 
 function getSteps() {
-  return ["Select campaign settings", "Create an ad group", "Create an ad"];
+  return ['Select campaign settings', 'Create an ad group', 'Create an ad']
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <TextField label="First Name"></TextField>;
+      return <TextField label="First Name"></TextField>
     case 1:
-      return <TextField label="Last Name"></TextField>;
+      return <TextField label="Last Name"></TextField>
     case 2:
-      return <TextField label="Address"></TextField>;
+      return <TextField label="Address"></TextField>
     default:
-      return "";
+      return ''
   }
 }
 
 export default function VerticalStepper() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
+  const classes = useStyles()
+  const [activeStep, setActiveStep] = React.useState(0)
+  const steps = getSteps()
 
   function handleNext() {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
 
   function handleBack() {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
   }
 
   function handleReset() {
-    setActiveStep(0);
+    setActiveStep(0)
   }
 
   return (
@@ -84,7 +84,7 @@ export default function VerticalStepper() {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </Button>
                 </div>
               </div>
@@ -101,5 +101,5 @@ export default function VerticalStepper() {
         </Paper>
       )}
     </div>
-  );
+  )
 }

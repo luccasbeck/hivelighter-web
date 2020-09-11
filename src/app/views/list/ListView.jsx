@@ -1,14 +1,6 @@
-import React from "react";
-import {
-  Card,
-  Icon,
-  Avatar,
-  MenuItem,
-  IconButton,
-  Grid,
-  Hidden
-} from "@material-ui/core";
-import { EgretMenu } from "egret";
+import React from 'react'
+import { Card, Icon, Avatar, MenuItem, IconButton, Grid, Hidden } from '@material-ui/core'
+import { EgretMenu } from 'egret'
 
 const ListView = ({ list = [] }) => {
   return (
@@ -16,7 +8,7 @@ const ListView = ({ list = [] }) => {
       {list.map((item, index) => (
         <Card
           className={`list__card card p-8 position-relative ${
-            index < list.length ? "mb-16" : ""
+            index < list.length ? 'mb-16' : ''
           }`}
           key={item.id}
           elevation={3}
@@ -24,11 +16,7 @@ const ListView = ({ list = [] }) => {
           <Grid container justify="space-between" alignItems="center">
             <Grid item md={6}>
               <div className="flex flex-middle">
-                <img
-                  className="project-image"
-                  src={item.projectImage}
-                  alt="project"
-                />
+                <img className="project-image" src={item.projectImage} alt="project" />
                 <div className="ml-16">
                   <p className="m-0 mb-8">{item.projectName}</p>
                   <div className="flex">
@@ -55,28 +43,16 @@ const ListView = ({ list = [] }) => {
             </Grid>
             <Grid item md={2}>
               <div className="card__button-group flex flex-middle bg-paper">
-                <Icon
-                  fontSize="small"
-                  className="mr-16 text-muted cursor-pointer"
-                >
+                <Icon fontSize="small" className="mr-16 text-muted cursor-pointer">
                   filter_none
                 </Icon>
-                <Icon
-                  fontSize="small"
-                  className="mr-16 text-muted cursor-pointer"
-                >
+                <Icon fontSize="small" className="mr-16 text-muted cursor-pointer">
                   share
                 </Icon>
-                <Icon
-                  fontSize="small"
-                  className="mr-16 text-muted cursor-pointer"
-                >
+                <Icon fontSize="small" className="mr-16 text-muted cursor-pointer">
                   edit
                 </Icon>
-                <Icon
-                  fontSize="small"
-                  className="mr-16 text-muted cursor-pointer"
-                >
+                <Icon fontSize="small" className="mr-16 text-muted cursor-pointer">
                   delete
                 </Icon>
               </div>
@@ -110,7 +86,7 @@ const ListView = ({ list = [] }) => {
         </Card>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ListView;
+export default ListView

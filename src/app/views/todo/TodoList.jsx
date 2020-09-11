@@ -1,112 +1,104 @@
-import React, { Component } from "react";
-import TodoItem from "./TodoItem";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {
-  getAllTodo,
-  updateTodoById,
-  reorderTodoList,
-  getAllTodoTag
-} from "./TodoService";
-import { Icon, IconButton, MenuItem, Button, Card } from "@material-ui/core";
-import {EgretMenu} from "egret";
+import React, { Component } from 'react'
+import TodoItem from './TodoItem'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { getAllTodo, updateTodoById, reorderTodoList, getAllTodoTag } from './TodoService'
+import { Icon, IconButton, MenuItem, Button, Card } from '@material-ui/core'
+import { EgretMenu } from 'egret'
 
 class TodoList extends Component {
-  todoList = [];
+  todoList = []
   state = {
     tagList: [],
-    todoList: []
-  };
+    todoList: [],
+  }
 
   componentWillMount() {
-    this.props.setSearchFunction(this.search);
+    this.props.setSearchFunction(this.search)
     getAllTodo().then(({ data }) => {
       getAllTodoTag().then(({ data: tagList }) => {
         this.setState({
           tagList,
-          todoList: [...data]
-        });
-        this.todoList = [...data];
-      });
-    });
+          todoList: [...data],
+        })
+        this.todoList = [...data]
+      })
+    })
   }
 
-  search = query => {
-    query = query.toLowerCase();
+  search = (query) => {
+    query = query.toLowerCase()
     let filteredTodoList = this.todoList.filter(
-      todo =>
-        todo.title.toLowerCase().match(query) ||
-        todo.note.toLowerCase().match(query)
-    );
+      (todo) =>
+        todo.title.toLowerCase().match(query) || todo.note.toLowerCase().match(query),
+    )
     this.setState({
-      todoList: [...filteredTodoList]
-    });
-  };
+      todoList: [...filteredTodoList],
+    })
+  }
 
-  updateTodo = todo => {
+  updateTodo = (todo) => {
     updateTodoById(todo).then(({ data }) => {
       this.setState({
-        todoList: [...data]
-      });
-      this.todoList = [...data];
-    });
-  };
+        todoList: [...data],
+      })
+      this.todoList = [...data]
+    })
+  }
 
   reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+    const result = Array.from(list)
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
 
-    return result;
-  };
+    return result
+  }
 
-  handleDragEnd = result => {
+  handleDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
-      return;
+      return
     }
 
     let todoList = this.reorder(
       this.state.todoList,
       result.source.index,
-      result.destination.index
-    );
+      result.destination.index,
+    )
 
     reorderTodoList(todoList).then(({ data }) => {
       this.setState({
-        todoList: [...data]
-      });
-      this.todoList = [...data];
-    });
-  };
+        todoList: [...data],
+      })
+      this.todoList = [...data]
+    })
+  }
 
   filterTodoListByProperty = (queryField, queryValue) => {
-    if (queryField !== "all") {
+    if (queryField !== 'all') {
       this.setState({
-        todoList: [
-          ...this.todoList.filter(todo => todo[queryField] === queryValue)
-        ]
-      });
+        todoList: [...this.todoList.filter((todo) => todo[queryField] === queryValue)],
+      })
     } else {
       this.setState({
-        todoList: [...this.todoList]
-      });
+        todoList: [...this.todoList],
+      })
     }
-  };
+  }
 
-  filterTodoListByTag = tagId => {
-    if (tagId !== "all")
+  filterTodoListByTag = (tagId) => {
+    if (tagId !== 'all')
       this.setState({
-        todoList: [...this.todoList.filter(todo => todo.tag.includes(tagId))]
-      });
+        todoList: [...this.todoList.filter((todo) => todo.tag.includes(tagId))],
+      })
     else {
       this.setState({
-        todoList: [...this.todoList]
-      });
+        todoList: [...this.todoList],
+      })
     }
-  };
+  }
 
   render() {
-    let { todoList, tagList } = this.state;
+    let { todoList, tagList } = this.state
     return (
       <Card className="todo position-relative m-sm-30">
         <div className="todo-list__topbar bg-light-gray py-8 flex flex-wrap flex-middle flex-space-between">
@@ -118,49 +110,31 @@ class TodoList extends Component {
                 </IconButton>
               }
             >
-              <MenuItem onClick={() => this.filterTodoListByProperty("all")}>
+              <MenuItem onClick={() => this.filterTodoListByProperty('all')}>
                 All
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("read", true)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('read', true)}>
                 Read
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("read", false)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('read', false)}>
                 Unread
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("done", true)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('done', true)}>
                 Done
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("done", false)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('done', false)}>
                 Undone
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("important", true)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('important', true)}>
                 Important
               </MenuItem>
-              <MenuItem
-                onClick={() =>
-                  this.filterTodoListByProperty("important", false)
-                }
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('important', false)}>
                 Unimportant
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("starred", true)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('starred', true)}>
                 Starred
               </MenuItem>
-              <MenuItem
-                onClick={() => this.filterTodoListByProperty("starred", false)}
-              >
+              <MenuItem onClick={() => this.filterTodoListByProperty('starred', false)}>
                 Unstarred
               </MenuItem>
             </EgretMenu>
@@ -173,11 +147,11 @@ class TodoList extends Component {
             >
               <MenuItem
                 className="capitalize"
-                onClick={() => this.filterTodoListByTag("all")}
+                onClick={() => this.filterTodoListByTag('all')}
               >
                 all
               </MenuItem>
-              {tagList.map(tag => (
+              {tagList.map((tag) => (
                 <MenuItem
                   key={tag.id}
                   className="capitalize"
@@ -192,7 +166,7 @@ class TodoList extends Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => this.props.history.push("/todo/list/add")}
+              onClick={() => this.props.history.push('/todo/list/add')}
             >
               Create Todo
             </Button>
@@ -205,11 +179,7 @@ class TodoList extends Component {
               {(provided, snapshot) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {todoList.map((todo, index) => (
-                    <Draggable
-                      key={todo.id}
-                      draggableId={todo.id}
-                      index={index}
-                    >
+                    <Draggable key={todo.id} draggableId={todo.id} index={index}>
                       {(provided, snapshot) => (
                         <div
                           ref={provided.innerRef}
@@ -234,8 +204,8 @@ class TodoList extends Component {
           </DragDropContext>
         </div>
       </Card>
-    );
+    )
   }
 }
 
-export default TodoList;
+export default TodoList

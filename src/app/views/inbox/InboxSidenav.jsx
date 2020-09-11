@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react'
 import {
   ListItem,
   ListItemIcon,
   ListItemText,
   Divider,
   Icon,
-  Button
-} from "@material-ui/core";
-import InboxComposeDialog from "./InboxComposeDialog";
+  Button,
+} from '@material-ui/core'
+import InboxComposeDialog from './InboxComposeDialog'
 
 const InboxSidenav = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <div className="mr-4 bg-default">
@@ -78,7 +78,7 @@ const InboxSidenav = () => {
 
       <InboxComposeDialog open={open} handleClose={handleClose} />
     </div>
-  );
-};
+  )
+}
 
-export default InboxSidenav;
+export default InboxSidenav

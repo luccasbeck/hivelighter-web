@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class Brand extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <div className="flex flex-middle flex-space-between brand-area">
@@ -11,8 +11,8 @@ class Brand extends Component {
         </div>
         {this.props.children}
       </div>
-    );
+    )
   }
 }
 
-export default Brand;
+export default Brand

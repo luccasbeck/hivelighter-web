@@ -1,47 +1,47 @@
-import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
+import React, { Component } from 'react'
+import Card from '@material-ui/core/Card'
 
-import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import { Icon } from "@material-ui/core";
-import Carousel from "../common/Carousel";
+import CardContent from '@material-ui/core/CardContent'
+import Divider from '@material-ui/core/Divider'
+import IconButton from '@material-ui/core/IconButton'
+import { Icon } from '@material-ui/core'
+import Carousel from '../common/Carousel'
 
 class Portfolio2 extends Component {
-  state = {};
+  state = {}
 
   portfoioList = [
     {
-      imageUrl: "./assets/images/sq-12.jpg",
-      name: "Project One",
+      imageUrl: './assets/images/sq-12.jpg',
+      name: 'Project One',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-10.jpg",
-      name: "Project Two",
+      imageUrl: './assets/images/sq-10.jpg',
+      name: 'Project Two',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-9.jpg",
-      name: "Project Three",
+      imageUrl: './assets/images/sq-9.jpg',
+      name: 'Project Three',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-11.jpg",
-      name: "Project Four",
+      imageUrl: './assets/images/sq-11.jpg',
+      name: 'Project Four',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
     },
     {
-      imageUrl: "./assets/images/sq-13.jpg",
-      name: "Project Five",
+      imageUrl: './assets/images/sq-13.jpg',
+      name: 'Project Five',
       description: `Adipisci quas repellat sed. Quasi quaerat aut nam
-      possimus vitae dignissimos, sapiente est atque tenetur.`
-    }
-  ];
+      possimus vitae dignissimos, sapiente est atque tenetur.`,
+    },
+  ]
   render() {
     return (
       <section className="section section-portfolio1" id="portfoli2">
@@ -49,8 +49,8 @@ class Portfolio2 extends Component {
           <div className="section__header">
             <h2>Our Works</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-              unde inventore molestias ab adipisci eius nisi placeat at.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+              inventore molestias ab adipisci eius nisi placeat at.
             </p>
           </div>
 
@@ -78,8 +78,8 @@ class Portfolio2 extends Component {
           </Carousel>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Portfolio2;
+export default Portfolio2

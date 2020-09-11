@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { Grid, Card, Icon, Button } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Grid, Card, Icon, Button } from '@material-ui/core'
 
 class Service3 extends Component {
-  state = {};
+  state = {}
   cardList = [
     {
-      icon: "account_balance",
-      text: "Invoicing"
+      icon: 'account_balance',
+      text: 'Invoicing',
     },
     {
-      icon: "payment",
-      text: "Payment Gateway"
+      icon: 'payment',
+      text: 'Payment Gateway',
     },
     {
-      icon: "receipt",
-      text: "Customer Records"
+      icon: 'receipt',
+      text: 'Customer Records',
     },
     {
-      icon: "cloud_done",
-      text: "Cloud Sync"
-    }
-  ];
+      icon: 'cloud_done',
+      text: 'Cloud Sync',
+    },
+  ]
 
   render() {
     return (
@@ -44,14 +44,13 @@ class Service3 extends Component {
             <Grid item lg={6} md={6} sm={12}>
               <h2 className="">Made by business people for business people</h2>
               <p>
-                Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no,
-                has eu lorem convenire incorrupte. Lorem ipsum dolor sit amet,
+                Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem
+                convenire incorrupte. Lorem ipsum dolor sit amet,
                 <br />
                 <br />
-                vim quidam blandit voluptaria no, has eu lorem convenire
-                incorrupte. Vis mutat altera percipit ad, ipsum prompta ius eu.
-                Sanctus appellantur vim ea. Dolorem delicata vis te, aperiam
-                nostrum ut per.
+                vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis
+                mutat altera percipit ad, ipsum prompta ius eu. Sanctus appellantur vim
+                ea. Dolorem delicata vis te, aperiam nostrum ut per.
               </p>
               <Button variant="contained" color="secondary">
                 Try it free
@@ -60,8 +59,8 @@ class Service3 extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Service3;
+export default Service3

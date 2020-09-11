@@ -1,26 +1,15 @@
-import React, { Component } from "react";
-import {
-  Card,
-  MenuItem,
-  Divider,
-  IconButton,
-  Icon,
-  Hidden
-} from "@material-ui/core";
-import {
-  EgretSidenavContainer,
-  EgretSidenav,
-  EgretSidenavContent
-} from "egret";
+import React, { Component } from 'react'
+import { Card, MenuItem, Divider, IconButton, Icon, Hidden } from '@material-ui/core'
+import { EgretSidenavContainer, EgretSidenav, EgretSidenavContent } from 'egret'
 
 class LeftSidebarCard extends Component {
-  state = { open: true };
+  state = { open: true }
 
   toggleSidenav = () => {
     this.setState({
-      open: !this.state.open
-    });
-  };
+      open: !this.state.open,
+    })
+  }
 
   render() {
     return (
@@ -93,8 +82,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam commodi omnis con
           </EgretSidenavContainer>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default LeftSidebarCard;
+export default LeftSidebarCard

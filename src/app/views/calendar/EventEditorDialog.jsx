@@ -1,74 +1,74 @@
-import React, { Component } from "react";
-import { Dialog, IconButton, Button, Icon, Grid } from "@material-ui/core";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
-import { addNewEvent, updateEvent, deleteEvent } from "./CalendarService";
+import React, { Component } from 'react'
+import { Dialog, IconButton, Button, Icon, Grid } from '@material-ui/core'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers'
+import 'date-fns'
+import DateFnsUtils from '@date-io/date-fns'
+import { addNewEvent, updateEvent, deleteEvent } from './CalendarService'
 
 class EventEditorDialog extends Component {
   state = {
-    title: "",
-    start: "",
-    end: "",
-    location: "",
-    note: ""
-  };
+    title: '',
+    start: '',
+    end: '',
+    location: '',
+    note: '',
+  }
 
-  handleChange = event => {
-    event.persist();
+  handleChange = (event) => {
+    event.persist()
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
 
   handleFormSubmit = () => {
-    let { id } = this.state;
+    let { id } = this.state
     if (id) {
       updateEvent({
-        ...this.state
+        ...this.state,
       }).then(() => {
-        this.props.handleClose();
-      });
+        this.props.handleClose()
+      })
     } else {
       addNewEvent({
         id: this.generateRandomId(),
-        ...this.state
+        ...this.state,
       }).then(() => {
-        this.props.handleClose();
-      });
+        this.props.handleClose()
+      })
     }
-  };
+  }
 
   handleDeleteEvent = () => {
     if (this.state.id) {
       deleteEvent(this.state).then(() => {
-        this.props.handleClose();
-      });
+        this.props.handleClose()
+      })
     }
-  };
+  }
 
   handleDateChange = (date, name) => {
     this.setState({
-      [name]: date
-    });
-  };
+      [name]: date,
+    })
+  }
 
   generateRandomId = () => {
-    let tempId = Math.random().toString();
-    let id = tempId.substr(2, tempId.length - 1);
-    return id;
-  };
+    let tempId = Math.random().toString()
+    let id = tempId.substr(2, tempId.length - 1)
+    return id
+  }
 
   componentWillMount() {
     this.setState({
-      ...this.props.event
-    });
+      ...this.props.event,
+    })
   }
 
   render() {
-    let { title, start, end, location, note } = this.state;
-    let { open, handleClose } = this.props;
+    let { title, start, end, location, note } = this.state
+    let { open, handleClose } = this.props
 
     return (
       <Dialog onClose={handleClose} open={open} maxWidth="xs" fullWidth={true}>
@@ -88,8 +88,8 @@ class EventEditorDialog extends Component {
               type="text"
               name="title"
               value={title}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
 
             <Grid container spacing={4}>
@@ -103,7 +103,7 @@ class EventEditorDialog extends Component {
                     type="text"
                     autoOk={true}
                     value={start}
-                    onChange={date => this.handleDateChange(date, "start")}
+                    onChange={(date) => this.handleDateChange(date, 'start')}
                   />
                 </MuiPickersUtilsProvider>
               </Grid>
@@ -117,7 +117,7 @@ class EventEditorDialog extends Component {
                     type="text"
                     autoOk={true}
                     value={end}
-                    onChange={date => this.handleDateChange(date, "end")}
+                    onChange={(date) => this.handleDateChange(date, 'end')}
                   />
                 </MuiPickersUtilsProvider>
               </Grid>
@@ -130,8 +130,8 @@ class EventEditorDialog extends Component {
               type="text"
               name="location"
               value={location}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
 
             <TextValidator
@@ -143,8 +143,8 @@ class EventEditorDialog extends Component {
               value={note}
               rowsMax={2}
               multiline={true}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
 
             <div className="flex flex-space-between flex-middle">
@@ -159,8 +159,8 @@ class EventEditorDialog extends Component {
           </ValidatorForm>
         </div>
       </Dialog>
-    );
+    )
   }
 }
 
-export default EventEditorDialog;
+export default EventEditorDialog

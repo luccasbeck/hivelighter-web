@@ -1,34 +1,34 @@
-import React, { Component } from "react";
-import { Grid, Card, Icon, Button } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Grid, Card, Icon, Button } from '@material-ui/core'
 
 class Service4 extends Component {
-  state = {};
+  state = {}
   cardList = [
     {
-      icon: "alarm",
-      title: "Choose Technology",
+      icon: 'alarm',
+      title: 'Choose Technology',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte."
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte.',
     },
     {
-      icon: "settings",
-      title: "Setup Workflows",
+      icon: 'settings',
+      title: 'Setup Workflows',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte."
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte.',
     },
     {
-      icon: "dvr",
-      title: "Learn from Data",
+      icon: 'dvr',
+      title: 'Learn from Data',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte."
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte.',
     },
     {
-      icon: "multiline_chart",
-      title: "Scale Up",
+      icon: 'multiline_chart',
+      title: 'Scale Up',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte."
-    }
-  ];
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte.',
+    },
+  ]
   render() {
     return (
       <div className="section section-service4" id="service4">
@@ -52,19 +52,14 @@ class Service4 extends Component {
               ))}
             </Grid>
 
-            <Button
-              className="mt-32"
-              size="large"
-              variant="contained"
-              color="secondary"
-            >
+            <Button className="mt-32" size="large" variant="contained" color="secondary">
               Start Your Free Trial
             </Button>
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Service4;
+export default Service4

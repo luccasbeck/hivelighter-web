@@ -1,20 +1,17 @@
-import React from "react";
-import SimpleSwitch from "./SijmpleSwitch";
-import LabelledSwitch from "./LabelledSwitch";
-import FormGroupSwitch from "./FormGroupSwitch";
-import CustomizedSwitch from "./CustomizedSwitch";
-import PlacingSwitchLabel from "./PlacingSwitchLabel";
-import { Breadcrumb, SimpleCard } from "egret";
+import React from 'react'
+import SimpleSwitch from './SijmpleSwitch'
+import LabelledSwitch from './LabelledSwitch'
+import FormGroupSwitch from './FormGroupSwitch'
+import CustomizedSwitch from './CustomizedSwitch'
+import PlacingSwitchLabel from './PlacingSwitchLabel'
+import { Breadcrumb, SimpleCard } from 'egret'
 
 const AppSwitch = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
-          routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Switch" }
-          ]}
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Switch' }]}
         />
       </div>
       <SimpleCard title="Simple Switch">
@@ -37,7 +34,7 @@ const AppSwitch = () => {
         <PlacingSwitchLabel />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppSwitch;
+export default AppSwitch

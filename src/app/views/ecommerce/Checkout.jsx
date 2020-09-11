@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import React, { Component, Fragment } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import {
   Card,
   Grid,
@@ -7,47 +7,48 @@ import {
   Checkbox,
   Button,
   MenuItem,
-  Divider
-} from "@material-ui/core";
-import { countries } from "./Country";
-import PaymentDialog from "./PaymentDialog";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
+  Divider,
+} from '@material-ui/core'
+import { countries } from './Country'
+import PaymentDialog from './PaymentDialog'
+// eslint-disable-next-line no-unused-vars
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
 
 class Checkout extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    company: "",
-    email: "",
-    mobile: "",
-    country: "United States",
-    city: "",
-    address: "",
-    open: false
-  };
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    mobile: '',
+    country: 'United States',
+    city: '',
+    address: '',
+    open: false,
+  }
 
   getTotalCost = () => {
-    let { cartList = [] } = this.props;
-    let totalCost = 0;
-    cartList.map(product => {
-      totalCost += product.amount * product.price;
-    });
-    return totalCost;
-  };
+    let { cartList = [] } = this.props
+    let totalCost = 0
+    cartList.forEach((product) => {
+      totalCost += product.amount * product.price
+    })
+    return totalCost
+  }
 
-  handleChange = event => {
-    event.persist();
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  handleChange = (event) => {
+    event.persist()
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   handleSubmit = () => {
-    this.toggleDialog();
-  };
+    this.toggleDialog()
+  }
 
   toggleDialog = () => {
-    this.setState({ open: !this.state.open });
-  };
+    this.setState({ open: !this.state.open })
+  }
 
   render() {
     let {
@@ -58,18 +59,14 @@ class Checkout extends Component {
       mobile,
       country,
       city,
-      address
-    } = this.state;
+      address,
+    } = this.state
 
-    let { cartList = [] } = this.props;
+    let { cartList = [] } = this.props
 
     return (
       <Card className="checkout m-sm-30 p-sm-24">
-        <ValidatorForm
-          ref="form"
-          onSubmit={this.handleSubmit}
-          onError={errors => null}
-        >
+        <ValidatorForm ref="form" onSubmit={this.handleSubmit} onError={(errors) => null}>
           <h5 className="font-weight-500 mt-0 mb-24">Billing Details</h5>
           <Grid container spacing={3}>
             <Grid item lg={7} md={7} sm={12} xs={12}>
@@ -82,8 +79,8 @@ class Checkout extends Component {
                     type="text"
                     name="firstName"
                     value={firstName}
-                    validators={["required"]}
-                    errorMessages={["this field is required"]}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     fullWidth
                   />
                 </Grid>
@@ -95,8 +92,8 @@ class Checkout extends Component {
                     type="text"
                     name="lastName"
                     value={lastName}
-                    validators={["required"]}
-                    errorMessages={["this field is required"]}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     fullWidth
                   />
                 </Grid>
@@ -122,11 +119,8 @@ class Checkout extends Component {
                     type="email"
                     name="email"
                     value={email}
-                    validators={["required", "isEmail"]}
-                    errorMessages={[
-                      "this field is required",
-                      "email is not valid"
-                    ]}
+                    validators={['required', 'isEmail']}
+                    errorMessages={['this field is required', 'email is not valid']}
                     fullWidth
                   />
                 </Grid>
@@ -138,8 +132,8 @@ class Checkout extends Component {
                     type="number"
                     name="mobile"
                     value={mobile}
-                    validators={["required"]}
-                    errorMessages={["this field is required"]}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     fullWidth
                   />
                 </Grid>
@@ -156,7 +150,7 @@ class Checkout extends Component {
                     onChange={this.handleChange}
                     fullWidth
                   >
-                    {countries.map(country => (
+                    {countries.map((country) => (
                       <MenuItem key={country.code} value={country.name}>
                         {country.name}
                       </MenuItem>
@@ -171,8 +165,8 @@ class Checkout extends Component {
                     type="text"
                     name="city"
                     value={city}
-                    validators={["required"]}
-                    errorMessages={["this field is required"]}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     fullWidth
                   />
                 </Grid>
@@ -186,15 +180,12 @@ class Checkout extends Component {
                 type="text"
                 name="address"
                 value={address}
-                validators={["required"]}
-                errorMessages={["this field is required"]}
+                validators={['required']}
+                errorMessages={['this field is required']}
                 fullWidth
               />
 
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Create an account?"
-              />
+              <FormControlLabel control={<Checkbox />} label="Create an account?" />
             </Grid>
             <Grid item lg={5} md={5} sm={12} xs={12}>
               <div className="flex flex-space-between mb-16">
@@ -202,7 +193,7 @@ class Checkout extends Component {
                 <h6 className="m-0">Total Price</h6>
               </div>
               <div className="checkout__product-list">
-                {cartList.map(product => (
+                {cartList.map((product) => (
                   <Fragment key={product.id}>
                     <div className="flex flex-space-between py-16">
                       <span className="text-muted pr-8">{product.title}</span>
@@ -235,16 +226,13 @@ class Checkout extends Component {
           toggleDialog={this.toggleDialog}
         ></PaymentDialog>
       </Card>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   cartList: state.ecommerce.cartList,
-  user: state.user
-});
+  user: state.user,
+})
 
-export default connect(
-  mapStateToProps,
-  {}
-)(Checkout);
+export default connect(mapStateToProps, {})(Checkout)

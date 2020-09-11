@@ -1,19 +1,16 @@
-import React from "react";
-import SimpleCheckbox from "./SimpleCheckbox";
-import LabelledCheckbox from "./LabelledCheckbox";
-import PlacingCheckboxLabel from "./PlacingCheckboxLabel";
-import FormGroupCheckbox from "./FormGroupCheckbox";
-import { Breadcrumb, SimpleCard } from "egret";
+import React from 'react'
+import SimpleCheckbox from './SimpleCheckbox'
+import LabelledCheckbox from './LabelledCheckbox'
+import PlacingCheckboxLabel from './PlacingCheckboxLabel'
+import FormGroupCheckbox from './FormGroupCheckbox'
+import { Breadcrumb, SimpleCard } from 'egret'
 
 const AppCheckbox = () => {
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
-          routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Chckbox" }
-          ]}
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Chckbox' }]}
         />
       </div>
       <SimpleCard title="simple checkbox">
@@ -32,7 +29,7 @@ const AppCheckbox = () => {
         <PlacingCheckboxLabel />
       </SimpleCard>
     </div>
-  );
-};
+  )
+}
 
-export default AppCheckbox;
+export default AppCheckbox

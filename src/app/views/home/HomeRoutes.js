@@ -1,46 +1,46 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const Landing1 = EgretLoadable({
-  loader: () => import("./Landing1")
-});
+  loader: () => import('./Landing1'),
+})
 const Landing2 = EgretLoadable({
-  loader: () => import("./Landing2")
-});
+  loader: () => import('./Landing2'),
+})
 const Landing3 = EgretLoadable({
-  loader: () => import("./Landing3")
-});
+  loader: () => import('./Landing3'),
+})
 
 const homeLayoutSettings = {
   layout1Settings: {
-    mode: "full",
-    leftSidebar: { show: false, mode: "closed" },
+    mode: 'full',
+    leftSidebar: { show: false, mode: 'closed' },
     topbar: { show: false },
   },
   layout2Settings: {
-    mode: "full",
+    mode: 'full',
     topbar: { show: false },
     navbar: { show: false },
   },
   perfectScrollbar: false,
-  footer: { show: false }
+  footer: { show: false },
 }
 
 const homeRoutes = [
   {
-    path: "/landing1",
+    path: '/landing1',
     component: Landing1,
-    settings: homeLayoutSettings
+    settings: homeLayoutSettings,
   },
   {
-    path: "/landing2",
+    path: '/landing2',
     component: Landing2,
-    settings: homeLayoutSettings
+    settings: homeLayoutSettings,
   },
   {
-    path: "/landing3",
+    path: '/landing3',
     component: Landing3,
-    settings: homeLayoutSettings
-  }
-];
+    settings: homeLayoutSettings,
+  },
+]
 
-export default homeRoutes;
+export default homeRoutes

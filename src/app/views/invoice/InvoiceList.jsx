@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Table,
   TableHead,
@@ -8,48 +8,48 @@ import {
   Button,
   Card,
   Icon,
-  IconButton
-} from "@material-ui/core";
-import { getAllInvoice, deleteInvoice } from "./InvoiceService";
-import { Link } from "react-router-dom";
-import { ConfirmationDialog } from "egret";
-import { classList } from "utils";
+  IconButton,
+} from '@material-ui/core'
+import { getAllInvoice, deleteInvoice } from './InvoiceService'
+import { Link } from 'react-router-dom'
+import { ConfirmationDialog } from 'egret'
+import { classList } from 'utils'
 
 class InvoiceList extends Component {
   state = {
     invoiceList: [],
-    shouldShowConfirmationDialog: false
-  };
-
-  componentDidMount() {
-    getAllInvoice().then(res => this.setState({ invoiceList: res.data }));
+    shouldShowConfirmationDialog: false,
   }
 
-  handeViewClick = invoiceId => {
-    this.props.history.push(`/invoice/${invoiceId}`);
-    // getInvoiceById(invoiceId).then(res => console.log(res.data));
-  };
+  componentDidMount() {
+    getAllInvoice().then((res) => this.setState({ invoiceList: res.data }))
+  }
 
-  handeDeleteClick = invoice => {
-    this.setState({ shouldShowConfirmationDialog: true, invoice });
-  };
+  handeViewClick = (invoiceId) => {
+    this.props.history.push(`/invoice/${invoiceId}`)
+    // getInvoiceById(invoiceId).then(res => console.log(res.data));
+  }
+
+  handeDeleteClick = (invoice) => {
+    this.setState({ shouldShowConfirmationDialog: true, invoice })
+  }
 
   handleConfirmationResponse = () => {
-    let { invoice } = this.state;
-    deleteInvoice(invoice).then(res => {
+    let { invoice } = this.state
+    deleteInvoice(invoice).then((res) => {
       this.setState({
         invoiceList: res.data,
-        shouldShowConfirmationDialog: false
-      });
-    });
-  };
+        shouldShowConfirmationDialog: false,
+      })
+    })
+  }
 
   handleDialogClose = () => {
-    this.setState({ shouldShowConfirmationDialog: false });
-  };
+    this.setState({ shouldShowConfirmationDialog: false })
+  }
 
   render() {
-    let { invoiceList } = this.state;
+    let { invoiceList } = this.state
     return (
       <div className="m-sm-30">
         <Link to="/invoice/add">
@@ -83,10 +83,10 @@ class InvoiceList extends Component {
                   <TableCell className="pl-0 capitalize">
                     <small
                       className={classList({
-                        "border-radius-4  text-white px-8 py-2": true,
-                        "bg-primary": invoice.status === 'delivered',
-                        "bg-secondary": invoice.status === 'processing',
-                        "bg-error": invoice.status === 'pending',
+                        'border-radius-4  text-white px-8 py-2': true,
+                        'bg-primary': invoice.status === 'delivered',
+                        'bg-secondary': invoice.status === 'processing',
+                        'bg-error': invoice.status === 'pending',
                       })}
                     >
                       {invoice.status}
@@ -116,8 +116,8 @@ class InvoiceList extends Component {
           text="Are you sure to delete?"
         />
       </div>
-    );
+    )
   }
 }
 
-export default InvoiceList;
+export default InvoiceList

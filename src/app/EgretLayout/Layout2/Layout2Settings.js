@@ -3,17 +3,18 @@ const Layout2Settings = {
   topbar: {
     show: true,
     fixed: true,
-    theme: 'hive'
+    theme: 'hive',
   },
   navbar: {
     show: false,
-    theme: 'slateDark2'
+    theme: 'slateDark2',
   },
-  leftSidebar: { // Only for mobile devices
+  leftSidebar: {
+    // Only for mobile devices
     show: false,
     mode: 'close', // full | close | compact | mobile
-    theme: 'slateDark1'
-  }
+    theme: 'slateDark1',
+  },
 }
 
-export default Layout2Settings;
+export default Layout2Settings

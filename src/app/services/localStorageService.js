@@ -15,7 +15,6 @@ class localStorageService {
       return null
     }
   }
-
 }
 
-export default new localStorageService();
+export default new localStorageService()

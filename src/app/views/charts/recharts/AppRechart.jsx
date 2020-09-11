@@ -1,26 +1,23 @@
-import React, { Component } from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import SimpleLineChart from "./SimpleLineChart";
-import StackedAreaChart from "./StackedAreaChart";
-import SimpleBarChart from "./SimpleBarChart";
-import LineBarAreaComposedChart from "./LineBarAreaComposedChart";
-import SimpleScatterChart from "./SimpleScatterChart";
-import TwoSimplePieChart from "./TwoSimplePieChart";
-import SimpleRadarChart from "./SimpleRadarChart";
-import SimpleRadialBar from "./SimpleRadialBar";
-import SimpleTreeMap from "./SimpleTreeMap";
+import React, { Component } from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import SimpleLineChart from './SimpleLineChart'
+import StackedAreaChart from './StackedAreaChart'
+import SimpleBarChart from './SimpleBarChart'
+import LineBarAreaComposedChart from './LineBarAreaComposedChart'
+import SimpleScatterChart from './SimpleScatterChart'
+import TwoSimplePieChart from './TwoSimplePieChart'
+import SimpleRadarChart from './SimpleRadarChart'
+import SimpleRadialBar from './SimpleRadialBar'
+import SimpleTreeMap from './SimpleTreeMap'
 
 class AppRechart extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
+        <div className="mb-sm-30">
           <Breadcrumb
-            routeSegments={[
-              { name: "Charts", path: "/charts" },
-              { name: "Recharts" }
-            ]}
+            routeSegments={[{ name: 'Charts', path: '/charts' }, { name: 'Recharts' }]}
           />
         </div>
         <SimpleCard title="simple line chart">
@@ -59,8 +56,8 @@ class AppRechart extends Component {
           <SimpleTreeMap />
         </SimpleCard>
       </div>
-    );
+    )
   }
 }
 
-export default AppRechart;
+export default AppRechart

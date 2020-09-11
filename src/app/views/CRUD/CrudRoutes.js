@@ -1,15 +1,15 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const CrudTable = EgretLoadable({
-  loader: () => import("./CrudTable")
-});
+  loader: () => import('./CrudTable'),
+})
 
 const crudRoute = [
   {
-    path: "/crud-table",
+    path: '/crud-table',
     exact: true,
-    component: CrudTable
-  }
-];
+    component: CrudTable,
+  },
+]
 
-export default crudRoute;
+export default crudRoute

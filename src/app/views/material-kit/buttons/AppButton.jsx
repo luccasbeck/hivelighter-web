@@ -1,28 +1,25 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Icon, Button, IconButton, Fab } from "@material-ui/core";
-import { Breadcrumb, SimpleCard } from "egret";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Icon, Button, IconButton, Fab } from '@material-ui/core'
+import { Breadcrumb, SimpleCard } from 'egret'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    display: "none"
-  }
-}));
+    display: 'none',
+  },
+}))
 
 export default function AppButton() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className="m-sm-30">
-      <div  className="mb-sm-30">
+      <div className="mb-sm-30">
         <Breadcrumb
-          routeSegments={[
-            { name: "Material", path: "/material" },
-            { name: "Buttons" }
-          ]}
+          routeSegments={[{ name: 'Material', path: '/material' }, { name: 'Buttons' }]}
         />
       </div>
       <SimpleCard title="contained buttons">
@@ -32,26 +29,13 @@ export default function AppButton() {
         <Button variant="contained" color="primary" className={classes.button}>
           Primary
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-        >
+        <Button variant="contained" color="secondary" className={classes.button}>
           Secondary
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          disabled
-          className={classes.button}
-        >
+        <Button variant="contained" color="secondary" disabled className={classes.button}>
           Disabled
         </Button>
-        <Button
-          variant="contained"
-          href="#contained-buttons"
-          className={classes.button}
-        >
+        <Button variant="contained" href="#contained-buttons" className={classes.button}>
           Link
         </Button>
         <input
@@ -62,11 +46,7 @@ export default function AppButton() {
           type="file"
         />
         <label htmlFor="contained-button-file">
-          <Button
-            variant="contained"
-            component="span"
-            className={classes.button}
-          >
+          <Button variant="contained" component="span" className={classes.button}>
             Upload
           </Button>
         </label>
@@ -113,11 +93,7 @@ export default function AppButton() {
         <Button variant="outlined" disabled className={classes.button}>
           Disabled
         </Button>
-        <Button
-          variant="outlined"
-          href="#outlined-buttons"
-          className={classes.button}
-        >
+        <Button variant="outlined" href="#outlined-buttons" className={classes.button}>
           Link
         </Button>
         <input
@@ -128,11 +104,7 @@ export default function AppButton() {
           type="file"
         />
         <label htmlFor="outlined-button-file">
-          <Button
-            variant="outlined"
-            component="span"
-            className={classes.button}
-          >
+          <Button variant="outlined" component="span" className={classes.button}>
             Upload
           </Button>
         </label>
@@ -186,20 +158,10 @@ export default function AppButton() {
       </SimpleCard>
       <div className="py-12" />
       <SimpleCard title="different size buttons">
-        <Fab
-          size="small"
-          color="secondary"
-          aria-label="Add"
-          className={classes.button}
-        >
+        <Fab size="small" color="secondary" aria-label="Add" className={classes.button}>
           <Icon>add</Icon>
         </Fab>
-        <Fab
-          size="medium"
-          color="secondary"
-          aria-label="Add"
-          className={classes.button}
-        >
+        <Fab size="medium" color="secondary" aria-label="Add" className={classes.button}>
           <Icon>add</Icon>
         </Fab>
         <Fab color="secondary" aria-label="Add" className={classes.button}>
@@ -223,5 +185,5 @@ export default function AppButton() {
         </Fab>
       </SimpleCard>
     </div>
-  );
+  )
 }

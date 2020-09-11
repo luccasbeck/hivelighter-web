@@ -1,20 +1,15 @@
-import React from "react";
-import { Dialog, Button } from "@material-ui/core";
+import React from 'react'
+import { Dialog, Button } from '@material-ui/core'
 
 const ConfirmationDialog = ({
   open,
   onConfirmDialogClose,
   text,
-  title = "confirm",
-  onYesClick
+  title = 'confirm',
+  onYesClick,
 }) => {
   return (
-    <Dialog
-      maxWidth="xs"
-      fullWidth={true}
-      open={open}
-      onClose={onConfirmDialogClose}
-    >
+    <Dialog maxWidth="xs" fullWidth={true} open={open} onClose={onConfirmDialogClose}>
       <div className="pt-24 px-20 pb-8">
         <h4 className="capitalize">{title}</h4>
         <p>{text}</p>
@@ -22,17 +17,13 @@ const ConfirmationDialog = ({
           <Button onClick={onYesClick} variant="contained" color="primary">
             Yes
           </Button>
-          <Button
-            onClick={onConfirmDialogClose}
-            variant="contained"
-            color="secondary"
-          >
+          <Button onClick={onConfirmDialogClose} variant="contained" color="secondary">
             No
           </Button>
         </div>
       </div>
     </Dialog>
-  );
-};
+  )
+}
 
-export default ConfirmationDialog;
+export default ConfirmationDialog

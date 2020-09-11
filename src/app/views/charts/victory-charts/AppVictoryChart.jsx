@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import CircularProgressBar from "./CircularProgressBar";
-import StackedPolarBar from "./StackedPolarBar";
-import VictoryAreaAnimation from "./VictoryAreaAnimation";
-import RadarChart from "./RadarChart";
-import AlternativeEventsChart from "./AlternativeEvents";
-import CustomTooltipLableChart from "./CustomTooltipLabelChart";
+import React, { Component } from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import CircularProgressBar from './CircularProgressBar'
+import StackedPolarBar from './StackedPolarBar'
+import VictoryAreaAnimation from './VictoryAreaAnimation'
+import RadarChart from './RadarChart'
+import AlternativeEventsChart from './AlternativeEvents'
+import CustomTooltipLableChart from './CustomTooltipLabelChart'
 
 class AppVictoryChart extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
+        <div className="mb-sm-30">
           <Breadcrumb
             routeSegments={[
-              { name: "Charts", path: "/charts" },
-              { name: "Victory Charts" }
+              { name: 'Charts', path: '/charts' },
+              { name: 'Victory Charts' },
             ]}
           />
         </div>
@@ -44,8 +44,8 @@ class AppVictoryChart extends Component {
           <CustomTooltipLableChart />
         </SimpleCard>
       </div>
-    );
+    )
   }
 }
 
-export default AppVictoryChart;
+export default AppVictoryChart

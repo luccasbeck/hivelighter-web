@@ -1,14 +1,14 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const AppTodo = EgretLoadable({
-  loader: () => import("./AppTodo")
-});
+  loader: () => import('./AppTodo'),
+})
 
 const todoRoutes = [
   {
-    path: "/todo/list",
-    component: AppTodo
-  }
-];
+    path: '/todo/list',
+    component: AppTodo,
+  },
+]
 
-export default todoRoutes;
+export default todoRoutes

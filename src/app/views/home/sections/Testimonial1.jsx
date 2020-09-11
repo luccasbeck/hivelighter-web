@@ -1,61 +1,61 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import { Card, CardContent } from "@material-ui/core";
-import Carousel from "../common/Carousel";
+import { Card, CardContent } from '@material-ui/core'
+import Carousel from '../common/Carousel'
 
 class Testimonial1 extends Component {
-  state = {};
+  state = {}
 
   testimonialList = [
     {
-      companyLogoUrl: "./assets/images/mock-logo-1.png",
+      companyLogoUrl: './assets/images/mock-logo-1.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-1.jpg",
-        name: "John Doe",
-        designation: "Product Manager"
-      }
+        imageUrl: './assets/images/face-1.jpg',
+        name: 'John Doe',
+        designation: 'Product Manager',
+      },
     },
     {
-      companyLogoUrl: "./assets/images/mock-logo-2.png",
+      companyLogoUrl: './assets/images/mock-logo-2.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-2.jpg",
-        name: "Adam Smith",
-        designation: "CEO"
-      }
+        imageUrl: './assets/images/face-2.jpg',
+        name: 'Adam Smith',
+        designation: 'CEO',
+      },
     },
     {
-      companyLogoUrl: "./assets/images/mock-logo-3.png",
+      companyLogoUrl: './assets/images/mock-logo-3.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-3.jpg",
-        name: "John White",
-        designation: "Software Engineer"
-      }
+        imageUrl: './assets/images/face-3.jpg',
+        name: 'John White',
+        designation: 'Software Engineer',
+      },
     },
     {
-      companyLogoUrl: "./assets/images/mock-logo-4.png",
+      companyLogoUrl: './assets/images/mock-logo-4.png',
       comment: `"Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Fugit modi voluptas vero iusto fuga quos totam
       eius, atis magnam tempora doloribus ducimus dolorem
       culpa animi beatae tenetur! Sapiente, quia tempora."`,
       user: {
-        imageUrl: "./assets/images/face-4.jpg",
-        name: "Jessica Hiche",
-        designation: "CEO"
-      }
-    }
-  ];
+        imageUrl: './assets/images/face-4.jpg',
+        name: 'Jessica Hiche',
+        designation: 'CEO',
+      },
+    },
+  ]
 
   render() {
     return (
@@ -64,8 +64,8 @@ class Testimonial1 extends Component {
           <div className="section__header">
             <h2>What our customers says</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-              unde inventore molestias ab adipisci eius nisi placeat at.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+              inventore molestias ab adipisci eius nisi placeat at.
             </p>
           </div>
 
@@ -83,11 +83,7 @@ class Testimonial1 extends Component {
                   </div>
 
                   <div className="card__user">
-                    <img
-                      className="p-0 m-0"
-                      src={testimonial.user.imageUrl}
-                      alt="user"
-                    />
+                    <img className="p-0 m-0" src={testimonial.user.imageUrl} alt="user" />
                     <div className="pl-16">
                       <p className="m-0">
                         <strong>{testimonial.user.name}</strong>
@@ -101,8 +97,8 @@ class Testimonial1 extends Component {
           </Carousel>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Testimonial1;
+export default Testimonial1

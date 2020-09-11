@@ -1,17 +1,8 @@
-import React from "react";
-import {
-  FormControlLabel,
-  Checkbox,
-  IconButton,
-  Icon
-} from "@material-ui/core";
-import { isMobile } from "utils";
+import React from 'react'
+import { FormControlLabel, Checkbox, IconButton, Icon } from '@material-ui/core'
+import { isMobile } from 'utils'
 
-const InboxTopBar = ({
-  toggleSidenav,
-  handleMasterCheckbox,
-  masterCheckbox
-}) => {
+const InboxTopBar = ({ toggleSidenav, handleMasterCheckbox, masterCheckbox }) => {
   return (
     <div className="inbox__topbar py-4 mx-4 flex flex-middle position-relative bg-primary">
       {isMobile() && (
@@ -43,7 +34,7 @@ const InboxTopBar = ({
         <Icon className="text-white">error</Icon>
       </IconButton>
     </div>
-  );
-};
+  )
+}
 
-export default InboxTopBar;
+export default InboxTopBar

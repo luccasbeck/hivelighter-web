@@ -1,23 +1,23 @@
-import layout1Settings from "./Layout1/Layout1Settings";
-import layout2Settings from "./Layout2/Layout2Settings";
-import { themeColors } from "./EgretTheme/themeColors";
-import { createMuiTheme } from "@material-ui/core";
-import { forEach, merge } from "lodash";
-import themeOptions from "./EgretTheme/themeOptions";
+import layout1Settings from './Layout1/Layout1Settings'
+import layout2Settings from './Layout2/Layout2Settings'
+import { themeColors } from './EgretTheme/themeColors'
+import { createMuiTheme } from '@material-ui/core'
+import { forEach, merge } from 'lodash'
+import themeOptions from './EgretTheme/themeOptions'
 
 function createEgretThemes() {
-  let themes = {};
+  let themes = {}
 
   forEach(themeColors, (value, key) => {
-    themes[key] = createMuiTheme(merge({}, themeOptions, value));
-  });
-  return themes;
+    themes[key] = createMuiTheme(merge({}, themeOptions, value))
+  })
+  return themes
 }
-const themes = createEgretThemes();
+const themes = createEgretThemes()
 
 export const EgretLayoutSettings = {
-  activeLayout: "layout2", // layout1, layout2
-  activeTheme: "hive", // View all valid theme colors inside EgretTheme/themeColors.js
+  activeLayout: 'layout2', // layout1, layout2
+  activeTheme: 'hive', // View all valid theme colors inside EgretTheme/themeColors.js
   perfectScrollbar: true,
 
   themes: themes,
@@ -26,12 +26,12 @@ export const EgretLayoutSettings = {
 
   secondarySidebar: {
     show: false,
-    theme: "slateDark1" // View all valid theme colors inside EgretTheme/themeColors.js
+    theme: 'slateDark1', // View all valid theme colors inside EgretTheme/themeColors.js
   },
   // Footer options
   footer: {
     show: false,
     fixed: false,
-    theme: "slateDark1" // View all valid theme colors inside EgretTheme/themeColors.js
-  }
-};
+    theme: 'slateDark1', // View all valid theme colors inside EgretTheme/themeColors.js
+  },
+}

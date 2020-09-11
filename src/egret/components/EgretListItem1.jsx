@@ -1,24 +1,24 @@
-import React from "react";
-import RectangleAvatar from "./RectangleAvatar";
-import { IconButton, Icon, withStyles } from "@material-ui/core";
+import React from 'react'
+import RectangleAvatar from './RectangleAvatar'
+import { IconButton, Icon, withStyles } from '@material-ui/core'
 
 const styles = {
   root: {
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "all 300ms ease",
-    "&:hover": {
-      background: "rgba(0,0,0, .08)",
-      paddingLeft: "8px",
-      overflow: "hidden",
-      "& .action-icon, & .rectangle-box": {
-        opacity: 1
-      }
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'all 300ms ease',
+    '&:hover': {
+      background: 'rgba(0,0,0, .08)',
+      paddingLeft: '8px',
+      overflow: 'hidden',
+      '& .action-icon, & .rectangle-box': {
+        opacity: 1,
+      },
     },
-    "& .action-icon, & .rectangle-box": {
-      opacity: .76
-    }
-  }
+    '& .action-icon, & .rectangle-box': {
+      opacity: 0.76,
+    },
+  },
 }
 
 const EgretListItem1 = ({
@@ -28,7 +28,7 @@ const EgretListItem1 = ({
   iconColor,
   bulletIcon,
   actionIcon,
-  classes
+  classes,
 }) => {
   return (
     <div className={`${classes.root} egret-list-item-1 py-8 flex flex-middle`}>
@@ -49,7 +49,7 @@ const EgretListItem1 = ({
         </IconButton>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(styles, { withTheme: true })(EgretListItem1);
+export default withStyles(styles, { withTheme: true })(EgretListItem1)

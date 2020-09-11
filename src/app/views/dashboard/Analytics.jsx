@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 import {
   Grid,
   Card,
@@ -8,53 +8,53 @@ import {
   Checkbox,
   Fab,
   Avatar,
-  Hidden
-} from "@material-ui/core";
+  Hidden,
+} from '@material-ui/core'
 
-import { Breadcrumb, SimpleCard, EgretProgressBar } from "egret";
-import DashboardWelcomeCard from "../cards/DashboardWelcomeCard";
-import AreaChart from "../charts/echarts/AreaChart";
+import { Breadcrumb, SimpleCard, EgretProgressBar } from 'egret'
+import DashboardWelcomeCard from '../cards/DashboardWelcomeCard'
+import AreaChart from '../charts/echarts/AreaChart'
 
-import { format } from "date-fns";
-import ModifiedAreaChart from "./ModifiedAreaChart";
-import { withStyles } from "@material-ui/styles";
+import { format } from 'date-fns'
+import ModifiedAreaChart from './ModifiedAreaChart'
+import { withStyles } from '@material-ui/styles'
 
 class Dashboard1 extends Component {
-  state = {};
+  state = {}
 
   recenBuyerList = [
     {
-      imgUrl: "/assets/images/face-1.jpg",
-      name: "john doe",
-      date: "18 january, 2019"
+      imgUrl: '/assets/images/face-1.jpg',
+      name: 'john doe',
+      date: '18 january, 2019',
     },
     {
-      imgUrl: "/assets/images/face-2.jpg",
-      name: "kessy bryan",
-      date: "10 january, 2019"
+      imgUrl: '/assets/images/face-2.jpg',
+      name: 'kessy bryan',
+      date: '10 january, 2019',
     },
     {
-      imgUrl: "/assets/images/face-3.jpg",
-      name: "james cassegne",
-      date: "8 january, 2019"
+      imgUrl: '/assets/images/face-3.jpg',
+      name: 'james cassegne',
+      date: '8 january, 2019',
     },
     {
-      imgUrl: "/assets/images/face-4.jpg",
-      name: "lucy brown",
-      date: "1 january, 2019"
-    }
-  ];
+      imgUrl: '/assets/images/face-4.jpg',
+      name: 'lucy brown',
+      date: '1 january, 2019',
+    },
+  ]
 
   render() {
-    let { theme } = this.props;
+    let { theme } = this.props
 
     return (
       <div className="analytics m-sm-30">
         <div className="mb-sm-30">
           <Breadcrumb
             routeSegments={[
-              { name: "Dashboard", path: "/dashboard" },
-              { name: "Analytics" }
+              { name: 'Dashboard', path: '/dashboard' },
+              { name: 'Analytics' },
             ]}
           />
         </div>
@@ -79,18 +79,11 @@ class Dashboard1 extends Component {
               <div className="px-24 pt-20">
                 <div className="card-title">todays traffic</div>
                 <div className="card-subtitle mb-24">500</div>
-                <Button
-                  className="text-white"
-                  variant="contained"
-                  color="secondary"
-                >
+                <Button className="text-white" variant="contained" color="secondary">
                   + 300 new
                 </Button>
               </div>
-              <AreaChart
-                height="158px"
-                color={[theme.palette.secondary.main]}
-              />
+              <AreaChart height="158px" color={[theme.palette.secondary.main]} />
             </Card>
           </Grid>
 
@@ -114,7 +107,7 @@ class Dashboard1 extends Component {
               </Hidden>
             </Grid>
 
-            {[1, 2, 3, 4, 5].map(id => (
+            {[1, 2, 3, 4, 5].map((id) => (
               <Fragment key={id}>
                 <Card className="py-8 px-4 project-card">
                   <Grid container alignItems="center">
@@ -123,10 +116,7 @@ class Dashboard1 extends Component {
                         <Checkbox />
                         <Hidden smDown>
                           {id % 2 === 1 ? (
-                            <Fab
-                              className="ml-4 bg-error box-shadow-none"
-                              size="small"
-                            >
+                            <Fab className="ml-4 bg-error box-shadow-none" size="small">
                               <Icon>star_outline</Icon>
                             </Fab>
                           ) : (
@@ -146,25 +136,16 @@ class Dashboard1 extends Component {
 
                     <Grid item md={3} xs={4}>
                       <div className="text-muted">
-                        {format(new Date().getTime(), "MM/dd/yyyy hh:mma")}
+                        {format(new Date().getTime(), 'MM/dd/yyyy hh:mma')}
                       </div>
                     </Grid>
 
                     <Hidden smDown>
                       <Grid item xs={3}>
                         <div className="flex position-relative face-group">
-                          <Avatar
-                            className="avatar"
-                            src="/assets/images/face-4.jpg"
-                          />
-                          <Avatar
-                            className="avatar"
-                            src="/assets/images/face-4.jpg"
-                          />
-                          <Avatar
-                            className="avatar"
-                            src="/assets/images/face-4.jpg"
-                          />
+                          <Avatar className="avatar" src="/assets/images/face-4.jpg" />
+                          <Avatar className="avatar" src="/assets/images/face-4.jpg" />
+                          <Avatar className="avatar" src="/assets/images/face-4.jpg" />
                           <Avatar className="number-avatar avatar">+3</Avatar>
                         </div>
                       </Grid>
@@ -191,23 +172,23 @@ class Dashboard1 extends Component {
                     series: [
                       {
                         data: [34, 45, 31, 45, 31, 43, 26, 43, 31, 45, 33],
-                        type: "line",
+                        type: 'line',
                         areaStyle: {},
                         smooth: true,
                         lineStyle: {
                           width: 3,
-                          color: theme.palette.primary.main
-                        }
-                      }
+                          color: theme.palette.primary.main,
+                        },
+                      },
                     ],
                     yAxis: {
                       axisLabel: {
-                        color: theme.palette.text.secondary
-                      }
+                        color: theme.palette.text.secondary,
+                      },
                     },
                     color: [
                       {
-                        type: "linear",
+                        type: 'linear',
                         x: 0,
                         y: 0,
                         x2: 0,
@@ -215,16 +196,16 @@ class Dashboard1 extends Component {
                         colorStops: [
                           {
                             offset: 0,
-                            color: theme.palette.primary.light // color at 0% position
+                            color: theme.palette.primary.light, // color at 0% position
                           },
                           {
                             offset: 1,
-                            color: "rgba(255,255,255,0)" // color at 100% position
-                          }
+                            color: 'rgba(255,255,255,0)', // color at 100% position
+                          },
                         ],
-                        global: false // false by default
-                      }
-                    ]
+                        global: false, // false by default
+                      },
+                    ],
                   }}
                 ></ModifiedAreaChart>
               </SimpleCard>
@@ -233,15 +214,10 @@ class Dashboard1 extends Component {
           <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card elevation={3} className="p-16">
               <div className="flex flex-middle">
-                <Fab
-                  size="medium"
-                  className="bg-light-green circle-44 box-shadow-none"
-                >
+                <Fab size="medium" className="bg-light-green circle-44 box-shadow-none">
                   <Icon className="text-green">trending_up</Icon>
                 </Fab>
-                <h5 className="font-weight-500 text-green m-0 ml-12">
-                  Active Users
-                </h5>
+                <h5 className="font-weight-500 text-green m-0 ml-12">Active Users</h5>
               </div>
               <div className="pt-16 flex flex-middle">
                 <h2 className="m-0 text-muted flex-grow-1">10.8k</h2>
@@ -256,15 +232,10 @@ class Dashboard1 extends Component {
 
             <Card elevation={3} className="p-16">
               <div className="flex flex-middle">
-                <Fab
-                  size="medium"
-                  className="bg-light-error circle-44 box-shadow-none"
-                >
+                <Fab size="medium" className="bg-light-error circle-44 box-shadow-none">
                   <Icon className="text-error">star_outline</Icon>
                 </Fab>
-                <h5 className="font-weight-500 text-error m-0 ml-12">
-                  Transactions
-                </h5>
+                <h5 className="font-weight-500 text-error m-0 ml-12">Transactions</h5>
               </div>
               <div className="pt-16 flex flex-middle">
                 <h2 className="m-0 text-muted flex-grow-1">$2.8M</h2>
@@ -281,72 +252,36 @@ class Dashboard1 extends Component {
               <SimpleCard title="Campaigns">
                 <small className="text-muted">Today</small>
                 <div className="pt-8" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Google (102k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Google (102k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={45}
-                  color="secondary"
-                  text="Twitter (40k)"
-                />
+                <EgretProgressBar value={45} color="secondary" text="Twitter (40k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Facebook (80k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Facebook (80k)" />
 
                 <div className="py-12" />
                 <small className="text-muted">Yesterday</small>
                 <div className="pt-8" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Google (102k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Google (102k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={45}
-                  color="secondary"
-                  text="Twitter (40k)"
-                />
+                <EgretProgressBar value={45} color="secondary" text="Twitter (40k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Facebook (80k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Facebook (80k)" />
 
                 <div className="py-12" />
                 <small className="text-muted">Yesterday</small>
                 <div className="pt-8" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Google (102k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Google (102k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={45}
-                  color="secondary"
-                  text="Twitter (40k)"
-                />
+                <EgretProgressBar value={45} color="secondary" text="Twitter (40k)" />
                 <div className="py-4" />
-                <EgretProgressBar
-                  value={75}
-                  color="primary"
-                  text="Facebook (80k)"
-                />
+                <EgretProgressBar value={75} color="primary" text="Facebook (80k)" />
               </SimpleCard>
             </div>
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles({}, { withTheme: true })(Dashboard1);
+export default withStyles({}, { withTheme: true })(Dashboard1)

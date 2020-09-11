@@ -1,22 +1,22 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const AppScrumBoard = EgretLoadable({
-  loader: () => import("./AppScrumBoard")
-});
+  loader: () => import('./AppScrumBoard'),
+})
 
 const Board = EgretLoadable({
-  loader: () => import("./Board")
-});
+  loader: () => import('./Board'),
+})
 
 const scrumBoardRoutes = [
   {
-    path: "/scrum-board/:id",
-    component: Board
+    path: '/scrum-board/:id',
+    component: Board,
   },
   {
-    path: "/scrum-board",
-    component: AppScrumBoard
-  }
-];
+    path: '/scrum-board',
+    component: AppScrumBoard,
+  },
+]
 
-export default scrumBoardRoutes;
+export default scrumBoardRoutes

@@ -1,12 +1,12 @@
-import React from "react";
-import ScrumBoardLabelBar from "./ScrumBoardLabelBar";
-import { Button, Icon, Avatar } from "@material-ui/core";
-import { connect } from "react-redux";
+import React from 'react'
+import ScrumBoardLabelBar from './ScrumBoardLabelBar'
+import { Button, Icon, Avatar } from '@material-ui/core'
+import { connect } from 'react-redux'
 
 const ScrumBoardCard = ({
   card,
   memberList = [], //all members
-  labelList = []
+  labelList = [],
 }) => {
   let {
     title,
@@ -14,41 +14,37 @@ const ScrumBoardCard = ({
     labels = [],
     coverImage,
     attachments,
-    comments
-  } = card;
+    comments,
+  } = card
 
-  let modifiedCardMemberList = members.map(boardMemberId =>
-    memberList.find(member => member.id === boardMemberId)
-  );
-  let modifiedLabelList = labels.map(labelId =>
-    labelList.find(label => label.id === labelId)
-  );
+  let modifiedCardMemberList = members.map((boardMemberId) =>
+    memberList.find((member) => member.id === boardMemberId),
+  )
+  let modifiedLabelList = labels.map((labelId) =>
+    labelList.find((label) => label.id === labelId),
+  )
 
   return (
     <div className="scrum-board-card">
-      {coverImage && (
-        <img className="border-radius-4" src={coverImage} alt="stair" />
-      )}
+      {coverImage && <img className="border-radius-4" src={coverImage} alt="stair" />}
       <div className="px-16 py-12">
         {modifiedLabelList.length !== 0 && (
           <div className="flex mb-12 font-weight-500">
             {modifiedLabelList.map(
-              label =>
+              (label) =>
                 label && (
                   <ScrumBoardLabelBar
                     key={label.id}
                     color={label.color}
                   ></ScrumBoardLabelBar>
-                )
+                ),
             )}
           </div>
         )}
 
         <h6 className="m-0 font-weight-500">{title}</h6>
 
-        {(comments.length !== 0 ||
-          attachments.length !== 0 ||
-          members.length !== 0) && (
+        {(comments.length !== 0 || attachments.length !== 0 || members.length !== 0) && (
           <div className="flex flex-middle flex-space-between mt-12 button-group text-small">
             <div className="flex">
               {comments.length !== 0 && (
@@ -70,14 +66,10 @@ const ScrumBoardCard = ({
             </div>
             <div className="flex position-relative face-group">
               {modifiedCardMemberList.map(
-                member =>
+                (member) =>
                   member && (
-                    <Avatar
-                      key={member.id}
-                      className="avatar"
-                      src={member.avatar}
-                    />
-                  )
+                    <Avatar key={member.id} className="avatar" src={member.avatar} />
+                  ),
               )}
               {/* <Avatar className="number-avatar avatar">+3</Avatar> */}
             </div>
@@ -85,15 +77,12 @@ const ScrumBoardCard = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   memberList: state.scrumboard.memberList,
-  labelList: state.scrumboard.labelList
-});
+  labelList: state.scrumboard.labelList,
+})
 
-export default connect(
-  mapStateToProps,
-  {}
-)(ScrumBoardCard);
+export default connect(mapStateToProps, {})(ScrumBoardCard)

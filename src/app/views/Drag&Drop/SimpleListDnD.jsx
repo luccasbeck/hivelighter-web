@@ -1,67 +1,63 @@
-import React, { Component } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import React, { Component } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 // fake data generator
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
+const getItems = (count) =>
+  Array.from({ length: count }, (v, k) => k).map((k) => ({
     id: `item-${k}`,
-    content: `item ${k}`
-  }));
+    content: `item ${k}`,
+  }))
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
 
-  return result;
-};
+  return result
+}
 
-const grid = 8;
+const grid = 8
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
-  userSelect: "none",
+  userSelect: 'none',
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+  background: isDragging ? 'lightgreen' : 'grey',
 
   // styles we need to apply on draggables
-  ...draggableStyle
-});
+  ...draggableStyle,
+})
 
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
-  width: 250
-});
+  width: 250,
+})
 
 class SimpleListDnD extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      items: getItems(10)
-    };
+      items: getItems(10),
+    }
   }
 
-  onDragEnd = result => {
+  onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
-      return;
+      return
     }
 
-    const items = reorder(
-      this.state.items,
-      result.source.index,
-      result.destination.index
-    );
+    const items = reorder(this.state.items, result.source.index, result.destination.index)
 
     this.setState({
-      items
-    });
-  };
+      items,
+    })
+  }
 
   render() {
     return (
@@ -82,7 +78,7 @@ class SimpleListDnD extends Component {
                       {...provided.dragHandleProps}
                       style={getItemStyle(
                         snapshot.isDragging,
-                        provided.draggableProps.style
+                        provided.draggableProps.style,
                       )}
                     >
                       {item.content}
@@ -95,8 +91,8 @@ class SimpleListDnD extends Component {
           )}
         </Droppable>
       </DragDropContext>
-    );
+    )
   }
 }
 
-export default SimpleListDnD;
+export default SimpleListDnD

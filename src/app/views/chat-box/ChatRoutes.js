@@ -1,14 +1,14 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const AppChat = EgretLoadable({
-  loader: () => import("./AppChat")
-});
+  loader: () => import('./AppChat'),
+})
 
 const chatRoutes = [
   {
-    path: "/chat",
-    component: AppChat
-  }
-];
+    path: '/chat',
+    component: AppChat,
+  },
+]
 
-export default chatRoutes;
+export default chatRoutes

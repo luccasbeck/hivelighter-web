@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react'
 import {
   Tooltip,
   Radio,
@@ -6,9 +6,9 @@ import {
   Icon,
   FormControlLabel,
   FormControl,
-  FormLabel
-} from "@material-ui/core";
-import { themeColors } from "../../EgretTheme/themeColors";
+  FormLabel,
+} from '@material-ui/core'
+import { themeColors } from '../../EgretTheme/themeColors'
 
 const Layout2Customizer = ({ settings, handleChange, handleControlChange }) => {
   return (
@@ -20,16 +20,12 @@ const Layout2Customizer = ({ settings, handleChange, handleControlChange }) => {
             <Tooltip key={i} title={color} placement="top">
               <div
                 className="color"
-                onClick={() =>
-                  handleChange("layout2Settings.topbar.theme", color)
-                }
+                onClick={() => handleChange('layout2Settings.topbar.theme', color)}
                 style={{
-                  backgroundColor: themeColors[color].palette.primary.main
+                  backgroundColor: themeColors[color].palette.primary.main,
                 }}
               >
-                {settings.layout2Settings.topbar.theme === color && (
-                  <Icon>done</Icon>
-                )}
+                {settings.layout2Settings.topbar.theme === color && <Icon>done</Icon>}
                 <div className={settings.themes[color].palette.type}></div>
               </div>
             </Tooltip>
@@ -44,16 +40,12 @@ const Layout2Customizer = ({ settings, handleChange, handleControlChange }) => {
             <Tooltip key={i} title={color} placement="top">
               <div
                 className="color"
-                onClick={() =>
-                  handleChange("layout2Settings.navbar.theme", color)
-                }
+                onClick={() => handleChange('layout2Settings.navbar.theme', color)}
                 style={{
-                  backgroundColor: themeColors[color].palette.primary.main
+                  backgroundColor: themeColors[color].palette.primary.main,
                 }}
               >
-                {settings.layout2Settings.navbar.theme === color && (
-                  <Icon>done</Icon>
-                )}
+                {settings.layout2Settings.navbar.theme === color && <Icon>done</Icon>}
                 <div className={settings.themes[color].palette.type}></div>
               </div>
             </Tooltip>
@@ -68,20 +60,16 @@ const Layout2Customizer = ({ settings, handleChange, handleControlChange }) => {
             aria-label="layout-mode"
             name="layoutMode"
             value={settings.layout2Settings.mode}
-            onChange={handleControlChange("layout2Settings.mode")}
+            onChange={handleControlChange('layout2Settings.mode')}
           >
             <FormControlLabel value="full" control={<Radio />} label="Full" />
-            <FormControlLabel
-              value="contained"
-              control={<Radio />}
-              label="Contained"
-            />
+            <FormControlLabel value="contained" control={<Radio />} label="Contained" />
             <FormControlLabel value="boxed" control={<Radio />} label="Boxed" />
           </RadioGroup>
         </FormControl>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Layout2Customizer;
+export default Layout2Customizer

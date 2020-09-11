@@ -1,21 +1,15 @@
-import React from "react";
-import {
-  Icon,
-  Badge,
-  MuiThemeProvider,
-  IconButton,
-  Drawer
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
+import React from 'react'
+import { Icon, Badge, MuiThemeProvider, IconButton, Drawer } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
 import {
   getCartList,
   deleteProductFromCart,
-  updateCartAmount
-} from "app/redux/actions/EcommerceActions";
+  updateCartAmount,
+} from 'app/redux/actions/EcommerceActions'
 
-let cartListLoaded = false;
+let cartListLoaded = false
 
 function ShoppingCart(props) {
   const {
@@ -26,21 +20,21 @@ function ShoppingCart(props) {
     getCartList,
     deleteProductFromCart,
     updateCartAmount,
-    user
-  } = props;
+    user,
+  } = props
 
-  const [panelOpen, setPanelOpen] = React.useState(false);
+  const [panelOpen, setPanelOpen] = React.useState(false)
 
   if (!cartListLoaded) {
-    getCartList(user.userId);
-    cartListLoaded = true;
+    getCartList(user.userId)
+    cartListLoaded = true
   }
 
   function handleDrawerToggle() {
-    setPanelOpen(!panelOpen);
+    setPanelOpen(!panelOpen)
   }
 
-  const parentThemePalette = theme.palette;
+  const parentThemePalette = theme.palette
 
   return (
     <MuiThemeProvider theme={settings.themes[settings.activeTheme]}>
@@ -48,9 +42,9 @@ function ShoppingCart(props) {
         onClick={handleDrawerToggle}
         style={{
           color:
-            parentThemePalette.type === "light"
+            parentThemePalette.type === 'light'
               ? parentThemePalette.text.secondary
-              : parentThemePalette.text.primary
+              : parentThemePalette.text.primary,
         }}
       >
         <Badge color="secondary" badgeContent={cartList.length}>
@@ -61,11 +55,11 @@ function ShoppingCart(props) {
       <Drawer
         container={container}
         variant="temporary"
-        anchor={"right"}
+        anchor={'right'}
         open={panelOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true
+          keepMounted: true,
         }}
       >
         <div className="mini-cart">
@@ -74,7 +68,7 @@ function ShoppingCart(props) {
             <h5 className="ml-8 my-0 font-weight-500">Cart</h5>
           </div>
 
-          {cartList.map(product => (
+          {cartList.map((product) => (
             <div
               key={product.id}
               className="mini-cart__item flex flex-middle flex-space-between py-16 px-8"
@@ -83,11 +77,7 @@ function ShoppingCart(props) {
                 <IconButton
                   size="small"
                   onClick={() =>
-                    updateCartAmount(
-                      user.userId,
-                      product.id,
-                      product.amount + 1
-                    )
+                    updateCartAmount(user.userId, product.id, product.amount + 1)
                   }
                 >
                   <Icon className="cursor-pointer">keyboard_arrow_up</Icon>
@@ -96,11 +86,7 @@ function ShoppingCart(props) {
                   disabled={!(product.amount - 1)}
                   size="small"
                   onClick={() =>
-                    updateCartAmount(
-                      user.userId,
-                      product.id,
-                      product.amount - 1
-                    )
+                    updateCartAmount(user.userId, product.id, product.amount - 1)
                   }
                 >
                   <Icon className="cursor-pointer">keyboard_arrow_down</Icon>
@@ -126,26 +112,28 @@ function ShoppingCart(props) {
         </div>
       </Drawer>
     </MuiThemeProvider>
-  );
+  )
 }
 
 ShoppingCart.propTypes = {
   settings: PropTypes.object.isRequired,
-  cartList: PropTypes.array.isRequired
-};
+  cartList: PropTypes.array.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   settings: state.layout.settings,
   getCartList: PropTypes.func.isRequired,
   deleteProductFromCart: PropTypes.func.isRequired,
   updateCartAmount: PropTypes.func.isRequired,
   cartList: state.ecommerce.cartList,
-  user: state.user
-});
+  user: state.user,
+})
 
-export default withStyles({}, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { getCartList, deleteProductFromCart, updateCartAmount }
-  )(ShoppingCart)
-);
+export default withStyles(
+  {},
+  { withTheme: true },
+)(
+  connect(mapStateToProps, { getCartList, deleteProductFromCart, updateCartAmount })(
+    ShoppingCart,
+  ),
+)

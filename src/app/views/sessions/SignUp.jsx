@@ -1,32 +1,26 @@
-import React, { Component } from "react";
-import {
-  Card,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  Button
-} from "@material-ui/core";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { Card, Checkbox, FormControlLabel, Grid, Button } from '@material-ui/core'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { connect } from 'react-redux'
 
 class SignUp extends Component {
   state = {
-    username: "",
-    email: "",
-    password: "",
-    agreement: ""
-  };
+    username: '',
+    email: '',
+    password: '',
+    agreement: '',
+  }
 
-  handleChange = event => {
-    event.persist();
+  handleChange = (event) => {
+    event.persist()
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
 
-  handleFormSubmit = event => {};
+  handleFormSubmit = (event) => {}
   render() {
-    let { username, email, password } = this.state;
+    let { username, email, password } = this.state
     return (
       <div className="signup flex flex-center w-100 h-100vh">
         <div className="p-8">
@@ -34,10 +28,7 @@ class SignUp extends Component {
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
                 <div className="p-32 flex flex-center bg-light-gray flex-middle h-100">
-                  <img
-                    src="/assets/images/illustrations/posting_photo.svg"
-                    alt=""
-                  />
+                  <img src="/assets/images/illustrations/posting_photo.svg" alt="" />
                 </div>
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
@@ -51,8 +42,8 @@ class SignUp extends Component {
                       type="text"
                       name="username"
                       value={username}
-                      validators={["required"]}
-                      errorMessages={["this field is required"]}
+                      validators={['required']}
+                      errorMessages={['this field is required']}
                     />
                     <TextValidator
                       className="mb-24 w-100"
@@ -62,11 +53,8 @@ class SignUp extends Component {
                       type="email"
                       name="email"
                       value={email}
-                      validators={["required", "isEmail"]}
-                      errorMessages={[
-                        "this field is required",
-                        "email is not valid"
-                      ]}
+                      validators={['required', 'isEmail']}
+                      errorMessages={['this field is required', 'email is not valid']}
                     />
                     <TextValidator
                       className="mb-16 w-100"
@@ -76,8 +64,8 @@ class SignUp extends Component {
                       name="password"
                       type="password"
                       value={password}
-                      validators={["required"]}
-                      errorMessages={["this field is required"]}
+                      validators={['required']}
+                      errorMessages={['this field is required']}
                     />
                     <FormControlLabel
                       className="mb-16"
@@ -98,9 +86,7 @@ class SignUp extends Component {
                       <span className="ml-16 mr-8">or</span>
                       <Button
                         className="capitalize"
-                        onClick={() =>
-                          this.props.history.push("/session/signin")
-                        }
+                        onClick={() => this.props.history.push('/session/signin')}
                       >
                         Sign in
                       </Button>
@@ -112,15 +98,12 @@ class SignUp extends Component {
           </Card>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   // setUser: PropTypes.func.isRequired
-});
+})
 
-export default connect(
-  mapStateToProps,
-  {}
-)(SignUp);
+export default connect(mapStateToProps, {})(SignUp)

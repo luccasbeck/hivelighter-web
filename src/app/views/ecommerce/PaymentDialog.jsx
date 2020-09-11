@@ -1,33 +1,33 @@
-import React, { Component } from "react";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { Dialog, Grid, Button } from "@material-ui/core";
+import React, { Component } from 'react'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { Dialog, Grid, Button } from '@material-ui/core'
 
 class PaymentDialog extends Component {
   state = {
-    cardHolderName: "",
-    cardNumber: "",
-    expiryDate: "",
-    cvc: ""
-  };
+    cardHolderName: '',
+    cardNumber: '',
+    expiryDate: '',
+    cvc: '',
+  }
 
-  handleChange = event => {
-    event.persist();
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  handleChange = (event) => {
+    event.persist()
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
-  handleSubmit = () => {};
+  handleSubmit = () => {}
 
   render() {
-    let { open, toggleDialog } = this.props;
-    let { cardHolderName, cardNumber, expiryDate, cvc } = this.state;
+    let { open, toggleDialog } = this.props
+    let { cardHolderName, cardNumber, expiryDate, cvc } = this.state
 
     return (
       <Dialog open={open} onClose={toggleDialog} scroll="body">
         <div className="p-sm-24 text-center position-relative">
           <img
             style={{
-              height: "160px",
-              marginBottom: "16px"
+              height: '160px',
+              marginBottom: '16px',
             }}
             src="/assets/images/debit-card.png"
             alt="debit-card"
@@ -35,7 +35,7 @@ class PaymentDialog extends Component {
           <ValidatorForm
             ref="form"
             onSubmit={this.handleSubmit}
-            onError={errors => null}
+            onError={(errors) => null}
           >
             <TextValidator
               className="mb-16"
@@ -45,16 +45,8 @@ class PaymentDialog extends Component {
               type="number"
               name="cardNumber"
               value={cardNumber}
-              validators={[
-                "required",
-                "minStringLength:16",
-                "maxStringLength: 16"
-              ]}
-              errorMessages={[
-                "this field is required",
-                "invalid card",
-                "invalid card"
-              ]}
+              validators={['required', 'minStringLength:16', 'maxStringLength: 16']}
+              errorMessages={['this field is required', 'invalid card', 'invalid card']}
               fullWidth
             />
 
@@ -68,15 +60,11 @@ class PaymentDialog extends Component {
                   placeholder="12/19"
                   name="expiryDate"
                   value={expiryDate}
-                  validators={[
-                    "required",
-                    "minStringLength: 5",
-                    "maxStringLength: 5"
-                  ]}
+                  validators={['required', 'minStringLength: 5', 'maxStringLength: 5']}
                   errorMessages={[
-                    "this field is required",
-                    "invalid expiry date",
-                    "invalid expiry date"
+                    'this field is required',
+                    'invalid expiry date',
+                    'invalid expiry date',
                   ]}
                   fullWidth
                 />
@@ -89,8 +77,8 @@ class PaymentDialog extends Component {
                   type="text"
                   name="cvc"
                   value={cvc}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                   fullWidth
                 />
               </Grid>
@@ -104,8 +92,8 @@ class PaymentDialog extends Component {
               type="text"
               name="cardHolderName"
               value={cardHolderName}
-              validators={["required"]}
-              errorMessages={["this field is required"]}
+              validators={['required']}
+              errorMessages={['this field is required']}
               fullWidth
             />
             <div className="flex flex-end">
@@ -119,8 +107,8 @@ class PaymentDialog extends Component {
           </ValidatorForm>
         </div>
       </Dialog>
-    );
+    )
   }
 }
 
-export default PaymentDialog;
+export default PaymentDialog

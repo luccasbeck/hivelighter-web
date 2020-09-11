@@ -1,11 +1,11 @@
-import React from "react";
-import { withStyles, MuiThemeProvider, Button } from "@material-ui/core";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
+import React from 'react'
+import { withStyles, MuiThemeProvider, Button } from '@material-ui/core'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 const Footer = ({ theme, settings }) => {
-  const footerTheme = settings.themes[settings.footer.theme] || theme;
+  const footerTheme = settings.themes[settings.footer.theme] || theme
   return (
     <MuiThemeProvider theme={footerTheme}>
       <Helmet>
@@ -32,20 +32,15 @@ const Footer = ({ theme, settings }) => {
         </div>
       </div>
     </MuiThemeProvider>
-  );
-};
+  )
+}
 
 Footer.propTypes = {
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
-  settings: state.layout.settings
-});
+const mapStateToProps = (state) => ({
+  settings: state.layout.settings,
+})
 
-export default withStyles({}, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    {}
-  )(Footer)
-);
+export default withStyles({}, { withTheme: true })(connect(mapStateToProps, {})(Footer))

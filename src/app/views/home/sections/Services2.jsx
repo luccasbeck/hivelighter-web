@@ -1,44 +1,44 @@
-import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { Button, Icon } from "@material-ui/core";
-import Carousel from "../common/Carousel";
+import React, { Component } from 'react'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import { Button, Icon } from '@material-ui/core'
+import Carousel from '../common/Carousel'
 
 class Services2 extends Component {
-  state = {};
+  state = {}
 
   serviceList = [
     {
-      icon: "dashboard",
-      title: "Business Application",
+      icon: 'dashboard',
+      title: 'Business Application',
       text:
-        "Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis."
+        'Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis.',
     },
     {
-      icon: "perm_data_setting",
-      title: "Custom System Integration",
+      icon: 'perm_data_setting',
+      title: 'Custom System Integration',
       text:
-        "Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis."
+        'Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis.',
     },
     {
-      icon: "storage",
-      title: "Database Administration",
+      icon: 'storage',
+      title: 'Database Administration',
       text:
-        "Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis."
+        'Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis.',
     },
     {
-      icon: "stay_primary_portrait",
-      title: "Custom Mobile Application",
+      icon: 'stay_primary_portrait',
+      title: 'Custom Mobile Application',
       text:
-        "Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis."
+        'Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis.',
     },
     {
-      icon: "person",
-      title: "Management Application",
+      icon: 'person',
+      title: 'Management Application',
       text:
-        "Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis."
-    }
-  ];
+        'Lorem ipsum dolor sit amet conse ctetur adipi sicing elit. Doloribus numquam quis.',
+    },
+  ]
 
   render() {
     return (
@@ -47,17 +47,14 @@ class Services2 extends Component {
           <div className="section__header">
             <h2>Our Services</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-              unde inventore molestias ab adipisci eius nisi placeat at.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+              inventore molestias ab adipisci eius nisi placeat at.
             </p>
           </div>
 
           <Carousel>
             {this.serviceList.map((service, index) => (
-              <Card
-                className="service1__card service__card px-24 card"
-                key={index}
-              >
+              <Card className="service1__card service__card px-24 card" key={index}>
                 <CardContent className="service1__card__content">
                   <div>
                     <div className="text-center">
@@ -75,8 +72,8 @@ class Services2 extends Component {
           </Carousel>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Services2;
+export default Services2

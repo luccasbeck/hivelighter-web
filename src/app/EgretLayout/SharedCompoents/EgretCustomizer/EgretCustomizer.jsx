@@ -1,10 +1,7 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import {
-  setLayoutSettings,
-  setDefaultSettings
-} from "app/redux/actions/LayoutActions";
-import { PropTypes } from "prop-types";
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { setLayoutSettings, setDefaultSettings } from 'app/redux/actions/LayoutActions'
+import { PropTypes } from 'prop-types'
 import {
   Icon,
   IconButton,
@@ -16,63 +13,59 @@ import {
   FormLabel,
   Paper,
   withStyles,
-  MuiThemeProvider
-} from "@material-ui/core";
-import Scrollbar from "react-perfect-scrollbar";
-import { merge, get, set } from "lodash";
-import Layout1Customizer from "./Layout1Customizer";
-import Layout2Customizer from "./Layout2Customizer";
-import { themeColors } from "../../EgretTheme/themeColors";
-import BadgeSelected from "./BadgeSelected";
-import { mainThemes, topbarThemes } from "./customizerOptions";
+  MuiThemeProvider,
+} from '@material-ui/core'
+import Scrollbar from 'react-perfect-scrollbar'
+import { merge, get, set } from 'lodash'
+import Layout1Customizer from './Layout1Customizer'
+import Layout2Customizer from './Layout2Customizer'
+import { themeColors } from '../../EgretTheme/themeColors'
+import BadgeSelected from './BadgeSelected'
+import { mainThemes, topbarThemes } from './customizerOptions'
 
-const styles = theme => ({
-  root: {
-    
-  },
+const styles = (theme) => ({
+  root: {},
   paper: {
-    display: "inherit"
-  }
-});
+    display: 'inherit',
+  },
+})
 
 class EgretCustomizer extends Component {
   state = {
-    open: false
-  };
+    open: false,
+  }
 
-  updateSettings = newSettings => {
-    let { settings, setLayoutSettings, setDefaultSettings } = this.props;
-    let updatedSettings = merge({}, settings, newSettings);
-    setLayoutSettings(updatedSettings);
-    setDefaultSettings(updatedSettings);
-  };
+  updateSettings = (newSettings) => {
+    let { settings, setLayoutSettings, setDefaultSettings } = this.props
+    let updatedSettings = merge({}, settings, newSettings)
+    setLayoutSettings(updatedSettings)
+    setDefaultSettings(updatedSettings)
+  }
 
-  selectLayout = activeLayout => {
-    this.updateSettings({ activeLayout });
-  };
+  selectLayout = (activeLayout) => {
+    this.updateSettings({ activeLayout })
+  }
 
   handleChange = (name, value) => {
-    let { settings } = this.props;
-    let updatedSettings = set(settings, name, value);
+    let { settings } = this.props
+    let updatedSettings = set(settings, name, value)
 
-    this.updateSettings(updatedSettings);
-  };
+    this.updateSettings(updatedSettings)
+  }
 
-  handleControlChange = name => event => {
+  handleControlChange = (name) => (event) => {
     let controlValue =
-      event.target.type === "checkbox"
-        ? event.target.checked
-        : event.target.value;
-    this.handleChange(name, controlValue);
-  };
+      event.target.type === 'checkbox' ? event.target.checked : event.target.value
+    this.handleChange(name, controlValue)
+  }
 
   tooglePanel = () => {
-    this.setState({ open: !this.state.open });
-  };
+    this.setState({ open: !this.state.open })
+  }
 
   render() {
-    let { settings, classes } = this.props;
-    let activeTheme = { ...settings.themes[settings.activeTheme] };
+    let { settings, classes } = this.props
+    let activeTheme = { ...settings.themes[settings.activeTheme] }
     // console.log(activeTheme);
 
     return (
@@ -93,16 +86,16 @@ class EgretCustomizer extends Component {
             <div
               className={`egret-customizer pb-8 ${classes.root}`}
               style={{
-                backgroundColor: activeTheme.palette.background.default
+                backgroundColor: activeTheme.palette.background.default,
               }}
             >
-              <div className="flex felx-row flex-middle p-16 mb-16 elevation-z6" style={{minHeight: "64px"}}>
+              <div
+                className="flex felx-row flex-middle p-16 mb-16 elevation-z6"
+                style={{ minHeight: '64px' }}
+              >
                 <Icon color="primary">settings</Icon>
                 <h5 className="mb-0 ml-8">Theme Settings</h5>
-                <IconButton
-                  onClick={this.tooglePanel}
-                  className="customizer-close"
-                >
+                <IconButton onClick={this.tooglePanel} className="customizer-close">
                   <Icon>close</Icon>
                 </IconButton>
               </div>
@@ -115,9 +108,9 @@ class EgretCustomizer extends Component {
                       color="secondary"
                       className="layout-box"
                       badgeContent={<Icon>done</Icon>}
-                      invisible={settings.activeLayout !== "layout1"}
+                      invisible={settings.activeLayout !== 'layout1'}
                     >
-                      <Paper onClick={() => this.selectLayout("layout1")} elevation={4}>
+                      <Paper onClick={() => this.selectLayout('layout1')} elevation={4}>
                         <img
                           src="/assets/images/screenshots/layout1-customizer.png"
                           alt=""
@@ -128,9 +121,9 @@ class EgretCustomizer extends Component {
                       color="secondary"
                       className="layout-box"
                       badgeContent={<Icon>done</Icon>}
-                      invisible={settings.activeLayout !== "layout2"}
+                      invisible={settings.activeLayout !== 'layout2'}
                     >
-                      <Paper onClick={() => this.selectLayout("layout2")} elevation={4}>
+                      <Paper onClick={() => this.selectLayout('layout2')} elevation={4}>
                         <img
                           src="/assets/images/screenshots/layout2-customizer.png"
                           alt=""
@@ -148,25 +141,20 @@ class EgretCustomizer extends Component {
                       <Tooltip key={i} title={color} placement="top">
                         <div
                           className="color"
-                          onClick={() =>
-                            this.updateSettings({ activeTheme: color })
-                          }
+                          onClick={() => this.updateSettings({ activeTheme: color })}
                           style={{
-                            backgroundColor:
-                              themeColors[color].palette.primary.main
+                            backgroundColor: themeColors[color].palette.primary.main,
                           }}
                         >
                           {settings.activeTheme === color && <Icon>done</Icon>}
-                          <div
-                            className={settings.themes[color].palette.type}
-                          ></div>
+                          <div className={settings.themes[color].palette.type}></div>
                         </div>
                       </Tooltip>
                     ))}
                   </div>
                 </div>
 
-                {settings.activeLayout === "layout1" && (
+                {settings.activeLayout === 'layout1' && (
                   <Layout1Customizer
                     settings={settings}
                     handleChange={this.handleChange}
@@ -174,7 +162,7 @@ class EgretCustomizer extends Component {
                   />
                 )}
 
-                {settings.activeLayout === "layout2" && (
+                {settings.activeLayout === 'layout2' && (
                   <Layout2Customizer
                     settings={settings}
                     handleChange={this.handleChange}
@@ -189,8 +177,8 @@ class EgretCustomizer extends Component {
                       <FormControlLabel
                         control={
                           <Switch
-                            checked={get(settings.footer, "show")}
-                            onChange={this.handleControlChange("footer.show")}
+                            checked={get(settings.footer, 'show')}
+                            onChange={this.handleControlChange('footer.show')}
                           />
                         }
                         label="Show"
@@ -199,11 +187,8 @@ class EgretCustomizer extends Component {
                       <FormControlLabel
                         control={
                           <Switch
-                            checked={get(
-                              settings.layout1Settings.footer,
-                              "fixed"
-                            )}
-                            onChange={this.handleControlChange("footer.fixed")}
+                            checked={get(settings.layout1Settings.footer, 'fixed')}
+                            onChange={this.handleControlChange('footer.fixed')}
                           />
                         }
                         label="Fixed"
@@ -219,10 +204,8 @@ class EgretCustomizer extends Component {
                       <FormControlLabel
                         control={
                           <Switch
-                            checked={get(settings.secondarySidebar, "show")}
-                            onChange={this.handleControlChange(
-                              "secondarySidebar.show"
-                            )}
+                            checked={get(settings.secondarySidebar, 'show')}
+                            onChange={this.handleControlChange('secondarySidebar.show')}
                           />
                         }
                         label="Show"
@@ -234,25 +217,19 @@ class EgretCustomizer extends Component {
                 <div className="mb-16 mx-12">
                   <div className="text-muted mb-4">Secondary sidebar theme</div>
                   <div className="colors">
-                    {topbarThemes
-                    .map((color, i) => (
+                    {topbarThemes.map((color, i) => (
                       <Tooltip key={i} title={color} placement="top">
                         <div
                           className="color"
                           onClick={() =>
-                            this.handleChange("secondarySidebar.theme", color)
+                            this.handleChange('secondarySidebar.theme', color)
                           }
                           style={{
-                            backgroundColor:
-                              themeColors[color].palette.primary.main
+                            backgroundColor: themeColors[color].palette.primary.main,
                           }}
                         >
-                          {settings.secondarySidebar.theme === color && (
-                            <Icon>done</Icon>
-                          )}
-                          <div
-                            className={settings.themes[color].palette.type}
-                          ></div>
+                          {settings.secondarySidebar.theme === color && <Icon>done</Icon>}
+                          <div className={settings.themes[color].palette.type}></div>
                         </div>
                       </Tooltip>
                     ))}
@@ -262,23 +239,17 @@ class EgretCustomizer extends Component {
                 <div className="mb-16 mx-12">
                   <div className="text-muted mb-4">Footer theme</div>
                   <div className="colors">
-                    {topbarThemes
-                    .map((color, i) => (
+                    {topbarThemes.map((color, i) => (
                       <Tooltip key={i} title={color} placement="top">
                         <div
                           className="color"
-                          onClick={() =>
-                            this.handleChange("footer.theme", color)
-                          }
+                          onClick={() => this.handleChange('footer.theme', color)}
                           style={{
-                            backgroundColor:
-                              themeColors[color].palette.primary.main
+                            backgroundColor: themeColors[color].palette.primary.main,
                           }}
                         >
                           {settings.footer.theme === color && <Icon>done</Icon>}
-                          <div
-                            className={settings.themes[color].palette.type}
-                          ></div>
+                          <div className={settings.themes[color].palette.type}></div>
                         </div>
                       </Tooltip>
                     ))}
@@ -289,19 +260,16 @@ class EgretCustomizer extends Component {
           </MuiThemeProvider>
         )}
       </Fragment>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   settings: state.layout.settings,
   setLayoutSettings: PropTypes.func.isRequired,
-  setDefaultSettings: PropTypes.func.isRequired
-});
+  setDefaultSettings: PropTypes.func.isRequired,
+})
 
 export default withStyles(styles, { withTheme: true })(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings, setDefaultSettings }
-  )(EgretCustomizer)
-);
+  connect(mapStateToProps, { setLayoutSettings, setDefaultSettings })(EgretCustomizer),
+)

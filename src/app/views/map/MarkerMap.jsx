@@ -1,26 +1,21 @@
-import React from "react";
-import { compose, withProps } from "recompose";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
+import React from 'react'
+import { compose, withProps } from 'recompose'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
-import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
-import { Card } from "@material-ui/core";
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+import { Card } from '@material-ui/core'
 
 const MyMapComponent = compose(
   withProps({
     googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />
+    mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
-  withGoogleMap
-)(props => (
+  withGoogleMap,
+)((props) => (
   <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
     <Marker
       isMarkerShown={false}
@@ -34,33 +29,33 @@ const MyMapComponent = compose(
       </InfoBox>
     </Marker>
   </GoogleMap>
-));
+))
 
 class MarkerMap extends React.PureComponent {
-  timer;
+  timer
 
   state = {
-    isMarkerShown: false
-  };
+    isMarkerShown: false,
+  }
 
   componentDidMount() {
-    this.delayedShowMarker();
+    this.delayedShowMarker()
   }
 
   componentWillUnmount() {
-    if (this.timer) clearTimeout(this.timer);
+    if (this.timer) clearTimeout(this.timer)
   }
 
   delayedShowMarker = () => {
     this.timer = setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 3000);
-  };
+      this.setState({ isMarkerShown: true })
+    }, 3000)
+  }
 
   handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
-  };
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
 
   render() {
     return (
@@ -68,8 +63,8 @@ class MarkerMap extends React.PureComponent {
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />
-    );
+    )
   }
 }
 
-export default MarkerMap;
+export default MarkerMap

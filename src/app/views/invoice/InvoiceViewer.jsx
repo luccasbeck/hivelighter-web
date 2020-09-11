@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Icon,
   Button,
@@ -9,25 +9,25 @@ import {
   TableCell,
   TableBody,
   IconButton,
-  Card
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { getInvoiceById } from "./InvoiceService";
-import { format } from "date-fns";
-import { withRouter } from "react-router-dom";
+  Card,
+} from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import { getInvoiceById } from './InvoiceService'
+import { format } from 'date-fns'
+import { withRouter } from 'react-router-dom'
 
 class InvoiceViewer extends Component {
-  state = {};
-  subTotalCost = 0;
+  state = {}
+  subTotalCost = 0
 
   componentWillMount() {
-    getInvoiceById(this.props.match.params.id).then(res => {
-      this.setState({ ...res.data });
-    });
+    getInvoiceById(this.props.match.params.id).then((res) => {
+      this.setState({ ...res.data })
+    })
   }
 
   render() {
-    this.subTotalCost = 0;
+    this.subTotalCost = 0
     let {
       orderNo,
       buyer,
@@ -35,8 +35,8 @@ class InvoiceViewer extends Component {
       item: invoiceItemList = [],
       status,
       vat,
-      date
-    } = this.state;
+      date,
+    } = this.state
 
     return (
       <div className="invoice-viewer py-16">
@@ -78,11 +78,9 @@ class InvoiceViewer extends Component {
                 <strong>Order status:</strong> {status}
               </h5>
               <h5 className="font-weight-normal capitalize">
-                <strong>Order date: </strong>{" "}
+                <strong>Order date: </strong>{' '}
                 <span>
-                  {date
-                    ? format(new Date(date).getTime(), "MMMM dd, yyyy")
-                    : ""}
+                  {date ? format(new Date(date).getTime(), 'MMMM dd, yyyy') : ''}
                 </span>
               </h5>
             </div>
@@ -101,9 +99,7 @@ class InvoiceViewer extends Component {
             <div className="text-align-right w-100">
               <h5 className="mb-8">Bill To</h5>
               <p className="mb-16">{buyer ? buyer.name : null}</p>
-              <p className="mb-0 white-space-pre-line">
-                {buyer ? buyer.address : null}
-              </p>
+              <p className="mb-0 white-space-pre-line">{buyer ? buyer.address : null}</p>
             </div>
             <div />
           </div>
@@ -121,7 +117,7 @@ class InvoiceViewer extends Component {
               </TableHead>
               <TableBody>
                 {invoiceItemList.map((item, index) => {
-                  this.subTotalCost += item.unit * item.price;
+                  this.subTotalCost += item.unit * item.price
                   return (
                     <TableRow key={index}>
                       <TableCell className="pl-sm-24 capitalize" align="left">
@@ -133,14 +129,10 @@ class InvoiceViewer extends Component {
                       <TableCell className="pl-0 capitalize" align="left">
                         {item.price}
                       </TableCell>
-                      <TableCell className="pl-0 capitalize">
-                        {item.unit}
-                      </TableCell>
-                      <TableCell className="pl-0">
-                        {item.unit * item.price}
-                      </TableCell>
+                      <TableCell className="pl-0 capitalize">{item.unit}</TableCell>
+                      <TableCell className="pl-0">{item.unit * item.price}</TableCell>
                     </TableRow>
-                  );
+                  )
                 })}
               </TableBody>
             </Table>
@@ -168,8 +160,8 @@ class InvoiceViewer extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(InvoiceViewer);
+export default withRouter(InvoiceViewer)

@@ -1,84 +1,84 @@
-import React from "react";
-import ReactEcharts from "echarts-for-react";
-import { withStyles } from "@material-ui/core";
+import React from 'react'
+import ReactEcharts from 'echarts-for-react'
+import { withStyles } from '@material-ui/core'
 
 const ComparisonChart = ({ height, color = [], theme }) => {
   const option = {
     grid: {
-      top: "10%",
-      bottom: "10%",
+      top: '10%',
+      bottom: '10%',
       // left: "5%",
-      right: "5%"
+      right: '5%',
     },
     legend: {
-      show: false
+      show: false,
     },
-    color: ["#223388", "rgba(34, 51, 136, 0.8)"],
+    color: ['#223388', 'rgba(34, 51, 136, 0.8)'],
     barGap: 0,
-    barMaxWidth: "64px",
+    barMaxWidth: '64px',
     tooltip: {},
     dataset: {
       source: [
-        ["Month", "Website", "App"],
-        ["Jan", 2200, 1200],
-        ["Feb", 800, 500],
-        ["Mar", 700, 1350],
-        ["Apr", 1500, 1250],
-        ["May", 2450, 450],
-        ["June", 1700, 1250]
-      ]
+        ['Month', 'Website', 'App'],
+        ['Jan', 2200, 1200],
+        ['Feb', 800, 500],
+        ['Mar', 700, 1350],
+        ['Apr', 1500, 1250],
+        ['May', 2450, 450],
+        ['June', 1700, 1250],
+      ],
     },
     xAxis: {
-      type: "category",
+      type: 'category',
       axisLine: {
-        show: false
+        show: false,
       },
       splitLine: {
-        show: false
+        show: false,
       },
       axisTick: {
-        show: false
+        show: false,
       },
       axisLabel: {
         color: theme.palette.text.secondary,
         fontSize: 13,
-        fontFamily: "roboto"
-      }
+        fontFamily: 'roboto',
+      },
     },
     yAxis: {
       axisLine: {
-        show: false
+        show: false,
       },
       axisTick: {
-        show: false
+        show: false,
       },
       splitLine: {
         // show: false
         lineStyle: {
           color: theme.palette.text.secondary,
-          opacity: 0.15
-        }
+          opacity: 0.15,
+        },
       },
       axisLabel: {
         color: theme.palette.text.secondary,
         fontSize: 13,
-        fontFamily: "roboto"
-      }
+        fontFamily: 'roboto',
+      },
     },
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.
-    series: [{ type: "bar" }, { type: "bar" }]
-  };
+    series: [{ type: 'bar' }, { type: 'bar' }],
+  }
 
   return (
     <ReactEcharts
       style={{ height: height }}
       option={{
         ...option,
-        color: [...color]
+        color: [...color],
       }}
     />
-  );
-};
+  )
+}
 
-export default withStyles({}, { withTheme: true })(ComparisonChart);
+export default withStyles({}, { withTheme: true })(ComparisonChart)

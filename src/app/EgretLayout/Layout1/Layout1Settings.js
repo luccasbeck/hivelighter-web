@@ -3,14 +3,14 @@ const Layout1Settings = {
     show: true,
     mode: 'full', // full, close, compact, mobile,
     theme: 'slateDark1', // View all valid theme colors inside EgretTheme/themeColors.js
-    bgOpacity: .96, // 0 ~ 1
-    bgImgURL: '/assets/images/sidebar/sidebar-bg-dark.jpg'
+    bgOpacity: 0.96, // 0 ~ 1
+    bgImgURL: '/assets/images/sidebar/sidebar-bg-dark.jpg',
   },
   topbar: {
     show: true,
     fixed: true,
-    theme: 'white' // View all valid theme colors inside EgretTheme/themeColors.js
-  }
+    theme: 'white', // View all valid theme colors inside EgretTheme/themeColors.js
+  },
 }
 
-export default Layout1Settings;
+export default Layout1Settings

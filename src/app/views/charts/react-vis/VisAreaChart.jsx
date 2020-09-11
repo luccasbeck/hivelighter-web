@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import {
   FlexibleWidthXYPlot,
@@ -6,9 +6,9 @@ import {
   YAxis,
   // VerticalGridLines,
   // HorizontalGridLines,
-  AreaSeries
-} from "react-vis";
-import { withStyles } from "@material-ui/styles";
+  AreaSeries,
+} from 'react-vis'
+import { withStyles } from '@material-ui/styles'
 
 const VisAreaChart = ({ theme }) => {
   return (
@@ -18,28 +18,32 @@ const VisAreaChart = ({ theme }) => {
       <XAxis
         style={{
           text: {
-            stroke: "none",
+            stroke: 'none',
             fill: theme.palette.text.secondary,
-            fontWeight: 600
-          }
+            fontWeight: 600,
+          },
         }}
       />
       <YAxis
         style={{
           text: {
-            stroke: "none",
+            stroke: 'none',
             fill: theme.palette.text.secondary,
-            fontWeight: 600
-          }
+            fontWeight: 600,
+          },
         }}
       />
       <AreaSeries
         className="area-series-example"
         curve="curveNatural"
-        data={[{ x: 1, y: 10 }, { x: 2, y: 5 }, { x: 3, y: 15 }]}
+        data={[
+          { x: 1, y: 10 },
+          { x: 2, y: 5 },
+          { x: 3, y: 15 },
+        ]}
       />
     </FlexibleWidthXYPlot>
-  );
-};
+  )
+}
 
-export default withStyles({}, { withTheme: true })(VisAreaChart);
+export default withStyles({}, { withTheme: true })(VisAreaChart)

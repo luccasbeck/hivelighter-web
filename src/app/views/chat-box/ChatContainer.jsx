@@ -1,18 +1,11 @@
-import React, { Fragment } from "react";
-import {
-  IconButton,
-  Icon,
-  Divider,
-  Fab,
-  TextField,
-  MenuItem
-} from "@material-ui/core";
-import { EgretMenu } from "egret";
-import Scrollbar from "react-perfect-scrollbar";
-import EmptyMessage from "./EmptyMessage";
-import ChatAvatar from "./ChatAvatar";
-import { getTimeDifference } from "utils";
-import shortid from "shortid";
+import React, { Fragment } from 'react'
+import { IconButton, Icon, Divider, Fab, TextField, MenuItem } from '@material-ui/core'
+import { EgretMenu } from 'egret'
+import Scrollbar from 'react-perfect-scrollbar'
+import EmptyMessage from './EmptyMessage'
+import ChatAvatar from './ChatAvatar'
+import { getTimeDifference } from 'utils'
+import shortid from 'shortid'
 
 const ChatContainer = ({
   id: currentUserId,
@@ -21,16 +14,16 @@ const ChatContainer = ({
   opponentUser,
   messageList = [],
   setBottomRef,
-  handleMessageSend
+  handleMessageSend,
 }) => {
-  let [message, setMessage] = React.useState("");
-  const sendMessageOnEnter = event => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      message = message.trim();
-      if (message !== "") handleMessageSend(message);
-      setMessage("");
+  let [message, setMessage] = React.useState('')
+  const sendMessageOnEnter = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      message = message.trim()
+      if (message !== '') handleMessageSend(message)
+      setMessage('')
     }
-  };
+  }
 
   return (
     <div className="chat-container flex-column position-relative">
@@ -48,10 +41,7 @@ const ChatContainer = ({
 
           {opponentUser && (
             <Fragment>
-              <ChatAvatar
-                src={opponentUser.avatar}
-                status={opponentUser.status}
-              />
+              <ChatAvatar src={opponentUser.avatar} status={opponentUser.status} />
               <h5 className="ml-16 white-space-pre mb-0 font-weight-500 font-size-18 text-white">
                 {opponentUser.name}
               </h5>
@@ -78,12 +68,12 @@ const ChatContainer = ({
       </div>
 
       <Scrollbar
-        containerRef={ref => {
-          setBottomRef(ref);
+        containerRef={(ref) => {
+          setBottomRef(ref)
         }}
         className="chat-message-list flex-grow-1 position-relative"
       >
-        {currentChatRoom === "" && (
+        {currentChatRoom === '' && (
           <div className="flex-column flex-center flex-middle h-100">
             <EmptyMessage />
             <p>Select a contact</p>
@@ -97,8 +87,8 @@ const ChatContainer = ({
               <div
                 className={`px-16 py-8 mb-4 list__message ${
                   currentUserId === message.contactId
-                    ? "bg-primary text-white"
-                    : "bg-paper"
+                    ? 'bg-primary text-white'
+                    : 'bg-paper'
                 }`}
               >
                 <span className="white-space-pre-line">{message.text}</span>
@@ -114,12 +104,12 @@ const ChatContainer = ({
 
       <Divider />
 
-      {currentChatRoom !== "" && (
+      {currentChatRoom !== '' && (
         <div className="flex flex-middle px-16 py-8">
           <TextField
             label="Type your message here*"
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
             onKeyDown={sendMessageOnEnter}
             fullWidth
             multiline={true}
@@ -128,8 +118,8 @@ const ChatContainer = ({
           <div>
             <Fab
               onClick={() => {
-                if (message.trim() !== "") handleMessageSend(message);
-                setMessage("");
+                if (message.trim() !== '') handleMessageSend(message)
+                setMessage('')
               }}
               color="primary"
               className="ml-16"
@@ -140,7 +130,7 @@ const ChatContainer = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ChatContainer;
+export default ChatContainer

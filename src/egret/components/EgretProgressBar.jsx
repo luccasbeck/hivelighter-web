@@ -1,21 +1,21 @@
-import React from "react";
-import { Grid, LinearProgress, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
+import React from 'react'
+import { Grid, LinearProgress, Typography } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles'
 
-const CustomLinearProgress = withStyles(theme => ({
+const CustomLinearProgress = withStyles((theme) => ({
   root: {
     borderRadius: 2,
-    background: "rgba(0, 0, 0, 0.1)"
-  }
-}))(LinearProgress);
+    background: 'rgba(0, 0, 0, 0.1)',
+  },
+}))(LinearProgress)
 
 const EgretProgressBar = ({
   value = 75,
-  color = "primary",
-  text = "",
+  color = 'primary',
+  text = '',
   spacing = 2,
   coloredText = false,
-  className
+  className,
 }) => {
   return (
     <Grid container spacing={spacing} alignItems="center" className={className}>
@@ -26,17 +26,15 @@ const EgretProgressBar = ({
           variant="determinate"
         ></CustomLinearProgress>
       </Grid>
-      {text !== "" && (
+      {text !== '' && (
         <Grid item xs={text ? 4 : false}>
           <Typography color={color}>
-            <small className={`${coloredText ? "" : "text-muted"}`}>
-              {text}
-            </small>
+            <small className={`${coloredText ? '' : 'text-muted'}`}>{text}</small>
           </Typography>
         </Grid>
       )}
     </Grid>
-  );
-};
+  )
+}
 
-export default EgretProgressBar;
+export default EgretProgressBar

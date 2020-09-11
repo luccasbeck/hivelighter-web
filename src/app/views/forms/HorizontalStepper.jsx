@@ -1,50 +1,43 @@
-import React from "react";
-import {
-  TextField,
-  Icon,
-  Button,
-  StepLabel,
-  Step,
-  Stepper
-} from "@material-ui/core";
+import React from 'react'
+import { TextField, Icon, Button, StepLabel, Step, Stepper } from '@material-ui/core'
 
 function getSteps() {
-  return ["First Name", "Last Name", "Address"];
+  return ['First Name', 'Last Name', 'Address']
 }
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return <TextField label="First Name"></TextField>;
+      return <TextField label="First Name"></TextField>
     case 1:
-      return <TextField label="Last Name"></TextField>;
+      return <TextField label="Last Name"></TextField>
     case 2:
-      return <TextField label="Address"></TextField>;
+      return <TextField label="Address"></TextField>
     default:
-      return "";
+      return ''
   }
 }
 
 export default function HorizontalStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
+  const [activeStep, setActiveStep] = React.useState(0)
+  const steps = getSteps()
 
   const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
 
   const handleReset = () => {
-    setActiveStep(0);
-  };
+    setActiveStep(0)
+  }
 
   return (
     <div>
       <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map(label => (
+        {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
@@ -78,12 +71,12 @@ export default function HorizontalStepper() {
                 color="primary"
                 onClick={handleNext}
               >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }

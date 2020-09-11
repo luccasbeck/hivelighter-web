@@ -270,5 +270,5 @@ export const ContourData = [
   { eruptions: 2.15, waiting: 46 },
   { eruptions: 4.417, waiting: 90 },
   { eruptions: 1.817, waiting: 46 },
-  { eruptions: 4.467, waiting: 74 }
-];
+  { eruptions: 4.467, waiting: 74 },
+]

@@ -1,113 +1,112 @@
-import React, { Component } from "react";
-import { Card } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Card } from '@material-ui/core'
 import {
   Breadcrumb,
   EgretSidenavContainer,
   EgretSidenav,
-  EgretSidenavContent
-} from "egret";
+  EgretSidenavContent,
+} from 'egret'
 import {
   getAllContact,
   getRecentContact,
   sendNewMessage,
   getContactById,
-  getChatRoomByContactId
-} from "./ChatService";
-import ChatSidenav from "./ChatSidenav";
-import ChatContainer from "./ChatContainer";
-import { generateRandomId, isMobile } from "utils";
+  getChatRoomByContactId,
+} from './ChatService'
+import ChatSidenav from './ChatSidenav'
+import ChatContainer from './ChatContainer'
+// eslint-disable-next-line no-unused-vars
+import { generateRandomId, isMobile } from 'utils'
 
 class AppChat extends Component {
   state = {
     currentUser: {
-      id: "7863a6802ez0e277a0f98534"
+      id: '7863a6802ez0e277a0f98534',
     },
     contactList: [],
     recentContactList: [],
     messageList: [],
-    currentChatRoom: "",
+    currentChatRoom: '',
     opponentUser: null,
-    open: true
-  };
+    open: true,
+  }
 
-  bottomRef = React.createRef();
+  bottomRef = React.createRef()
 
   componentDidMount() {
-    let { id } = this.state.currentUser;
-    getContactById(id).then(data => {
+    let { id } = this.state.currentUser
+    getContactById(id).then((data) => {
       this.setState({
         open: !isMobile(),
         currentUser: {
-          ...data.data
-        }
-      });
-    });
-    getAllContact(this.state.currentUser.id).then(data =>
-      this.setState({ contactList: [...data.data] })
-    );
-    this.updateRecentContactList();
+          ...data.data,
+        },
+      })
+    })
+    getAllContact(this.state.currentUser.id).then((data) =>
+      this.setState({ contactList: [...data.data] }),
+    )
+    this.updateRecentContactList()
   }
 
   updateRecentContactList = () => {
-    let { id } = this.state.currentUser;
-    getRecentContact(id).then(data => {
+    let { id } = this.state.currentUser
+    getRecentContact(id).then((data) => {
       this.setState({
-        recentContactList: [...data.data]
-      });
-    });
-  };
+        recentContactList: [...data.data],
+      })
+    })
+  }
 
   scrollToBottom = () => {
-    this.bottomRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+    this.bottomRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
-  handleContactClick = contactId => {
-    if (isMobile()) this.toggleSidenav();
+  handleContactClick = (contactId) => {
+    if (isMobile()) this.toggleSidenav()
 
     getContactById(contactId).then(({ data }) => {
       this.setState({
-        opponentUser: { ...data }
-      });
-    });
-    getChatRoomByContactId(this.state.currentUser.id, contactId).then(
-      ({ data }) => {
-        let { chatId, messageList, recentListUpdated } = data;
-        console.log(chatId);
+        opponentUser: { ...data },
+      })
+    })
+    getChatRoomByContactId(this.state.currentUser.id, contactId).then(({ data }) => {
+      let { chatId, messageList, recentListUpdated } = data
+      console.log(chatId)
 
-        this.setState(
-          {
-            currentChatRoom: chatId,
-            messageList
-          },
-          () => {
-            this.bottomRef.scrollTop = 9999999999999;
-          }
-        );
-        if (recentListUpdated) {
-          this.updateRecentContactList();
-        }
+      this.setState(
+        {
+          currentChatRoom: chatId,
+          messageList,
+        },
+        () => {
+          this.bottomRef.scrollTop = 9999999999999
+        },
+      )
+      if (recentListUpdated) {
+        this.updateRecentContactList()
       }
-    );
-  };
+    })
+  }
 
-  handleMessageSend = message => {
-    let { id } = this.state.currentUser;
-    let { currentChatRoom, opponentUser } = this.state;
-    if (currentChatRoom === "") return;
+  handleMessageSend = (message) => {
+    let { id } = this.state.currentUser
+    let { currentChatRoom, opponentUser } = this.state
+    if (currentChatRoom === '') return
     sendNewMessage({
       chatId: currentChatRoom,
       text: message,
       contactId: id,
-      time: new Date()
-    }).then(data => {
+      time: new Date(),
+    }).then((data) => {
       this.setState(
         {
-          messageList: [...data.data]
+          messageList: [...data.data],
         },
         () => {
-          this.bottomRef.scrollTop = 9999999999999;
-        }
-      );
+          this.bottomRef.scrollTop = 9999999999999
+        },
+      )
 
       // bot message
       setTimeout(() => {
@@ -115,27 +114,27 @@ class AppChat extends Component {
           chatId: currentChatRoom,
           text: `Hi, I'm ${opponentUser.name}. Your imaginary friend.`,
           contactId: opponentUser.id,
-          time: new Date()
-        }).then(data => {
+          time: new Date(),
+        }).then((data) => {
           this.setState(
             {
-              messageList: [...data.data]
+              messageList: [...data.data],
             },
             () => {
-              this.bottomRef.scrollTop = 9999999999999;
-            }
-          );
-        });
-      }, 750);
+              this.bottomRef.scrollTop = 9999999999999
+            },
+          )
+        })
+      }, 750)
       // bot message ends here
-    });
-  };
+    })
+  }
 
-  setBottomRef = ref => {
-    this.bottomRef = ref;
-  };
+  setBottomRef = (ref) => {
+    this.bottomRef = ref
+  }
 
-  toggleSidenav = () => this.setState({ open: !this.state.open });
+  toggleSidenav = () => this.setState({ open: !this.state.open })
 
   render() {
     let {
@@ -144,12 +143,12 @@ class AppChat extends Component {
       recentContactList,
       messageList,
       opponentUser,
-      currentChatRoom
-    } = this.state;
+      currentChatRoom,
+    } = this.state
     return (
       <div className="m-sm-30">
         <div className="mb-sm-30">
-          <Breadcrumb routeSegments={[{ name: "Chat" }]} />
+          <Breadcrumb routeSegments={[{ name: 'Chat' }]} />
         </div>
         <Card elevation={6}>
           <EgretSidenavContainer>
@@ -179,8 +178,8 @@ class AppChat extends Component {
           </EgretSidenavContainer>
         </Card>
       </div>
-    );
+    )
   }
 }
 
-export default AppChat;
+export default AppChat

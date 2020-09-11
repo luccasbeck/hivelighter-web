@@ -1,73 +1,58 @@
-import React, { Component } from "react";
-import {
-  Dialog,
-  Button,
-  Grid,
-  FormControlLabel,
-  Switch
-} from "@material-ui/core";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { getUserById, updateUser, addNewUser } from "./TableService";
-import { generateRandomId } from "utils";
+import React, { Component } from 'react'
+import { Dialog, Button, Grid, FormControlLabel, Switch } from '@material-ui/core'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { getUserById, updateUser, addNewUser } from './TableService'
+import { generateRandomId } from 'utils'
 
 class MemberEditorDialog extends Component {
   state = {
-    name: "",
-    email: "",
-    phone: "",
-    balance: "",
-    age: "",
-    company: "",
-    address: "",
-    isActive: false
-  };
+    name: '',
+    email: '',
+    phone: '',
+    balance: '',
+    age: '',
+    company: '',
+    address: '',
+    isActive: false,
+  }
 
   handleChange = (event, source) => {
-    event.persist();
-    if (source === "switch") {
-      this.setState({ isActive: event.target.checked });
-      return;
+    event.persist()
+    if (source === 'switch') {
+      this.setState({ isActive: event.target.checked })
+      return
     }
 
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
 
   handleFormSubmit = () => {
-    let { id } = this.state;
+    let { id } = this.state
     if (id) {
       updateUser({
-        ...this.state
+        ...this.state,
       }).then(() => {
-        this.props.handleClose();
-      });
+        this.props.handleClose()
+      })
     } else {
       addNewUser({
         id: generateRandomId(),
-        ...this.state
+        ...this.state,
       }).then(() => {
-        this.props.handleClose();
-      });
+        this.props.handleClose()
+      })
     }
-  };
+  }
 
   componentWillMount() {
-    getUserById(this.props.uid).then(data => this.setState({ ...data.data }));
+    getUserById(this.props.uid).then((data) => this.setState({ ...data.data }))
   }
 
   render() {
-    let {
-      name,
-      email,
-      phone,
-      balance,
-      age,
-      company,
-      address,
-      isActive
-    } = this.state;
-    let { open, handleClose } = this.props;
+    let { name, email, phone, balance, age, company, address, isActive } = this.state
+    let { open, handleClose } = this.props
 
     return (
       <Dialog onClose={handleClose} open={open}>
@@ -83,8 +68,8 @@ class MemberEditorDialog extends Component {
                   type="text"
                   name="name"
                   value={name}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
                 <TextValidator
                   className="w-100 mb-16"
@@ -93,8 +78,8 @@ class MemberEditorDialog extends Component {
                   type="text"
                   name="email"
                   value={email}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
 
                 <TextValidator
@@ -104,8 +89,8 @@ class MemberEditorDialog extends Component {
                   type="text"
                   name="phone"
                   value={phone}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
 
                 <TextValidator
@@ -115,8 +100,8 @@ class MemberEditorDialog extends Component {
                   type="number"
                   name="balance"
                   value={balance}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
               </Grid>
 
@@ -128,8 +113,8 @@ class MemberEditorDialog extends Component {
                   type="number"
                   name="age"
                   value={age}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
                 <TextValidator
                   className="w-100 mb-16"
@@ -138,8 +123,8 @@ class MemberEditorDialog extends Component {
                   type="text"
                   name="company"
                   value={company}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
                 <TextValidator
                   className="w-100 mb-16"
@@ -148,8 +133,8 @@ class MemberEditorDialog extends Component {
                   type="text"
                   name="address"
                   value={address}
-                  validators={["required"]}
-                  errorMessages={["this field is required"]}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
                 />
 
                 <FormControlLabel
@@ -157,7 +142,7 @@ class MemberEditorDialog extends Component {
                   control={
                     <Switch
                       checked={isActive}
-                      onChange={event => this.handleChange(event, "switch")}
+                      onChange={(event) => this.handleChange(event, 'switch')}
                     />
                   }
                   label="Active Customer"
@@ -174,8 +159,8 @@ class MemberEditorDialog extends Component {
           </ValidatorForm>
         </div>
       </Dialog>
-    );
+    )
   }
 }
 
-export default MemberEditorDialog;
+export default MemberEditorDialog

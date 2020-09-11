@@ -1,84 +1,80 @@
-import React, { Component } from "react";
-import {
-  EgretSidenavContainer,
-  EgretSidenav,
-  EgretSidenavContent
-} from "egret";
-import InboxMessageList from "./InboxMessagList";
-import { isMobile } from "utils";
-import InboxSidenav from "./InboxSidenav";
-import InboxTopBar from "./InboxTopbar";
-import { getAllMessage } from "./InboxService";
+import React, { Component } from 'react'
+import { EgretSidenavContainer, EgretSidenav, EgretSidenavContent } from 'egret'
+import InboxMessageList from './InboxMessagList'
+import { isMobile } from 'utils'
+import InboxSidenav from './InboxSidenav'
+import InboxTopBar from './InboxTopbar'
+import { getAllMessage } from './InboxService'
 
 class AppInbox extends Component {
-  container = React.createRef();
-  windowResizeListener;
+  container = React.createRef()
+  windowResizeListener
   state = {
     shouldOpenSidenav: true,
     masterCheckbox: false,
-    messageList: []
-  };
+    messageList: [],
+  }
 
   toggleSidenav = () => {
-    this.setState({ shouldOpenSidenav: !this.state.shouldOpenSidenav });
-  };
+    this.setState({ shouldOpenSidenav: !this.state.shouldOpenSidenav })
+  }
 
-  handleMasterCheckbox = event => {
-    let temp = this.state.messageList;
-    let isChecked = event.target.checked;
+  handleMasterCheckbox = (event) => {
+    let temp = this.state.messageList
+    let isChecked = event.target.checked
     if (isChecked) {
-      temp.map(message => {
-        message.selected = true;
-        return message;
-      });
+      temp.map((message) => {
+        message.selected = true
+        return message
+      })
       this.setState({
         messageList: [...temp],
-        masterCheckbox: event.target.checked
-      });
+        masterCheckbox: event.target.checked,
+      })
     } else {
-      temp.map(message => {
-        message.selected = false;
-        return message;
-      });
+      temp.map((message) => {
+        message.selected = false
+        return message
+      })
       this.setState({
         messageList: [...temp],
-        masterCheckbox: event.target.checked
-      });
+        masterCheckbox: event.target.checked,
+      })
     }
-  };
+  }
 
   handleCheckboxSelection = (event, index) => {
-    event.persist();
-    let temp = this.state.messageList;
-    temp[index].selected = event.target.checked;
+    event.persist()
+    let temp = this.state.messageList
+    temp[index].selected = event.target.checked
     this.setState({
-      messageList: [...temp]
-    });
-  };
+      messageList: [...temp],
+    })
+  }
 
   componentWillMount() {
-    if (isMobile()) this.setState({ shouldOpenSidenav: false });
+    if (isMobile()) this.setState({ shouldOpenSidenav: false })
     if (window)
-      this.windowResizeListener = window.addEventListener("resize", e => {
-        if (isMobile()) this.setState({ shouldOpenSidenav: false });
-        else this.setState({ shouldOpenSidenav: true });
-      });
+      this.windowResizeListener = window.addEventListener('resize', (e) => {
+        if (isMobile()) this.setState({ shouldOpenSidenav: false })
+        else this.setState({ shouldOpenSidenav: true })
+      })
   }
 
   componentWillUnmount() {
-    if (window) window.removeEventListener("resize", this.windowResizeListener);
+    if (window) window.removeEventListener('resize', this.windowResizeListener)
   }
 
   componentDidMount() {
-    getAllMessage().then(data => {
+    getAllMessage().then((data) => {
       this.setState({
-        messageList: data.data
-      });
-    });
+        messageList: data.data,
+      })
+    })
   }
 
   render() {
-    let { masterCheckbox } = this.state;
+    let { masterCheckbox } = this.state
     return (
       <div className="inbox flex m-sm-30">
         <div className="inbox__sidenav w-100">
@@ -104,8 +100,8 @@ class AppInbox extends Component {
           </EgretSidenavContainer>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default AppInbox;
+export default AppInbox

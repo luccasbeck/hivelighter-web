@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { Grid, Icon } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Grid, Icon } from '@material-ui/core'
 
 class Service6 extends Component {
   cardList = [
     {
-      icon: "account_balance",
-      text: "Sell everywhere"
+      icon: 'account_balance',
+      text: 'Sell everywhere',
     },
     {
-      icon: "security",
-      text: "Secured payments"
+      icon: 'security',
+      text: 'Secured payments',
     },
     {
-      icon: "language",
-      text: "Smart pricing"
+      icon: 'language',
+      text: 'Smart pricing',
     },
     {
-      icon: "fastfood",
-      text: "Go beyond"
-    }
-  ];
-  state = {};
+      icon: 'fastfood',
+      text: 'Go beyond',
+    },
+  ]
+  state = {}
   render() {
     return (
       <div className="section section-service6" id="service6">
@@ -49,8 +49,8 @@ class Service6 extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Service6;
+export default Service6

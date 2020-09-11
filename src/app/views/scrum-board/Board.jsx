@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Icon,
   IconButton,
   Avatar,
   Tooltip,
   FormControlLabel,
-  Checkbox
-} from "@material-ui/core";
-import ScrumBoardContainer from "./ScrumBoardContainer";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { addNewCardInList } from "./ScrumBoardService";
-import { EgretMenu } from "egret";
+  Checkbox,
+} from '@material-ui/core'
+import ScrumBoardContainer from './ScrumBoardContainer'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+import { addNewCardInList } from './ScrumBoardService'
+import { EgretMenu } from 'egret'
 
 import {
   getBoardById,
@@ -20,61 +20,61 @@ import {
   getAllMembers,
   getAllLabels,
   addMemberInBoard,
-  deleteMemberFromBoard
-} from "../../redux/actions/ScrumBoardActions";
+  deleteMemberFromBoard,
+} from '../../redux/actions/ScrumBoardActions'
 
 class Board extends Component {
   state = {
     board: {
-      title: "",
+      title: '',
       members: [],
-      list: []
-    }
-  };
+      list: [],
+    },
+  }
 
   componentDidMount() {
-    let boardId = this.props.match.params.id;
-    this.props.getBoardById(boardId);
-    this.props.getAllMembers();
-    this.props.getAllLabels();
+    let boardId = this.props.match.params.id
+    this.props.getBoardById(boardId)
+    this.props.getAllMembers()
+    this.props.getAllLabels()
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-      board: { ...nextProps.board }
-    };
+      board: { ...nextProps.board },
+    }
   }
 
-  handleAddList = listTitle => {
-    if (listTitle !== "") {
+  handleAddList = (listTitle) => {
+    if (listTitle !== '') {
       this.props.addListInBoard({
         boardId: this.state.board.id,
-        listTitle
-      });
+        listTitle,
+      })
     }
-  };
+  }
 
-  handleAddNewCard = cardData => {
+  handleAddNewCard = (cardData) => {
     addNewCardInList({
       boardId: this.props.match.params.id,
-      ...cardData
-    }).then(list => {
-      this.setState({ board: { ...this.state.board, list: [...list.data] } });
-    });
-  };
+      ...cardData,
+    }).then((list) => {
+      this.setState({ board: { ...this.state.board, list: [...list.data] } })
+    })
+  }
 
-  handleChange = event => {
-    let memberId = event.target.value;
-    let { members, id } = this.state.board;
-    let { deleteMemberFromBoard, addMemberInBoard } = this.props;
-    if (members.some(member => member.id === memberId)) {
-      deleteMemberFromBoard({ boardId: id, memberId });
-    } else addMemberInBoard({ boardId: id, memberId });
-  };
+  handleChange = (event) => {
+    let memberId = event.target.value
+    let { members, id } = this.state.board
+    let { deleteMemberFromBoard, addMemberInBoard } = this.props
+    if (members.some((member) => member.id === memberId)) {
+      deleteMemberFromBoard({ boardId: id, memberId })
+    } else addMemberInBoard({ boardId: id, memberId })
+  }
 
   render() {
-    let { members = [], title, list = [] } = this.state.board;
-    let { memberList = [] } = this.props;
+    let { members = [], title, list = [] } = this.state.board
+    let { memberList = [] } = this.props
 
     return (
       <div className="scrum-board m-sm-30">
@@ -101,18 +101,18 @@ class Board extends Component {
               horizontalPosition="right"
               shouldCloseOnItemClick={false}
               menuButton={
-                <Tooltip title={"Add"} fontSize="large">
+                <Tooltip title={'Add'} fontSize="large">
                   <Avatar className="avatar ml--12 cursor-pointer">+</Avatar>
                 </Tooltip>
               }
             >
-              {memberList.map(user => (
+              {memberList.map((user) => (
                 <FormControlLabel
                   className="ml-0"
                   key={user.id}
                   control={
                     <Checkbox
-                      checked={members.some(member => member.id === user.id)}
+                      checked={members.some((member) => member.id === user.id)}
                       onChange={this.handleChange}
                       value={user.id}
                     />
@@ -138,11 +138,11 @@ class Board extends Component {
           ></ScrumBoardContainer>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   getBoardById: PropTypes.func.isRequired,
   addListInBoard: PropTypes.func.isRequired,
   getAllMembers: PropTypes.func.isRequired,
@@ -151,17 +151,14 @@ const mapStateToProps = state => ({
   deleteMemberFromBoard: PropTypes.func.isRequired,
   board: state.scrumboard.board,
   memberList: state.scrumboard.memberList,
-  labelList: state.scrumboard.labelList
-});
+  labelList: state.scrumboard.labelList,
+})
 
-export default connect(
-  mapStateToProps,
-  {
-    getBoardById,
-    addListInBoard,
-    getAllMembers,
-    getAllLabels,
-    addMemberInBoard,
-    deleteMemberFromBoard
-  }
-)(Board);
+export default connect(mapStateToProps, {
+  getBoardById,
+  addListInBoard,
+  getAllMembers,
+  getAllLabels,
+  addMemberInBoard,
+  deleteMemberFromBoard,
+})(Board)

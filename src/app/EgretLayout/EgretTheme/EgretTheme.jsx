@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { MuiThemeProvider } from "@material-ui/core";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { setLayoutSettings } from "app/redux/actions/LayoutActions";
+import React, { Component } from 'react'
+import { MuiThemeProvider } from '@material-ui/core'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
 // import cssVars from "css-vars-ponyfill";
 
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet'
 
 class EgretTheme extends Component {
   componentWillReceiveProps() {
@@ -17,8 +17,8 @@ class EgretTheme extends Component {
   }
 
   render() {
-    let { children, settings } = this.props;
-    let activeTheme = { ...settings.themes[settings.activeTheme] };
+    let { children, settings } = this.props
+    let activeTheme = { ...settings.themes[settings.activeTheme] }
     // console.log(activeTheme);
 
     // activeTheme.direction = settings.direction;
@@ -51,9 +51,9 @@ class EgretTheme extends Component {
                 
                 ${activeTheme.shadows
                   .map((shadow, i) => {
-                    return `--elevation-z${i}: ${shadow};`;
+                    return `--elevation-z${i}: ${shadow};`
                   })
-                  .join(" ")} 
+                  .join(' ')} 
 
               }
             `}
@@ -62,21 +62,18 @@ class EgretTheme extends Component {
 
         {children}
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
 EgretTheme.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   settings: state.layout.settings,
-  setLayoutSettings: PropTypes.func.isRequired
-});
+  setLayoutSettings: PropTypes.func.isRequired,
+})
 
-export default connect(
-  mapStateToProps,
-  { setLayoutSettings }
-)(EgretTheme);
+export default connect(mapStateToProps, { setLayoutSettings })(EgretTheme)

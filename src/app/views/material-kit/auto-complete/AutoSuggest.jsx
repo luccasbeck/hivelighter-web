@@ -1,169 +1,159 @@
-import React from "react";
-import deburr from "lodash/deburr";
-import Autosuggest from "react-autosuggest";
-import match from "autosuggest-highlight/match";
-import parse from "autosuggest-highlight/parse";
-import {
-  makeStyles,
-  Popper,
-  MenuItem,
-  Paper,
-  TextField
-} from "@material-ui/core";
+import React from 'react'
+import deburr from 'lodash/deburr'
+import Autosuggest from 'react-autosuggest'
+import match from 'autosuggest-highlight/match'
+import parse from 'autosuggest-highlight/parse'
+import { makeStyles, Popper, MenuItem, Paper, TextField } from '@material-ui/core'
 
 const suggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" },
-  { label: "Angola" },
-  { label: "Anguilla" },
-  { label: "Antarctica" },
-  { label: "Antigua and Barbuda" },
-  { label: "Argentina" },
-  { label: "Armenia" },
-  { label: "Aruba" },
-  { label: "Australia" },
-  { label: "Austria" },
-  { label: "Azerbaijan" },
-  { label: "Bahamas" },
-  { label: "Bahrain" },
-  { label: "Bangladesh" },
-  { label: "Barbados" },
-  { label: "Belarus" },
-  { label: "Belgium" },
-  { label: "Belize" },
-  { label: "Benin" },
-  { label: "Bermuda" },
-  { label: "Bhutan" },
-  { label: "Bolivia, Plurinational State of" },
-  { label: "Bonaire, Sint Eustatius and Saba" },
-  { label: "Bosnia and Herzegovina" },
-  { label: "Botswana" },
-  { label: "Bouvet Island" },
-  { label: "Brazil" },
-  { label: "British Indian Ocean Territory" },
-  { label: "Brunei Darussalam" }
-];
+  { label: 'Afghanistan' },
+  { label: 'Aland Islands' },
+  { label: 'Albania' },
+  { label: 'Algeria' },
+  { label: 'American Samoa' },
+  { label: 'Andorra' },
+  { label: 'Angola' },
+  { label: 'Anguilla' },
+  { label: 'Antarctica' },
+  { label: 'Antigua and Barbuda' },
+  { label: 'Argentina' },
+  { label: 'Armenia' },
+  { label: 'Aruba' },
+  { label: 'Australia' },
+  { label: 'Austria' },
+  { label: 'Azerbaijan' },
+  { label: 'Bahamas' },
+  { label: 'Bahrain' },
+  { label: 'Bangladesh' },
+  { label: 'Barbados' },
+  { label: 'Belarus' },
+  { label: 'Belgium' },
+  { label: 'Belize' },
+  { label: 'Benin' },
+  { label: 'Bermuda' },
+  { label: 'Bhutan' },
+  { label: 'Bolivia, Plurinational State of' },
+  { label: 'Bonaire, Sint Eustatius and Saba' },
+  { label: 'Bosnia and Herzegovina' },
+  { label: 'Botswana' },
+  { label: 'Bouvet Island' },
+  { label: 'Brazil' },
+  { label: 'British Indian Ocean Territory' },
+  { label: 'Brunei Darussalam' },
+]
 
 function renderInputComponent(inputProps) {
-  const { classes, inputRef = () => {}, ref, ...other } = inputProps;
+  const { classes, inputRef = () => {}, ref, ...other } = inputProps
 
   return (
     <TextField
       fullWidth
       InputProps={{
-        inputRef: node => {
-          ref(node);
-          inputRef(node);
+        inputRef: (node) => {
+          ref(node)
+          inputRef(node)
         },
         classes: {
-          input: classes.input
-        }
+          input: classes.input,
+        },
       }}
       {...other}
     />
-  );
+  )
 }
 
 function renderSuggestion(suggestion, { query, isHighlighted }) {
-  const matches = match(suggestion.label, query);
-  const parts = parse(suggestion.label, matches);
+  const matches = match(suggestion.label, query)
+  const parts = parse(suggestion.label, matches)
 
   return (
     <MenuItem selected={isHighlighted} component="div">
       <div>
-        {parts.map(part => (
-          <span
-            key={part.text}
-            style={{ fontWeight: part.highlight ? 500 : 400 }}
-          >
+        {parts.map((part) => (
+          <span key={part.text} style={{ fontWeight: part.highlight ? 500 : 400 }}>
             {part.text}
           </span>
         ))}
       </div>
     </MenuItem>
-  );
+  )
 }
 
 function getSuggestions(value) {
-  const inputValue = deburr(value.trim()).toLowerCase();
-  const inputLength = inputValue.length;
-  let count = 0;
+  const inputValue = deburr(value.trim()).toLowerCase()
+  const inputLength = inputValue.length
+  let count = 0
 
   return inputLength === 0
     ? []
-    : suggestions.filter(suggestion => {
+    : suggestions.filter((suggestion) => {
         const keep =
-          count < 5 &&
-          suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue
 
         if (keep) {
-          count += 1;
+          count += 1
         }
 
-        return keep;
-      });
+        return keep
+      })
 }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.label;
+  return suggestion.label
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: 250,
-    flexGrow: 1
+    flexGrow: 1,
   },
   container: {
-    position: "relative"
+    position: 'relative',
   },
   suggestionsContainerOpen: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing(1),
     left: 0,
-    right: 0
+    right: 0,
   },
   suggestion: {
-    display: "block"
+    display: 'block',
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: 'none',
   },
   divider: {
-    height: theme.spacing(2)
-  }
-}));
+    height: theme.spacing(2),
+  },
+}))
 
 export default function IntegrationAutosuggest() {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
   const [state, setState] = React.useState({
-    single: "",
-    popper: ""
-  });
+    single: '',
+    popper: '',
+  })
 
-  const [stateSuggestions, setSuggestions] = React.useState([]);
+  const [stateSuggestions, setSuggestions] = React.useState([])
 
   const handleSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value));
-  };
+    setSuggestions(getSuggestions(value))
+  }
 
   const handleSuggestionsClearRequested = () => {
-    setSuggestions([]);
-  };
+    setSuggestions([])
+  }
 
-  const handleChange = name => (event, { newValue }) => {
+  const handleChange = (name) => (event, { newValue }) => {
     setState({
       ...state,
-      [name]: newValue
-    });
-  };
+      [name]: newValue,
+    })
+  }
 
   const autosuggestProps = {
     renderInputComponent,
@@ -171,8 +161,8 @@ export default function IntegrationAutosuggest() {
     onSuggestionsFetchRequested: handleSuggestionsFetchRequested,
     onSuggestionsClearRequested: handleSuggestionsClearRequested,
     getSuggestionValue,
-    renderSuggestion
-  };
+    renderSuggestion,
+  }
 
   return (
     <div className={classes.root}>
@@ -180,19 +170,19 @@ export default function IntegrationAutosuggest() {
         {...autosuggestProps}
         inputProps={{
           classes,
-          id: "react-autosuggest-simple",
-          label: "Country",
-          placeholder: "Search a country (start with a)",
+          id: 'react-autosuggest-simple',
+          label: 'Country',
+          placeholder: 'Search a country (start with a)',
           value: state.single,
-          onChange: handleChange("single")
+          onChange: handleChange('single'),
         }}
         theme={{
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
           suggestionsList: classes.suggestionsList,
-          suggestion: classes.suggestion
+          suggestion: classes.suggestion,
         }}
-        renderSuggestionsContainer={options => (
+        renderSuggestionsContainer={(options) => (
           <Paper {...options.containerProps} square>
             {options.children}
           </Paper>
@@ -203,23 +193,23 @@ export default function IntegrationAutosuggest() {
         {...autosuggestProps}
         inputProps={{
           classes,
-          id: "react-autosuggest-popper",
-          label: "Country",
-          placeholder: "With Popper",
+          id: 'react-autosuggest-popper',
+          label: 'Country',
+          placeholder: 'With Popper',
           value: state.popper,
-          onChange: handleChange("popper"),
-          inputRef: node => {
-            setAnchorEl(node);
+          onChange: handleChange('popper'),
+          inputRef: (node) => {
+            setAnchorEl(node)
           },
           InputLabelProps: {
-            shrink: true
-          }
+            shrink: true,
+          },
         }}
         theme={{
           suggestionsList: classes.suggestionsList,
-          suggestion: classes.suggestion
+          suggestion: classes.suggestion,
         }}
-        renderSuggestionsContainer={options => (
+        renderSuggestionsContainer={(options) => (
           <Popper anchorEl={anchorEl} open={Boolean(options.children)}>
             <Paper
               square
@@ -232,5 +222,5 @@ export default function IntegrationAutosuggest() {
         )}
       />
     </div>
-  );
+  )
 }

@@ -1,36 +1,36 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import Slide from "@material-ui/core/Slide";
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Snackbar from '@material-ui/core/Snackbar'
+import Slide from '@material-ui/core/Slide'
 
 function TransitionLeft(props) {
-  return <Slide {...props} direction="left" />;
+  return <Slide {...props} direction="left" />
 }
 
 function TransitionUp(props) {
-  return <Slide {...props} direction="up" />;
+  return <Slide {...props} direction="up" />
 }
 
 function TransitionRight(props) {
-  return <Slide {...props} direction="right" />;
+  return <Slide {...props} direction="right" />
 }
 
 function TransitionDown(props) {
-  return <Slide {...props} direction="down" />;
+  return <Slide {...props} direction="down" />
 }
 
 class DirectionSnackbar extends React.Component {
   state = {
-    open: false
-  };
+    open: false,
+  }
 
-  handleClick = Transition => () => {
-    this.setState({ open: true, Transition });
-  };
+  handleClick = (Transition) => () => {
+    this.setState({ open: true, Transition })
+  }
 
   handleClose = () => {
-    this.setState({ open: false });
-  };
+    this.setState({ open: false })
+  }
 
   render() {
     return (
@@ -44,13 +44,13 @@ class DirectionSnackbar extends React.Component {
           onClose={this.handleClose}
           TransitionComponent={this.state.Transition}
           ContentProps={{
-            "aria-describedby": "message-id"
+            'aria-describedby': 'message-id',
           }}
           message={<span id="message-id">I love snacks</span>}
         />
       </div>
-    );
+    )
   }
 }
 
-export default DirectionSnackbar;
+export default DirectionSnackbar

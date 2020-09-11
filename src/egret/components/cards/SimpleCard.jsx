@@ -1,5 +1,5 @@
-import React from "react";
-import { Card } from "@material-ui/core";
+import React from 'react'
+import { Card } from '@material-ui/core'
 
 const SimpleCard = ({ children, title, subtitle, icon }) => {
   return (
@@ -8,7 +8,7 @@ const SimpleCard = ({ children, title, subtitle, icon }) => {
       <div className="card-subtitle mb-24">{subtitle}</div>
       {children}
     </Card>
-  );
-};
+  )
+}
 
-export default SimpleCard;
+export default SimpleCard

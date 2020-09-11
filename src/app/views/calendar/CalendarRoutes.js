@@ -1,15 +1,15 @@
-import { EgretLoadable } from "egret";
+import { EgretLoadable } from 'egret'
 
 const EgretCalendar = EgretLoadable({
-  loader: () => import("./EgretCalendar")
-});
+  loader: () => import('./EgretCalendar'),
+})
 
 const calendarRoutes = [
   {
-    path: "/calendar",
+    path: '/calendar',
     exact: true,
-    component: EgretCalendar
-  }
-];
+    component: EgretCalendar,
+  },
+]
 
-export default calendarRoutes;
+export default calendarRoutes

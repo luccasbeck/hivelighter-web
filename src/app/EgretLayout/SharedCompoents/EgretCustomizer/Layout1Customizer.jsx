@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react'
 import {
   Tooltip,
   Radio,
@@ -10,17 +10,17 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-  Paper
-} from "@material-ui/core";
-import { get } from "lodash";
-import { themeColors } from "../../EgretTheme/themeColors";
-import BadgeSelected from "./BadgeSelected";
-import { mainSidebarThemes, topbarThemes } from "./customizerOptions";
+  Paper,
+} from '@material-ui/core'
+import { get } from 'lodash'
+import { themeColors } from '../../EgretTheme/themeColors'
+import BadgeSelected from './BadgeSelected'
+import { mainSidebarThemes, topbarThemes } from './customizerOptions'
 
 const sidebarBG = [
-  "/assets/images/sidebar/sidebar-bg-dark.jpg",
-  "/assets/images/sidebar/sidebar-bg-light.jpg"
-];
+  '/assets/images/sidebar/sidebar-bg-dark.jpg',
+  '/assets/images/sidebar/sidebar-bg-light.jpg',
+]
 
 const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
   return (
@@ -34,11 +34,9 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
               <Tooltip key={i} title={color} placement="top">
                 <div
                   className="color"
-                  onClick={() =>
-                    handleChange("layout1Settings.leftSidebar.theme", color)
-                  }
+                  onClick={() => handleChange('layout1Settings.leftSidebar.theme', color)}
                   style={{
-                    backgroundColor: themeColors[color].palette.primary.main
+                    backgroundColor: themeColors[color].palette.primary.main,
                   }}
                 >
                   {settings.layout1Settings.leftSidebar.theme === color && (
@@ -54,25 +52,20 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
       <div className="mb-32 mx-12">
         <div className="text-muted mb-4">Topbar theme</div>
         <div className="colors">
-          {topbarThemes
-            .map((color, i) => (
-              <Tooltip key={i} title={color} placement="top">
-                <div
-                  className="color"
-                  onClick={() =>
-                    handleChange("layout1Settings.topbar.theme", color)
-                  }
-                  style={{
-                    backgroundColor: themeColors[color].palette.primary.main
-                  }}
-                >
-                  {settings.layout1Settings.topbar.theme === color && (
-                    <Icon>done</Icon>
-                  )}
-                  <div className={settings.themes[color].palette.type}></div>
-                </div>
-              </Tooltip>
-            ))}
+          {topbarThemes.map((color, i) => (
+            <Tooltip key={i} title={color} placement="top">
+              <div
+                className="color"
+                onClick={() => handleChange('layout1Settings.topbar.theme', color)}
+                style={{
+                  backgroundColor: themeColors[color].palette.primary.main,
+                }}
+              >
+                {settings.layout1Settings.topbar.theme === color && <Icon>done</Icon>}
+                <div className={settings.themes[color].palette.type}></div>
+              </div>
+            </Tooltip>
+          ))}
         </div>
       </div>
 
@@ -83,15 +76,11 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             aria-label="Sidebar"
             name="leftSidebar"
             value={settings.layout1Settings.leftSidebar.mode}
-            onChange={handleControlChange("layout1Settings.leftSidebar.mode")}
+            onChange={handleControlChange('layout1Settings.leftSidebar.mode')}
           >
             <FormControlLabel value="full" control={<Radio />} label="Full" />
             <FormControlLabel value="close" control={<Radio />} label="Close" />
-            <FormControlLabel
-              value="compact"
-              control={<Radio />}
-              label="Compact"
-            />
+            <FormControlLabel value="compact" control={<Radio />} label="Compact" />
           </RadioGroup>
         </FormControl>
       </div>
@@ -105,15 +94,13 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
               key={i}
               color="primary"
               className="layout-box"
-              style={{ width: "calc(25% - 8px)" }}
+              style={{ width: 'calc(25% - 8px)' }}
               badgeContent={<Icon>done</Icon>}
               invisible={settings.layout1Settings.leftSidebar.bgImgURL !== bg}
             >
               <Paper
-                onClick={() =>
-                  handleChange("layout1Settings.leftSidebar.bgImgURL", bg)
-                }
-                style={{ height: "160px" }}
+                onClick={() => handleChange('layout1Settings.leftSidebar.bgImgURL', bg)}
+                style={{ height: '160px' }}
               >
                 <img src={bg} alt="" />
               </Paper>
@@ -127,7 +114,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
         <Slider
           value={settings.layout1Settings.leftSidebar.bgOpacity}
           onChange={(event, value) =>
-            handleChange("layout1Settings.leftSidebar.bgOpacity", value)
+            handleChange('layout1Settings.leftSidebar.bgOpacity', value)
           }
           marks={true}
           step={0.02}
@@ -145,8 +132,8 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <FormControlLabel
               control={
                 <Switch
-                  checked={get(settings.layout1Settings.topbar, "show")}
-                  onChange={handleControlChange("layout1Settings.topbar.show")}
+                  checked={get(settings.layout1Settings.topbar, 'show')}
+                  onChange={handleControlChange('layout1Settings.topbar.show')}
                 />
               }
               label="Show"
@@ -155,8 +142,8 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
             <FormControlLabel
               control={
                 <Switch
-                  checked={get(settings.layout1Settings.topbar, "fixed")}
-                  onChange={handleControlChange("layout1Settings.topbar.fixed")}
+                  checked={get(settings.layout1Settings.topbar, 'fixed')}
+                  onChange={handleControlChange('layout1Settings.topbar.fixed')}
                 />
               }
               label="Fixed"
@@ -165,7 +152,7 @@ const Layout1Customizer = ({ settings, handleChange, handleControlChange }) => {
         </FormControl>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Layout1Customizer;
+export default Layout1Customizer

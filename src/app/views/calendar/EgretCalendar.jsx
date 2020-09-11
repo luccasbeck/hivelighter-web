@@ -1,83 +1,83 @@
-import React, { Component } from "react";
-import { Button } from "@material-ui/core";
-import { Calendar, Views, momentLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import moment from "moment";
-import CalendarHeader from "./CalendarHeader";
-import * as ReactDOM from "react-dom";
-import { Breadcrumb } from "egret";
-import { getAllEvents, updateEvent } from "./CalendarService";
-import EventEditorDialog from "./EventEditorDialog";
+import React, { Component } from 'react'
+import { Button } from '@material-ui/core'
+import { Calendar, Views, momentLocalizer } from 'react-big-calendar'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+import moment from 'moment'
+import CalendarHeader from './CalendarHeader'
+import * as ReactDOM from 'react-dom'
+import { Breadcrumb } from 'egret'
+import { getAllEvents, updateEvent } from './CalendarService'
+import EventEditorDialog from './EventEditorDialog'
 
-const localizer = momentLocalizer(moment);
+const localizer = momentLocalizer(moment)
 
-const DragAndDropCalendar = withDragAndDrop(Calendar);
+const DragAndDropCalendar = withDragAndDrop(Calendar)
 
-let viewList = Object.keys(Views).map(key => Views[key]);
+let viewList = Object.keys(Views).map((key) => Views[key])
 
 class EgretCalendar extends Component {
   state = {
     events: [],
     shouldShowEventDialog: false,
-    newEvent: null
-  };
+    newEvent: null,
+  }
 
   constructor(props) {
-    super(props);
-    this.headerComponentRef = React.createRef();
+    super(props)
+    this.headerComponentRef = React.createRef()
   }
 
   componentDidMount() {
-    this.updateCalendar();
+    this.updateCalendar()
   }
 
   updateCalendar = () => {
     getAllEvents()
-      .then(res => res.data)
-      .then(events => {
-        this.setState({ events });
-      });
-  };
+      .then((res) => res.data)
+      .then((events) => {
+        this.setState({ events })
+      })
+  }
 
   handleDialogClose = () => {
-    this.setState({ shouldShowEventDialog: false });
-    this.updateCalendar();
-  };
+    this.setState({ shouldShowEventDialog: false })
+    this.updateCalendar()
+  }
 
-  handleEventMove = event => {
-    this.handleEventResize(event);
-  };
+  handleEventMove = (event) => {
+    this.handleEventResize(event)
+  }
 
-  handleEventResize = event => {
+  handleEventResize = (event) => {
     updateEvent(event).then(() => {
-      this.updateCalendar();
-    });
-  };
+      this.updateCalendar()
+    })
+  }
 
   openNewEventDialog = ({ action, ...event }) => {
-    if (action === "doubleClick") {
+    if (action === 'doubleClick') {
       this.setState({
         newEvent: event,
-        shouldShowEventDialog: true
-      });
+        shouldShowEventDialog: true,
+      })
     }
-  };
+  }
 
-  openExistingEventDialog = event => {
+  openExistingEventDialog = (event) => {
     this.setState({
       newEvent: event,
-      shouldShowEventDialog: true
-    });
-  };
+      shouldShowEventDialog: true,
+    })
+  }
 
   render() {
-    let { events, newEvent, shouldShowEventDialog } = this.state;
+    let { events, newEvent, shouldShowEventDialog } = this.state
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
-          <Breadcrumb routeSegments={[{ name: "Calendar" }]} />
+        <div className="mb-sm-30">
+          <Breadcrumb routeSegments={[{ name: 'Calendar' }]} />
         </div>
 
         <Button
@@ -86,9 +86,9 @@ class EgretCalendar extends Component {
           color="secondary"
           onClick={() =>
             this.openNewEventDialog({
-              action: "doubleClick",
+              action: 'doubleClick',
               start: new Date(),
-              end: new Date()
+              end: new Date(),
             })
           }
         >
@@ -111,22 +111,22 @@ class EgretCalendar extends Component {
             step={60}
             showMultiDayTimes
             components={{
-              toolbar: props => {
+              toolbar: (props) => {
                 return this.headerComponentRef.current ? (
                   ReactDOM.createPortal(
                     <CalendarHeader {...props} />,
-                    this.headerComponentRef.current
+                    this.headerComponentRef.current,
                   )
                 ) : (
                   <div>Header component not found</div>
-                );
-              }
+                )
+              },
             }}
             // onNavigate={this.handleNavigate}
-            onSelectEvent={event => {
-              this.openExistingEventDialog(event);
+            onSelectEvent={(event) => {
+              this.openExistingEventDialog(event)
             }}
-            onSelectSlot={slotDetails => this.openNewEventDialog(slotDetails)}
+            onSelectSlot={(slotDetails) => this.openNewEventDialog(slotDetails)}
           />
         </div>
         {shouldShowEventDialog && (
@@ -137,8 +137,8 @@ class EgretCalendar extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
-export default EgretCalendar;
+export default EgretCalendar

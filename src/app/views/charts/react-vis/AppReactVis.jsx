@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Breadcrumb, SimpleCard } from "egret";
-import VisLineChart from "./VisLineChart";
-import ColoredLineChart from "./ColoredLineChart";
-import VisAreaChart from "./VisAreaChart";
-import VisBarChart from "./VisBarChart";
-import BigBaseBarSeries from "./BigBaseBarSeries";
-import LabeledHeatmap from "./LabelledHeatMap";
-import ContourSeriesChart from "./ContourSeries";
+import React, { Component } from 'react'
+import { Breadcrumb, SimpleCard } from 'egret'
+import VisLineChart from './VisLineChart'
+import ColoredLineChart from './ColoredLineChart'
+import VisAreaChart from './VisAreaChart'
+import VisBarChart from './VisBarChart'
+import BigBaseBarSeries from './BigBaseBarSeries'
+import LabeledHeatmap from './LabelledHeatMap'
+import ContourSeriesChart from './ContourSeries'
 
 class AppReactVis extends Component {
-  state = {};
+  state = {}
   render() {
     return (
       <div className="m-sm-30">
-        <div  className="mb-sm-30">
+        <div className="mb-sm-30">
           <Breadcrumb
             routeSegments={[
-              { name: "Charts", path: "/charts" },
-              { name: "React Vis Charts" }
+              { name: 'Charts', path: '/charts' },
+              { name: 'React Vis Charts' },
             ]}
           />
         </div>
@@ -49,8 +49,8 @@ class AppReactVis extends Component {
           <VisBarChart />
         </SimpleCard>
       </div>
-    );
+    )
   }
 }
 
-export default AppReactVis;
+export default AppReactVis

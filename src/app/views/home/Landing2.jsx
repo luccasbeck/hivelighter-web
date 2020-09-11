@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { scrollTo } from "utils";
-import Intro2 from "./sections/Intro2";
-import Portfolio2 from "./sections/Portfolio2";
-import Testimonial2 from "./sections/Testimonial2";
-import Services2 from "./sections/Services2";
-import CallToAction1 from "./sections/CallToAction1";
-import Pricing1 from "./sections/Pricing1";
-import Contact1 from "./sections/Contact1";
-import Footer1 from "./sections/Footer1";
-import TopBar2 from "./sections/TopBar2";
+import React, { Component } from 'react'
+import { scrollTo } from 'utils'
+import Intro2 from './sections/Intro2'
+import Portfolio2 from './sections/Portfolio2'
+import Testimonial2 from './sections/Testimonial2'
+import Services2 from './sections/Services2'
+import CallToAction1 from './sections/CallToAction1'
+import Pricing1 from './sections/Pricing1'
+import Contact1 from './sections/Contact1'
+import Footer1 from './sections/Footer1'
+import TopBar2 from './sections/TopBar2'
 
 class Landing2 extends Component {
-  state = {};
+  state = {}
   componentWillUnmount() {
-    scrollTo("root");
+    scrollTo('root')
   }
   render() {
     return (
@@ -28,8 +28,8 @@ class Landing2 extends Component {
         <Contact1 />
         <Footer1 />
       </div>
-    );
+    )
   }
 }
 
-export default Landing2;
+export default Landing2

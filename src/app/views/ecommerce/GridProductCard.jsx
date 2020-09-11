@@ -1,8 +1,8 @@
-import React from "react";
-import { Card, Button, Icon } from "@material-ui/core";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addProductToCart } from "app/redux/actions/EcommerceActions";
+import React from 'react'
+import { Card, Button, Icon } from '@material-ui/core'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { addProductToCart } from 'app/redux/actions/EcommerceActions'
 
 const GridProductCard = ({ product, addProductToCart, user }) => {
   return (
@@ -28,15 +28,12 @@ const GridProductCard = ({ product, addProductToCart, user }) => {
         <h5 className="m-0">{product.title}</h5>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   addProductToCart: PropTypes.func.isRequired,
-  user: state.user
-});
+  user: state.user,
+})
 
-export default connect(
-  mapStateToProps,
-  { addProductToCart }
-)(GridProductCard);
+export default connect(mapStateToProps, { addProductToCart })(GridProductCard)

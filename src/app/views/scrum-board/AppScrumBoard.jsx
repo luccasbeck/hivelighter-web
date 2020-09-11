@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Card,
   Grid,
@@ -7,53 +7,50 @@ import {
   TextField,
   InputAdornment,
   IconButton,
-  Icon
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import {
-  getAllBoard,
-  addNewBoard
-} from "../../redux/actions/ScrumBoardActions";
+  Icon,
+} from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { getAllBoard, addNewBoard } from '../../redux/actions/ScrumBoardActions'
 
 class AppScrumBoard extends Component {
   state = {
     shouldOpenDialog: false,
-    textFieldValue: "",
-    boardList: []
-  };
-
-  componentDidMount() {
-    this.props.getAllBoard();
+    textFieldValue: '',
+    boardList: [],
   }
 
-  openEditorDialog = value => {
-    this.setState({ shouldOpenDialog: value });
-  };
+  componentDidMount() {
+    this.props.getAllBoard()
+  }
 
-  handleChange = event => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      this.handleAddNewBoard();
-    } else this.setState({ textFieldValue: event.target.value });
-  };
+  openEditorDialog = (value) => {
+    this.setState({ shouldOpenDialog: value })
+  }
+
+  handleChange = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      this.handleAddNewBoard()
+    } else this.setState({ textFieldValue: event.target.value })
+  }
 
   handleAddNewBoard = () => {
-    let title = this.state.textFieldValue.trim();
-    if (title !== "") {
-      this.props.addNewBoard(title);
-      this.setState({ textFieldValue: "" });
+    let title = this.state.textFieldValue.trim()
+    if (title !== '') {
+      this.props.addNewBoard(title)
+      this.setState({ textFieldValue: '' })
     }
-  };
+  }
 
   render() {
-    let { shouldOpenDialog, textFieldValue } = this.state;
-    let { boardList = [] } = this.props;
+    let { shouldOpenDialog, textFieldValue } = this.state
+    let { boardList = [] } = this.props
 
     return (
       <div className="scrum-board m-sm-30">
         <Grid container spacing={2}>
-          {boardList.map(board => (
+          {boardList.map((board) => (
             <Grid key={board.id} item lg={3} md={3} sm={12} xs={12}>
               <Link to={`/scrum-board/${board.id}`}>
                 <Card className="p-24 cursor-pointer h-150" elevation={3}>
@@ -66,13 +63,11 @@ class AppScrumBoard extends Component {
           ))}
           <Grid item lg={3} md={3} sm={12} xs={12}>
             {shouldOpenDialog ? (
-              <ClickAwayListener
-                onClickAway={() => this.openEditorDialog(false)}
-              >
+              <ClickAwayListener onClickAway={() => this.openEditorDialog(false)}>
                 <Card
                   className="p-24 pb-16 h-150"
                   elevation={3}
-                  style={{ width: "290px" }}
+                  style={{ width: '290px' }}
                 >
                   <TextField
                     onChange={this.handleChange}
@@ -93,7 +88,7 @@ class AppScrumBoard extends Component {
                             <Icon fontSize="small">clear</Icon>
                           </IconButton>
                         </InputAdornment>
-                      )
+                      ),
                     }}
                   />
                   <div className="flex flex-end">
@@ -122,17 +117,14 @@ class AppScrumBoard extends Component {
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   getAllBoard: PropTypes.func.isRequired,
   addNewBoard: PropTypes.func.isRequired,
-  boardList: state.scrumboard.boardList
-});
+  boardList: state.scrumboard.boardList,
+})
 
-export default connect(
-  mapStateToProps,
-  { getAllBoard, addNewBoard }
-)(AppScrumBoard);
+export default connect(mapStateToProps, { getAllBoard, addNewBoard })(AppScrumBoard)

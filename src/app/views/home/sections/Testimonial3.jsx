@@ -1,51 +1,51 @@
-import React, { Component } from "react";
-import { Grid, Card } from "@material-ui/core";
+import React, { Component } from 'react'
+import { Grid, Card } from '@material-ui/core'
 
 class Testimonial3 extends Component {
   cardList = [
     {
-      title: "Amazed by the product",
+      title: 'Amazed by the product',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.",
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.',
       user: {
-        imageUrl: "./assets/images/face-1.jpg",
-        name: "Dan Shwartz",
-        position: "Software engineer"
-      }
+        imageUrl: './assets/images/face-1.jpg',
+        name: 'Dan Shwartz',
+        position: 'Software engineer',
+      },
     },
     {
-      title: "Very nice support",
+      title: 'Very nice support',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.",
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.',
       user: {
-        imageUrl: "./assets/images/face-4.jpg",
-        name: "Hellen Miller",
-        position: "Accountant"
-      }
+        imageUrl: './assets/images/face-4.jpg',
+        name: 'Hellen Miller',
+        position: 'Accountant',
+      },
     },
     {
-      title: "My tasks are now painless",
+      title: 'My tasks are now painless',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.",
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.',
       user: {
-        imageUrl: "./assets/images/face-3.jpg",
-        name: "Jane Guzmann",
-        position: "CEO"
-      }
+        imageUrl: './assets/images/face-3.jpg',
+        name: 'Jane Guzmann',
+        position: 'CEO',
+      },
     },
     {
-      title: "My income has doubled",
+      title: 'My income has doubled',
       text:
-        "Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.",
+        'Lorem ipsum dolor sit amet, vim quidam blandit voluptaria no, has eu lorem convenire incorrupte. Vis mutat altera percipit ad.',
       user: {
-        imageUrl: "./assets/images/face-2.jpg",
-        name: "Anthony Leblanc",
-        position: "ounder at Hereby"
-      }
-    }
-  ];
+        imageUrl: './assets/images/face-2.jpg',
+        name: 'Anthony Leblanc',
+        position: 'ounder at Hereby',
+      },
+    },
+  ]
 
-  state = {};
+  state = {}
 
   render() {
     return (
@@ -76,8 +76,8 @@ class Testimonial3 extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Testimonial3;
+export default Testimonial3

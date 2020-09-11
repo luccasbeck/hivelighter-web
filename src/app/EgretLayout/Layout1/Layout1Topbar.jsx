@@ -1,34 +1,35 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import {
   Icon,
   IconButton,
+  // eslint-disable-next-line no-unused-vars
   Badge,
   MenuItem,
   withStyles,
-  MuiThemeProvider
-} from "@material-ui/core";
-import { connect } from "react-redux";
-import { setLayoutSettings } from "app/redux/actions/LayoutActions";
-import { logoutUser } from "app/redux/actions/UserActions";
-import { PropTypes } from "prop-types";
-import { EgretMenu, EgretSearchBox } from "egret";
-import { isMdScreen } from "utils";
-import NotificationBar from "../SharedCompoents/NotificationBar";
-import { Link } from "react-router-dom";
-import ShoppingCart from "../SharedCompoents/ShoppingCart";
+  MuiThemeProvider,
+} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
+import { logoutUser } from 'app/redux/actions/UserActions'
+import { PropTypes } from 'prop-types'
+import { EgretMenu, EgretSearchBox } from 'egret'
+import { isMdScreen } from 'utils'
+import NotificationBar from '../SharedCompoents/NotificationBar'
+import { Link } from 'react-router-dom'
+import ShoppingCart from '../SharedCompoents/ShoppingCart'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    backgroundColor: theme.palette.primary.main
-  }
-});
+    backgroundColor: theme.palette.primary.main,
+  },
+})
 
 class Layout1Topbar extends Component {
-  state = {};
+  state = {}
 
-  updateSidebarMode = sidebarSettings => {
-    let { settings, setLayoutSettings } = this.props;
+  updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = this.props
 
     setLayoutSettings({
       ...settings,
@@ -36,33 +37,32 @@ class Layout1Topbar extends Component {
         ...settings.layout1Settings,
         leftSidebar: {
           ...settings.layout1Settings.leftSidebar,
-          ...sidebarSettings
-        }
-      }
-    });
-  };
+          ...sidebarSettings,
+        },
+      },
+    })
+  }
 
   handleSidebarToggle = () => {
-    let { settings } = this.props;
-    let { layout1Settings } = settings;
+    let { settings } = this.props
+    let { layout1Settings } = settings
 
-    let mode;
+    let mode
     if (isMdScreen()) {
-      mode = layout1Settings.leftSidebar.mode === "close" ? "mobile" : "close";
+      mode = layout1Settings.leftSidebar.mode === 'close' ? 'mobile' : 'close'
     } else {
-      mode = layout1Settings.leftSidebar.mode === "full" ? "close" : "full";
+      mode = layout1Settings.leftSidebar.mode === 'full' ? 'close' : 'full'
     }
-    this.updateSidebarMode({ mode });
-  };
+    this.updateSidebarMode({ mode })
+  }
 
   handleSignOut = () => {
-    this.props.logoutUser();
-  };
+    this.props.logoutUser()
+  }
 
   render() {
-    let { theme, settings } = this.props;
-    const topbarTheme =
-      settings.themes[settings.layout1Settings.topbar.theme] || theme;
+    let { theme, settings } = this.props
+    const topbarTheme = settings.themes[settings.layout1Settings.topbar.theme] || theme
     return (
       <MuiThemeProvider theme={topbarTheme}>
         <div className="topbar">
@@ -113,18 +113,12 @@ class Layout1Topbar extends Component {
                     </Link>
                   </MenuItem>
                   <MenuItem style={{ minWidth: 185 }}>
-                    <Link
-                      className="flex flex-middle"
-                      to="/page-layouts/user-profile"
-                    >
+                    <Link className="flex flex-middle" to="/page-layouts/user-profile">
                       <Icon> person </Icon>
                       <span className="pl-16"> Profile </span>
                     </Link>
                   </MenuItem>
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
+                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
                     <Icon> settings </Icon>
                     <span className="pl-16"> Settings </span>
                   </MenuItem>
@@ -142,27 +136,22 @@ class Layout1Topbar extends Component {
           </div>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
 Layout1Topbar.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
-};
+  settings: PropTypes.object.isRequired,
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   setLayoutSettings: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  settings: state.layout.settings
-});
+  settings: state.layout.settings,
+})
 
 export default withStyles(styles, { withTheme: true })(
-  withRouter(
-    connect(
-      mapStateToProps,
-      { setLayoutSettings, logoutUser }
-    )(Layout1Topbar)
-  )
-);
+  withRouter(connect(mapStateToProps, { setLayoutSettings, logoutUser })(Layout1Topbar)),
+)
