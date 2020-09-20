@@ -1,3 +1,10 @@
+//
+// HiveCardFooter.jsx
+// Hivelighter
+//
+// Created by Luccas Beck on 2020-09-20
+// Copyright © 2020 Hivelighter Inc. All Rights Reserved.
+
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'

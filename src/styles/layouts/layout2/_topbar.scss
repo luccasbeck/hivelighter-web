@@ -4,15 +4,18 @@
     width: 100%;
     display: table;
     height: $topbar-height;
-    border-bottom: 1px solid transparent;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    border-bottom: 2px solid #E6E9EF;
     z-index: 98;
     .brand {
       height: 100%;
       img {
-        height: 32px;
+        //height: 32px;
       }
+
+      img + img {
+        margin-left: 0.5rem;
+      }
+
       .brand__text {
         font-weight: 500;
         font-size: 1.5rem;

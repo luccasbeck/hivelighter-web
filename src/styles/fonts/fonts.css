@@ -1,0 +1,157 @@
+/* */
+/* fonts.css */
+/* Hivelighter */
+/* */
+/* Created by Luccas Beck on 2020-09-14 */
+/* Copyright © 2020 Hivelighter Inc. All Rights Reserved. */
+
+@font-face {
+  font-family: 'Geomanist';
+  src: local('Geomanist'), local('GeomanistRegular'),
+    url(./Geomanist-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Italic';
+  src: local('Geomanist Italic'), local('GeomanistItalic'),
+    local('GeomanistRegularItalic'),
+    url(./Geomanist-Regular-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Black';
+  src: local('Geomanist Black'), local('GeomanistBlack'),
+    url(./Geomanist-Black.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Black Italic';
+  src: local('Geomanist Black Italic'), local('GeomanistBlackItalic'),
+    url(./Geomanist-Black-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Bold';
+  src: local('Geomanist Bold'), local('GeomanistBold'),
+    url(./Geomanist-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Bold Italic';
+  src: local('Geomanist Bold Italic'), local('GeomanistBoldItalic'),
+    url(./Geomanist-Bold-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Book';
+  src: local('Geomanist Book'), local('GeomanistBook'),
+    url(./Geomanist-Book.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Book Italic';
+  src: local('Geomanist Book Italic'), local('GeomanistBookItalic'),
+    url(./Geomanist-Book-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist ExtraLight';
+  src: local('Geomanist ExtraLight'), local('GeomanistExtraLight'),
+    url(./Geomanist-ExtraLight.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist ExtraLight Italic';
+  src: local('Geomanist ExtraLight Italic'), local('GeomanistExtraLightItalic'),
+    url(./Geomanist-ExtraLight-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Light';
+  src: local('Geomanist Light'), local('GeomanistLight'),
+    url(./Geomanist-Light.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Light Italic';
+  src: local('Geomanist Light Italic'), local('GeomanistLightItalic'),
+    url(./Geomanist-Light-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Medium';
+  src: local('Geomanist Medium'), local('GeomanistMedium'),
+    url(./Geomanist-Medium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Medium Italic';
+  src: local('Geomanist Medium Italic'), local('GeomanistMediumItalic'),
+    url(./Geomanist-Medium-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Thin';
+  src: local('Geomanist Thin'), local('GeomanistThin'),
+    url(./Geomanist-Thin.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Thin Italic';
+  src: local('Geomanist Thin Italic'), local('GeomanistThinItalic'),
+    url(./Geomanist-Thin-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Ultra';
+  src: local('Geomanist Ultra'), local('GeomanistUltra'),
+    url(./Geomanist-Ultra.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Geomanist Ultra Italic';
+  src: local('Geomanist Ultra Italic'), local('GeomanistUltraItalic'),
+    url(./Geomanist-Ultra-Italic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Black';
+  src: local('Helvetica Black'), local('HelveticaBlack'),
+    url(./Helvetica-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Bold Italic';
+  src: local('Helvetica Bold Italic'), local('HelveticaBoldItalic'),
+    url(./Helvetica-Bold-Italic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica UltraLight';
+  src: local('Helvetica UltraLight'), local('HelveticaUltraLight'),
+    url(./Helvetica-UltraLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica UltraLight Italic';
+  src: local('Helvetica UltraLight Italic'), local('HelveticaUltraLightItalic'),
+    url(./Helvetica-UltraLight-Italic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Black Italic';
+  src: local('Helvetica Neue Black Italic'), local('HelveticaNeueBlackItalic'),
+    url(./HelveticaNeueBlackItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: local('Helvetica Neue Bold'), local('HelveticaNeueBold'),
+    url(./HelveticaNeueBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Medium Italic';
+  src: local('Helvetica Neue Medium Italic'), local('HelveticaNeueMediumItalic'),
+    url(./HelveticaNeueMediumItalic.otf) format('opentype');
+}

@@ -1,7 +1,7 @@
+import NotificationBadge from 'egret/components/header/NotificationBadge'
 import React from 'react'
 import {
   Icon,
-  Badge,
   MuiThemeProvider,
   Card,
   Button,
@@ -54,9 +54,9 @@ function NotificationBar(props) {
               : parentThemePalette.text.primary,
         }}
       >
-        <Badge color="secondary" badgeContent={5}>
-          <Icon>notifications</Icon>
-        </Badge>
+        <NotificationBadge badgeContent={11}>
+          <img src="/assets/images/notifications.svg" alt="notifications" />
+        </NotificationBadge>
       </IconButton>
 
       <Drawer

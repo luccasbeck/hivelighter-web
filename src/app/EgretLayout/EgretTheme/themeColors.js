@@ -4,10 +4,10 @@ export const themeColors = {
       type: 'light',
       primary: {
         main: '#ffffff',
-        contrastText: 'rgba(0,0,0,.87)',
+        contrastText: '#102041',
       },
       secondary: {
-        main: '#ff9e43',
+        main: '#102041',
       },
       background: {
         paper: '#ffffff',

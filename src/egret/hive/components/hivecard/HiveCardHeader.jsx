@@ -1,3 +1,10 @@
+//
+// HiveCardHeader.jsx
+// Hivelighter
+//
+// Created by Luccas Beck on 2020-09-20
+// Copyright © 2020 Hivelighter Inc. All Rights Reserved.
+
 import React from 'react'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import IconButton from '@material-ui/core/IconButton'

@@ -1,3 +1,5 @@
+import GetExtensionButton from 'egret/components/header/GetExtensionButton'
+import HeaderButton from 'egret/components/header/HeaderButton'
 import React, { Component } from 'react'
 import {
   Icon,
@@ -9,14 +11,14 @@ import {
   MuiThemeProvider,
   MenuItem,
 } from '@material-ui/core'
-import { EgretMenu, EgretToolbarMenu, EgretSearchBox } from 'egret'
+import { EgretMenu, EgretToolbarMenu } from 'egret'
 import { setLayoutSettings } from 'app/redux/actions/LayoutActions'
 import { PropTypes } from 'prop-types'
+import Hexagon from 'react-hexagon'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import NotificationBar from '../SharedCompoents/NotificationBar'
-import ShoppingCart from '../SharedCompoents/ShoppingCart'
 
 class Layout2Topbar extends Component {
   state = {}
@@ -69,24 +71,32 @@ class Layout2Topbar extends Component {
           <div className="flex flex-space-between flex-middle container h-100">
             <div className="flex flex-middle brand">
               <img src="/assets/images/logo.svg" alt="company-logo" />
-              <span className="brand__text">Egret</span>
+              <img src="/assets/images/brand.svg" alt="company-title" />
             </div>
-            <div className="mx-auto"></div>
+            <div className="h-100 flex-grow-1 ml-36 flex flex-middle">
+              <HeaderButton active>Me</HeaderButton>
+              <HeaderButton>My swarm</HeaderButton>
+              <HeaderButton>Everyone</HeaderButton>
+            </div>
             <div className="flex flex-middle">
               <EgretToolbarMenu offsetTop="80px">
-                <EgretSearchBox />
+                <GetExtensionButton />
+
+                <div className={'px-10'} />
 
                 <NotificationBar />
 
-                <ShoppingCart />
+                <div className={'px-10'} />
 
                 <EgretMenu
                   menuButton={
-                    <img
-                      className="mx-8 text-middle circular-image-small cursor-pointer"
-                      src="/assets/images/face-7.jpg"
-                      alt="user"
-                    />
+                    <div style={{ width: 40, height: 44 }}>
+                      <Hexagon
+                        backgroundImage="/assets/images/face-7.jpg"
+                        backgroundScale={1.05}
+                        style={{ stroke: 'gray' }}
+                      />
+                    </div>
                   }
                 >
                   <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>

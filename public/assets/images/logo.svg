@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>Group</title>
-    <desc>Created with Sketch.</desc>
+<svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10L17.2626 0L34.5255 10V30L17.2626 40L0 30V10Z"
+          fill="url(#paint0_linear)"/>
+    <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M5.76439 13.3398L17.2614 6.67987L28.7587 13.3398V26.6599L17.2614 33.3198L5.76439 26.6599V13.3398Z"
+          fill="url(#paint1_linear)"/>
+    <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M9.60703 15.5643L17.2638 11.129L24.921 15.5643V24.4354L17.2638 28.8712L9.60703 24.4354V15.5643Z"
+          fill="#FFE115"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.9202 24.4052L17.2631 28.8712V20.0075L24.9202 15.5418V24.4052Z"
+          fill="#F1AE30"/>
     <defs>
-        <polygon id="path-1" points="175.269985 55.8695976 225.615824 105.367072 225.615824 241.98041 89.7100649 241.98041 39.4346189 191.704964"></polygon>
-        <filter x="-3.8%" y="-2.7%" width="107.5%" height="107.5%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.351788949 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
+        <linearGradient id="paint0_linear" x1="17.2628" y1="0" x2="17.2628" y2="40" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F4F4F4"/>
+            <stop offset="1" stop-color="#EAEAEA"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear" x1="17.2615" y1="6.67987" x2="17.2615" y2="33.3198"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-color="#060E1E"/>
+            <stop offset="0.0001" stop-color="#1A2844"/>
+            <stop offset="1" stop-color="#061022"/>
+        </linearGradient>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Logo" transform="translate(-96.000000, -80.000000)">
-            <g id="Group" transform="translate(195.000000, 200.000000) rotate(-270.000000) translate(-195.000000, -200.000000) translate(62.500000, 59.500000)">
-                <g id="Path-4-Copy" transform="translate(132.525221, 148.925004) rotate(-135.000000) translate(-132.525221, -148.925004) ">
-                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                    <use fill="#7467EF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                </g>
-                <polygon id="Path-3" fill="#7467EF" points="13 238.415212 13 0 249.898437 238.415212"></polygon>
-                <polygon id="Path-4" fill="#FFFFFF" points="252.486992 0 252.486992 238.799226 13 238.799226"></polygon>
-            </g>
-        </g>
-    </g>
 </svg>

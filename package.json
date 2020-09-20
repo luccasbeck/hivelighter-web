@@ -1,5 +1,5 @@
 {
-  "name": "Hivelighter",
+  "name": "hivelighter",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -51,6 +51,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.14",
+    "styled-components": "^5.2.0",
     "swiper": "^4.5.0",
     "victory": "^32.3.3"
   },
