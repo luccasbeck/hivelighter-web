@@ -33,6 +33,7 @@
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.1",
+    "react-hexagon": "^1.1.3",
     "react-highlight": "^0.12.0",
     "react-html-parser": "^2.0.2",
     "react-infinite-scroller": "^1.2.4",

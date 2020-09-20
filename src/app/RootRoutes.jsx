@@ -18,6 +18,7 @@ import chatRoutes from './views/chat-box/ChatRoutes'
 import todoRoutes from './views/todo/TodoRoutes'
 import pageLayoutRoutes from './views/page-layouts/PageLayoutRoutees'
 import ListRoute from './views/list/ListRoute'
+import MainList from 'egret/hive/views/MainList'
 
 /*
   Required if you are going to use Evelynn Landing page
@@ -33,7 +34,7 @@ const redirectRoute = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to="/dashboard/learning-management" />,
+    component: () => <MainList />,
   },
 ]
 
