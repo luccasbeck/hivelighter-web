@@ -7,10 +7,12 @@
 
 import React from 'react'
 import HiveCard from '../components/hivecard/HiveCard'
+import Navbar from '../components/Navbar'
 
 function MainList() {
   return (
     <>
+      <Navbar />
       <HiveCard />
       <HiveCard />
       <HiveCard />
