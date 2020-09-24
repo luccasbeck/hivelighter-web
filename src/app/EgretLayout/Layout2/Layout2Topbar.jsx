@@ -17,8 +17,9 @@ import { PropTypes } from 'prop-types'
 import Hexagon from 'react-hexagon'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-
 import NotificationBar from '../SharedCompoents/NotificationBar'
+import NotificationBarContainer from '../../../egret/hive/components/notification/NotificationBarContainer'
+import NotificationBarMenuItem from '../../../egret/hive/components/notification/NotificationBarMenuItem'
 
 class Layout2Topbar extends Component {
   state = {}
@@ -84,7 +85,14 @@ class Layout2Topbar extends Component {
 
                 <div className={'px-10'} />
 
-                <NotificationBar />
+                <NotificationBarContainer menuButton={<NotificationBar />}>
+                  <NotificationBarMenuItem />
+                  <NotificationBarMenuItem />
+                  <NotificationBarMenuItem />
+                  <NotificationBarMenuItem />
+                  <NotificationBarMenuItem />
+                  <NotificationBarMenuItem />
+                </NotificationBarContainer>
 
                 <div className={'px-10'} />
 
