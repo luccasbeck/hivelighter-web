@@ -46,6 +46,11 @@ export const navigations = [
 const NavbarContainer = styled.div`
   background: white;
   padding: 8px 20px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: sticky;
+  top: 0;
+  z-index: 99;
   display: flex;
   align-items: center;
   .navbar-btn {

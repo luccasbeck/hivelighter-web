@@ -19,6 +19,7 @@ import todoRoutes from './views/todo/TodoRoutes'
 import pageLayoutRoutes from './views/page-layouts/PageLayoutRoutees'
 import ListRoute from './views/list/ListRoute'
 import MainList from 'egret/hive/views/MainList'
+import ProfileRoutes from '../egret/hive/views/Profile/ProfileRoutes'
 
 /*
   Required if you are going to use Evelynn Landing page
@@ -66,6 +67,7 @@ const routes = [
   ...otherRoutes,
   ...ListRoute,
   ...redirectRoute,
+  ...ProfileRoutes,
   ...errorRoute,
 ]
 

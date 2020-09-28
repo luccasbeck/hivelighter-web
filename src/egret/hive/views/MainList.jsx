@@ -13,9 +13,11 @@ function MainList() {
   return (
     <>
       <Navbar />
-      <HiveCard />
-      <HiveCard />
-      <HiveCard />
+      <div className="card-container">
+        <HiveCard />
+        <HiveCard />
+        <HiveCard />
+      </div>
     </>
   )
 }
