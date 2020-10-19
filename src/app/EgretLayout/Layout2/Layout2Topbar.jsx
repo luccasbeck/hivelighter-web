@@ -18,8 +18,8 @@ import Hexagon from 'react-hexagon'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import NotificationBar from '../SharedCompoents/NotificationBar'
-import NotificationBarContainer from '../../../egret/hive/components/notification/NotificationBarContainer'
-import NotificationBarMenuItem from '../../../egret/hive/components/notification/NotificationBarMenuItem'
+import NotificationBarContainer from '../../../hive/components/notification/NotificationBarContainer'
+import NotificationBarMenuItem from '../../../hive/components/notification/NotificationBarMenuItem'
 
 class Layout2Topbar extends Component {
   state = {}
