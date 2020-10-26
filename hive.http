@@ -34,18 +34,14 @@ X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDA
     "uuid": "575fd091-000e-0358-871b-ec9b66736712"
 }
 
-###
+#### Get my profile in JSON format
 
 # @name profileJSON
 GET {{baseURL}}/api/profile-json
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
-{
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712"
-}
-
-###
+#### Update my profile except avatar
 
 # @name updateProfileJSON
 POST {{baseURL}}/api/profile-json
@@ -53,14 +49,13 @@ Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
 {
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712",
     "username": "Hey_User_0uv6r",
     "firstname": "Hey",
     "lastname": "User",
     "bio": "Hey user is the developer of this service."
 }
 
-###
+#### Update my name
 
 # @name updateName
 POST {{baseURL}}/api/updateProfileFirstnameLastname
@@ -68,12 +63,11 @@ Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
 {
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712",
     "firstname": "Hey",
     "lastname": "User"
 }
 
-###
+#### Update my user name
 
 # @name setUserName
 POST {{baseURL}}/api/setUsername
@@ -81,11 +75,10 @@ Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
 {
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712",
     "username": "New_User_0uv6r"
 }
 
-###
+#### Update my Bio
 
 # @name setBio
 PUT {{baseURL}}/api/setUserBio
@@ -93,54 +86,103 @@ Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
 {
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712",
-    "bio": "I am the developer of this service."
+    "bio": "I am the developer of this service. updated without uuid"
 }
 
-### User Profile
+#### Get Profile of the specified user, provide the user id as a query parameter
 
 # @name userProfile
-GET {{baseURL}}/api/userProfile?uuid=575fd091-000e-0358-871b-ec9b66736712
+GET {{baseURL}}/api/userProfile?uuid=8857e556-54a2-0d5b-88f2-945d265827ab
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
-{
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712"
-}
 
 ### Shares
+
+#### Everyone - All published contents from someone elses
 
 # @name publishedFromOtherUsers
 GET {{baseURL}}/api/publishedFromOtherUsers?newer=false
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
-{
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712"
-}
-
-###
+#### Me - All published contents from a person, use actorId as my id to get my publishes
 
 # @name publishedFromActor
 GET {{baseURL}}/api/publishedFromActor?newer=1&actorId=575fd091-000e-0358-871b-ec9b66736712
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
-{
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712"
-}
-
-###
+#### My Swarm - All published contents from users that I follow
 
 # @name publishedFromUsersIFollow
 GET {{baseURL}}/api/publishedFromUsersIFollow?newer=false
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
 
+
+### Blocking
+
+####
+
+# @name fetchBlockUsers
+GET {{baseURL}}/api/fetchBlockedUsers
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+####
+
+# @name blockUser
+POST {{baseURL}}/api/blockUser
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
 {
-    "uuid": "575fd091-000e-0358-871b-ec9b66736712"
+    "user_id": "8857e556-54a2-0d5b-88f2-945d265827ab"
 }
 
+####
+
+# @name unblockUser
+DELETE {{baseURL}}/api/unblockUser/8857e556-54a2-0d5b-88f2-945d265827ab
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+
+### Following
+
+#### Get all persons that the specified user follows, provide uuid as the user id
+
+# @name getFollowing
+GET {{baseURL}}/api/getFollowing?newer=0&uuid=8857e556-54a2-0d5b-88f2-945d265827ab
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+#### Get all persons that follow the specified user, provide uuid as the user id
+
+# @name getFollowers
+GET {{baseURL}}/api/getFollowers?newer=0&uuid=8857e556-54a2-0d5b-88f2-945d265827ab
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+#### Get followers and following count related to me
+
+# @name getFollowerData
+GET {{baseURL}}/api/getFollowerData
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+#### Follow/Unfolow a person, provide follow as true or false
+
+# @name followUser
+POST {{baseURL}}/api/follow
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+{
+    "user_id": "8857e556-54a2-0d5b-88f2-945d265827ab",
+    "follow": true
+}
 
 ### Routes
 
