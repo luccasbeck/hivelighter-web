@@ -18,7 +18,8 @@ import chatRoutes from './views/chat-box/ChatRoutes'
 import todoRoutes from './views/todo/TodoRoutes'
 import pageLayoutRoutes from './views/page-layouts/PageLayoutRoutees'
 import ListRoute from './views/list/ListRoute'
-import MainList from 'egret/hive/views/MainList'
+import MainList from 'hive/views/MainList'
+import ProfileRoutes from '../hive/views/Profile/ProfileRoutes'
 
 /*
   Required if you are going to use Evelynn Landing page
@@ -29,6 +30,7 @@ import homeRoutes from './views/home/HomeRoutes'
 import otherRoutes from './views/others/OtherRoutes'
 import scrumBoardRoutes from './views/scrum-board/ScrumBoardRoutes'
 import ecommerceRoutes from './views/ecommerce/EcommerceRoutes'
+import settingRoutes from '../hive/views/settings/SettingRoutes'
 
 const redirectRoute = [
   {
@@ -65,6 +67,8 @@ const routes = [
   ...pageLayoutRoutes,
   ...otherRoutes,
   ...ListRoute,
+  ...ProfileRoutes,
+  ...settingRoutes,
   ...redirectRoute,
   ...errorRoute,
 ]
