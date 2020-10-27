@@ -184,6 +184,22 @@ X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDA
     "follow": true
 }
 
+### Notification
+
+#### Get Notifications
+
+# @name notifications
+GET {{baseURL}}/api/notifications?newer=0
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
+#### Get NotificationCount
+
+# @name notificationsCount
+GET {{baseURL}}/api/notificationsCount
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTc1ZmQwOTEtMDAwZS0wMzU4LTg3MWItZWM5YjY2NzM2NzEyIiwicktleSI6IjFiNGQ2ZWY1ZjNjOGQ4ODBjYTAzODYxYWNmODQzNzIwYWJlNTJhYjEiLCJpYXQiOjE2MDI3NDY1MTYsImV4cCI6MzMxMzg3NDY1MTZ9.StIpVkX6obkXn3hgyVysXs5KetAXPqQp6YyZ9_kWGsY
+
 ### Routes
 
 // Set username
