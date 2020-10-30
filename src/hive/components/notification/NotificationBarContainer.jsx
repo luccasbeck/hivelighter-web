@@ -21,7 +21,7 @@ const NotificationItemWrapper = styled.div`
 const NotificationBarContainer = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const children = React.Children.toArray(props.children)
-  let { horizontalPosition = 'left' } = props
+  let { horizontalPosition = 'right' } = props
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)

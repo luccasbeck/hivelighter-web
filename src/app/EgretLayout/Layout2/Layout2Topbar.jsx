@@ -225,16 +225,20 @@ function Layout2Topbar(props) {
                   <span className="pl-16"> Block list </span>
                 </MenuItem>
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <div className="imgWrapper">
-                    <img src="/assets/images/setting/info.png" alt="service" />
-                  </div>
-                  <span className="pl-16"> Terms of Service </span>
+                  <Link className="flex flex-middle" to={'/terms'}>
+                    <div className="imgWrapper">
+                      <img src="/assets/images/setting/info.png" alt="service" />
+                    </div>
+                    <span className="pl-16"> Terms of Service </span>
+                  </Link>
                 </MenuItem>
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <div className="imgWrapper">
-                    <img src="/assets/images/setting/info.png" alt="statement" />
-                  </div>
-                  <span className="pl-16"> Privacy Statement </span>
+                  <Link className="flex flex-middle" to={'/privacy'}>
+                    <div className="imgWrapper">
+                      <img src="/assets/images/setting/info.png" alt="statement" />
+                    </div>
+                    <span className="pl-16"> Privacy Statement </span>
+                  </Link>
                 </MenuItem>
               </EgretMenu>
             </EgretToolbarMenu>
