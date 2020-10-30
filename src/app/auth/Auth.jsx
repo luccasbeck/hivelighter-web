@@ -2,9 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { setUserData } from '../redux/actions/UserActions'
-import jwtAuthService from '../services/jwtAuthService'
 import localStorageService from '../services/localStorageService'
-import firebaseAuthService from '../services/firebase/firebaseAuthService'
 
 class Auth extends Component {
   state = {}
@@ -14,25 +12,12 @@ class Auth extends Component {
 
     this.props.setUserData(localStorageService.getItem('auth_user'))
     this.checkJwtAuth()
-    // this.checkFirebaseAuth();
   }
 
   checkJwtAuth = () => {
-    jwtAuthService.loginWithToken().then((user) => {
-      this.props.setUserData(user)
-    })
-  }
-
-  checkFirebaseAuth = () => {
-    firebaseAuthService.checkAuthStatus((user) => {
-      if (user) {
-        console.log(user.uid)
-        console.log(user.email)
-        console.log(user.emailVerified)
-      } else {
-        console.log('not logged in')
-      }
-    })
+    // AuthService.loginWithToken().then((user) => {
+    //   this.props.setUserData(user)
+    // })
   }
 
   render() {

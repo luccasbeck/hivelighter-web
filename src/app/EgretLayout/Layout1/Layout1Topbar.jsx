@@ -17,7 +17,6 @@ import { EgretMenu, EgretSearchBox } from 'egret'
 import { isMdScreen } from 'utils'
 import NotificationBar from '../SharedCompoents/NotificationBar'
 import { Link } from 'react-router-dom'
-import ShoppingCart from '../SharedCompoents/ShoppingCart'
 
 const styles = (theme) => ({
   root: {
@@ -94,8 +93,6 @@ class Layout1Topbar extends Component {
                 <EgretSearchBox />
 
                 <NotificationBar />
-
-                <ShoppingCart></ShoppingCart>
 
                 <EgretMenu
                   menuButton={

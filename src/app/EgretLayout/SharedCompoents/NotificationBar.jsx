@@ -9,17 +9,16 @@ import {
 import { withStyles } from '@material-ui/styles'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
-import {
-  getNotification,
-  deleteAllNotification,
-  deleteNotification,
-} from '../../redux/actions/NotificationActions'
 
 function NotificationBar(props) {
-  const { theme, settings } = props
+  const { theme, settings, data } = props
 
   const parentThemePalette = theme.palette
-  // console.log(theme);
+  const badgeCount = data
+    ? data.length > 0
+      ? data[0].new_notifications_count
+      : null
+    : null
 
   return (
     <MuiThemeProvider theme={settings.themes[settings.activeTheme]}>
@@ -31,7 +30,7 @@ function NotificationBar(props) {
               : parentThemePalette.text.primary,
         }}
       >
-        <NotificationBadge badgeContent={11}>
+        <NotificationBadge badgeContent={badgeCount}>
           <img src="/assets/images/notifications.svg" alt="notifications" />
         </NotificationBadge>
       </IconButton>
@@ -41,24 +40,13 @@ function NotificationBar(props) {
 
 NotificationBar.propTypes = {
   settings: PropTypes.object.isRequired,
-  notification: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  getNotification: PropTypes.func.isRequired,
-  deleteNotification: PropTypes.func.isRequired,
-  deleteAllNotification: PropTypes.func.isRequired,
-  notification: state.notification,
   settings: state.layout.settings,
 })
 
 export default withStyles(
   {},
   { withTheme: true },
-)(
-  connect(mapStateToProps, {
-    getNotification,
-    deleteNotification,
-    deleteAllNotification,
-  })(NotificationBar),
-)
+)(connect(mapStateToProps, {})(NotificationBar))

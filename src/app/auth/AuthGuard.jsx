@@ -31,13 +31,8 @@ class AuthGuard extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const { location, user } = props
-    const { pathname } = location
-    const matched = state.routes.find((r) => r.path === pathname)
-    const authenticated =
-      matched && matched.auth && matched.auth.length
-        ? matched.auth.includes(user.role)
-        : true
+    let token = localStorage.getItem('access_token')
+    const authenticated = token ? true : false
 
     return {
       authenticated,
@@ -49,18 +44,15 @@ class AuthGuard extends Component {
     const { pathname } = location
 
     history.push({
-      pathname: '/session/signin',
+      pathname: '/signin',
       state: { redirectUrl: pathname },
     })
   }
 
   render() {
     let { children } = this.props
-    const { authenticated } = this.state
 
-    // return <Fragment>{children}</Fragment>;
-
-    return authenticated ? <Fragment>{children}</Fragment> : null
+    return <Fragment>{children}</Fragment>
   }
 }
 

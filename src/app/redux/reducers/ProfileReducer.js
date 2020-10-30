@@ -1,39 +1,33 @@
 import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGIN_LOADING,
-  RESET_PASSWORD,
-} from '../actions/LoginActions'
+  PROFILE_SUCCESS,
+  PROFILE_ERROR,
+  PROFILE_LOADING,
+} from '../actions/ProfileActions'
 
 const initialState = {
   success: false,
   loading: false,
+  data: {},
   error: null,
 }
 
-const LoginReducer = function (state = initialState, action) {
+const ProfileReducer = function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_LOADING: {
+    case PROFILE_LOADING: {
       return {
         ...state,
         loading: true,
       }
     }
-    case LOGIN_SUCCESS: {
+    case PROFILE_SUCCESS: {
       return {
         ...state,
         success: true,
         loading: false,
+        data: action.payload,
       }
     }
-    case RESET_PASSWORD: {
-      return {
-        ...state,
-        success: true,
-        loading: false,
-      }
-    }
-    case LOGIN_ERROR: {
+    case PROFILE_ERROR: {
       return {
         success: false,
         loading: false,
@@ -46,4 +40,4 @@ const LoginReducer = function (state = initialState, action) {
   }
 }
 
-export default LoginReducer
+export default ProfileReducer

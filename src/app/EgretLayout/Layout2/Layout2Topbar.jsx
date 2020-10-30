@@ -1,6 +1,7 @@
 import GetExtensionButton from 'egret/components/header/GetExtensionButton'
 import HeaderButton from 'egret/components/header/HeaderButton'
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import {
   Icon,
   IconButton,
@@ -20,14 +21,72 @@ import { Helmet } from 'react-helmet'
 import NotificationBar from '../SharedCompoents/NotificationBar'
 import NotificationBarContainer from '../../../hive/components/notification/NotificationBarContainer'
 import NotificationBarMenuItem from '../../../hive/components/notification/NotificationBarMenuItem'
+import BlockListBarContainer from '../../../hive/components/blockList/BlockListBarContainer'
+import BlockListBarMenuItem from '../../../hive/components/blockList/BlockListBarMenuItem'
+import { getNotification } from 'app/redux/actions/NotificationActions'
+import { getNotificationCount } from 'app/redux/actions/NotificationCountActions'
+import { getBlockList } from 'app/redux/actions/BlockListActions'
+import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
 
-class Layout2Topbar extends Component {
-  state = {}
+const styles = (theme) => {
+  return {
+    menuItem: {
+      minWidth: 185,
+      '& .imgWrapper': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 40,
+        height: 44,
+      },
+    },
+  }
+}
 
-  handleSignOut = () => {}
+function Layout2Topbar(props) {
+  let {
+    theme,
+    settings,
+    user,
+    location,
+    classes,
+    notification,
+    getNotification,
+    notificationCount,
+    getNotificationCount,
+    blockList,
+    getBlockList,
+  } = props
+  const topbarTheme = settings.themes[settings.layout2Settings.topbar.theme] || theme
 
-  updateSidebarMode = (sidebarSettings) => {
-    let { settings, setLayoutSettings } = this.props
+  const [isBlockListOpen, setIsBlockListOpen] = useState(false)
+
+  const notificationData = notification.data.map((item) => {
+    return { ...item }
+  })
+
+  useEffect(() => {
+    getNotification()
+  }, [getNotification])
+
+  const notificationCountData = notificationCount.data.map((item) => {
+    return { ...item }
+  })
+
+  useEffect(() => {
+    getNotificationCount()
+  }, [getNotificationCount])
+
+  const blockListData = blockList.data.map((item) => {
+    return { ...item }
+  })
+
+  useEffect(() => {
+    getBlockList()
+  }, [getBlockList])
+
+  const updateSidebarMode = (sidebarSettings) => {
+    let { settings, setLayoutSettings } = props
 
     setLayoutSettings({
       ...settings,
@@ -41,23 +100,24 @@ class Layout2Topbar extends Component {
     })
   }
 
-  handleSidebarToggle = () => {
-    let { settings } = this.props
+  const handleSidebarToggle = () => {
+    let { settings } = props
     let { layout2Settings } = settings
 
     let mode = layout2Settings.leftSidebar.mode === 'close' ? 'mobile' : 'close'
 
-    this.updateSidebarMode({ mode })
+    updateSidebarMode({ mode })
   }
 
-  render() {
-    let { theme, settings } = this.props
-    const topbarTheme = settings.themes[settings.layout2Settings.topbar.theme] || theme
-    return (
-      <MuiThemeProvider theme={topbarTheme}>
-        <Helmet>
-          <style>
-            {`.topbar {
+  const handleLink = (pathname) => {
+    props.history.push(pathname)
+  }
+
+  return (
+    <MuiThemeProvider theme={topbarTheme}>
+      <Helmet>
+        <style>
+          {`.topbar {
               background-color: ${topbarTheme.palette.primary.main};
               border-color: ${topbarTheme.palette.divider} !important;
             }
@@ -65,39 +125,73 @@ class Layout2Topbar extends Component {
               color: ${topbarTheme.palette.primary.contrastText};
             }
             `}
-          </style>
-        </Helmet>
+        </style>
+      </Helmet>
 
-        <div className="topbar">
-          <div className="flex flex-space-between flex-middle container h-100">
-            <div className="flex flex-middle brand">
-              <img src="/assets/images/logo.svg" alt="company-logo" />
-              <img src="/assets/images/brand.svg" alt="company-title" />
-            </div>
-            <div className="h-100 flex-grow-1 ml-36 flex flex-middle">
-              <HeaderButton active>Me</HeaderButton>
-              <HeaderButton>My swarm</HeaderButton>
-              <HeaderButton>Everyone</HeaderButton>
-            </div>
-            <div className="flex flex-middle">
-              <EgretToolbarMenu offsetTop="80px">
-                <GetExtensionButton />
+      <div className="topbar">
+        <div className="flex flex-space-between flex-middle container h-100">
+          <div className="flex flex-middle brand">
+            <img src="/assets/images/logo.svg" alt="company-logo" />
+            <img src="/assets/images/brand.svg" alt="company-title" />
+          </div>
+          <div className="h-100 flex-grow-1 ml-36 flex flex-middle">
+            <HeaderButton
+              active={location.pathname === ME_LIST_PATH}
+              onClick={() => handleLink(ME_LIST_PATH)}
+            >
+              Me
+            </HeaderButton>
+            <HeaderButton
+              active={location.pathname === SWARM_LIST_PATH}
+              onClick={() => handleLink(SWARM_LIST_PATH)}
+            >
+              My swarm
+            </HeaderButton>
+            <HeaderButton
+              active={location.pathname === EVERYONE_LIST_PATH}
+              onClick={() => handleLink(EVERYONE_LIST_PATH)}
+            >
+              Everyone
+            </HeaderButton>
+          </div>
+          <div className="flex flex-middle">
+            <EgretToolbarMenu offsetTop="80px">
+              <GetExtensionButton />
 
-                <div className={'px-10'} />
+              <div className={'px-10'} />
 
-                <NotificationBarContainer menuButton={<NotificationBar />}>
-                  <NotificationBarMenuItem />
-                  <NotificationBarMenuItem />
-                  <NotificationBarMenuItem />
-                  <NotificationBarMenuItem />
-                  <NotificationBarMenuItem />
-                  <NotificationBarMenuItem />
-                </NotificationBarContainer>
+              <NotificationBarContainer
+                menuButton={<NotificationBar data={notificationCountData} />}
+              >
+                {notificationData.map((item, index) => (
+                  <NotificationBarMenuItem key={index} data={item} />
+                ))}
+              </NotificationBarContainer>
 
-                <div className={'px-10'} />
+              <BlockListBarContainer
+                open={isBlockListOpen}
+                onSetOpen={(value) => setIsBlockListOpen(value)}
+              >
+                {blockListData.map((item, index) => (
+                  <BlockListBarMenuItem key={index} data={item} />
+                ))}
+              </BlockListBarContainer>
 
-                <EgretMenu
-                  menuButton={
+              <div className={'px-10'} />
+
+              <EgretMenu
+                menuButton={
+                  <div style={{ width: 40, height: 44 }}>
+                    <Hexagon
+                      backgroundImage="/assets/images/face-7.jpg"
+                      backgroundScale={1.05}
+                      style={{ stroke: 'gray' }}
+                    />
+                  </div>
+                }
+              >
+                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                  <Link className="flex flex-middle" to="/profile">
                     <div style={{ width: 40, height: 44 }}>
                       <Hexagon
                         backgroundImage="/assets/images/face-7.jpg"
@@ -105,55 +199,80 @@ class Layout2Topbar extends Component {
                         style={{ stroke: 'gray' }}
                       />
                     </div>
+                    <div className="setting-profile">
+                      <p className="name">{`${user.lastname} ${user.firstname}`}</p>
+                      <span className="see">See your profile</span>
+                    </div>
+                  </Link>
+                </MenuItem>
+                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                  <div className="imgWrapper">
+                    <img src="/assets/images/setting/contact.png" alt="contact" />
+                  </div>
+                  <span className="pl-16"> Contact support </span>
+                </MenuItem>
+                <MenuItem
+                  className={`flex flex-middle ${classes.menuItem}`}
+                  onClick={() =>
+                    setTimeout(() => {
+                      setIsBlockListOpen(true)
+                    }, 500)
                   }
                 >
-                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
-                    <Icon> home </Icon>
-                    <span className="pl-16"> Home </span>
-                  </MenuItem>
-                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
-                    <Icon> person </Icon>
-                    <span className="pl-16"> Person </span>
-                  </MenuItem>
-                  <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
-                    <Icon> settings </Icon>
-                    <span className="pl-16"> Settings </span>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={this.handleSignOut}
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
-                    <Icon> power_settings_new </Icon>
-                    <span className="pl-16"> Logout </span>
-                  </MenuItem>
-                </EgretMenu>
-              </EgretToolbarMenu>
+                  <div className="imgWrapper">
+                    <img src="/assets/images/setting/blocked.png" alt="blocked" />
+                  </div>
+                  <span className="pl-16"> Block list </span>
+                </MenuItem>
+                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                  <div className="imgWrapper">
+                    <img src="/assets/images/setting/info.png" alt="service" />
+                  </div>
+                  <span className="pl-16"> Terms of Service </span>
+                </MenuItem>
+                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                  <div className="imgWrapper">
+                    <img src="/assets/images/setting/info.png" alt="statement" />
+                  </div>
+                  <span className="pl-16"> Privacy Statement </span>
+                </MenuItem>
+              </EgretMenu>
+            </EgretToolbarMenu>
 
-              <Hidden mdUp>
-                <IconButton onClick={this.handleSidebarToggle}>
-                  <Icon>menu</Icon>
-                </IconButton>
-              </Hidden>
-            </div>
+            <Hidden mdUp>
+              <IconButton onClick={handleSidebarToggle}>
+                <Icon>menu</Icon>
+              </IconButton>
+            </Hidden>
           </div>
         </div>
-      </MuiThemeProvider>
-    )
-  }
+      </div>
+    </MuiThemeProvider>
+  )
 }
 
 Layout2Topbar.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
   settings: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   setLayoutSettings: PropTypes.func.isRequired,
   settings: state.layout.settings,
+  user: state.user,
+  notification: state.notification,
+  notificationCount: state.notificationCount,
+  blockList: state.blockList,
 })
 
-export default withStyles(
-  {},
-  { withTheme: true },
-)(connect(mapStateToProps, { setLayoutSettings })(Layout2Topbar))
+export default withStyles(styles, { withTheme: true })(
+  withRouter(
+    connect(mapStateToProps, {
+      setLayoutSettings,
+      getNotification,
+      getNotificationCount,
+      getBlockList,
+    })(Layout2Topbar),
+  ),
+)

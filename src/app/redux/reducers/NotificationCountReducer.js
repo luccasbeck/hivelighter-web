@@ -1,40 +1,35 @@
 import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGIN_LOADING,
-  RESET_PASSWORD,
-} from '../actions/LoginActions'
+  NOTIFICATION_COUNT_SUCCESS,
+  NOTIFICATION_COUNT_ERROR,
+  NOTIFICATION_COUNT_LOADING,
+} from '../actions/NotificationCountActions'
 
 const initialState = {
   success: false,
   loading: false,
+  data: [],
   error: null,
 }
 
-const LoginReducer = function (state = initialState, action) {
+const NotificationCountReducer = function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_LOADING: {
+    case NOTIFICATION_COUNT_LOADING: {
       return {
         ...state,
         loading: true,
       }
     }
-    case LOGIN_SUCCESS: {
+    case NOTIFICATION_COUNT_SUCCESS: {
       return {
         ...state,
         success: true,
         loading: false,
+        data: action.payload,
       }
     }
-    case RESET_PASSWORD: {
+    case NOTIFICATION_COUNT_ERROR: {
       return {
         ...state,
-        success: true,
-        loading: false,
-      }
-    }
-    case LOGIN_ERROR: {
-      return {
         success: false,
         loading: false,
         error: action.payload,
@@ -46,4 +41,4 @@ const LoginReducer = function (state = initialState, action) {
   }
 }
 
-export default LoginReducer
+export default NotificationCountReducer

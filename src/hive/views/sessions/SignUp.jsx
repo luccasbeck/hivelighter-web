@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, Checkbox, FormControlLabel, Grid, Button } from '@material-ui/core'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { connect } from 'react-redux'
+import { signupWithEmailAndPassword } from 'app/redux/actions/SignupActions'
 
 class SignUp extends Component {
   state = {
@@ -18,9 +19,15 @@ class SignUp extends Component {
     })
   }
 
-  handleFormSubmit = (event) => {}
+  handleFormSubmit = (event) => {
+    this.props.signupWithEmailAndPassword({ ...this.state })
+  }
+
   render() {
     let { username, email, password } = this.state
+    let { signup } = this.props
+    console.log(signup)
+
     return (
       <div className="signup flex flex-center w-100 h-100vh">
         <div className="p-8">
@@ -67,6 +74,11 @@ class SignUp extends Component {
                       validators={['required']}
                       errorMessages={['this field is required']}
                     />
+                    {signup.error && (
+                      <div className="mb-8" style={{ color: '#f44336' }}>
+                        {signup.error}
+                      </div>
+                    )}
                     <FormControlLabel
                       className="mb-16"
                       name="agreement"
@@ -103,7 +115,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  // setUser: PropTypes.func.isRequired
+  signup: state.signup,
 })
 
-export default connect(mapStateToProps, {})(SignUp)
+export default connect(mapStateToProps, { signupWithEmailAndPassword })(SignUp)

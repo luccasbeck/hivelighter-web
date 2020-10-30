@@ -27,17 +27,17 @@ const settings = {
 
 const sessionRoutes = [
   {
-    path: '/session/signup',
+    path: '/signup',
     component: SignUp,
     settings,
   },
   {
-    path: '/session/signin',
+    path: '/signin',
     component: SignIn,
     settings,
   },
   {
-    path: '/session/forgot-password',
+    path: '/forgot-password',
     component: ForgotPassword,
     settings,
   },

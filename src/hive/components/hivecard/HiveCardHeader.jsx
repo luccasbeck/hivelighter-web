@@ -32,8 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function HiveCardHeader() {
+export default function HiveCardHeader(props) {
   const classes = useStyles()
+  const { data } = props
 
   return (
     <div className={classes.root}>
@@ -45,7 +46,7 @@ export default function HiveCardHeader() {
             style={{ stroke: 'none' }}
           />
         </div>
-        <span>jaygarda</span>
+        <span>{data.username}</span>
       </div>
       <IconButton aria-label="settings">
         <MoreHorizIcon />

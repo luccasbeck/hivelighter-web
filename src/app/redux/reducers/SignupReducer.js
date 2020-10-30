@@ -1,40 +1,31 @@
-import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGIN_LOADING,
-  RESET_PASSWORD,
-} from '../actions/LoginActions'
+import { SIGNUP_SUCCESS, SIGNUP_ERROR, SIGNUP_LOADING } from '../actions/SignupActions'
 
 const initialState = {
   success: false,
   loading: false,
+  data: {},
   error: null,
 }
 
-const LoginReducer = function (state = initialState, action) {
+const SignupReducer = function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_LOADING: {
+    case SIGNUP_LOADING: {
       return {
         ...state,
         loading: true,
       }
     }
-    case LOGIN_SUCCESS: {
+    case SIGNUP_SUCCESS: {
       return {
         ...state,
         success: true,
         loading: false,
+        data: action.payload,
       }
     }
-    case RESET_PASSWORD: {
+    case SIGNUP_ERROR: {
       return {
         ...state,
-        success: true,
-        loading: false,
-      }
-    }
-    case LOGIN_ERROR: {
-      return {
         success: false,
         loading: false,
         error: action.payload,
@@ -46,4 +37,4 @@ const LoginReducer = function (state = initialState, action) {
   }
 }
 
-export default LoginReducer
+export default SignupReducer

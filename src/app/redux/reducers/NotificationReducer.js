@@ -1,28 +1,42 @@
 import {
-  GET_NOTIFICATION,
-  CREATE_NOTIFICATION,
-  DELETE_ALL_NOTIFICATION,
-  DELETE_NOTIFICATION,
+  NOTIFICATION_SUCCESS,
+  NOTIFICATION_ERROR,
+  NOTIFICATION_LOADING,
 } from '../actions/NotificationActions'
 
-const initialState = []
+const initialState = {
+  success: false,
+  loading: false,
+  data: [],
+  error: null,
+}
 
 const NotificationReducer = function (state = initialState, action) {
   switch (action.type) {
-    case GET_NOTIFICATION: {
-      return [...action.payload]
+    case NOTIFICATION_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      }
     }
-    case CREATE_NOTIFICATION: {
-      return [...action.payload]
+    case NOTIFICATION_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        loading: false,
+        data: action.payload,
+      }
     }
-    case DELETE_NOTIFICATION: {
-      return [...action.payload]
-    }
-    case DELETE_ALL_NOTIFICATION: {
-      return [...action.payload]
+    case NOTIFICATION_ERROR: {
+      return {
+        ...state,
+        success: false,
+        loading: false,
+        error: action.payload,
+      }
     }
     default: {
-      return [...state]
+      return state
     }
   }
 }

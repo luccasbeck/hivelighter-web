@@ -35,7 +35,9 @@ const ProfileHeaderContent = ({ number, content }) => {
   )
 }
 
-function ProfileHeader() {
+function ProfileHeader(props) {
+  const { data } = props
+
   return (
     <ProfileHeaderContainer>
       <div style={{ width: 98, height: 111 }}>
@@ -45,9 +47,9 @@ function ProfileHeader() {
           style={{ stroke: 'none' }}
         />
       </div>
-      <ProfileHeaderContent number={'1142'} content={'Hivelights'} />
-      <ProfileHeaderContent number={'13.2k'} content={'Followers'} />
-      <ProfileHeaderContent number={'653'} content={'Following'} />
+      <ProfileHeaderContent number={data.posts} content={'Hivelights'} />
+      <ProfileHeaderContent number={data.followers} content={'Followers'} />
+      <ProfileHeaderContent number={data.following} content={'Following'} />
     </ProfileHeaderContainer>
   )
 }

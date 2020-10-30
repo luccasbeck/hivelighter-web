@@ -16,7 +16,8 @@
 .layout-contained {
   .container {
     max-width: $contained-layout-width;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
     @include media(767px) {
       max-width: 100%;

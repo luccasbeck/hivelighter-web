@@ -7,8 +7,7 @@
 import React from 'react'
 import Hexagon from 'react-hexagon'
 import styled from 'styled-components'
-import moment from 'moment'
-import FollowButton from './FollowButton'
+import BlockButton from './BlockButton'
 
 const MenuItemContainer = styled.div`
   display: flex;
@@ -24,7 +23,7 @@ const MenuItemContainer = styled.div`
   }
 `
 
-function NotificationBarMenuItem(props) {
+function BlockListBarMenuItem(props) {
   const { data } = props
 
   return (
@@ -41,17 +40,12 @@ function NotificationBarMenuItem(props) {
         style={{ width: '55%', marginLeft: 12 }}
       >
         <span>
-          <strong>{`${data.actor.lastname} ${data.actor.firstname}`}</strong>{' '}
-          {`${data.title}`}
-        </span>
-        <span>{data.msg}</span>
-        <span style={{ color: '#9CABC9', fontSize: 11 }}>
-          {moment(data.date, 'YYYYMMDD').fromNow()}
+          <strong>{`${data.lastname} ${data.firstname}`}</strong>
         </span>
       </div>
-      <FollowButton data={data} />
+      <BlockButton data={data} />
     </MenuItemContainer>
   )
 }
 
-export default NotificationBarMenuItem
+export default BlockListBarMenuItem

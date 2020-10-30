@@ -5,7 +5,7 @@
 // Created by Luccas Beck on 2020-09-20
 // Copyright © 2020 Hivelighter Inc. All Rights Reserved.
 
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
@@ -15,6 +15,7 @@ import Collapse from '@material-ui/core/Collapse'
 import Typography from '@material-ui/core/Typography'
 import HiveCardHeader from './HiveCardHeader'
 import HiveCardFooter from './HiveCardFooter'
+import HiveCardLink from './HiveCardLink'
 import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
@@ -50,9 +51,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function HiveCard() {
+export default function HiveCard(props) {
   const classes = useStyles()
-  const [expanded, setExpanded] = React.useState(false)
+  const { data } = props
+  const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -60,19 +62,11 @@ export default function HiveCard() {
 
   return (
     <div className={classes.root}>
-      <HiveCardHeader />
+      <HiveCardHeader data={data} />
       <Card>
         <CardContent>
           <p className={classes.content}>
-            Simplicity has never been something to take for granted in game design, but as
-            design tools have gotten easier to use, a larger group of game creators has
-            entered the fray.
-          </p>
-          <br />
-          <p className={classes.content}>
-            Simplicity has never been something to take for granted in game design, but as
-            design tools have gotten easier to use, a larger group of game creators has
-            entered the fray.
+            {data.annotations.length > 0 ? data.annotations[0].text : ''}
           </p>
         </CardContent>
         <CardActions disableSpacing>
@@ -96,8 +90,9 @@ export default function HiveCard() {
             </Typography>
           </CardContent>
         </Collapse>
+        <HiveCardLink data={data} />
       </Card>
-      <HiveCardFooter />
+      <HiveCardFooter data={data} />
     </div>
   )
 }

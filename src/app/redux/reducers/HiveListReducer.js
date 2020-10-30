@@ -1,40 +1,35 @@
 import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGIN_LOADING,
-  RESET_PASSWORD,
-} from '../actions/LoginActions'
+  HIVELIST_SUCCESS,
+  HIVELIST_ERROR,
+  HIVELIST_LOADING,
+} from '../actions/HiveListActions'
 
 const initialState = {
   success: false,
   loading: false,
+  data: [],
   error: null,
 }
 
-const LoginReducer = function (state = initialState, action) {
+const HiveListReducer = function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_LOADING: {
+    case HIVELIST_LOADING: {
       return {
         ...state,
         loading: true,
       }
     }
-    case LOGIN_SUCCESS: {
+    case HIVELIST_SUCCESS: {
       return {
         ...state,
         success: true,
         loading: false,
+        data: action.payload,
       }
     }
-    case RESET_PASSWORD: {
+    case HIVELIST_ERROR: {
       return {
         ...state,
-        success: true,
-        loading: false,
-      }
-    }
-    case LOGIN_ERROR: {
-      return {
         success: false,
         loading: false,
         error: action.payload,
@@ -46,4 +41,4 @@ const LoginReducer = function (state = initialState, action) {
   }
 }
 
-export default LoginReducer
+export default HiveListReducer
