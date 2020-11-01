@@ -7,7 +7,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import DarkButton from 'egret/components/common/DarkButton'
+import DarkButton from 'hive/components/common/DarkButton'
 import { unblockUser } from 'app/redux/actions/BlockListActions'
 
 const UnblockBtn = styled(DarkButton)`

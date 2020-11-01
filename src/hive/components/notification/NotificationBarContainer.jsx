@@ -10,9 +10,7 @@ import styled from 'styled-components'
 
 const NotificationItemWrapper = styled.div`
   padding: 24px;
-  padding-right: 56px;
-  max-width: 420px;
-  max-height: 550px;
+  outline: none;
   .notification-item-container + .notification-item-container {
     margin-top: 20px;
   }
@@ -54,6 +52,14 @@ const NotificationBarContainer = (props) => {
         transformOrigin={{
           vertical: 'top',
           horizontal: horizontalPosition,
+        }}
+        PaperProps={{
+          style: {
+            maxHeight: 550,
+            width: 420,
+            borderRadius: 8,
+            marginTop: 20,
+          },
         }}
       >
         <NotificationItemWrapper>

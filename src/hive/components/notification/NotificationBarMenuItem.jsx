@@ -12,7 +12,7 @@ import FollowButton from './FollowButton'
 
 const MenuItemContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   .notification-info span {
     font-family: Helvetica Neue;
@@ -26,6 +26,28 @@ const MenuItemContainer = styled.div`
 
 function NotificationBarMenuItem(props) {
   const { data } = props
+  let action = undefined
+  switch (data.type) {
+    case 1:
+      action = ' just liked your highlight on'
+      break
+    case 2:
+      action = ' just started following you'
+      break
+    case 3:
+      action = ` says “${data.msg ?? ''}”`
+      break
+    case 4:
+      action = ` says “${data.msg ?? ''}”`
+      break
+    case 5:
+      action = ' just read your hivelight'
+      break
+    case 6:
+      action = ' just reshared your hivelight on'
+      break
+  }
+  const title = data.title
 
   return (
     <MenuItemContainer>
@@ -38,14 +60,40 @@ function NotificationBarMenuItem(props) {
       </div>
       <div
         className="flex flex-column notification-info"
-        style={{ width: '55%', marginLeft: 12 }}
+        style={{ marginLeft: 12, marginRight: 12, flex: 1 }}
       >
-        <span>
-          <strong>{`${data.actor.lastname} ${data.actor.firstname}`}</strong>{' '}
-          {`${data.title}`}
-        </span>
-        <span>{data.msg}</span>
-        <span style={{ color: '#9CABC9', fontSize: 11 }}>
+        <div>
+          <span>{data.actor.firstname}</span>
+          {action && (
+            <span
+              style={{
+                fontWeight: 400,
+              }}
+            >
+              {action}
+            </span>
+          )}
+        </div>
+        {title && (
+          <span
+            style={{
+              fontStyle: 'normal',
+              fontWeight: 'normal',
+              fontSize: 11,
+            }}
+          >
+            “{title}”
+          </span>
+        )}
+        <span
+          style={{
+            color: '#9CABC9',
+            fontSize: 11,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            marginTop: 8,
+          }}
+        >
           {moment(data.date, 'YYYYMMDD').fromNow()}
         </span>
       </div>
