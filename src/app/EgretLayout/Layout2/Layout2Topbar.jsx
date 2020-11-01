@@ -31,13 +31,22 @@ import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
 const styles = (theme) => {
   return {
     menuItem: {
-      minWidth: 185,
+      padding: '12px 16px',
+      fontFamily: 'Helvetica Neue',
       '& .imgWrapper': {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         width: 40,
         height: 44,
+      },
+      '& span': {
+        marginLeft: 12,
+        fontWeight: 300,
+        fontSize: 17,
+        fontStyle: 'normal',
+        lineHeight: '100%',
+        color: '#172136',
       },
     },
   }
@@ -131,8 +140,10 @@ function Layout2Topbar(props) {
       <div className="topbar">
         <div className="flex flex-space-between flex-middle container h-100">
           <div className="flex flex-middle brand">
-            <img src="/assets/images/logo.svg" alt="company-logo" />
-            <img src="/assets/images/brand.svg" alt="company-title" />
+            <Link className="flex flex-middle" to={'/'}>
+              <img src="/assets/images/logo.svg" alt="company-logo" />
+              <img src="/assets/images/brand.svg" alt="company-title" />
+            </Link>
           </div>
           <div className="h-100 flex-grow-1 ml-36 flex flex-middle">
             <HeaderButton
@@ -181,17 +192,23 @@ function Layout2Topbar(props) {
 
               <EgretMenu
                 menuButton={
-                  <div style={{ width: 40, height: 44 }}>
+                  <div
+                    style={{
+                      width: 44,
+                      height: 44,
+                    }}
+                  >
                     <Hexagon
                       backgroundImage="/assets/images/face-7.jpg"
-                      backgroundScale={1.05}
-                      style={{ stroke: 'gray' }}
+                      style={{
+                        stroke: 'gray',
+                      }}
                     />
                   </div>
                 }
               >
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" to="/profile">
+                  <Link className="flex flex-middle" style={{ flex: 1 }} to="/profile">
                     <div style={{ width: 40, height: 44 }}>
                       <Hexagon
                         backgroundImage="/assets/images/face-7.jpg"
@@ -200,16 +217,34 @@ function Layout2Topbar(props) {
                       />
                     </div>
                     <div className="setting-profile">
-                      <p className="name">{`${user.lastname} ${user.firstname}`}</p>
-                      <span className="see">See your profile</span>
+                      <div
+                        style={{
+                          fontWeight: 500,
+                          fontStyle: 'normal',
+                          fontSize: 17,
+                          lineHeight: '110%',
+                        }}
+                      >{`${user.firstname} ${user.lastname}`}</div>
+                      <div
+                        style={{
+                          fontWeight: 300,
+                          fontStyle: 'normal',
+                          fontSize: 13,
+                          lineHeight: '110%',
+                          color: '#9CABC9',
+                          marginTop: 8,
+                        }}
+                      >
+                        See your profile
+                      </div>
                     </div>
                   </Link>
                 </MenuItem>
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
                   <div className="imgWrapper">
-                    <img src="/assets/images/setting/contact.png" alt="contact" />
+                    <img src="/assets/images/setting/contact.svg" alt="contact" />
                   </div>
-                  <span className="pl-16"> Contact support </span>
+                  <span> Contact support </span>
                 </MenuItem>
                 <MenuItem
                   className={`flex flex-middle ${classes.menuItem}`}
@@ -220,24 +255,24 @@ function Layout2Topbar(props) {
                   }
                 >
                   <div className="imgWrapper">
-                    <img src="/assets/images/setting/blocked.png" alt="blocked" />
+                    <img src="/assets/images/setting/blocked.svg" alt="blocked" />
                   </div>
-                  <span className="pl-16"> Block list </span>
+                  <span> Block list </span>
                 </MenuItem>
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" to={'/terms'}>
+                  <Link className="flex flex-middle" style={{ flex: 1 }} to={'/terms'}>
                     <div className="imgWrapper">
-                      <img src="/assets/images/setting/info.png" alt="service" />
+                      <img src="/assets/images/setting/info.svg" alt="service" />
                     </div>
-                    <span className="pl-16"> Terms of Service </span>
+                    <span> Terms of Service </span>
                   </Link>
                 </MenuItem>
                 <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" to={'/privacy'}>
+                  <Link className="flex flex-middle" style={{ flex: 1 }} to={'/privacy'}>
                     <div className="imgWrapper">
-                      <img src="/assets/images/setting/info.png" alt="statement" />
+                      <img src="/assets/images/setting/info.svg" alt="statement" />
                     </div>
-                    <span className="pl-16"> Privacy Statement </span>
+                    <span> Privacy Statement </span>
                   </Link>
                 </MenuItem>
               </EgretMenu>

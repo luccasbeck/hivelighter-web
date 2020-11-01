@@ -28,6 +28,8 @@ function NotificationBar(props) {
             parentThemePalette.type === 'light'
               ? parentThemePalette.text.secondary
               : parentThemePalette.text.primary,
+          width: 44,
+          height: 44,
         }}
       >
         <NotificationBadge badgeContent={badgeCount}>

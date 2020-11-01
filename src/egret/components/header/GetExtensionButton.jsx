@@ -7,7 +7,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import DarkButton from 'egret/components/common/DarkButton'
+import DarkButton from 'hive/components/common/DarkButton'
 
 const Button = styled(DarkButton)`
   padding: 15px 16px 12px 16px;

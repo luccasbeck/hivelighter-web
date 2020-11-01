@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import HiveCard from '../../components/hivecard/HiveCard'
 import EmptyList from '../../components/EmptyList'
-import Navbar from '../../components/Navbar'
 import { getMainList } from 'app/redux/actions/HiveListActions'
 
 function HiveList(props) {
@@ -28,7 +27,6 @@ function HiveList(props) {
 
   return (
     <>
-      <Navbar />
       <div className="card-container">
         {data.length === 0 ? (
           <EmptyList />
