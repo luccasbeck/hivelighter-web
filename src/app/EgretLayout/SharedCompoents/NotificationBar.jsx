@@ -1,4 +1,3 @@
-import NotificationBadge from 'egret/components/header/NotificationBadge'
 import React from 'react'
 import {
   MuiThemeProvider,
@@ -9,6 +8,7 @@ import {
 import { withStyles } from '@material-ui/styles'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
+import NotificationBadge from '../../../hive/views/header/NotificationBadge'
 
 function NotificationBar(props) {
   const { theme, settings, data } = props

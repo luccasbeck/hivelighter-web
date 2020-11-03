@@ -1,5 +1,3 @@
-import GetExtensionButton from 'egret/components/header/GetExtensionButton'
-import HeaderButton from 'egret/components/header/HeaderButton'
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import {
@@ -21,12 +19,13 @@ import { Helmet } from 'react-helmet'
 import NotificationBar from '../SharedCompoents/NotificationBar'
 import NotificationBarContainer from '../../../hive/components/notification/NotificationBarContainer'
 import NotificationBarMenuItem from '../../../hive/components/notification/NotificationBarMenuItem'
-import BlockListBarContainer from '../../../hive/components/blockList/BlockListBarContainer'
 import BlockListBarMenuItem from '../../../hive/components/blockList/BlockListBarMenuItem'
 import { getNotification } from 'app/redux/actions/NotificationActions'
 import { getNotificationCount } from 'app/redux/actions/NotificationCountActions'
 import { getBlockList } from 'app/redux/actions/BlockListActions'
 import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
+import HeaderButton from '../../../hive/views/header/HeaderButton'
+import GetExtensionButton from '../../../hive/views/header/GetExtensionButton'
 
 const styles = (theme) => {
   return {
@@ -179,18 +178,11 @@ function Layout2Topbar(props) {
                 ))}
               </NotificationBarContainer>
 
-              <BlockListBarContainer
-                open={isBlockListOpen}
-                onSetOpen={(value) => setIsBlockListOpen(value)}
-              >
-                {blockListData.map((item, index) => (
-                  <BlockListBarMenuItem key={index} data={item} />
-                ))}
-              </BlockListBarContainer>
-
               <div className={'px-10'} />
 
               <EgretMenu
+                isBlockListOpen={isBlockListOpen}
+                onExited={() => setIsBlockListOpen(false)}
                 menuButton={
                   <div
                     style={{
@@ -207,74 +199,100 @@ function Layout2Topbar(props) {
                   </div>
                 }
               >
-                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" style={{ flex: 1 }} to="/profile">
-                    <div style={{ width: 40, height: 44 }}>
-                      <Hexagon
-                        backgroundImage="/assets/images/face-7.jpg"
-                        backgroundScale={1.05}
-                        style={{ stroke: 'gray' }}
-                      />
-                    </div>
-                    <div className="setting-profile">
-                      <div
-                        style={{
-                          fontWeight: 500,
-                          fontStyle: 'normal',
-                          fontSize: 17,
-                          lineHeight: '110%',
-                        }}
-                      >{`${user.firstname} ${user.lastname}`}</div>
-                      <div
-                        style={{
-                          fontWeight: 300,
-                          fontStyle: 'normal',
-                          fontSize: 13,
-                          lineHeight: '110%',
-                          color: '#9CABC9',
-                          marginTop: 8,
-                        }}
+                {isBlockListOpen ? (
+                  blockListData.length > 0 ? (
+                    blockListData.map((item, index) => (
+                      <BlockListBarMenuItem key={index} data={item} />
+                    ))
+                  ) : (
+                    <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                      <span>No Blocked User</span>
+                    </MenuItem>
+                  )
+                ) : (
+                  <>
+                    <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                      <Link
+                        className="flex flex-middle"
+                        style={{ flex: 1 }}
+                        to="/profile"
                       >
-                        See your profile
+                        <div style={{ width: 40, height: 44 }}>
+                          <Hexagon
+                            backgroundImage="/assets/images/face-7.jpg"
+                            backgroundScale={1.05}
+                            style={{ stroke: 'gray' }}
+                          />
+                        </div>
+                        <div className="setting-profile">
+                          <div
+                            style={{
+                              fontWeight: 500,
+                              fontStyle: 'normal',
+                              fontSize: 17,
+                              lineHeight: '110%',
+                            }}
+                          >{`${user.firstname} ${user.lastname}`}</div>
+                          <div
+                            style={{
+                              fontWeight: 300,
+                              fontStyle: 'normal',
+                              fontSize: 13,
+                              lineHeight: '110%',
+                              color: '#9CABC9',
+                              marginTop: 8,
+                            }}
+                          >
+                            See your profile
+                          </div>
+                        </div>
+                      </Link>
+                    </MenuItem>
+                    <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                      <div className="imgWrapper">
+                        <img src="/assets/images/setting/contact.svg" alt="contact" />
                       </div>
-                    </div>
-                  </Link>
-                </MenuItem>
-                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <div className="imgWrapper">
-                    <img src="/assets/images/setting/contact.svg" alt="contact" />
-                  </div>
-                  <span> Contact support </span>
-                </MenuItem>
-                <MenuItem
-                  className={`flex flex-middle ${classes.menuItem}`}
-                  onClick={() =>
-                    setTimeout(() => {
-                      setIsBlockListOpen(true)
-                    }, 500)
-                  }
-                >
-                  <div className="imgWrapper">
-                    <img src="/assets/images/setting/blocked.svg" alt="blocked" />
-                  </div>
-                  <span> Block list </span>
-                </MenuItem>
-                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" style={{ flex: 1 }} to={'/terms'}>
-                    <div className="imgWrapper">
-                      <img src="/assets/images/setting/info.svg" alt="service" />
-                    </div>
-                    <span> Terms of Service </span>
-                  </Link>
-                </MenuItem>
-                <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
-                  <Link className="flex flex-middle" style={{ flex: 1 }} to={'/privacy'}>
-                    <div className="imgWrapper">
-                      <img src="/assets/images/setting/info.svg" alt="statement" />
-                    </div>
-                    <span> Privacy Statement </span>
-                  </Link>
-                </MenuItem>
+                      <span> Contact support </span>
+                    </MenuItem>
+                    <MenuItem
+                      className={`flex flex-middle ${classes.menuItem}`}
+                      onClick={() =>
+                        setTimeout(() => {
+                          setIsBlockListOpen(true)
+                        }, 500)
+                      }
+                    >
+                      <div className="imgWrapper">
+                        <img src="/assets/images/setting/blocked.svg" alt="blocked" />
+                      </div>
+                      <span> Block list </span>
+                    </MenuItem>
+                    <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                      <Link
+                        className="flex flex-middle"
+                        style={{ flex: 1 }}
+                        to={'/terms'}
+                      >
+                        <div className="imgWrapper">
+                          <img src="/assets/images/setting/info.svg" alt="service" />
+                        </div>
+                        <span> Terms of Service </span>
+                      </Link>
+                    </MenuItem>
+                    <MenuItem className={`flex flex-middle ${classes.menuItem}`}>
+                      <Link
+                        className="flex flex-middle"
+                        style={{ flex: 1 }}
+                        to={'/privacy'}
+                      >
+                        <div className="imgWrapper">
+                          <img src="/assets/images/setting/info.svg" alt="statement" />
+                        </div>
+                        <span> Privacy Statement </span>
+                      </Link>
+                    </MenuItem>
+                  </>
+                )}
               </EgretMenu>
             </EgretToolbarMenu>
 
