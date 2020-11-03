@@ -10,14 +10,15 @@ import styled from 'styled-components'
 import BlockButton from './BlockButton'
 
 const MenuItemContainer = styled.div`
+  padding: 8px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   .notification-info span {
     font-family: Helvetica Neue;
     font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 400;
+    font-size: 15px;
     line-height: 110%;
     color: #172136;
   }
@@ -37,11 +38,9 @@ function BlockListBarMenuItem(props) {
       </div>
       <div
         className="flex flex-column notification-info"
-        style={{ width: '55%', marginLeft: 12 }}
+        style={{ flex: 1, marginLeft: 8 }}
       >
-        <span>
-          <strong>{`${data.lastname} ${data.firstname}`}</strong>
-        </span>
+        <span>{`${data.lastname} ${data.firstname}`}</span>
       </div>
       <BlockButton data={data} />
     </MenuItemContainer>
