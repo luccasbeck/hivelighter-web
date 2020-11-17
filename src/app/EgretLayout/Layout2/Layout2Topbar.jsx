@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import {
   Icon,
@@ -120,6 +120,8 @@ function Layout2Topbar(props) {
   const handleLink = (pathname) => {
     props.history.push(pathname)
   }
+
+  const onLogOut = useCallback(() => {}, [])
 
   return (
     <MuiThemeProvider theme={topbarTheme}>
@@ -290,6 +292,15 @@ function Layout2Topbar(props) {
                         </div>
                         <span> Privacy Statement </span>
                       </Link>
+                    </MenuItem>
+                    <MenuItem
+                      className={`flex flex-middle ${classes.menuItem}`}
+                      onClick={onLogOut}
+                    >
+                      <div className="imgWrapper">
+                        <img src="/assets/images/setting/info.svg" alt="statement" />
+                      </div>
+                      <span>Log Out</span>
                     </MenuItem>
                   </>
                 )}
