@@ -23,6 +23,7 @@ import BlockListBarMenuItem from '../../../hive/components/blockList/BlockListBa
 import { getNotification } from 'app/redux/actions/NotificationActions'
 import { getNotificationCount } from 'app/redux/actions/NotificationCountActions'
 import { getBlockList } from 'app/redux/actions/BlockListActions'
+import { logoutUser } from 'app/redux/actions/UserActions'
 import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
 import HeaderButton from '../../../hive/views/header/HeaderButton'
 import GetExtensionButton from '../../../hive/views/header/GetExtensionButton'
@@ -64,6 +65,7 @@ function Layout2Topbar(props) {
     getNotificationCount,
     blockList,
     getBlockList,
+    logoutUser,
   } = props
   const topbarTheme = settings.themes[settings.layout2Settings.topbar.theme] || theme
 
@@ -121,7 +123,9 @@ function Layout2Topbar(props) {
     props.history.push(pathname)
   }
 
-  const onLogOut = useCallback(() => {}, [])
+  const onLogOut = useCallback(() => {
+    logoutUser()
+  }, [])
 
   return (
     <MuiThemeProvider theme={topbarTheme}>
@@ -323,6 +327,7 @@ Layout2Topbar.propTypes = {
   setLayoutSettings: PropTypes.func.isRequired,
   settings: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -341,6 +346,7 @@ export default withStyles(styles, { withTheme: true })(
       getNotification,
       getNotificationCount,
       getBlockList,
+      logoutUser,
     })(Layout2Topbar),
   ),
 )
