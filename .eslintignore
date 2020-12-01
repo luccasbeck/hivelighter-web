@@ -1,5 +1,6 @@
 dist
 node_modules
+build
 docs
 public
 src/app/views/map/PolygonMap.jsx

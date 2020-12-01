@@ -2,6 +2,7 @@
   "name": "hivelighter",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/home/",
   "dependencies": {
     "@date-io/date-fns": "^1.3.6",
     "@material-ui/core": "^4.3.1",
