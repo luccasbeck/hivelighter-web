@@ -1,4 +1,5 @@
 import axiosAPI from 'app/config/axiosAPI'
+import { BACKEND_BASE_URL } from 'app/config'
 
 export const PROFILE_ERROR = 'PROFILE_ERROR'
 export const PROFILE_SUCCESS = 'PROFILE_SUCCESS'
@@ -15,9 +16,11 @@ export function getProfile() {
       .then((response) => {
         let success = response.data.success
         if (success) {
+          let data = response.data
+          data.profile_pic = `${BACKEND_BASE_URL}/profile/${data.user_id}/pic-200.jpg`
           return dispatch({
             type: PROFILE_SUCCESS,
-            payload: response.data,
+            payload: data,
           })
         } else {
           return dispatch({

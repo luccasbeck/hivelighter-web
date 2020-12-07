@@ -42,7 +42,7 @@ function ProfileHeader(props) {
     <ProfileHeaderContainer>
       <div style={{ width: 98, height: 111 }}>
         <Hexagon
-          backgroundImage="/assets/images/face-4.jpg"
+          backgroundImage={data.profile_pic}
           backgroundScale={1.05}
           style={{ stroke: 'none' }}
         />

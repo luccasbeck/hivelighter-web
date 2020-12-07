@@ -29,7 +29,7 @@ function HiveList(props) {
     <>
       <div className="card-container">
         {data.length === 0 ? (
-          <EmptyList />
+          <EmptyList description={`You haven't made \n any hivelights yet.`} />
         ) : (
           data.map((item, index) => <HiveCard key={index} data={item} />)
         )}

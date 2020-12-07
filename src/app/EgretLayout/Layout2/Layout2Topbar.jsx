@@ -125,7 +125,7 @@ function Layout2Topbar(props) {
 
   const onLogOut = useCallback(() => {
     logoutUser()
-  }, [])
+  }, [logoutUser])
 
   return (
     <MuiThemeProvider theme={topbarTheme}>
@@ -197,7 +197,7 @@ function Layout2Topbar(props) {
                     }}
                   >
                     <Hexagon
-                      backgroundImage="/assets/images/face-7.jpg"
+                      backgroundImage={user.profile_pic}
                       style={{
                         stroke: 'gray',
                       }}
@@ -225,7 +225,7 @@ function Layout2Topbar(props) {
                       >
                         <div style={{ width: 40, height: 44 }}>
                           <Hexagon
-                            backgroundImage="/assets/images/face-7.jpg"
+                            backgroundImage={user.profile_pic}
                             backgroundScale={1.05}
                             style={{ stroke: 'gray' }}
                           />

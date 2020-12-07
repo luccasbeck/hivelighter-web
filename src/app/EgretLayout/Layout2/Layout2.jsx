@@ -72,6 +72,11 @@ class Layout2 extends Component {
                   <div className="container p-0">{renderRoutes(routes)}</div>
                   <div className="my-auto"></div>
                   {settings.footer.show && !settings.footer.fixed && <Footer />}
+                  <img
+                    src="/assets/images/patterns.svg"
+                    style={{ position: 'absolute', bottom: '-35%', right: '-10%' }}
+                    alt="patterns"
+                  />
                 </Scrollbar>
               )}
 

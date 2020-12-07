@@ -1,5 +1,6 @@
 import axiosAPI from 'app/config/axiosAPI'
 import localStorageService from './localStorageService'
+import { BACKEND_BASE_URL } from 'app/config'
 
 class AuthService {
   user = {
@@ -46,7 +47,9 @@ class AuthService {
         .then((response) => {
           let status = response.data.status
           if (status === 'success') {
-            resolve(response.data)
+            let data = response.data
+            data.profile_pic = `${BACKEND_BASE_URL}/profile/${data.user_id}/pic-200.jpg`
+            resolve(data)
           } else {
             reject(status)
           }

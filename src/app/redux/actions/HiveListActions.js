@@ -1,5 +1,10 @@
 import axiosAPI from 'app/config/axiosAPI'
-import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
+import {
+  ME_LIST_PATH,
+  SWARM_LIST_PATH,
+  EVERYONE_LIST_PATH,
+  BACKEND_BASE_URL,
+} from 'app/config'
 
 export const HIVELIST_ERROR = 'HIVELIST_ERROR'
 export const HIVELIST_SUCCESS = 'HIVELIST_SUCCESS'
@@ -27,9 +32,16 @@ export function getMainList(uuid, type) {
           })
         }
 
+        let data = response.data.map((item) => {
+          let temp = JSON.parse(JSON.stringify(item))
+          // temp.profile_pic = `https://${item.domain}/profile/${item.user_id}/pic-200.jpg`
+          temp.profile_pic = `${BACKEND_BASE_URL}/profile/${item.user_id}/pic-200.jpg`
+          return temp
+        })
+
         return dispatch({
           type: HIVELIST_SUCCESS,
-          payload: response.data,
+          payload: data,
         })
       })
       .catch((e) => {})
