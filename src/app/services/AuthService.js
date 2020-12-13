@@ -48,7 +48,9 @@ class AuthService {
           let status = response.data.status
           if (status === 'success') {
             let data = response.data
-            data.profile_pic = `${BACKEND_BASE_URL}/profile/${data.user_id}/pic-200.jpg`
+            data.profile_low_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/pic.jpg`
+            data.profile_hi_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/pic-200.jpg`
+            data.profile_origin_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/originImage.jpg`
             resolve(data)
           } else {
             reject(status)
@@ -58,8 +60,6 @@ class AuthService {
           reject(e)
         })
     }).then((data) => {
-      console.log('test login')
-      console.log(data)
       this.setSession(data.token)
       this.setUser(data)
       return data

@@ -197,7 +197,7 @@ function Layout2Topbar(props) {
                     }}
                   >
                     <Hexagon
-                      backgroundImage={user.profile_pic}
+                      backgroundImage={user.profile_hi_pic}
                       style={{
                         stroke: 'gray',
                       }}
@@ -225,7 +225,7 @@ function Layout2Topbar(props) {
                       >
                         <div style={{ width: 40, height: 44 }}>
                           <Hexagon
-                            backgroundImage={user.profile_pic}
+                            backgroundImage={user.profile_hi_pic}
                             backgroundScale={1.05}
                             style={{ stroke: 'gray' }}
                           />

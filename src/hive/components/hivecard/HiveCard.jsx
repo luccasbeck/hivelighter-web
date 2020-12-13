@@ -5,12 +5,11 @@
 // Created by Luccas Beck on 2020-09-20
 // Copyright © 2020 Hivelighter Inc. All Rights Reserved.
 
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
 import Collapse from '@material-ui/core/Collapse'
 import Typography from '@material-ui/core/Typography'
 import HiveCardHeader from './HiveCardHeader'
@@ -25,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '25px',
     fontStyle: 'normal',
   },
+  cardContent: {
+    position: 'relative',
+  },
   content: {
     fontFamily: 'Geomanist',
     fontWeight: 'normal',
@@ -33,13 +35,28 @@ const useStyles = makeStyles((theme) => ({
     color: '#172136',
     margin: 0,
     paddingTop: '8px',
+    maxHeight: 240,
+  },
+  comma: {
+    position: 'absolute',
+    top: '20',
+  },
+  seeMoreContent: {
+    position: 'absolute',
+    height: 50,
+    width: '100%',
+    background:
+      'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.645833) 57.29%, rgba(255, 255, 255, 0) 100%)',
+    left: 0,
+    bottom: 0,
+    textAlign: 'right',
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
   expand: {
-    marginLeft: 'auto',
+    border: '1px solid #E6E9EF',
     fontFamily: 'Geomanist',
     fontStyle: 'normal',
     fontWeight: 600,
@@ -48,39 +65,38 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '1px',
     textTransform: 'uppercase',
     color: '#102041',
+    marginBottom: '-30px',
+    marginRight: '16px',
   },
 }))
 
 export default function HiveCard(props) {
   const classes = useStyles()
   const { data } = props
-  const [expanded, setExpanded] = useState(false)
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded)
-  }
+  const expanded = false
 
   return (
     <div className={classes.root}>
       <HiveCardHeader data={data} />
       <Card>
-        <CardContent>
+        <CardContent className={classes.cardContent}>
+          <img className={classes.comma} src="/assets/images/comma.svg" alt="comma" />
           <p className={classes.content}>
             {data.annotations.length > 0 ? data.annotations[0].text : ''}
           </p>
+          <div className={classes.seeMoreContent}>
+            <Button
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              // onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              See more
+            </Button>
+          </div>
         </CardContent>
-        <CardActions disableSpacing>
-          <Button
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            See more
-          </Button>
-        </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Method:</Typography>

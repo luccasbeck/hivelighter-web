@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     background: '#EBE9F2',
   },
-  sentence: {
+  title: {
     color: '#2C0894',
     fontSize: 18,
     marginBottom: 5,
@@ -42,7 +42,7 @@ export default function HiveCardLink(props) {
     <div className={classes.root}>
       <ArticleIcon src={data.image} className="article-like" alt="banner" />
       <div className="flex flex-column">
-        <span className={classes.sentence}>{data.sentence}</span>
+        <span className={classes.title}>{data.title}</span>
         <span className={classes.domain}>{data.domain}</span>
       </div>
     </div>

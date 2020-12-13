@@ -37,6 +37,7 @@
     "react-hexagon": "^1.1.3",
     "react-highlight": "^0.12.0",
     "react-html-parser": "^2.0.2",
+    "react-image-crop": "^8.6.6",
     "react-infinite-scroller": "^1.2.4",
     "react-loadable": "^5.5.0",
     "react-material-ui-form-validator": "^2.0.9",

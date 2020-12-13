@@ -24,7 +24,6 @@ const ProfileContainer = styled.div`
 
 function Profile(props) {
   const { profile, getProfile, hiveList, getMainList } = props
-  const profileData = { ...profile.data }
   const [isEdit, setIsEdit] = useState(false)
 
   const data = hiveList.data.map((item) => {
@@ -36,15 +35,15 @@ function Profile(props) {
   }, [getProfile])
 
   useEffect(() => {
-    getMainList(profile.uuid, ME_LIST_PATH)
+    if (profile.data && profile.data.uuid) getMainList(profile.data.uuid, ME_LIST_PATH)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getMainList])
+  }, [getMainList, profile])
 
   return (
     <ProfileContainer>
-      <ProfileHeader data={profileData} />
+      <ProfileHeader data={profile.data} isEdit={isEdit} />
       <ProfileContent
-        data={profileData}
+        data={profile.data}
         isEdit={isEdit}
         onSetEdit={(value) => setIsEdit(value)}
       />

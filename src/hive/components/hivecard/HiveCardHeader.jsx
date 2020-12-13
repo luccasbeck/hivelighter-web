@@ -41,7 +41,7 @@ export default function HiveCardHeader(props) {
       <div className={classes.userInfo}>
         <div className={classes.avatar}>
           <Hexagon
-            backgroundImage={data.profile_pic}
+            backgroundImage={data.profile_hi_pic}
             backgroundScale={1.05}
             style={{ stroke: 'none' }}
           />

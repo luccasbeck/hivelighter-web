@@ -17,7 +17,9 @@ export function getProfile() {
         let success = response.data.success
         if (success) {
           let data = response.data
-          data.profile_pic = `${BACKEND_BASE_URL}/profile/${data.user_id}/pic-200.jpg`
+          data.profile_low_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/pic.jpg`
+          data.profile_hi_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/pic-200.jpg`
+          data.profile_origin_pic = `${BACKEND_BASE_URL}/profile/${data.uuid}/originImage.jpg`
           return dispatch({
             type: PROFILE_SUCCESS,
             payload: data,
@@ -41,6 +43,21 @@ export function updateProfile({ uuid, username, firstname, lastname, bio }) {
         let status = response.data.status
         if (status === 'success') {
           dispatch(getProfile())
+        }
+      })
+      .catch((e) => {})
+  }
+}
+
+export function setUserPicUpload(data) {
+  return (dispatch) => {
+    axiosAPI
+      .post('/api/setUserPicUpload', data)
+      .then((response) => {
+        let status = response.data.status
+        if (status === 'success') {
+          // dispatch(getProfile())
+          window.location.reload()
         }
       })
       .catch((e) => {})

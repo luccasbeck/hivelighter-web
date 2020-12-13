@@ -4,9 +4,11 @@
 // Created by Luccas Beck on 2020-09-26
 // Copyright © 2020 Hivelighter Inc. All Rights Reserved.
 
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Hexagon from 'react-hexagon'
+import { Button } from '@material-ui/core'
+import ProfilePictureDialog from './ProfilePictureDialog'
 
 const ProfileHeaderContainer = styled.div`
   max-width: 690px;
@@ -24,6 +26,22 @@ const ProfileHeaderContainer = styled.div`
     font-weight: 500;
     line-height: 110%;
   }
+  .hexagon-containter {
+    display: flex;
+    align-items: center;
+  }
+  .change-photo-btn {
+    margin-left: 40px;
+    font-family: 'Geomanist';
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #102041;
+    border: 1px solid #E6E9EF
+    border-radius: 2px;
+    padding: 5px 10px;
+    background: white;
+  }
 `
 
 const ProfileHeaderContent = ({ number, content }) => {
@@ -36,20 +54,42 @@ const ProfileHeaderContent = ({ number, content }) => {
 }
 
 function ProfileHeader(props) {
-  const { data } = props
+  const { data, isEdit } = props
+  const [showPictureDialog, setShowPictureDialog] = useState(false)
 
   return (
     <ProfileHeaderContainer>
-      <div style={{ width: 98, height: 111 }}>
-        <Hexagon
-          backgroundImage={data.profile_pic}
-          backgroundScale={1.05}
-          style={{ stroke: 'none' }}
-        />
+      <div className="hexagon-containter">
+        <div style={{ width: 98, height: 111 }}>
+          <Hexagon
+            backgroundImage={data.profile_hi_pic}
+            backgroundScale={1.05}
+            style={{ stroke: 'none' }}
+          />
+        </div>
+        {isEdit && (
+          <div>
+            <Button
+              onClick={() => setShowPictureDialog(true)}
+              className="change-photo-btn"
+            >
+              Change Profile Photo
+            </Button>
+          </div>
+        )}
       </div>
-      <ProfileHeaderContent number={data.posts} content={'Hivelights'} />
-      <ProfileHeaderContent number={data.followers} content={'Followers'} />
-      <ProfileHeaderContent number={data.following} content={'Following'} />
+      {!isEdit && (
+        <>
+          <ProfileHeaderContent number={data.posts} content={'Hivelights'} />
+          <ProfileHeaderContent number={data.followers} content={'Followers'} />
+          <ProfileHeaderContent number={data.following} content={'Following'} />
+        </>
+      )}
+      <ProfilePictureDialog
+        open={showPictureDialog}
+        picture={data.profile_origin_pic}
+        setOpen={(value) => setShowPictureDialog(value)}
+      />
     </ProfileHeaderContainer>
   )
 }

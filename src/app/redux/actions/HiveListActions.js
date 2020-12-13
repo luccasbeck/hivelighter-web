@@ -34,8 +34,10 @@ export function getMainList(uuid, type) {
 
         let data = response.data.map((item) => {
           let temp = JSON.parse(JSON.stringify(item))
-          // temp.profile_pic = `https://${item.domain}/profile/${item.user_id}/pic-200.jpg`
-          temp.profile_pic = `${BACKEND_BASE_URL}/profile/${item.user_id}/pic-200.jpg`
+          // temp.profile_hi_pic = `https://${item.domain}/profile/${item.user_id}/pic-200.jpg`
+          temp.profile_low_pic = `${BACKEND_BASE_URL}/profile/${item.user_id}/pic.jpg`
+          temp.profile_hi_pic = `${BACKEND_BASE_URL}/profile/${item.user_id}/pic-200.jpg`
+          temp.profile_origin_pic = `${BACKEND_BASE_URL}/profile/${item.user_id}/originImage.jpg`
           return temp
         })
 
