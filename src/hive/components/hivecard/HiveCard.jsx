@@ -82,7 +82,7 @@ export default function HiveCard(props) {
       <HiveCardHeader data={data} />
       <Card>
         <CardContent className={classes.cardContent}>
-          <img className={classes.comma} src="/assets/images/comma.svg" alt="comma" />
+          <img className={classes.comma} src="/assets/images/quote.svg" alt="quote" />
           <p className={classes.content}>
             {data.annotations.length > 0 ? data.annotations[0].text : ''}
           </p>
