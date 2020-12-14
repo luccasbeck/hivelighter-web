@@ -29,7 +29,7 @@ const ProfileContentContainer = styled.div`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #102041;
-    border: 1px solid #75787d;
+    border: 1px solid #102041;
     border-radius: 3px;
     padding: 15px 16px 12px 16px;
     line-height: 1;
@@ -40,7 +40,7 @@ const ProfileContentContainer = styled.div`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: white;
-    border: 1px solid #75787d;
+    border: 1px solid #102041;
     border-radius: 3px;
     background: #102041;
     margin-right: 20px;
@@ -64,11 +64,14 @@ const TextFieldWrapper = styled.div`
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+    '& .MuiOutlinedInput-notchedOutline': {
       border: '1px solid #E6E9EF',
     },
+    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+      border: '1px solid rgba(0, 0, 0, 0.23)',
+    },
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      border: '1px solid #E6E9EF',
+      border: '1px solid rgba(0, 0, 0, 0.23)',
     },
   },
 }))

@@ -19,7 +19,7 @@ const ActionContainer = styled.div`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: white;
-    border: 1px solid #75787d;
+    border: 1px solid #102041;
     border-radius: 3px;
     background: #102041;
     margin-right: 20px;
@@ -32,7 +32,7 @@ const ActionContainer = styled.div`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #102041;
-    border: 1px solid #75787d;
+    border: 1px solid #102041;
     border-radius: 3px;
     background: #102041;
     margin-right: 20px;
