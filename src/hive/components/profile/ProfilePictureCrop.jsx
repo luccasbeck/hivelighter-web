@@ -21,9 +21,10 @@ const ActionContainer = styled.div`
     color: white;
     border: 1px solid #75787d;
     border-radius: 3px;
-    padding: 10px;
     background: #102041;
     margin-right: 20px;
+    padding: 15px 16px 12px 16px;
+    line-height: 1;
   }
   .choose-photo-btn {
     font-family: 'Geomanist';
@@ -33,10 +34,11 @@ const ActionContainer = styled.div`
     color: #102041;
     border: 1px solid #75787d;
     border-radius: 3px;
-    padding: 10px;
     background: #102041;
     margin-right: 20px;
     background: white;
+    padding: 15px 16px 12px 16px;
+    line-height: 1;
   }
 `
 
@@ -155,7 +157,6 @@ function ProfilePictureCrop(props) {
             crop={crop}
             onChange={(c) => setCrop(c)}
             onComplete={(c) => setCompletedCrop(c)}
-            // crossorigin="anonymous"
           />
         </div>
       </DialogContent>

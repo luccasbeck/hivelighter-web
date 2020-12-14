@@ -50,12 +50,16 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     bottom: 0,
     textAlign: 'right',
+    transform: 'matrix(1, 0, 0, -1, 0, 0)',
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
   expand: {
+    position: 'absolute',
+    bottom: 10,
+    right: 16,
     border: '1px solid #E6E9EF',
     fontFamily: 'Geomanist',
     fontStyle: 'normal',
@@ -65,8 +69,6 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '1px',
     textTransform: 'uppercase',
     color: '#102041',
-    marginBottom: '-30px',
-    marginRight: '16px',
   },
 }))
 
@@ -84,18 +86,17 @@ export default function HiveCard(props) {
           <p className={classes.content}>
             {data.annotations.length > 0 ? data.annotations[0].text : ''}
           </p>
-          <div className={classes.seeMoreContent}>
-            <Button
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              // onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              See more
-            </Button>
-          </div>
+          <div className={classes.seeMoreContent}></div>
+          <Button
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            // onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            See more
+          </Button>
         </CardContent>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>

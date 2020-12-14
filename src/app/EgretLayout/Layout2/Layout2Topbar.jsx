@@ -24,6 +24,7 @@ import { getNotification } from 'app/redux/actions/NotificationActions'
 import { getNotificationCount } from 'app/redux/actions/NotificationCountActions'
 import { getBlockList } from 'app/redux/actions/BlockListActions'
 import { logoutUser } from 'app/redux/actions/UserActions'
+import { getProfile } from 'app/redux/actions/ProfileActions'
 import { ME_LIST_PATH, SWARM_LIST_PATH, EVERYONE_LIST_PATH } from 'app/config'
 import HeaderButton from '../../../hive/views/header/HeaderButton'
 import GetExtensionButton from '../../../hive/views/header/GetExtensionButton'
@@ -66,6 +67,8 @@ function Layout2Topbar(props) {
     blockList,
     getBlockList,
     logoutUser,
+    profile,
+    getProfile,
   } = props
   const topbarTheme = settings.themes[settings.layout2Settings.topbar.theme] || theme
 
@@ -94,6 +97,10 @@ function Layout2Topbar(props) {
   useEffect(() => {
     getBlockList()
   }, [getBlockList])
+
+  useEffect(() => {
+    getProfile()
+  }, [getProfile])
 
   const updateSidebarMode = (sidebarSettings) => {
     let { settings, setLayoutSettings } = props
@@ -197,7 +204,7 @@ function Layout2Topbar(props) {
                     }}
                   >
                     <Hexagon
-                      backgroundImage={user.profile_hi_pic}
+                      backgroundImage={profile.data.profile_hi_pic}
                       style={{
                         stroke: 'gray',
                       }}
@@ -225,7 +232,7 @@ function Layout2Topbar(props) {
                       >
                         <div style={{ width: 40, height: 44 }}>
                           <Hexagon
-                            backgroundImage={user.profile_hi_pic}
+                            backgroundImage={profile.data.profile_hi_pic}
                             backgroundScale={1.05}
                             style={{ stroke: 'gray' }}
                           />
@@ -337,6 +344,7 @@ const mapStateToProps = (state) => ({
   notification: state.notification,
   notificationCount: state.notificationCount,
   blockList: state.blockList,
+  profile: state.profile,
 })
 
 export default withStyles(styles, { withTheme: true })(
@@ -347,6 +355,7 @@ export default withStyles(styles, { withTheme: true })(
       getNotificationCount,
       getBlockList,
       logoutUser,
+      getProfile,
     })(Layout2Topbar),
   ),
 )

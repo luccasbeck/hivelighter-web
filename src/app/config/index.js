@@ -1,5 +1,5 @@
 // export const BACKEND_BASE_URL = 'https://dev.hivelighter.com'
-export const BACKEND_BASE_URL = 'https://9d3ee1d8e4f0.ngrok.io'
+export const BACKEND_BASE_URL = 'https://1a6fe82c72c6.ngrok.io'
 export const TOKEN_ERROR_CODE = 'TOKEN_PROBLEM'
 
 export const ME_LIST_PATH = '/me'

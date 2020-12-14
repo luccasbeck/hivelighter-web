@@ -39,8 +39,10 @@ const ProfileHeaderContainer = styled.div`
     color: #102041;
     border: 1px solid #E6E9EF
     border-radius: 2px;
-    padding: 5px 10px;
+    padding: 10px 10px 7px 10px;
+    line-height: 1;
     background: white;
+    border: 1px solid #E6E9EF;
   }
 `
 

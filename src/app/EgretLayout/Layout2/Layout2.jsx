@@ -74,7 +74,12 @@ class Layout2 extends Component {
                   {settings.footer.show && !settings.footer.fixed && <Footer />}
                   <img
                     src="/assets/images/patterns.svg"
-                    style={{ position: 'absolute', bottom: '-35%', right: '-10%' }}
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      right: 0,
+                      transform: 'translate(50%, 50%)',
+                    }}
                     alt="patterns"
                   />
                 </Scrollbar>

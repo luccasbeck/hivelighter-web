@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField, makeStyles } from '@material-ui/core'
 import { updateProfile } from 'app/redux/actions/ProfileActions'
 
 const ProfileContentContainer = styled.div`
@@ -31,7 +31,8 @@ const ProfileContentContainer = styled.div`
     color: #102041;
     border: 1px solid #75787d;
     border-radius: 3px;
-    padding: 10px;
+    padding: 15px 16px 12px 16px;
+    line-height: 1;
   }
   .save-profile-btn {
     font-family: 'Geomanist';
@@ -41,9 +42,10 @@ const ProfileContentContainer = styled.div`
     color: white;
     border: 1px solid #75787d;
     border-radius: 3px;
-    padding: 10px;
     background: #102041;
     margin-right: 20px;
+    padding: 15px 16px 12px 16px;
+    line-height: 1;
   }
   .buttonWrapper {
     margin: 20px 10px 10px;
@@ -60,7 +62,19 @@ const TextFieldWrapper = styled.div`
   }
 `
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+      border: '1px solid #E6E9EF',
+    },
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      border: '1px solid #E6E9EF',
+    },
+  },
+}))
+
 function ProfileContent(props) {
+  const classes = useStyles()
   const { data, isEdit, onSetEdit } = props
   const [profileData, setProfileData] = useState({
     lastname: '',
@@ -95,6 +109,7 @@ function ProfileContent(props) {
               <TextFieldWrapper>
                 <label className="field-label">First Name</label>
                 <TextField
+                  className={classes.root}
                   name="firstname"
                   value={profileData.firstname}
                   onChange={(e) => handleChangeData(e)}
@@ -104,6 +119,7 @@ function ProfileContent(props) {
               <TextFieldWrapper>
                 <label className="field-label">Second Name</label>
                 <TextField
+                  className={classes.root}
                   name="lastname"
                   value={profileData.lastname}
                   onChange={(e) => handleChangeData(e)}
@@ -115,6 +131,7 @@ function ProfileContent(props) {
               <TextFieldWrapper>
                 <label className="field-label">User Name</label>
                 <TextField
+                  className={classes.root}
                   name="username"
                   value={profileData.username}
                   onChange={(e) => handleChangeData(e)}
@@ -127,6 +144,7 @@ function ProfileContent(props) {
               <TextFieldWrapper style={{ flex: 1 }}>
                 <label className="field-label">Description</label>
                 <TextField
+                  className={classes.root}
                   name="bio"
                   value={profileData.bio}
                   onChange={(e) => handleChangeData(e)}
