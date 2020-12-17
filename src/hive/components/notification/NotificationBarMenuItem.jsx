@@ -15,7 +15,7 @@ const MenuItemContainer = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   .notification-info span {
-    font-family: Helvetica Neue;
+    font-family: Helvetica;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;

@@ -33,7 +33,7 @@ const styles = (theme) => {
   return {
     menuItem: {
       padding: '12px 16px',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: 'Helvetica',
       '& .imgWrapper': {
         display: 'flex',
         alignItems: 'center',

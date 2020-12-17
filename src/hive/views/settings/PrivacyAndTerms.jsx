@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   title: {
     backgroundColor: '#FFE115',
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Helvetica',
     fontSize: '17px',
     padding: '0 8px',
     color: 'black',
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '40px',
   },
   text: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Helvetica',
     fontSize: '17px',
     color: '#172136',
     marginBottom: '22px',

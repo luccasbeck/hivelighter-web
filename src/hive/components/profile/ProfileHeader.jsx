@@ -22,7 +22,7 @@ const ProfileHeaderContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Helvetica Neue';
+    font-family: 'Helvetica';
     font-weight: 500;
     line-height: 110%;
   }

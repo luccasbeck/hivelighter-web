@@ -55,7 +55,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   .navbar-btn {
     padding: 8px 16px;
-    font-family: 'Helvetica Neue';
+    font-family: 'Helvetica';
     font-weight: 500;
     font-size: 18px;
     line-height: 110%;

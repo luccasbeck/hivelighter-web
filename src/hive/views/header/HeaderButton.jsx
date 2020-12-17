@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   button: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Helvetica',
     fontStyle: 'normal',
     fontWeight: 500,
     fontSize: '1rem',

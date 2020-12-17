@@ -18,7 +18,7 @@ const ProfileContentContainer = styled.div`
   .profile-content {
     margin: 0 auto;
     max-width: 690px;
-    font-family: 'Helvetica Neue';
+    font-family: 'Helvetica';
     font-size: 15px;
     line-height: 110%;
     color: #050F23;
